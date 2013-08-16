@@ -11,4 +11,23 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		Zend_Session::registerValidator( new Zend_Session_Validator_HttpUserAgent() );
 		Zend_Session::registerValidator( new Mylib_Session_Validator_IPAdress() );
 	}
+
+	protected function _initRoute()
+	{
+		$front = Zend_Controller_Front::getInstance();
+		$router = $front->getRouter();
+
+		$router->removeDefaultRoutes();
+
+		$router->addRoute('staticIndex',
+				new Zend_Controller_Router_Route_Static('/',
+						array( 'controller' => 'index', 'action' => 'index' )));
+		$router->addRoute('staticBand',
+				new Zend_Controller_Router_Route_Static('/band.html',
+						array( 'controller' => 'index', 'action' => 'band' )));
+		$router->addRoute('staticContacts',
+				new Zend_Controller_Router_Route_Static('/contacts.html',
+						array( 'controller' => 'index', 'action' => 'contact' )));
+	}
+
 }

@@ -27,13 +27,9 @@ echo $this->doctype();
 	</head>
 	<body>
 		<div id="header">
-			<noscript>
-				 Для корректной работы сайта необходимо включить JavaScript
-			</noscript>
-			<!--[if lte IE 7]>
-				<p class="alert">К сожалению ваш браузер устарел и не поддерживается данным проектом. Пожалуйста обновитесь.</p>
-			<![endif]-->
-			хедер
+			<a href="<?php echo $this->url(array(), 'staticIndex', true) ?>">главная</a>
+			<a href="<?php echo $this->url(array(), 'staticBand', true) ?>">о группе</a>
+			<a href="<?php echo $this->url(array(), 'staticContacts', true) ?>">контакты</a>
 		</div>
 
 		<div id="content">

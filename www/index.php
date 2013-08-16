@@ -1,12 +1,12 @@
 <?php
 
-define('APPLICATION_ENV', 'production');
+define('APPLICATION_ENV', (getenv('APPLICATION_ENV')) ? getenv('APPLICATION_ENV') : 'production');
 
 define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../app'));
 
 define('ZEND_PATH', realpath(dirname(__FILE__) . '/../../Zend'));
 
-define('LOG_PATH', realpath(dirname(__FILE__) . '/../../logs/dseye'));
+define('LOG_PATH', realpath(dirname(__FILE__) . '/../../logs/ottava'));
 
 set_include_path(implode(PATH_SEPARATOR, array(
 	ZEND_PATH,
@@ -14,7 +14,6 @@ set_include_path(implode(PATH_SEPARATOR, array(
 )));
 
 require_once 'Zend/Application.php';
-
 $application = new Zend_Application(
 	APPLICATION_ENV,
 	APPLICATION_PATH . '/configs/application.ini'
