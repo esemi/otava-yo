@@ -1,17 +1,17 @@
 <?php
 
 $this->headMeta()
-		->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8')
-		->appendHttpEquiv('Content-Language', 'ru-RU')
-		->appendName('description', "описание" )
-		->appendName('keywords', "кейворды");
+		->setHttpEquiv('Content-Language', 'ru-RU')
+		->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
 
 $version = $this->cacheVersion();
 
 $this->headScript()->prependFile( "/js/main.js?{$version}");
 $this->headLink()->prependStylesheet("/css/main.css?{$version}");
 
-$this->headTitle('тайтл');
+$this->headTitle('Отава Ё');
+$this->headTitle()->setSeparator(' / ');
+
 
 echo $this->doctype();
 ?>
