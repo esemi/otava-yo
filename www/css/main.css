@@ -1,0 +1,216 @@
+/* 
+    Document   : main_css
+    Created on : 12.08.2013, 15:56:15
+    Author     : Ирина
+    Description:
+        Purpose of the stylesheet follows.
+*/
+/* 1. Global Reset
+-----------------------------------------------------------------------------------------------*/
+
+	html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed,
+	figure, figcaption, footer, header, hgroup,
+	menu, nav, output, ruby, section, summary,
+	time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+	}
+	/* HTML5 display-role reset for older browsers */
+	article, aside, details, figcaption, figure,
+	footer, header, hgroup, menu, nav, section {
+            display: block;
+	}
+        body {
+            line-height: 1;
+	}
+	a{
+            outline: none;
+	}
+	ol, ul {
+            list-style: none;
+	}
+	blockquote, q {
+            quotes: none;
+	}
+	blockquote:before, blockquote:after,
+	q:before, q:after {
+            content: '';
+            content: none;
+	}
+	table {
+            border-collapse: collapse;
+            border-spacing: 0;
+	}
+	caption, th, td {
+            text-align: left;
+            font-weight: normal;
+	}
+	h1, h2, h3, h4, h5, h6 {
+            font-weight:normal;
+	}
+/*End 1. Global Reset*/
+.center-margin{
+    margin: 0px auto;
+}
+
+.title{
+    color: #872300;
+    font-family: 'Ruslan Display';
+    font-size: 18px;
+    margin-bottom: 21px;
+}
+
+/*-------------LAYOUT----------------------------------------------------------------*/
+    body{
+        background-size: 100%;
+        -moz-background-size: 100%; /* Firefox 3.6+ */
+        -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+        -o-background-size: 100%; /* Opera 9.6+ */
+        background: url('/img/fon.jpg') no-repeat fixed center center / cover #872300;
+    }
+    
+    /*hack for stricky Footer by Ryan Fait*/
+       html, body {
+            height: 100%;
+        }
+        .wrapper {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            margin: 0 auto -24px;
+        }
+        .push {
+            height: 24px;
+        }
+    /*end hack-----------------------------*/
+    
+    /*---Common classes---------------------------------*/
+        .header, .content, .menu-links{
+            width: 938px;
+            margin: 0px auto;
+        }
+        .header, .menu-links{
+            padding-left: 21px; 
+            padding-right: 21px; 
+        }
+        .menu-block, .footer, .out-links, .nearrest-concert-info {
+            background-color: rgba(209, 212, 226, 0.8);
+            box-shadow: 1px 1px 5px 0 #696046;
+            border-top: solid 1px #f1eeec;
+        }
+        
+    /*---END Common classes----------------------------*/    
+    
+    /*---Header---------------------------------*/
+        .header{
+            padding-top: 12px;
+        }
+        .logo{
+            height:105px;
+            width:272px;
+            margin-bottom: -21px;
+            display: inline-block;
+        }
+        .out-links-block{
+            margin-right: 21px;
+            margin-top: 18px;
+            float: right;
+        }
+        .out-links{
+            display: inline-block;
+            margin-left: 8px;
+            width: 43px;
+            height: 42px;
+            border-radius: 22px;
+        }
+        .menu-block{
+            height: 52px;  
+        }
+        .menu-links{
+            margin-top: 13px; /* совместимость с ие*/
+           text-align: justify;
+        }
+        
+        .menu-links li{
+            color: #872300;
+            display: inline-block;
+            font-family: 'Ruslan Display';  
+            font-size: 18px;
+        }
+        .menu-links:after{
+            content: "";
+            width: 100%;
+            display: inline-block;
+        }
+        
+    /*---Footer------------*/
+        .footer{
+            height: 23px;        
+            color: #872300;
+        }
+/*-------------END LAYOUT----------------------------------------------------------------*/        
+
+/*-------------CONTENT-------------------------------------------------------------------*/
+    /*---Main page------------------------------*/
+        .main-page-photo{
+            display: block;
+            box-shadow: 1px 1px 5px 0 #696046;
+            border: 1px solid #132d20;
+        }
+       
+        .nearrest-concert{
+            margin-top: 100px;
+            width: 335px;
+        }
+        .nearrest-concert-date{
+            width: 53px;
+            height:53px;        
+            margin-bottom: 11px;
+            background: #872300;
+            text-align: center;
+            font-family: 'Ruslan Display'; 
+            color: #ebebeb;
+        }
+        .nearrest-concert-info{
+            padding: 0px 11px 11px;
+            text-align: justify;
+            min-height: 169px;
+        }
+        
+        .music{
+            margin-top: 32px;
+            width: 335px;
+            float: right;
+        }
+        
+        .music-name{
+            height: 26px;
+            padding-left: 107px;
+            background-color: rgba(135, 35,0, 0.8);
+            box-shadow: 1px 1px 5px 0 #696046;
+            border-top: solid 1px #cfb0a0;
+        }
+        .music-cover{
+            margin: -26px 0px 0px 11px;
+            width: 84px;
+            height: 84px;
+        }
+        .music-player{
+            width:228px;
+            margin-top: 11px; 
+            float: right;
+        }
+    /*---END Main page------------------------------*/
