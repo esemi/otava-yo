@@ -23,23 +23,43 @@ echo $this->doctype();
 		<link rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
 		<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon"/>
 		<link rel="author" href="/humans.txt" />
+                <link href='http://fonts.googleapis.com/css?family=Ruslan+Display&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
 		<?php echo $this->headLink(); ?>
 	</head>
 	<body>
-		<div id="header">
-			<a href="<?php echo $this->url(array(), 'staticIndex', true) ?>">главная</a>
-			<a href="<?php echo $this->url(array(), 'staticBand', true) ?>">о группе</a>
-			<a href="<?php echo $this->url(array(), 'staticContacts', true) ?>">контакты</a>
-		</div>
+            <div class="wrapper">
+                <header class="header" >
+                    <div class="logo">Отава Ё</div>
+                    <div class="out-links-block">
+                        <div class="out-links">1</div>
+                        <div class="out-links">2</div>
+                        <div class="out-links">3</div>
+                        <div class="out-links">4</div>
+                    </div>
+                </header>
+                <nav class="menu-block">
+                     <ul class="menu-links">
+                        <li><a href="<?php echo $this->url(array(), 'staticIndex', true) ?>">главная</a></li>
+                        <li>новости</li>
+                        <li>концерты</li>
+                        <li><a href="<?php echo $this->url(array(), 'staticBand', true) ?>">о группе</a></li>
+                        <li>аудио</li>
+                        <li>видео</li>
+                        <li>гостевая</li>
+                        <li><a href="<?php echo $this->url(array(), 'staticContacts', true) ?>">контакты</a></li>
+                    </ul>
+                </nav>
 
-		<div id="content">
-			<?php echo $this->layout()->content; ?>
-		</div>
+               <div class="content">
+                    <?php echo $this->layout()->content; ?>
+                </div>	
+                <div class="push"></div>    
+            </div>
+            
+            <footer class="footer">
+                    копирайты итд
+            </footer>
 
-		<div id="footer">
-			копирайты итд
-		</div>
-
-		<?php echo $this->headScript(); ?>
+            <?php echo $this->headScript(); ?>
 	</body>
 </html>
