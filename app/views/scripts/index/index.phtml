@@ -1,10 +1,12 @@
 <img src="img/foto.jpg" class="center-margin main-page-photo">
 <section class="music">
-	<div class="music-name">название песни</div>
+	<? if( !is_null($this->audio) ): ?>
+	<div class="music-name"><?= $this->escape($this->audio->title); ?></div>
 	<img class="music-cover" src="img/cover_1.png">
 	<audio controls class="music-player">
-		<source src="music/test.mp3" type="audio/mp3">
+		<source src="<?= $this->escape($this->audio->media_link); ?>" type="audio/mp3">
 	</audio>
+	<? endif; ?>
 </section>
 <section class="nearrest-concert">
 	<h2 class="title">Ближайщий концерт</h2>

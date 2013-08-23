@@ -10,6 +10,9 @@ class IndexController extends Zend_Controller_Action
 
 		$concertTable = new App_Model_DbTable_Concert();
 		$this->view->concert = $concertTable->getNearest();
+
+		$audioModel = new App_Model_Audio();
+		$this->view->audio = $audioModel->getLastTrack();
 	}
 
 	public function bandAction()
