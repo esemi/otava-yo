@@ -10,7 +10,7 @@ class App_Model_DbTable_News extends Zend_Db_Table_Abstract
 				->from($this, array('id','date_publish','title','content'))
 				->order("date_publish DESC")
 				->limit($limit);
-		return $this->fetchAll($select)->toArray();
+		return $this->fetchAll($select);
 	}
 
 }

@@ -28,6 +28,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$router->addRoute('staticContacts',
 				new Zend_Controller_Router_Route_Static('/contacts.html',
 						array( 'controller' => 'index', 'action' => 'contact' )));
+		$router->addRoute('staticNews',
+				new Zend_Controller_Router_Route_Static('/news.html',
+						array( 'controller' => 'news', 'action' => 'index' )));
+		$router->addRoute('staticConcert',
+				new Zend_Controller_Router_Route_Static('/concerts.html',
+						array( 'controller' => 'concert', 'action' => 'index' )));
 	}
 
 }

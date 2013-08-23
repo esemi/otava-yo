@@ -1,2 +1,6 @@
-<?php var_dump($this->news); ?>
-<?php echo $this->news; ?>
+<? foreach( $this->news as $item ): ?>
+	<?= $this->escape($item->id); ?>
+	<?= $this->escape($item->title); ?>
+	<?= $this->escape($item->date_publish); ?>
+	<?= $item->content; ?>
+<? endforeach; ?>
