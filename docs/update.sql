@@ -15,3 +15,12 @@ CREATE TABLE IF NOT EXISTS `audio` (
   `media_link` char(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `news` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `date_publish` date NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `date_publish` (`date_publish`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
