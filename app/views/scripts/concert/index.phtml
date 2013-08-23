@@ -1,1 +1,10 @@
-КОНЦЕРТЫ
+<section>
+	<h2 class="title">Ближайшие концерты</h2>
+	<? foreach( $this->concerts as $item ): ?>
+		<article class="nearrest-concert-info">
+			<div class="nearrest-concert-date"><?= $this->prepareConcertDate($item->date); ?></div>
+			<h3 class="nearrest-concert-place"><?= $this->escape($item->title); ?></h3>
+			<p><?= $this->escape($item->desc); ?></p>
+		</article>
+	<? endforeach; ?>
+</section>

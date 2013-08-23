@@ -14,4 +14,12 @@ class App_Model_DbTable_Concert extends Zend_Db_Table_Abstract
 		return $this->fetchRow($select);
 	}
 
+	public function getHereAfter()
+	{
+		$select = $this->select()
+				->from($this, array('id','title','link','desc','date'))
+				->where('`date` >= CURDATE()')
+				->order("date ASC");
+		return $this->fetchAll($select);
+	}
 }
