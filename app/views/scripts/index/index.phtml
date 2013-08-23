@@ -1,16 +1,18 @@
 <img src="img/foto.jpg" class="center-margin main-page-photo">
 <section class="music">
-    <div class="music-name">название песни</div>
-    <img class="music-cover" src="img/cover_1.png">
-    <audio controls class="music-player">
-        <source src="music/test.mp3" type="audio/mp3">
-    </audio>
+	<div class="music-name">название песни</div>
+	<img class="music-cover" src="img/cover_1.png">
+	<audio controls class="music-player">
+		<source src="music/test.mp3" type="audio/mp3">
+	</audio>
 </section>
 <section class="nearrest-concert">
-    <h2 class="title">Ближайщий концерт</h2>
-    <article class="nearrest-concert-info">    
-        <div class="nearrest-concert-date">27 июня</div>
-        <h3 class="nearrest-concert-place">Latvia, Цесис</h3>
-        <p>Фестиваль организованный лэйблом Lauska по поводу своего юбилея и выхода нового сборника Sviests 5 с нашим участием.</p>
-    </article>
+	<h2 class="title">Ближайщий концерт</h2>
+	<? if( !is_null($this->concert) ): ?>
+		<article class="nearrest-concert-info">
+			<div class="nearrest-concert-date"><?= $this->prepareConcertDate($this->concert->date); ?></div>
+			<h3 class="nearrest-concert-place"><?= $this->escape($this->concert->title); ?></h3>
+			<p><?= $this->escape($this->concert->desc); ?></p>
+		</article>
+	<? endif; ?>
 </section>
