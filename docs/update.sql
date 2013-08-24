@@ -35,5 +35,16 @@ ALTER TABLE `audio` ADD `album_id` INT UNSIGNED NOT NULL AFTER `id` , ADD INDEX 
 
 ALTER TABLE `audio` ADD FOREIGN KEY ( `album_id` ) REFERENCES `otava`.`album` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
+CREATE TABLE IF NOT EXISTS `guestbook` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `author` varchar(100) NOT NULL,
+  `date_publish` datetime NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `site` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `date_publish` (`date_publish`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 

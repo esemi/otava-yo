@@ -34,6 +34,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$router->addRoute('staticConcert',
 				new Zend_Controller_Router_Route_Static('/concerts.html',
 						array( 'controller' => 'concert', 'action' => 'index' )));
+		$router->addRoute('staticGuestbook',
+				new Zend_Controller_Router_Route_Static('/guestbook.html',
+						array( 'controller' => 'guestbook', 'action' => 'index' )));
 
 		$router->addRoute('login',
 				new Zend_Controller_Router_Route_Static('/login',
