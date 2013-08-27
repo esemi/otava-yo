@@ -3,8 +3,8 @@
 	<? foreach( $this->news as $item ): ?>
 		<article>
 			<header>
-				<h3 class="title">
-					<a name="<?= sprintf("view%d", $item->id); ?>" href="<?php echo $this->url(array('id' => $item->id ), 'staticNewsView', true) ?>">
+				<h3>
+					<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?php echo $this->url(array('id' => $item->id ), 'staticNewsView', true) ?>">
 						<?= $this->escape($item->title); ?>
 					</a>
 				</h3>
