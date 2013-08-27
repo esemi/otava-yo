@@ -23,29 +23,30 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 				new Zend_Controller_Router_Route_Static('/',
 						array( 'controller' => 'index', 'action' => 'index' )));
 		$router->addRoute('staticBand',
-				new Zend_Controller_Router_Route_Static('/band.html',
+				new Zend_Controller_Router_Route_Static('/band',
 						array( 'controller' => 'index', 'action' => 'band' )));
 		$router->addRoute('staticContacts',
-				new Zend_Controller_Router_Route_Static('/contacts.html',
+				new Zend_Controller_Router_Route_Static('/contacts',
 						array( 'controller' => 'index', 'action' => 'contact' )));
 		$router->addRoute('staticNews',
-				new Zend_Controller_Router_Route_Static('/news.html',
+				new Zend_Controller_Router_Route_Static('/news',
 						array( 'controller' => 'news', 'action' => 'index' )));
 		$router->addRoute('staticConcert',
-				new Zend_Controller_Router_Route_Static('/concerts.html',
+				new Zend_Controller_Router_Route_Static('/concerts',
 						array( 'controller' => 'concert', 'action' => 'index' )));
 		$router->addRoute('staticGuestbook',
-				new Zend_Controller_Router_Route_Static('/guestbook.html',
+				new Zend_Controller_Router_Route_Static('/guestbook',
 						array( 'controller' => 'guestbook', 'action' => 'index' )));
+
 		$router->addRoute('addPostGuestbook',
 				new Zend_Controller_Router_Route_Static('/guestbook/post',
 						array( 'controller' => 'guestbook', 'action' => 'new-post' )));
 
 		$router->addRoute('login',
-				new Zend_Controller_Router_Route_Static('/login',
+				new Zend_Controller_Router_Route_Static('/auth/login',
 						array( 'controller' => 'auth', 'action' => 'login' )));
 		$router->addRoute('logout',
-				new Zend_Controller_Router_Route_Static('/logout',
+				new Zend_Controller_Router_Route_Static('/auth/logout',
 						array( 'controller' => 'auth', 'action' => 'logout' )));
 
 	}

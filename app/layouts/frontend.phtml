@@ -8,6 +8,7 @@ $version = $this->cacheVersion();
 
 $this->headScript()->prependFile( "/js/main.js?{$version}");
 $this->headLink()->prependStylesheet("/css/main.css?{$version}");
+$this->headLink()->prependStylesheet("http://fonts.googleapis.com/css?family=Ruslan+Display&subset=latin,cyrillic-ext");
 
 $this->headTitle('Отава Ё');
 $this->headTitle()->setSeparator(' / ');
@@ -23,13 +24,12 @@ echo $this->doctype();
 		<link rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
 		<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon"/>
 		<link rel="author" href="/humans.txt" />
-		<link href='http://fonts.googleapis.com/css?family=Ruslan+Display&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
 		<?php echo $this->headLink(); ?>
 	</head>
 	<body>
 		<div class="wrapper">
 			<header class="header" >
-				<img src="img/otava_logo_main.png" class="logo">
+				<img src="/img/otava_logo_main.png" class="logo">
 				<div class="out-links-block">
 					<div class="out-links">1</div>
 					<div class="out-links">2</div>
