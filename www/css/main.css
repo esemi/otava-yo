@@ -68,7 +68,7 @@
 		font-family: DSCoptic;
 		src: url(/fonts/DSCOPTIC.TTF);
 	}
-	.menu-links li, .date, .date-simple, .title, .title-bigger, .signature{
+	.menu-links li, .date, .date-bigger, .title, .title-bigger, .signature{
 		font-family: DSCoptic;
 	}
 	.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block{
@@ -81,10 +81,10 @@
 	.main-page-photo, .date{
 		box-shadow: 1px 1px 5px 0 #696046;
 	}
-	.title, .title-bigger, .menu-links, .menu-links a, .footer, .date-simple, .signature{
+	.title, .title-bigger, .menu-links, .menu-links a, .footer, .date-bigger, .signature{
 		color: #872300;
 	}
-	.date, .date-simple{
+	.date, .date-bigger{
 		text-align: center;
 		letter-spacing: 1px;
 		line-height: 11pt;
@@ -92,6 +92,7 @@
 		color: #ebebf2;
 	}
 	.date{
+		display: block;
 		width: 53px;
 		height:40px;
 		padding-top: 13px;
@@ -142,6 +143,13 @@
 	/*end hack-----------------------------*/
 	p{
 		margin: 3px 0px 6px;
+	}
+
+	a{
+		text-decoration: none;
+	}
+	a p{
+		color: #322f2d;
 	}
 	/*---Common layout classes---------------------------------*/
 		.header, .menu-links, .band-photo{
@@ -218,6 +226,7 @@
 		.main-page-photo, .band-photo img{
 
 		}
+
 		/*---Main page------------------------------*/
 			.main-page-photo{
 				display: block;
@@ -284,7 +293,7 @@
 			text-align: justify;
 		}
 		/*---News page------------------------------*/
-		.date-simple{
+		.date-bigger{
 			width: 85px;
 			height:58px;
 			padding-top: 27px;
@@ -293,10 +302,9 @@
 		}
 		.signature{
 			text-align: right;
+			font-size: 14px;
 		}
-		.signature .font-smaller{
-			font-size: 11px;
-		}
+
 		/*---END News page------------------------------*/
 
 		/*---Band page------------------------------*/

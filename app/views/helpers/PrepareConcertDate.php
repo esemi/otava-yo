@@ -20,6 +20,6 @@ class Zend_View_Helper_PrepareConcertDate extends Zend_View_Helper_Abstract
 		);
 
 		$date = DateTime::createFromFormat('Y-m-d', $date);
-		return $this->view->escape(sprintf("%d %s",$date->format('d'), $months[$date->format('n')]));
+		return sprintf("%d<br>%s",$date->format('d'), $months[$date->format('n')]);;
 	}
 }

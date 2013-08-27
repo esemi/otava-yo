@@ -1,10 +1,14 @@
-<section>
-	<h2 class="title">Ближайшие концерты</h2>
+<div class="field-bg">
+	<h2 class="title text-center">концерты</h2>
 	<? foreach( $this->concerts as $item ): ?>
-		<article class="nearrest-concert-block">
-			<div class="nearrest-concert-date"><?= $this->prepareConcertDate($item->date); ?></div>
-			<h3 class="nearrest-concert-place"><?= $this->escape($item->title); ?></h3>
+		<article>
+			<header>
+				<h3 class="title"><?= $this->escape($item->title); ?></h3>
+				<date class="date">
+					<?= $this->prepareConcertDate($item->date); ?>
+				</date>
+			</header>
 			<p><?= $this->escape($item->desc); ?></p>
 		</article>
 	<? endforeach; ?>
-</section>
+</div>
