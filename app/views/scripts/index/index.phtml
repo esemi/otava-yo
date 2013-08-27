@@ -1,5 +1,5 @@
 <img src="img/foto.jpg" class="center-margin main-page-photo">
-<section class="music">
+<!--section class="music">
 	<? if( !is_null($this->audio) ): ?>
 	<div class="music-name"><?= $this->escape($this->audio['title']); ?></div>
 	<img class="music-cover" src="<?= $this->escape($this->audio['img_link']); ?>">
@@ -7,14 +7,30 @@
 		<source src="<?= $this->escape($this->audio['audio_link']); ?>" type="audio/mp3">
 	</audio>
 	<? endif; ?>
-</section>
+</section-->
+
 <section class="nearrest-concert">
-	<h2 class="title">Ближайщий концерт</h2>
+	<!--h2 class="title">Выступаем</h2-->
 	<? if( !is_null($this->concert) ): ?>
-		<article class="nearrest-concert-info">
-			<div class="nearrest-concert-date"><?= $this->prepareConcertDate($this->concert->date); ?></div>
+		<article class="nearrest-concert-block">
+			<div class="date nearrest-concert-date"><?= $this->prepareConcertDate($this->concert->date); ?></div>
 			<h3 class="nearrest-concert-place"><?= $this->escape($this->concert->title); ?></h3>
-			<p><?= $this->escape($this->concert->desc); ?></p>
+			<!--p class="nearrest-concert-info"><?= $this->escape($this->concert->desc); ?></p-->
 		</article>
 	<? endif; ?>
+</section>
+
+<section class="last-news">
+	<div class="date last-news-date">5 сент</div>
+	<h2 class="title-bigger">Последние новости</h2>
+	<article>
+		<p>Гастроли в Индии, наверное, самое необычное, что с нами происходило на почве музыки до сих пор. 3 фестиваля, в Калькутте и Дели. Здесь небольшой фото отчёт: http://reelroad.livejournal.com/79073.html
+		</p>
+		<p>В ближайших планах главное фолк-событие в нашем городе на сегодняшний день - "День Святого Патрика".
+		</p>
+		<p> Вот уже 14ый год подряд проходит международный фолк-фестиваль, в котором мы обязательно примем участие с нашей... кельтско-рашн битовской программой.
+		</p>
+
+	</article>
+
 </section>

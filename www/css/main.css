@@ -1,12 +1,12 @@
-/* 
-    Document   : main_css
-    Created on : 12.08.2013, 15:56:15
-    Author     : Ирина
-    Description:
-        Purpose of the stylesheet follows.
-*/
-/* 1. Global Reset
------------------------------------------------------------------------------------------------*/
+	/*
+	Document   : main_css
+	Created on : 12.08.2013, 15:56:15
+	Author     : Ирина
+	Description:
+		Purpose of the stylesheet follows.
+	*/
+	/* 1. Global Reset
+	-----------------------------------------------------------------------------------------------*/
 
 	html, body, div, span, applet, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -21,209 +21,248 @@
 	figure, figcaption, footer, header, hgroup,
 	menu, nav, output, ruby, section, summary,
 	time, mark, audio, video {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 100%;
-            font: inherit;
-            vertical-align: baseline;
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
 	}
 	/* HTML5 display-role reset for older browsers */
 	article, aside, details, figcaption, figure,
 	footer, header, hgroup, menu, nav, section {
-            display: block;
+			display: block;
 	}
-        body {
-            line-height: 1;
+		body {
+			line-height: 1;
 	}
 	a{
-            outline: none;
+			outline: none;
 	}
 	ol, ul {
-            list-style: none;
+			list-style: none;
 	}
 	blockquote, q {
-            quotes: none;
+			quotes: none;
 	}
 	blockquote:before, blockquote:after,
 	q:before, q:after {
-            content: '';
-            content: none;
+			content: '';
+			content: none;
 	}
 	table {
-            border-collapse: collapse;
-            border-spacing: 0;
+			border-collapse: collapse;
+			border-spacing: 0;
 	}
 	caption, th, td {
-            text-align: left;
-            font-weight: normal;
+			text-align: left;
+			font-weight: normal;
 	}
 	h1, h2, h3, h4, h5, h6 {
-            font-weight:normal;
+			font-weight:normal;
 	}
-/*End 1. Global Reset*/
-/*---------------------COMMON CLASSES----------*/
-    @font-face{
-        font-family: DSCoptic;
-        src: url(/fonts/DSCOPTIC.TTF);
-    }
+	/*End 1. Global Reset*/
 
-    .menu-block, .footer, .out-links, .nearrest-concert-info {
-        background-color: rgba(209, 212, 226, 0.8);
-        box-shadow: 1px 1px 5px 0 #696046;
-        border-top: solid 1px #f1eeec;
-    }
-    .menu-links li, .nearrest-concert-date, .title{
-        font-family: DSCoptic; 
-    }
-    
-    .title{
-        color: #872300;
-        font-size: 14px;
-        margin-bottom: 21px;
-    }
-    
-    .center-margin{
-        margin: 0px auto;
-    }
+	/*---------------------COMMON CLASSES----------*/
+	@font-face{
+		font-family: DSCoptic;
+		src: url(/fonts/DSCOPTIC.TTF);
+	}
+	.menu-links li, .date, .title, .title-bigger{
+		font-family: DSCoptic;
+	}
 
-/*-------------LAYOUT----------------------------------------------------------------*/
-    body{
-        background-size: 100%;
-        -moz-background-size: 100%; /* Firefox 3.6+ */
-        -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-        -o-background-size: 100%; /* Opera 9.6+ */
-        background: url('/img/fon.jpg') no-repeat fixed center center / cover #872300;
-    }
-    
-    /*hack for stricky Footer by Ryan Fait*/
-       html, body {
-            height: 100%;
-        }
-        .wrapper {
-            min-height: 100%;
-            height: auto !important;
-            height: 100%;
-            margin: 0 auto -24px;
-        }
-        .push {
-            height: 24px;
-        }
-    /*end hack-----------------------------*/
-    
-    /*---Common layout classes---------------------------------*/
-        .header, .content, .menu-links{
-            width: 938px;
-            margin: 0px auto;
-        }
-        .header, .menu-links{
-            padding-left: 21px; 
-            padding-right: 21px; 
-        }
-        
-    /*---END Common classes----------------------------*/    
-    
-    /*---Header---------------------------------*/
-        .header{
-            padding-top: 12px;
-        }
-        .logo{
-            margin-bottom: -21px;
-            display: inline-block;
-        }
-        .out-links-block{
-            margin-right: 21px;
-            margin-top: 18px;
-            float: right;
-        }
-        .out-links{
-            display: inline-block;
-            margin-left: 8px;
-            width: 43px;
-            height: 42px;
-            border-radius: 22px;
-        }
-        .menu-block{
-            height: 52px;  
-        }
-        .menu-links{
-           margin-top: 13px; /* совместимость с ие*/
-           text-align: justify;
-        }
-        
-        .menu-links li{
-            color: #872300;
-            display: inline-block;
-            font-size: 14px;
-        }
-        .menu-links:after{
-            content: "";
-            width: 100%;
-            display: inline-block;
-        }
-        
-    /*---Footer------------*/
-        .footer{
-            height: 23px;        
-            color: #872300;
-        }
-/*-------------END LAYOUT----------------------------------------------------------------*/        
+	.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block {
+		background-color: rgba(235, 235, 242, 0.7);
+		box-shadow: 1px 1px 5px 0 #696046;
+		border-top: solid 1px #f1eeec;
+	}
+	.main-page-photo, .date{
+		box-shadow: 1px 1px 5px 0 #696046;
+	}
 
-/*-------------CONTENT-------------------------------------------------------------------*/
-    /*---Main page------------------------------*/
-        .main-page-photo{
-            display: block;
-            box-shadow: 1px 1px 5px 0 #696046;
-            border: 1px solid #132d20;
-        }
-       
-        .nearrest-concert{
-            margin-top: 100px;
-            width: 335px;
-        }
-        .nearrest-concert-date{
-            width: 53px;
-            height:40px;       
-            padding-top: 13px;
-            margin-bottom: 11px;
-            background: #872300;
-            text-align: center;
-            color: #ebebeb;
-            font-size: 12px;
-            letter-spacing: 1px;
-            float: left;
-        }
-        .nearrest-concert-place{
-            margin-left: 75px;
-            margin-top: 21px;
-        }
-        .nearrest-concert-info{
-            padding: 0px 11px 11px;
-            text-align: justify;
-            min-height: 169px;
-        }
-        
-        .music{
-            margin-top: 32px;
-            width: 335px;
-            float: right;
-        }
-        
-        .music-name{
-            height: 26px;
-            padding-left: 107px;
-            background-color: rgba(135, 35,0, 0.8);
-            box-shadow: 1px 1px 5px 0 #696046;
-            border-top: solid 1px #cfb0a0;
-        }
-        .music-cover{
-            margin: -26px 0px 0px 11px;
-            width: 84px;
-            height: 84px;
-        }
-        .music-player{
-            width:228px;
-            margin-top: 11px; 
-            float: right;
-        }
-    /*---END Main page------------------------------*/
+	.date{
+		width: 53px;
+		height:40px;
+		padding-top: 13px;
+		background: #872300;
+		text-align: center;
+		color: #ebebf2;
+		font-size: 12px;
+		letter-spacing: 1px;
+	}
+	.title, .title-bigger{
+		color: #872300;
+		margin-bottom: 21px;
+	}
+	.title{
+		font-size: 14px;
+	}
+	.title-bigger{
+		font-size: 16px;
+	}
+
+	.center-margin{
+		margin: 0px auto;
+	}
+
+	/*-------------LAYOUT----------------------------------------------------------------*/
+	body{
+		background-size: 100%;
+		-moz-background-size: 100%; /* Firefox 3.6+ */
+		-webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+		-o-background-size: 100%; /* Opera 9.6+ */
+		background: url('/img/fon.jpg') no-repeat fixed center center / cover #872300;
+	}
+
+	/*hack for stricky Footer by Ryan Fait*/
+		html, body {
+			height: 100%;
+			color: #322f2d;
+			font-family: Trebuchet MS, Verdana, sans-serif;
+		}
+		.wrapper {
+			min-height: 100%;
+			height: auto !important;
+			height: 100%;
+			margin: 0 auto -24px;
+		}
+		.push {
+			height: 24px;
+		}
+	/*end hack-----------------------------*/
+	p{
+		margin: 3px 0px 6px;
+	}
+	/*---Common layout classes---------------------------------*/
+		.header, .menu-links{
+			margin: 0px auto;
+			width: 898px;
+			padding-left: 21px;
+			padding-right: 21px;
+		}
+
+	/*---END Common classes----------------------------*/
+
+	/*---Header---------------------------------*/
+		.header{
+			padding-top: 12px;
+		}
+		.logo{
+			margin-bottom: -21px;
+			display: inline-block;
+		}
+		.out-links-block{
+			margin-right: 21px;
+			margin-top: 18px;
+			float: right;
+		}
+		.out-links{
+			display: inline-block;
+			margin-left: 8px;
+			width: 43px;
+			height: 42px;
+			border-radius: 22px;
+		}
+
+		/*--menu--*/
+			.menu-block{
+				background: url('/img/bg-menu.png') repeat-x;
+				height: 52px;
+			}
+			.menu-links{
+			 /* сделать совместимость с ие*/
+				text-align: justify;
+			}
+			.menu-links:after{
+				content: "";
+				width: 100%;
+				display: inline-block;
+			}
+			.menu-links li{
+				margin-top: 21px;
+				color: #872300;
+				display: inline-block;
+				font-size: 14px;
+			}
+			.menu-links a{
+				text-decoration: none;
+				color: #872300;
+			}
+
+	/*---Content------------*/
+		.content{
+			width: 940px;
+			margin: 0px auto;
+		}
+
+	/*--END-Content------------*/
+
+	/*---Footer------------*/
+		.footer{
+			height: 23px;
+			color: #872300;
+		}
+
+	/*-------------END LAYOUT----------------------------------------------------------------*/
+
+	/*-------------CONTENT-------------------------------------------------------------------*/
+
+		/*---Main page------------------------------*/
+			.main-page-photo{
+				display: block;
+				margin-bottom: 32px;
+				border: 1px solid #132d20;
+			}
+
+			/*--news--*/
+				.last-news{
+					width: 335px;
+					height: 273px;
+					margin-left: 9px;
+					padding: 21px 11px 11px;
+					text-align: justify;
+				}
+				.last-news-date{
+					float: left;
+					margin: -30px 11px 11px -20px;
+				}
+
+			/*--concert--*/
+				.nearrest-concert{
+					width: 335px;
+					float: right;
+					margin-right: 9px;
+				}
+				.nearrest-concert-block{
+
+				}
+				.nearrest-concert-date{
+					float: right;
+					margin-top: -9px;
+					margin-right: -9px;
+				}
+				.nearrest-concert-place{
+					margin-left: 75px;
+					margin-top: 21px;
+				}
+
+			/*--music--*/
+				.music{
+					margin-top: 32px;
+					width: 335px;
+					float: right;
+				}
+
+				.music-cover{
+					margin: -26px 0px 0px 11px;
+					width: 84px;
+					height: 84px;
+				}
+				.music-player{
+					width:228px;
+					margin-top: 11px;
+					float: right;
+				}
+
+		/*---END Main page------------------------------*/
