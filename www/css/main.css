@@ -68,31 +68,37 @@
 		font-family: DSCoptic;
 		src: url(/fonts/DSCOPTIC.TTF);
 	}
-	.menu-links li, .date, .title, .title-bigger{
+	.menu-links li, .date, .date-simple, .title, .title-bigger{
 		font-family: DSCoptic;
 	}
-
-	.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block {
+	.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block{
+		border-top: solid 1px #f1eeec;
+	}
+	.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block, .field-bg {
 		background-color: rgba(235, 235, 242, 0.7);
 		box-shadow: 1px 1px 5px 0 #696046;
-		border-top: solid 1px #f1eeec;
 	}
 	.main-page-photo, .date{
 		box-shadow: 1px 1px 5px 0 #696046;
 	}
-
-	.date{
+	.title, .title-bigger, .menu-links, .menu-links a, .footer, .date-simple{
+		color: #872300;
+	}
+	.date, .date-simple{
 		width: 53px;
 		height:40px;
 		padding-top: 13px;
-		background: #872300;
 		text-align: center;
+		letter-spacing: 1px;
+		line-height: 11pt;
+	}
+	.date{
+		background: #872300;
 		color: #ebebf2;
 		font-size: 12px;
-		letter-spacing: 1px;
 	}
+
 	.title, .title-bigger{
-		color: #872300;
 		margin-bottom: 21px;
 	}
 	.title{
@@ -104,6 +110,9 @@
 
 	.center-margin{
 		margin: 0px auto;
+	}
+	.text-center{
+		text-align: center;
 	}
 
 	/*-------------LAYOUT----------------------------------------------------------------*/
@@ -135,7 +144,7 @@
 		margin: 3px 0px 6px;
 	}
 	/*---Common layout classes---------------------------------*/
-		.header, .menu-links{
+		.header, .menu-links, .band-photo{
 			margin: 0px auto;
 			width: 898px;
 			padding-left: 21px;
@@ -174,20 +183,19 @@
 			 /* сделать совместимость с ие*/
 				text-align: justify;
 			}
-			.menu-links:after{
+			/*--Inline justify hack------*/
+			.menu-links:after, .band-photo:after{
 				content: "";
 				width: 100%;
 				display: inline-block;
 			}
 			.menu-links li{
 				margin-top: 21px;
-				color: #872300;
 				display: inline-block;
 				font-size: 14px;
 			}
 			.menu-links a{
 				text-decoration: none;
-				color: #872300;
 			}
 
 	/*---Content------------*/
@@ -201,13 +209,15 @@
 	/*---Footer------------*/
 		.footer{
 			height: 23px;
-			color: #872300;
 		}
 
 	/*-------------END LAYOUT----------------------------------------------------------------*/
 
 	/*-------------CONTENT-------------------------------------------------------------------*/
 
+		.main-page-photo, .band-photo img{
+
+		}
 		/*---Main page------------------------------*/
 			.main-page-photo{
 				display: block;
@@ -266,3 +276,23 @@
 				}
 
 		/*---END Main page------------------------------*/
+
+		.field-bg{
+			position: relative;
+			z-index: -1;
+			padding: 32px 21px 32px;
+			text-align: justify;
+		}
+		/*---News page------------------------------*/
+		.date-simple{
+			float: right;
+			margin: 0px 11px 32px 32px;
+		}
+		/*---END News page------------------------------*/
+
+		/*---Band page------------------------------*/
+			.band-photo{
+				margin: 32px 0px 21px;
+				text-align: justify;
+			}
+		/*---END Band page------------------------------*/

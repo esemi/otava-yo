@@ -1,6 +1,20 @@
-<? foreach( $this->news as $item ): ?>
-	<?= $this->escape($item->id); ?>
-	<?= $this->escape($item->title); ?>
-	<?= $this->escape($item->date_publish); ?>
-	<?= $item->content; ?>
-<? endforeach; ?>
+<div class="field-bg">
+	<h2 class="title-bigger text-center">новости</h2>
+	<article>
+		<header>
+			<h3 class="title">Ближайшие планы</h3>
+			<date class="date-simple">
+				24 февр
+			</date>
+		</header>
+		<footer>
+			<p>Отава Ё</p>
+		</footer>
+		<? foreach( $this->news as $item ): ?>
+		<?= $this->escape($item->id); ?>
+		<?= $this->escape($item->title); ?>
+		<?= $this->escape($item->date_publish); ?>
+		<?= $item->content; ?>
+		<? endforeach; ?>
+	</article>
+</div>
