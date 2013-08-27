@@ -68,7 +68,7 @@
 		font-family: DSCoptic;
 		src: url(/fonts/DSCOPTIC.TTF);
 	}
-	.menu-links li, .date, .date-simple, .title, .title-bigger{
+	.menu-links li, .date, .date-simple, .title, .title-bigger, .signature{
 		font-family: DSCoptic;
 	}
 	.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block{
@@ -81,20 +81,20 @@
 	.main-page-photo, .date{
 		box-shadow: 1px 1px 5px 0 #696046;
 	}
-	.title, .title-bigger, .menu-links, .menu-links a, .footer, .date-simple{
+	.title, .title-bigger, .menu-links, .menu-links a, .footer, .date-simple, .signature{
 		color: #872300;
 	}
 	.date, .date-simple{
-		width: 53px;
-		height:40px;
-		padding-top: 13px;
 		text-align: center;
 		letter-spacing: 1px;
 		line-height: 11pt;
-	}
-	.date{
 		background: #872300;
 		color: #ebebf2;
+	}
+	.date{
+		width: 53px;
+		height:40px;
+		padding-top: 13px;
 		font-size: 12px;
 	}
 
@@ -285,8 +285,17 @@
 		}
 		/*---News page------------------------------*/
 		.date-simple{
+			width: 85px;
+			height:58px;
+			padding-top: 27px;
 			float: right;
 			margin: 0px 11px 32px 32px;
+		}
+		.signature{
+			text-align: right;
+		}
+		.signature .font-smaller{
+			font-size: 11px;
 		}
 		/*---END News page------------------------------*/
 
