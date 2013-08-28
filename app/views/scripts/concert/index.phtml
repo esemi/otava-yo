@@ -3,7 +3,11 @@
 	<? foreach( $this->concerts as $item ): ?>
 		<article>
 			<header>
-				<h3 class="title"><?= $this->escape($item->title); ?></h3>
+				<h3 class="title">
+					<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?php echo $this->url(array('id' => $item->id ), 'staticConcertView', true) ?>">
+						<?= $this->escape($item->title); ?>
+					</a>
+				</h3>
 				<? if( !empty($item->place) ): ?>
 					<p><?= $this->escape($item->place); ?></p>
 				<? endif; ?>
@@ -27,7 +31,11 @@
 	<? foreach( $this->oldConcerts as $item ): ?>
 		<article>
 			<header>
-				<h3 class="title"><?= $this->escape($item->title); ?></h3>
+				<h3 class="title">
+					<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?php echo $this->url(array('id' => $item->id ), 'staticConcertView', true) ?>">
+						<?= $this->escape($item->title); ?>
+					</a>
+				</h3>
 				<? if( !empty($item->place) ): ?>
 					<p><?= $this->escape($item->place); ?></p>
 				<? endif; ?>
