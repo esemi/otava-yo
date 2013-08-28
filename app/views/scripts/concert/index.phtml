@@ -23,10 +23,10 @@
 
 			<p><?= $this->escape($item->desc); ?></p>
 			<? if( !empty($item->link) ): ?>
-				<p><a href="<?= $item->link ?>" rel="nofollow">подробнее</a></p>
+				<p class="concert-link"><a href="<?= $item->link ?>" rel="nofollow">подробнее</a></p>
 			<? endif; ?>
 			<? if( !empty($item->cost) ): ?>
-				<p>Билеты: <?= $this->escape($item->cost); ?>р.</p>
+				<p class="concert-ticets">Билеты: <?= $this->escape($item->cost); ?>р.</p>
 			<? endif; ?>
 		</article>
 	<? endforeach; ?>
@@ -54,10 +54,10 @@
 			</header>
 			<p><?= $this->escape($item->desc); ?></p>
 			<? if( !empty($item->link) ): ?>
-				<p><a href="<?= $item->link ?>" rel="nofollow">подробнее</a></p>
+				<p class="concert-link"><a href="<?= $item->link ?>" rel="nofollow">подробнее</a></p>
 			<? endif; ?>
 			<? if( !empty($item->cost) ): ?>
-				<p>Билеты: <?= $this->escape($item->cost); ?>р.</p>
+				<p class="concert-ticets">Билеты: <?= $this->escape($item->cost); ?>р.</p>
 			<? endif; ?>
 		</article>
 	<? endforeach; ?>

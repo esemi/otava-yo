@@ -162,7 +162,7 @@
 		}
 	/*end hack-----------------------------*/
 	p{
-		margin: 3px 0px 6px;
+		margin: 3px 0px 8px;
 	}
 
 	a{
@@ -332,17 +332,19 @@
 		/*---Concert page------------------------------*/
 			.concert-block{
 				min-height: 85px;
-				margin-bottom: 21px;
+				margin-bottom: 32px;
 			}
 			.concert-name{
 				margin-bottom: 11px;
 				font-size: 13px;
 			}
 			.concert-place{
-				margin-left: 32px;
 				margin-bottom: 11px;
 				font-size: 17px;
+			}
 
+			.concert-place, .concert-link, .concert-ticets{
+				margin-left: 32px;
 			}
 
 			.date-concert{
