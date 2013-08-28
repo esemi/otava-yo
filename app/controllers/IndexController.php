@@ -15,7 +15,9 @@ class IndexController extends Zend_Controller_Action
 		$this->view->audio = $audioModel->getLastTrack();
 
 		$newsTable = new App_Model_DbTable_News();
-		$this->view->news = $newsTable->getLast(1)->current();
+		$news = $newsTable->getLast(1)->current();
+		$news->content = $newsTable->stripContent($news->content, 400);
+		$this->view->news = $news;
 	}
 
 	public function bandAction()
