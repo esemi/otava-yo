@@ -1,13 +1,16 @@
-<? foreach( $this->notes as $item ): ?>
-	<div>
-	<?= $this->escape($item->id); ?><br>
-	<?= $this->escape($item->author); ?><br>
-	<?= $this->escape($item->email); ?><br>
-	<?= $this->escape($item->city); ?><br>
-	<?= $this->escape($item->site); ?><br>
-	<?= $this->escape($item->date_publish); ?><br>
-	<?= $this->escape($item->content); ?>
-	</div>
-<? endforeach; ?>
+<div class="field-bg">
+	<h2 class="title-page-name text-center">Гостевая книга</h2>
+	<? foreach( $this->notes as $item ): ?>
+		<div>
+		<?= $this->escape($item->id); ?><br>
+		<?= $this->escape($item->author); ?><br>
+		<?= $this->escape($item->email); ?><br>
+		<?= $this->escape($item->city); ?><br>
+		<?= $this->escape($item->site); ?><br>
+		<?= $this->escape($item->date_publish); ?><br>
+		<?= $this->escape($item->content); ?>
+		</div>
+	<? endforeach; ?>
 
-<a href="<?php echo $this->url(array(), 'addPostGuestbook', true) ?>">добавить сообщение</a>
+	<a href="<?php echo $this->url(array(), 'addPostGuestbook', true) ?>">добавить сообщение</a>
+</div>

@@ -69,7 +69,7 @@
 			font-family: DSCoptic;
 			src: url(/fonts/DSCOPTIC.TTF);
 		}
-		.menu-links li, .date, .date-bigger, .title, .title-bigger, .signature, .concert-name{
+		.menu-links li, .date, .date-bigger, .title, .title-bigger, .title-page-name, .signature, .concert-name{
 			font-family: DSCoptic;
 		}
 
@@ -77,13 +77,13 @@
 		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block{
 			border-top: solid 1px #f1eeec;
 		}
-		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block, .field-bg {
+		.menu-block, .menu-links, .footer-block, .out-links, .last-news, .nearrest-concert-block, .field-bg {
 			background-color: rgba(235, 235, 242, 0.7);
 		}
-		.main-page-photo, .date, .menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block, .field-bg{
+		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert-block, .field-bg{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
-		a, .title, .title-bigger, .menu-links, .menu-links a, .footer, .date-bigger, .signature, .concert-name, .concert-place{
+		a, .title, .title-bigger, .title-page-name, .menu-links, .menu-links a, .footer, .date-bigger, .signature, .concert-name, .concert-place{
 			color: #872300;
 		}
 
@@ -98,6 +98,9 @@
 			text-decoration: none;
 		}
 		/*----Special blocks design-----------------*/
+		.menu-block, .footer{
+				background: url('/img/bg-menu.png') repeat-x;
+		}
 		.date, .date-bigger{
 			text-align: center;
 			letter-spacing: 1px;
@@ -121,11 +124,15 @@
 		.title, .title-bigger{
 			margin-bottom: 21px;
 		}
-		.title{
+		.title, .title-page-name{
 			font-size: 14px;
 		}
 		.title-bigger{
 			font-size: 16px;
+		}
+		.title-page-name{
+			margin-top: 10px;
+			margin-bottom: 28px;
 		}
 
 		/*----Common position and text position classes-----------------*/
@@ -172,7 +179,7 @@
 		color: #322f2d;
 	}
 	/*---Common layout classes---------------------------------*/
-		.header, .menu-links, .band-photo{
+		.header, .menu-links, .band-photo, .footer-block{
 			margin: 0px auto;
 			width: 898px;
 			padding-left: 21px;
@@ -206,7 +213,6 @@
 
 		/*--menu--*/
 			.menu-block{
-				background: url('/img/bg-menu.png') repeat-x;
 				height: 52px;
 			}
 			.menu-links{
@@ -243,14 +249,13 @@
 		.footer{
 			height: 23px;
 		}
+		.footer-block{
+			height: 100%;
+		}
 
 	/*-------------END LAYOUT----------------------------------------------------------------*/
 
 	/*-------------CONTENT-------------------------------------------------------------------*/
-
-		.main-page-photo, .band-photo img{
-
-		}
 
 		/*---Main page------------------------------*/
 			.main-page-photo{
@@ -312,11 +317,15 @@
 		/*---END Main page------------------------------*/
 
 		.field-bg{
-			padding: 32px 21px 32px;
+			padding: 32px;
 			text-align: justify;
 		}
 		/*---News page------------------------------*/
 
+		.news-block p{
+			text-indent: 21px;
+			line-height: 14pt;
+		}
 		.date-news{
 			height:58px;
 			padding-top: 27px;
@@ -344,7 +353,7 @@
 			}
 
 			.concert-place, .concert-link, .concert-ticets{
-				margin-left: 32px;
+				margin-left: 21px;
 			}
 
 			.date-concert{
@@ -359,6 +368,10 @@
 		/*---END Concert page------------------------------*/
 
 		/*---Band page------------------------------*/
+			.band-photo figure{
+				display: inline-block;
+				text-align: center;
+			}
 			.band-photo{
 				margin: 32px 0px 21px;
 				text-align: justify;
