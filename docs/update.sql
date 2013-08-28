@@ -47,4 +47,7 @@ CREATE TABLE IF NOT EXISTS `guestbook` (
   KEY `date_publish` (`date_publish`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+ALTER TABLE `concert` ADD `place` VARCHAR( 1024 ) NOT NULL AFTER `link` ,
+ADD `time` TIME NULL AFTER `place` ,
+ADD `cost` INT NULL AFTER `time`;
 

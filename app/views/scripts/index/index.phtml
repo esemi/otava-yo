@@ -9,7 +9,7 @@
 	<? endif; ?>
 </section-->
 
-<a href="#">
+<a href="<?php echo $this->url(array('id' => $this->concert->id ), 'staticConcertView', true) ?>">
 	<section class="nearrest-concert">
 	<!--h2 class="title">Выступаем</h2-->
 	<? if( !is_null($this->concert) ): ?>
@@ -20,7 +20,9 @@
 			<h3 class="nearrest-concert-place">
 				<?= $this->escape($this->concert->title); ?>
 			</h3>
-			<p>МЕСТО ПРОВЕДЕНИЯ</p>
+			<? if( !empty($this->concert->place) ): ?>
+				<p><?= $this->escape($this->concert->place); ?></p>
+			<? endif; ?>
 		</article>
 	<? endif; ?>
 	</section>

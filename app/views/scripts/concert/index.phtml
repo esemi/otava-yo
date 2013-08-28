@@ -1,18 +1,48 @@
 <div class="field-bg">
-	<h2 class="title text-center">концерты</h2>
+	<h2 class="title text-center">ближайшие концерты</h2>
 	<? foreach( $this->concerts as $item ): ?>
 		<article>
 			<header>
 				<h3 class="title"><?= $this->escape($item->title); ?></h3>
-				<p>СПб, клуб А2 (зал "Мир"),проспект Медиков 3</p>
+				<? if( !empty($item->place) ): ?>
+					<p><?= $this->escape($item->place); ?></p>
+				<? endif; ?>
 				<date class="date">
 					<?= $this->prepareConcertDate($item->date); ?>
-					20.00
+					<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>
 				</date>
 			</header>
 			<p><?= $this->escape($item->desc); ?></p>
-			<p>www.patrickfestival.ru http://vk.com/club14469698</p>
-			<p>Билеты от 500р.</p>
+			<? if( !empty($item->link) ): ?>
+				<p><a href="<?= $item->link ?>" rel="nofollow">подробнее</a></p>
+			<? endif; ?>
+			<? if( !empty($item->cost) ): ?>
+				<p>Билеты от <?= $this->escape($item->cost); ?>р.</p>
+			<? endif; ?>
+		</article>
+	<? endforeach; ?>
+</div>
+<div class="field-bg">
+	<h2 class="title text-center">прошедшие концерты</h2>
+	<? foreach( $this->oldConcerts as $item ): ?>
+		<article>
+			<header>
+				<h3 class="title"><?= $this->escape($item->title); ?></h3>
+				<? if( !empty($item->place) ): ?>
+					<p><?= $this->escape($item->place); ?></p>
+				<? endif; ?>
+				<date class="date">
+					<?= $this->prepareConcertDate($item->date); ?>
+					<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>
+				</date>
+			</header>
+			<p><?= $this->escape($item->desc); ?></p>
+			<? if( !empty($item->link) ): ?>
+				<p><a href="<?= $item->link ?>" rel="nofollow">подробнее</a></p>
+			<? endif; ?>
+			<? if( !empty($item->cost) ): ?>
+				<p>Билеты от <?= $this->escape($item->cost); ?>р.</p>
+			<? endif; ?>
 		</article>
 	<? endforeach; ?>
 </div>

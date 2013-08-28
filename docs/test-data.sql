@@ -14,8 +14,8 @@ INSERT INTO `news` (`id`, `date_publish`, `title`, `content`) VALUES
 
 INSERT INTO `otava`.`guestbook` (`id`, `author`, `date_publish`, `email`, `city`, `site`, `content`) VALUES (NULL, 'ОтаваЁ', '2013-08-22 09:12:34', 'otava@otava.ru', 'СПб', 'otava.ru', 'Внимание, внимание - ближайшее наше выступление будет на XIV международном фолк-фестивале "День Святого Патрика в СПб" - 16го марта 2013 года, в самом большом клубе города - А2 (зал МИР). Начало в 20.00. www.patrickfestival.ru '), (NULL, 'Pavel', '2013-08-23 00:20:42', '', '', '', 'Привет! Расписание на Патрик есть? кто когда играет по времени?');
 
-
-
-
-
-
+UPDATE `otava`.`concert` SET `place` = 'СПб, клуб А2 (зал "Мир"),проспект Медиков 3' WHERE `concert`.`id` =3;
+UPDATE `otava`.`concert` SET `place` = 'СПб, клуб А2 (зал "Мир"),проспект Медиков 3' WHERE `concert`.`id` =2;
+UPDATE `otava`.`concert` SET `time` = '23:15:00' WHERE `concert`.`id` =2;
+UPDATE `otava`.`concert` SET `time` = '18:30:00' WHERE `concert`.`id` =1;
+UPDATE `otava`.`concert` SET `cost` = '500' WHERE `concert`.`id` =2;
