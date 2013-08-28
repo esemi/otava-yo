@@ -4,11 +4,15 @@
 		<article>
 			<header>
 				<h3 class="title"><?= $this->escape($item->title); ?></h3>
+				<p>СПб, клуб А2 (зал "Мир"),проспект Медиков 3</p>
 				<date class="date">
 					<?= $this->prepareConcertDate($item->date); ?>
+					20.00
 				</date>
 			</header>
 			<p><?= $this->escape($item->desc); ?></p>
+			<p>www.patrickfestival.ru http://vk.com/club14469698</p>
+			<p>Билеты от 500р.</p>
 		</article>
 	<? endforeach; ?>
 </div>
