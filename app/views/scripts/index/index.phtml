@@ -15,8 +15,9 @@
 	<? if( !is_null($this->concert) ): ?>
 		<article class="nearrest-concert-block">
 			<div class="date nearrest-concert-date"><?= $this->prepareConcertDate($this->concert->date); ?></div>
-			<h3 class="nearrest-concert-place"><?= $this->escape($this->concert->title); ?></h3>
-			<!--p class="nearrest-concert-info"><?= $this->escape($this->concert->desc); ?></p-->
+			<h3 class="nearrest-concert-place">
+				<?= $this->escape($this->concert->title); ?>
+			</h3>
 		</article>
 	<? endif; ?>
 	</section>

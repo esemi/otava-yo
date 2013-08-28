@@ -8,5 +8,7 @@ class NewsController extends Zend_Controller_Action
 
 		$newsTable = new App_Model_DbTable_News();
 		$this->view->news = $newsTable->getLast(20);
+
+		$this->view->moder_author = $this->getFrontController()->getParam('bootstrap')->getOption('guestbook_reserved_name');
 	}
 }

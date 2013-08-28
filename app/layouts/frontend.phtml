@@ -29,7 +29,9 @@ echo $this->doctype();
 	<body>
 		<div class="wrapper">
 			<header class="header" >
-				<img src="/img/otava_logo_main.png" class="logo">
+				<a href="<?php echo $this->url(array(), 'staticIndex', true) ?>">
+					<img src="/img/otava_logo_main.png" class="logo">
+				</a>
 				<div class="out-links-block">
 					<div class="out-links">1</div>
 					<div class="out-links">2</div>
