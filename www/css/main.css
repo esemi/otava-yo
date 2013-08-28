@@ -64,57 +64,77 @@
 	/*End 1. Global Reset*/
 
 	/*---------------------COMMON CLASSES----------*/
-	@font-face{
-		font-family: DSCoptic;
-		src: url(/fonts/DSCOPTIC.TTF);
-	}
-	.menu-links li, .date, .date-bigger, .title, .title-bigger, .signature{
-		font-family: DSCoptic;
-	}
-	.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block{
-		border-top: solid 1px #f1eeec;
-	}
-	.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block, .field-bg {
-		background-color: rgba(235, 235, 242, 0.7);
-		box-shadow: 1px 1px 5px 0 #696046;
-	}
-	.main-page-photo, .date{
-		box-shadow: 1px 1px 5px 0 #696046;
-	}
-	.title, .title-bigger, .menu-links, .menu-links a, .footer, .date-bigger, .signature{
-		color: #872300;
-	}
-	.date, .date-bigger{
-		text-align: center;
-		letter-spacing: 1px;
-		line-height: 11pt;
-		background: #872300;
-		color: #ebebf2;
-	}
-	.date{
-		display: block;
-		width: 53px;
-		height:40px;
-		padding-top: 13px;
-		font-size: 12px;
-	}
+		/*----Fonts-----------------*/
+		@font-face{
+			font-family: DSCoptic;
+			src: url(/fonts/DSCOPTIC.TTF);
+		}
+		.menu-links li, .date, .date-bigger, .title, .title-bigger, .signature, .concert-name{
+			font-family: DSCoptic;
+		}
 
-	.title, .title-bigger{
-		margin-bottom: 21px;
-	}
-	.title{
-		font-size: 14px;
-	}
-	.title-bigger{
-		font-size: 16px;
-	}
+		/*----Color presets-----------------*/
+		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block{
+			border-top: solid 1px #f1eeec;
+		}
+		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block, .field-bg {
+			background-color: rgba(235, 235, 242, 0.7);
+		}
+		.main-page-photo, .date, .menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block, .field-bg{
+			box-shadow: 1px 1px 5px 0 #696046;
+		}
+		a, .title, .title-bigger, .menu-links, .menu-links a, .footer, .date-bigger, .signature, .concert-name, .concert-place{
+			color: #872300;
+		}
 
-	.center-margin{
-		margin: 0px auto;
-	}
-	.text-center{
-		text-align: center;
-	}
+		a:hover, a:active{
+			color: #756d34;
+		}
+		/*----Links design-----------------*/
+		p a{
+			text-decoration: underline;
+		}
+		p a:hover, p a:active{
+			text-decoration: none;
+		}
+		/*----Special blocks design-----------------*/
+		.date, .date-bigger{
+			text-align: center;
+			letter-spacing: 1px;
+			background: #872300;
+			color: #ebebf2;
+		}
+		.date{
+			display: block;
+			width: 53px;
+			height:40px;
+			padding-top: 13px;
+			font-size: 12px;
+			line-height: 11pt;
+		}
+		.date-bigger{
+			width: 85px;
+			float: right;
+			margin: 0px 0px 32px 32px;
+		}
+		/*----Titles-----------------*/
+		.title, .title-bigger{
+			margin-bottom: 21px;
+		}
+		.title{
+			font-size: 14px;
+		}
+		.title-bigger{
+			font-size: 16px;
+		}
+
+		/*----Common position and text position classes-----------------*/
+		.center-margin{
+			margin: 0px auto;
+		}
+		.text-center{
+			text-align: center;
+		}
 
 	/*-------------LAYOUT----------------------------------------------------------------*/
 	body{
@@ -296,12 +316,11 @@
 			text-align: justify;
 		}
 		/*---News page------------------------------*/
-		.date-bigger{
-			width: 85px;
+
+		.date-news{
 			height:58px;
 			padding-top: 27px;
-			float: right;
-			margin: 0px 11px 32px 32px;
+			line-height: 14pt;
 		}
 		.signature{
 			text-align: right;
@@ -309,6 +328,33 @@
 		}
 
 		/*---END News page------------------------------*/
+
+		/*---Concert page------------------------------*/
+			.concert-block{
+				min-height: 85px;
+				margin-bottom: 21px;
+			}
+			.concert-name{
+				margin-bottom: 11px;
+				font-size: 13px;
+			}
+			.concert-place{
+				margin-left: 32px;
+				margin-bottom: 11px;
+				font-size: 17px;
+
+			}
+
+			.date-concert{
+				height:71px;
+				padding-top: 14px;
+				font-size: 13px;
+				line-height: 13pt;
+			}
+			.date-concert .time{
+				margin-top: 9px;
+			}
+		/*---END Concert page------------------------------*/
 
 		/*---Band page------------------------------*/
 			.band-photo{

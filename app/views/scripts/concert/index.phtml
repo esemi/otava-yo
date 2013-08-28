@@ -1,47 +1,50 @@
 <div class="field-bg">
 	<h2 class="title text-center">ближайшие концерты</h2>
 	<? foreach( $this->concerts as $item ): ?>
-		<article>
+		<article class="concert-block">
 			<header>
-				<h3 class="title"><?= $this->escape($item->title); ?></h3>
-				<? if( !empty($item->place) ): ?>
-					<p><?= $this->escape($item->place); ?></p>
-				<? endif; ?>
-				<date class="date">
+				<date class="date-bigger date-concert">
 					<?= $this->prepareConcertDate($item->date); ?>
-					<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>
+					<div class="time">
+						<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>
+					</div>
 				</date>
+				<h3 class="concert-name"><?= $this->escape($item->title); ?></h3>
+				<? if( !empty($item->place) ): ?>
+					<p class="concert-place"><?= $this->escape($item->place); ?></p>
+				<? endif; ?>
 			</header>
 			<p><?= $this->escape($item->desc); ?></p>
 			<? if( !empty($item->link) ): ?>
 				<p><a href="<?= $item->link ?>" rel="nofollow">подробнее</a></p>
 			<? endif; ?>
 			<? if( !empty($item->cost) ): ?>
-				<p>Билеты от <?= $this->escape($item->cost); ?>р.</p>
+				<p>Билеты: <?= $this->escape($item->cost); ?>р.</p>
 			<? endif; ?>
 		</article>
 	<? endforeach; ?>
-</div>
-<div class="field-bg">
+
 	<h2 class="title text-center">прошедшие концерты</h2>
 	<? foreach( $this->oldConcerts as $item ): ?>
-		<article>
+		<article class="concert-block">
 			<header>
-				<h3 class="title"><?= $this->escape($item->title); ?></h3>
-				<? if( !empty($item->place) ): ?>
-					<p><?= $this->escape($item->place); ?></p>
-				<? endif; ?>
-				<date class="date">
+				<date class="date-bigger date-concert">
 					<?= $this->prepareConcertDate($item->date); ?>
-					<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>
+					<div class="time">
+						<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>
+					</div>
 				</date>
+				<h3 class="concert-name"><?= $this->escape($item->title); ?></h3>
+				<? if( !empty($item->place) ): ?>
+					<p class="concert-place"><?= $this->escape($item->place); ?></p>
+				<? endif; ?>
 			</header>
 			<p><?= $this->escape($item->desc); ?></p>
 			<? if( !empty($item->link) ): ?>
 				<p><a href="<?= $item->link ?>" rel="nofollow">подробнее</a></p>
 			<? endif; ?>
 			<? if( !empty($item->cost) ): ?>
-				<p>Билеты от <?= $this->escape($item->cost); ?>р.</p>
+				<p>Билеты: <?= $this->escape($item->cost); ?>р.</p>
 			<? endif; ?>
 		</article>
 	<? endforeach; ?>
