@@ -7,6 +7,6 @@ class NewsController extends Zend_Controller_Action
 		$this->view->headTitle('Новости');
 
 		$newsTable = new App_Model_DbTable_News();
-		$this->view->news = $newsTable->getLast(10);
+		$this->view->news = $newsTable->getLast(20);
 	}
 }

@@ -1,4 +1,4 @@
-<img src="img/foto.jpg" class="center-margin main-page-photo">
+<img src="/img/foto.jpg" class="center-margin main-page-photo">
 <!--section class="music">
 	<? if( !is_null($this->audio) ): ?>
 	<div class="music-name"><?= $this->escape($this->audio['title']); ?></div>
@@ -9,7 +9,8 @@
 	<? endif; ?>
 </section-->
 
-<a href="#"><!--Ссылка --><section class="nearrest-concert">
+<a href="#">
+	<section class="nearrest-concert">
 	<!--h2 class="title">Выступаем</h2-->
 	<? if( !is_null($this->concert) ): ?>
 		<article class="nearrest-concert-block">
@@ -18,18 +19,15 @@
 			<!--p class="nearrest-concert-info"><?= $this->escape($this->concert->desc); ?></p-->
 		</article>
 	<? endif; ?>
-</section></a>
+	</section>
+</a>
 
-<a href="#"><!--Ссылка --><section class="last-news">
-	<div class="date last-news-date">5 сент</div>
-	<h2 class="title-bigger">Последние новости</h2>
-	<article>
-		<p>Гастроли в Индии, наверное, самое необычное, что с нами происходило на почве музыки до сих пор. 3 фестиваля, в Калькутте и Дели. Здесь небольшой фото отчёт: http://reelroad.livejournal.com/79073.html
-		</p>
-		<p>В ближайших планах главное фолк-событие в нашем городе на сегодняшний день - "День Святого Патрика".
-		</p>
-		<p> Вот уже 14ый год подряд проходит международный фолк-фестиваль, в котором мы обязательно примем участие с нашей... кельтско-рашн битовской программой.
-		</p>
-
-	</article>
-</section></a>
+<a href="<?php echo $this->url(array('id' => $this->news->id ), 'staticNewsView', true) ?>">
+	<section class="last-news">
+		<div class="date last-news-date"><?= $this->prepareConcertDate($this->news->date_publish); ?></div>
+		<h2 class="title-bigger">Последние новости</h2>
+		<article>
+			<?= $this->news['content']; ?>
+		</article>
+	</section>
+</a>

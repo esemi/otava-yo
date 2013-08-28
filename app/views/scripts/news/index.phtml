@@ -11,10 +11,10 @@
 			<p>Отава Ё</p>
 		</footer>
 		<? foreach( $this->news as $item ): ?>
-		<?= $this->escape($item->id); ?>
-		<?= $this->escape($item->title); ?>
-		<?= $this->escape($item->date_publish); ?>
-		<?= $item->content; ?>
+			<?= $this->escape($item->id); ?>
+			<?= $this->escape($item->title); ?>
+			<?= $this->escape($item->date_publish); ?>
+			<?= $item->content; ?>
 		<? endforeach; ?>
 	</article>
 </div>

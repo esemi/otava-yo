@@ -31,6 +31,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$router->addRoute('staticNews',
 				new Zend_Controller_Router_Route_Static('/news',
 						array( 'controller' => 'news', 'action' => 'index' )));
+		$router->addRoute('staticNewsView',
+				new Zend_Controller_Router_Route_Regex('/news\#view(\d+)',
+						array( 'controller' => 'news', 'action' => 'index'),
+						array( 'id' => 1),
+						'news#view%d'));
 		$router->addRoute('staticConcert',
 				new Zend_Controller_Router_Route_Static('/concerts',
 						array( 'controller' => 'concert', 'action' => 'index' )));
