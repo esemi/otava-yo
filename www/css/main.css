@@ -77,20 +77,27 @@
 		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert{
 			border-top: solid 1px #f1eeec;
 		}
-		.menu-block, .menu-links, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg {
+		.menu-block, .menu-links, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg, .band-field-bg {
 			background-color: rgba(235, 235, 242, 0.7);
 		}
-		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
+		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg, .band-field-bg{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
-		a, .title, .title-bigger, .titile-em,.title-contacts, .title-page-name, .menu-links, .menu-links a, .footer, .date-bigger, .signature, .concert-name, .concert-place{
+		a, .title, .title-bigger, .titile-em,.title-contacts, .title-page-name, .menu-links, .menu-links a, .footer, .date-bigger, .signature, .concert-name, .concert-place, .band-names{
 			color: #872300;
 		}
 
 		a:hover, a:active{
 			color: #756d34;
 		}
+		a p{
+			color: #322f2d;
+		}
 		/*----Links design-----------------*/
+
+		a{
+			text-decoration: none;
+		}
 		p a{
 			text-decoration: underline;
 		}
@@ -101,6 +108,14 @@
 		.menu-block, .footer{
 				background: url('/img/bg-menu.png') repeat-x;
 		}
+
+		.header, .menu-links, .footer-block{
+			margin: 0px auto;
+			width: 898px;
+			padding-left: 21px;
+			padding-right: 21px;
+		}
+
 		.date, .date-bigger{
 			text-align: center;
 			letter-spacing: 1px;
@@ -175,25 +190,10 @@
 			height: 24px;
 		}
 	/*end hack-----------------------------*/
+
 	p{
 		margin: 3px 0px 8px;
 	}
-
-	a{
-		text-decoration: none;
-	}
-	a p{
-		color: #322f2d;
-	}
-	/*---Common layout classes---------------------------------*/
-		.header, .menu-links, .band-photo, .footer-block{
-			margin: 0px auto;
-			width: 898px;
-			padding-left: 21px;
-			padding-right: 21px;
-		}
-
-	/*---END Common classes----------------------------*/
 
 	/*---Header---------------------------------*/
 		.header{
@@ -230,7 +230,7 @@
 				text-align: justify;
 			}
 			/*--Inline justify hack------*/
-			.menu-links:after, .band-photo:after{
+			.menu-links:after, .band-photo:after, .band-names:after{
 				content: "";
 				width: 100%;
 				display: inline-block;
@@ -372,12 +372,22 @@
 		/*---END Concert page------------------------------*/
 
 		/*---Band page------------------------------*/
+			.band-field-bg{
+				padding: 32px 32px 0px 32px;
+				text-align: justify;
+			}
 			.band-photo figure{
 				display: inline-block;
 				text-align: center;
 			}
+			.band-names li{
+				display: inline-block;
+			}
 			.band-photo{
-				margin: 32px 0px 21px;
+				margin: 0px auto;
+				width: 871px;
+				padding: 0px 47px 0px 22px;
+				margin: 53px 0px 32px;
 				text-align: justify;
 			}
 		/*---END Band page------------------------------*/
