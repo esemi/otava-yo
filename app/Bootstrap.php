@@ -47,10 +47,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$router->addRoute('staticGuestbook',
 				new Zend_Controller_Router_Route_Static('/guestbook',
 						array( 'controller' => 'guestbook', 'action' => 'index' )));
-
 		$router->addRoute('addPostGuestbook',
 				new Zend_Controller_Router_Route_Static('/guestbook/post',
 						array( 'controller' => 'guestbook', 'action' => 'new-post' )));
+		$router->addRoute('staticVideo',
+				new Zend_Controller_Router_Route_Static('/video',
+						array( 'controller' => 'video', 'action' => 'index' )));
 
 		$router->addRoute('login',
 				new Zend_Controller_Router_Route_Static('/auth/login',
