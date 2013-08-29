@@ -83,15 +83,15 @@
 		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
-		a, .title, .band-photo figcaption, .title-bigger, .titile-em,.title-contacts, .title-page-name, .menu-links, .menu-links a, .footer, .date-bigger, .signature, .concert-name, .concert-place{
-			color: #872300;
+		a, .title, .band-photo figcaption, .title-bigger, .titile-em,.title-contacts, .title-page-name, .menu-links a, .footer, .date-bigger, .signature, .concert-name, .concert-place{
+			color: #872300;/*brown*/
 		}
 
 		a:hover, a:active, a p:hover{
-			color: #756d34;
+			color: #756d34; /*green*/
 		}
 		a p{
-			color: #322f2d;
+			color: #322f2d; /*dark green*/
 		}
 		/*----Links design-----------------*/
 
@@ -167,11 +167,7 @@
 
 	/*-------------LAYOUT----------------------------------------------------------------*/
 	body{
-		background-size: 100%;
-		-moz-background-size: 100%; /* Firefox 3.6+ */
-		-webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
-		-o-background-size: 100%; /* Opera 9.6+ */
-		background: url('/img/fon.jpg') no-repeat fixed center center / cover #756d34;
+		background: url('/img/fon.jpg') no-repeat fixed center top #756d34;
 	}
 
 	/*hack for stricky Footer by Ryan Fait*/
