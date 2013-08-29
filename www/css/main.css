@@ -77,8 +77,11 @@
 		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert{
 			border-top: solid 1px #f1eeec;
 		}
-		.menu-block, .menu-links, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
+		.menu-links, .footer-block, .out-links:hover, .last-news, .nearrest-concert, .field-bg{
 			background-color: rgba(235, 235, 242, 0.8);
+		}
+		.out-links{
+			background-color: rgba(235, 235, 242, 0.7);
 		}
 		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
 			box-shadow: 1px 1px 5px 0 #696046;
@@ -202,16 +205,15 @@
 			margin-bottom: -21px;
 		}
 		.out-links-block{
-			margin-right: 21px;
-			margin-top: 18px;
+			margin-top: 36px;
 			float: right;
 		}
 		.out-links{
 			display: inline-block;
 			margin-left: 8px;
-			width: 43px;
-			height: 42px;
-			border-radius: 22px;
+			width: 32px;
+			height: 31px;
+			border-radius: 16px;
 		}
 
 		/*--menu--*/
