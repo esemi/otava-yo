@@ -1,4 +1,13 @@
 <section class="field-bg">
 	<h2 class="title-page-name text-center">ВИДЕО</h2>
-
+	<? foreach( $this->video as $item ): ?>
+		<article>
+			<header>
+				<h3 class="title">
+					<?= $this->escape($item->desc); ?>
+				</h3>
+			</header>
+			<?= $item->player_code; ?>
+		</article>
+	<? endforeach; ?>
 </section>

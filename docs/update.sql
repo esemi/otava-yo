@@ -51,3 +51,12 @@ ALTER TABLE `concert` ADD `place` VARCHAR( 1024 ) NOT NULL AFTER `link` ,
 ADD `time` TIME NULL AFTER `place` ,
 ADD `cost` INT NULL AFTER `time`;
 
+CREATE TABLE IF NOT EXISTS `video` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `player_code` text NOT NULL,
+  `title` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+ALTER TABLE `video` CHANGE `title` `desc` VARCHAR( 1024 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;
+
