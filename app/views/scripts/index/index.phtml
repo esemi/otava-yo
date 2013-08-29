@@ -1,33 +1,26 @@
 <img src="/img/foto.jpg" class="center-margin main-page-photo">
-<!--section class="music">
-	<? if( !is_null($this->audio) ): ?>
-	<div class="music-name"><?= $this->escape($this->audio['title']); ?></div>
-	<img class="music-cover" src="<?= $this->escape($this->audio['img_link']); ?>">
-	<audio controls class="music-player">
-		<source src="<?= $this->escape($this->audio['audio_link']); ?>" type="audio/mp3">
-	</audio>
-	<? endif; ?>
-</section-->
 
 <a href="<?php echo $this->url(array('id' => $this->concert->id ), 'staticConcertView', true) ?>">
 	<section class="nearrest-concert">
-	<!--h2 class="title">Выступаем</h2-->
-	<? if( !is_null($this->concert) ): ?>
-			<header>
-				<time class="date nearrest-concert-date"><?= $this->prepareConcertDate($this->concert->date); ?></time>
-			</header>
-			<h3 class="nearrest-concert-place">
-				<?= $this->escape($this->concert->title); ?>
-			</h3>
-			<? if( !empty($this->concert->place) ): ?>
-				<p><?= $this->escape($this->concert->place); ?></p>
-			<? endif; ?>
-	<? endif; ?>
+		<div class="nearrest-concert-decor"></div>
+		<!--h2 class="title">Выступаем</h2-->
+		<? if( !is_null($this->concert) ): ?>
+				<header>
+					<time class="date nearrest-concert-date"><?= $this->prepareConcertDate($this->concert->date); ?></time>
+				</header>
+				<h3 class="nearrest-concert-place">
+					<?= $this->escape($this->concert->title); ?>
+				</h3>
+				<? if( !empty($this->concert->place) ): ?>
+					<p><?= $this->escape($this->concert->place); ?></p>
+				<? endif; ?>
+		<? endif; ?>
 	</section>
 </a>
 
 <a href="<?php echo $this->url(array('id' => $this->news->id ), 'staticNewsView', true) ?>">
 	<section class="last-news">
+		<div class="last-news-decor"></div>
 			<header>
 				<time class="date last-news-date"><?= $this->prepareConcertDate($this->news->date_publish); ?></time>
 				<h2 class="title-bigger">Последние новости</h2>
@@ -35,3 +28,13 @@
 			<?= $this->news->content; ?>
 	</section>
 </a>
+
+	<!--section class="music">
+		<? if( !is_null($this->audio) ): ?>
+		<div class="music-name"><?= $this->escape($this->audio['title']); ?></div>
+		<img class="music-cover" src="<?= $this->escape($this->audio['img_link']); ?>">
+		<audio controls class="music-player">
+			<source src="<?= $this->escape($this->audio['audio_link']); ?>" type="audio/mp3">
+		</audio>
+		<? endif; ?>
+	</section-->

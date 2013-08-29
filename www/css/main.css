@@ -80,9 +80,6 @@
 		.menu-links, .footer-block, .out-links:hover, .last-news, .nearrest-concert, .field-bg{
 			background-color: rgba(235, 235, 242, 0.8);
 		}
-		.out-links{
-			background-color: rgba(235, 235, 242, 0.7);
-		}
 		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
@@ -216,16 +213,16 @@
 			border-radius: 16px;
 		}
 		.out-link-youtube{
-			background: url(/img/sprite.png) 0px 0px, rgba(235, 235, 242, 0.7);
+			background: url(/img/sprite.png) 0px 0px, rgba(235, 235, 242, 0.7) no-repeat;
 		}
 		.out-link-vk{
-			background: url(/img/sprite.png) 96px 0px, rgba(235, 235, 242, 0.7);
+			background: url(/img/sprite.png) 96px 0px, rgba(235, 235, 242, 0.7) no-repeat;
 		}
 		.out-link-kroogi{
-			background: url(/img/sprite.png) 64px 0px, rgba(235, 235, 242, 0.7);
+			background: url(/img/sprite.png) 63px 0px, rgba(235, 235, 242, 0.7) no-repeat;
 		}
 		.out-link-myspace{
-			background: url(/img/sprite.png) 32px 0px, rgba(235, 235, 242, 0.7);
+			background: url(/img/sprite.png) 32px 0px, rgba(235, 235, 242, 0.7) no-repeat;
 		}
 
 		/*--menu--*/
@@ -288,6 +285,7 @@
 			/*--news--*/
 				.last-news{
 					height: 273px;
+					position: relative;
 					margin-left: 9px;
 					text-align: justify;
 				}
@@ -295,9 +293,19 @@
 					float: left;
 					margin: -30px 11px 11px -31px;
 				}
+				.last-news-decor{
+					width: 22px;
+					height: 45px;
+					position: absolute;
+					right: -22px;
+					top: -1px;
+					background: url(/img/sprite.png) 0px -32px no-repeat;
+					
+				}
 
 			/*--concert--*/
 				.nearrest-concert{
+					position: relative;
 					float: right;
 					margin-right: 9px;
 				}
@@ -307,6 +315,14 @@
 				}
 				.nearrest-concert-place{
 					margin-left: 32px;
+				}
+				.nearrest-concert-decor{
+					width: 22px;
+					height: 45px;
+					position: absolute;
+					left: -22px;
+					top: -1px;
+					background: url(/img/sprite.png) -22px -32px no-repeat;
 				}
 
 			/*--music--*/
