@@ -215,6 +215,18 @@
 			height: 31px;
 			border-radius: 16px;
 		}
+		.out-link-youtube{
+			background: url(/img/sprite.png) 0px 0px, rgba(235, 235, 242, 0.7);
+		}
+		.out-link-vk{
+			background: url(/img/sprite.png) 96px 0px, rgba(235, 235, 242, 0.7);
+		}
+		.out-link-kroogi{
+			background: url(/img/sprite.png) 64px 0px, rgba(235, 235, 242, 0.7);
+		}
+		.out-link-myspace{
+			background: url(/img/sprite.png) 32px 0px, rgba(235, 235, 242, 0.7);
+		}
 
 		/*--menu--*/
 			.menu-block{
