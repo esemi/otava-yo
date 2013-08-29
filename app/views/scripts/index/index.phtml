@@ -13,9 +13,8 @@
 	<section class="nearrest-concert">
 	<!--h2 class="title">Выступаем</h2-->
 	<? if( !is_null($this->concert) ): ?>
-		<article>
 			<header>
-				<date class="date nearrest-concert-date"><?= $this->prepareConcertDate($this->concert->date); ?></date>
+				<time class="date nearrest-concert-date"><?= $this->prepareConcertDate($this->concert->date); ?></time>
 			</header>
 			<h3 class="nearrest-concert-place">
 				<?= $this->escape($this->concert->title); ?>
@@ -23,19 +22,16 @@
 			<? if( !empty($this->concert->place) ): ?>
 				<p><?= $this->escape($this->concert->place); ?></p>
 			<? endif; ?>
-		</article>
 	<? endif; ?>
 	</section>
 </a>
 
 <a href="<?php echo $this->url(array('id' => $this->news->id ), 'staticNewsView', true) ?>">
 	<section class="last-news">
-		<article>
 			<header>
-				<date class="date last-news-date"><?= $this->prepareConcertDate($this->news->date_publish); ?></date>
+				<time class="date last-news-date"><?= $this->prepareConcertDate($this->news->date_publish); ?></time>
 				<h2 class="title-bigger">Последние новости</h2>
 			</header>
 			<?= $this->news->content; ?>
-		</article>
 	</section>
 </a>

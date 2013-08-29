@@ -1,24 +1,26 @@
-<div class="field-bg">
+<section class="field-bg">
 	<h2 class="title-page-name text-center">ближайшие концерты</h2>
 	<? foreach( $this->concerts as $item ): ?>
 		<article class="concert-block">
 			<header>
-				<date class="date-bigger date-concert">
+				<time class="date-bigger date-concert">
 					<?= $this->prepareConcertDate($item->date); ?>
 					<div class="time">
 						<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>
 					</div>
-				</date>
+				</time>
 
-				<h3 class="concert-name">
-					<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?php echo $this->url(array('id' => $item->id ), 'staticConcertView', true) ?>">
-						<?= $this->escape($item->title); ?>
-					</a>
-				</h3>
+				<hgroup>
+					<h3 class="concert-name">
+						<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?php echo $this->url(array('id' => $item->id ), 'staticConcertView', true) ?>">
+							<?= $this->escape($item->title); ?>
+						</a>
+					</h3>
 
-				<? if( !empty($item->place) ): ?>
-					<p class="concert-place"><?= $this->escape($item->place); ?></p>
-				<? endif; ?>
+					<? if( !empty($item->place) ): ?>
+						<h4 class="concert-place"><?= $this->escape($item->place); ?></h4>
+					<? endif; ?>
+				</hgroup>
 			</header>
 
 			<p><?= $this->escape($item->desc); ?></p>
@@ -30,35 +32,38 @@
 			<? endif; ?>
 		</article>
 	<? endforeach; ?>
+	<section>
+		<h2 class="title-page-name text-center">прошедшие концерты</h2>
+		<? foreach( $this->oldConcerts as $item ): ?>
+			<article class="concert-block">
+				<header>
+					<time class="date-bigger date-concert">
+						<?= $this->prepareConcertDate($item->date); ?>
+						<div class="time">
+							<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>
+						</div>
+					</time>
 
-	<h2 class="title-page-name text-center">прошедшие концерты</h2>
-	<? foreach( $this->oldConcerts as $item ): ?>
-		<article class="concert-block">
-			<header>
-				<date class="date-bigger date-concert">
-					<?= $this->prepareConcertDate($item->date); ?>
-					<div class="time">
-						<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>
-					</div>
-				</date>
+					<hgroup>
+						<h3 class="concert-name">
+							<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?php echo $this->url(array('id' => $item->id ), 'staticConcertView', true) ?>">
+								<?= $this->escape($item->title); ?>
+							</a>
+						</h3>
 
-				<h3 class="concert-name">
-					<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?php echo $this->url(array('id' => $item->id ), 'staticConcertView', true) ?>">
-						<?= $this->escape($item->title); ?>
-					</a>
-				</h3>
-
-				<? if( !empty($item->place) ): ?>
-					<p class="concert-place"><?= $this->escape($item->place); ?></p>
+						<? if( !empty($item->place) ): ?>
+							<h4 class="concert-place"><?= $this->escape($item->place); ?></h4>
+						<? endif; ?>
+					</hgroup>
+				</header>
+				<p><?= $this->escape($item->desc); ?></p>
+				<? if( !empty($item->link) ): ?>
+					<p class="concert-link"><a href="<?= $item->link ?>" rel="nofollow">подробнее</a></p>
 				<? endif; ?>
-			</header>
-			<p><?= $this->escape($item->desc); ?></p>
-			<? if( !empty($item->link) ): ?>
-				<p class="concert-link"><a href="<?= $item->link ?>" rel="nofollow">подробнее</a></p>
-			<? endif; ?>
-			<? if( !empty($item->cost) ): ?>
-				<p class="concert-ticets">Билеты: <?= $this->escape($item->cost); ?>р.</p>
-			<? endif; ?>
-		</article>
-	<? endforeach; ?>
-</div>
+				<? if( !empty($item->cost) ): ?>
+					<p class="concert-ticets">Билеты: <?= $this->escape($item->cost); ?>р.</p>
+				<? endif; ?>
+			</article>
+		<? endforeach; ?>
+	</section>
+</section>
