@@ -69,28 +69,35 @@
 			font-family: DSCoptic;
 			src: url(/fonts/DSCOPTIC.TTF);
 		}
-		.menu-links li, .date, .date-bigger, .title, .title-bigger, .signature, .concert-name{
+		.menu-links li, .date, .date-bigger, .title, .title-bigger, .title-contacts, .title-page-name, .signature, .concert-name{
 			font-family: DSCoptic;
 		}
 
 		/*----Color presets-----------------*/
-		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block{
+		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert{
 			border-top: solid 1px #f1eeec;
 		}
-		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block, .field-bg {
-			background-color: rgba(235, 235, 242, 0.7);
+		.menu-block, .menu-links, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
+			background-color: rgba(235, 235, 242, 0.8);
 		}
-		.main-page-photo, .date, .menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert-block, .field-bg{
+		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
-		a, .title, .title-bigger, .menu-links, .menu-links a, .footer, .date-bigger, .signature, .concert-name, .concert-place{
+		a, .title, .band-photo figcaption, .title-bigger, .titile-em,.title-contacts, .title-page-name, .menu-links, .menu-links a, .footer, .date-bigger, .signature, .concert-name, .concert-place{
 			color: #872300;
 		}
 
-		a:hover, a:active{
+		a:hover, a:active, a p:hover{
 			color: #756d34;
 		}
+		a p{
+			color: #322f2d;
+		}
 		/*----Links design-----------------*/
+
+		a{
+			text-decoration: none;
+		}
 		p a{
 			text-decoration: underline;
 		}
@@ -98,6 +105,17 @@
 			text-decoration: none;
 		}
 		/*----Special blocks design-----------------*/
+		.menu-block, .footer{
+				background: url('/img/bg-menu.png') repeat-x;
+		}
+
+		.header, .menu-links, .footer-block{
+			margin: 0px auto;
+			width: 898px;
+			padding-left: 21px;
+			padding-right: 21px;
+		}
+
 		.date, .date-bigger{
 			text-align: center;
 			letter-spacing: 1px;
@@ -121,11 +139,22 @@
 		.title, .title-bigger{
 			margin-bottom: 21px;
 		}
-		.title{
+		.title, .title-contacts, .title-page-name{
 			font-size: 14px;
 		}
 		.title-bigger{
 			font-size: 16px;
+		}
+		.titile-em, .band-photo figcaption{
+			font-weight: bold;
+		}
+		.title-contacts{
+			margin-top: 32px;
+			margin-bottom: 21px;
+		}
+		.title-page-name{
+			margin-top: 10px;
+			margin-bottom: 28px;
 		}
 
 		/*----Common position and text position classes-----------------*/
@@ -142,7 +171,7 @@
 		-moz-background-size: 100%; /* Firefox 3.6+ */
 		-webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
 		-o-background-size: 100%; /* Opera 9.6+ */
-		background: url('/img/fon.jpg') no-repeat fixed center center / cover #872300;
+		background: url('/img/fon.jpg') no-repeat fixed center center / cover #756d34;
 	}
 
 	/*hack for stricky Footer by Ryan Fait*/
@@ -161,25 +190,10 @@
 			height: 24px;
 		}
 	/*end hack-----------------------------*/
+
 	p{
 		margin: 3px 0px 8px;
 	}
-
-	a{
-		text-decoration: none;
-	}
-	a p{
-		color: #322f2d;
-	}
-	/*---Common layout classes---------------------------------*/
-		.header, .menu-links, .band-photo{
-			margin: 0px auto;
-			width: 898px;
-			padding-left: 21px;
-			padding-right: 21px;
-		}
-
-	/*---END Common classes----------------------------*/
 
 	/*---Header---------------------------------*/
 		.header{
@@ -206,7 +220,6 @@
 
 		/*--menu--*/
 			.menu-block{
-				background: url('/img/bg-menu.png') repeat-x;
 				height: 52px;
 			}
 			.menu-links{
@@ -243,14 +256,13 @@
 		.footer{
 			height: 23px;
 		}
+		.footer-block{
+			height: 100%;
+		}
 
 	/*-------------END LAYOUT----------------------------------------------------------------*/
 
 	/*-------------CONTENT-------------------------------------------------------------------*/
-
-		.main-page-photo, .band-photo img{
-
-		}
 
 		/*---Main page------------------------------*/
 			.main-page-photo{
@@ -259,36 +271,32 @@
 				border: 1px solid #132d20;
 			}
 
+			.last-news, .nearrest-concert{
+				width: 309px;
+				padding: 21px;
+			}
 			/*--news--*/
 				.last-news{
-					width: 335px;
 					height: 273px;
 					margin-left: 9px;
-					padding: 21px 11px 11px;
 					text-align: justify;
 				}
 				.last-news-date{
 					float: left;
-					margin: -30px 11px 11px -20px;
+					margin: -30px 11px 11px -31px;
 				}
 
 			/*--concert--*/
 				.nearrest-concert{
-					width: 335px;
 					float: right;
 					margin-right: 9px;
 				}
-				.nearrest-concert-block{
-
-				}
 				.nearrest-concert-date{
 					float: right;
-					margin-top: -9px;
-					margin-right: -9px;
+					margin: -30px -31px 11px 11px ;
 				}
 				.nearrest-concert-place{
 					margin-left: 32px;
-					margin-top: 11px;
 				}
 
 			/*--music--*/
@@ -312,11 +320,20 @@
 		/*---END Main page------------------------------*/
 
 		.field-bg{
-			padding: 32px 21px 32px;
+			padding: 32px;
 			text-align: justify;
 		}
+
+		.concert-block, .news-block{
+				min-height: 85px;
+				margin-bottom: 32px;
+			}
 		/*---News page------------------------------*/
 
+		p{
+			text-indent: 21px;
+			line-height: 14pt;
+		}
 		.date-news{
 			height:58px;
 			padding-top: 27px;
@@ -330,10 +347,6 @@
 		/*---END News page------------------------------*/
 
 		/*---Concert page------------------------------*/
-			.concert-block{
-				min-height: 85px;
-				margin-bottom: 32px;
-			}
 			.concert-name{
 				margin-bottom: 11px;
 				font-size: 13px;
@@ -344,7 +357,7 @@
 			}
 
 			.concert-place, .concert-link, .concert-ticets{
-				margin-left: 32px;
+		/*		margin-left: 21px;*/
 			}
 
 			.date-concert{
@@ -360,7 +373,14 @@
 
 		/*---Band page------------------------------*/
 			.band-photo{
-				margin: 32px 0px 21px;
+				margin: 0px 0px 21px;
 				text-align: justify;
+			}
+			.band-photo figure{
+				display: inline-block;
+				text-align: center;
+			}
+			.band-photo figcaption{
+				margin-bottom: 11px;
 			}
 		/*---END Band page------------------------------*/

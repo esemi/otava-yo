@@ -1,10 +1,10 @@
 <div class="field-bg">
-	<h2 class="title-bigger text-center">новости</h2>
+	<h2 class="title-page-name text-center">новости</h2>
 	<? foreach( $this->news as $item ): ?>
-		<article>
+		<article class="news-block">
 			<header>
 				<h3 class="title">
-					<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?php echo $this->url(array('id' => $item->id ), 'staticNewsView', true) ?>">
+					<a name="<?= sprintf("view%d", $item->id); ?>" href="<?php echo $this->url(array('id' => $item->id ), 'staticNewsView', true) ?>">
 						<?= $this->escape($item->title); ?>
 					</a>
 				</h3>
