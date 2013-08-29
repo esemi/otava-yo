@@ -77,17 +77,17 @@
 		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert{
 			border-top: solid 1px #f1eeec;
 		}
-		.menu-block, .menu-links, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg, .band-field-bg {
-			background-color: rgba(235, 235, 242, 0.7);
+		.menu-block, .menu-links, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
+			background-color: rgba(235, 235, 242, 0.8);
 		}
-		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg, .band-field-bg{
+		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
-		a, .title, .title-bigger, .titile-em,.title-contacts, .title-page-name, .menu-links, .menu-links a, .footer, .date-bigger, .signature, .concert-name, .concert-place, .band-names{
+		a, .title, .band-photo figcaption, .title-bigger, .titile-em,.title-contacts, .title-page-name, .menu-links, .menu-links a, .footer, .date-bigger, .signature, .concert-name, .concert-place{
 			color: #872300;
 		}
 
-		a:hover, a:active{
+		a:hover, a:active, a p:hover{
 			color: #756d34;
 		}
 		a p{
@@ -145,7 +145,7 @@
 		.title-bigger{
 			font-size: 16px;
 		}
-		.titile-em{
+		.titile-em, .band-photo figcaption{
 			font-weight: bold;
 		}
 		.title-contacts{
@@ -171,7 +171,7 @@
 		-moz-background-size: 100%; /* Firefox 3.6+ */
 		-webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
 		-o-background-size: 100%; /* Opera 9.6+ */
-		background: url('/img/fon.jpg') no-repeat fixed center center / cover #872300;
+		background: url('/img/fon.jpg') no-repeat fixed center center / cover #756d34;
 	}
 
 	/*hack for stricky Footer by Ryan Fait*/
@@ -230,7 +230,7 @@
 				text-align: justify;
 			}
 			/*--Inline justify hack------*/
-			.menu-links:after, .band-photo:after, .band-names:after{
+			.menu-links:after, .band-photo:after{
 				content: "";
 				width: 100%;
 				display: inline-block;
@@ -372,22 +372,15 @@
 		/*---END Concert page------------------------------*/
 
 		/*---Band page------------------------------*/
-			.band-field-bg{
-				padding: 32px 32px 0px 32px;
+			.band-photo{
+				margin: 0px 0px 21px;
 				text-align: justify;
 			}
 			.band-photo figure{
 				display: inline-block;
 				text-align: center;
 			}
-			.band-names li{
-				display: inline-block;
-			}
-			.band-photo{
-				margin: 0px auto;
-				width: 871px;
-				padding: 0px 47px 0px 22px;
-				margin: 53px 0px 32px;
-				text-align: justify;
+			.band-photo figcaption{
+				margin-bottom: 11px;
 			}
 		/*---END Band page------------------------------*/
