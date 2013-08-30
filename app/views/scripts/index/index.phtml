@@ -5,15 +5,22 @@
 		<div class="nearrest-concert-decor"></div>
 		<!--h2 class="title">Выступаем</h2-->
 		<? if( !is_null($this->concert) ): ?>
-				<header>
-					<time class="date nearrest-concert-date"><?= $this->prepareConcertDate($this->concert->date); ?></time>
-				</header>
-				<h3 class="nearrest-concert-place">
-					<?= $this->escape($this->concert->title); ?>
-				</h3>
-				<? if( !empty($this->concert->place) ): ?>
-					<p><?= $this->escape($this->concert->place); ?></p>
-				<? endif; ?>
+			<header>
+				<time class="date nearrest-concert-date"><?= $this->prepareConcertDate($this->concert->date); ?></time>
+			</header>
+			<h3 class="nearrest-concert-place">
+				<?= $this->escape($this->concert->title); ?>
+			</h3>
+			<? if( !empty($this->concert->place) ): ?>
+				<p><?= $this->escape($this->concert->place); ?></p>
+			<? endif; ?>
+		<? else: ?>
+			<header>
+				<time class="date nearrest-concert-date"></time>
+			</header>
+			<h3 class="nearrest-concert-place">
+				<p>Концерты скоро будут</p>
+			</h3>
 		<? endif; ?>
 	</section>
 </a>

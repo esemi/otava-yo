@@ -53,6 +53,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$router->addRoute('staticVideo',
 				new Zend_Controller_Router_Route_Static('/video',
 						array( 'controller' => 'video', 'action' => 'index' )));
+		$router->addRoute('staticAudio',
+				new Zend_Controller_Router_Route_Static('/audio',
+						array( 'controller' => 'audio', 'action' => 'index' )));
 
 		$router->addRoute('login',
 				new Zend_Controller_Router_Route_Static('/auth/login',
