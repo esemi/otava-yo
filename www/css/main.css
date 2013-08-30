@@ -64,6 +64,12 @@
 	/*End 1. Global Reset*/
 
 	/*---------------------COMMON CLASSES AND TAGS----------*/
+		html, body {
+			height: 100%;
+			color: #322f2d;
+			font-family: Trebuchet MS, Verdana, sans-serif;
+		}
+
 		p{
 			margin: 3px 0px 8px;
 			text-indent: 21px;
@@ -162,7 +168,7 @@
 		.title-bigger, .nearrest-concert-title{
 			font-size: 16px;
 		}
-		.titile-em{
+		.titile-em, .nearrest-concert-place{
 			font-size: 17px;
 			line-height: 17pt;
 		}
@@ -186,11 +192,7 @@
 	}
 
 	/*hack for stricky Footer by Ryan Fait*/
-		html, body {
-			height: 100%;
-			color: #322f2d;
-			font-family: Trebuchet MS, Verdana, sans-serif;
-		}
+
 		.wrapper {
 			min-height: 100%;
 			height: auto !important;
@@ -326,6 +328,7 @@
 					margin: -30px -31px 11px 21px ;
 				}
 				.nearrest-concert-title{
+					margin-left: 40px;
 					margin-bottom: 18px;
 				}
 				.nearrest-concert-decor{
