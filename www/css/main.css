@@ -90,9 +90,13 @@
 		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert{
 			border-top: solid 1px #f1eeec;
 		}
-		.menu-links, .footer-block, .out-links:hover, .last-news, .nearrest-concert, .field-bg{
+		.menu-links, .footer-block, .last-news, .nearrest-concert, .field-bg, .out-links:hover, .last-news:hover, .nearrest-concert:hover{
 			background-color: rgba(235, 235, 242, 0.8);
 		}
+		.last-news, .nearrest-concert{
+			background-color: rgba(235, 235, 242, 0.75);
+		}
+
 		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
