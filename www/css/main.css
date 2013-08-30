@@ -82,7 +82,7 @@
 			font-family: DSCoptic;
 			src: url(/fonts/DSCOPTIC.TTF);
 		}
-		.menu-links li, .date, .date-bigger, .title, .title-bigger, .title-contacts, .title-page-name, .signature, .concert-name, .old-concert-headding{
+		.menu-links li, .date, .date-bigger, .title, .title-bigger, .title-contacts, .title-page-name,.nearrest-concert-title, .signature, .concert-name, .old-concert-headding{
 			font-family: DSCoptic;
 		}
 
@@ -100,7 +100,7 @@
 		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
-		a, .title, .band-photo figcaption, .title-bigger, .titile-em,.title-contacts, .title-page-name, .menu-links a, .footer, .date-bigger, .signature, .old-concert-headding, .concert-name, .concert-place{
+		a, .title, .nearrest-concert-title, .band-photo figcaption, .title-bigger, .titile-em,.title-contacts, .title-page-name, .menu-links a, .footer, .date-bigger, .signature, .old-concert-headding, .concert-name, .concert-place{
 			color: #872300;/*brown*/
 		}
 
@@ -159,7 +159,7 @@
 		.title, .title-contacts, .title-page-name, .old-concert-headding{
 			font-size: 14px;
 		}
-		.title-bigger{
+		.title-bigger, .nearrest-concert-title{
 			font-size: 16px;
 		}
 		.titile-em{
@@ -303,7 +303,7 @@
 				}
 				.last-news-date{
 					float: left;
-					margin: -30px 11px 11px -31px;
+					margin: -30px 21px 11px -31px;
 				}
 				.last-news-decor{
 					width: 22px;
@@ -323,10 +323,10 @@
 				}
 				.nearrest-concert-date{
 					float: right;
-					margin: -30px -31px 11px 11px ;
+					margin: -30px -31px 11px 21px ;
 				}
-				.nearrest-concert-place{
-					margin-left: 32px;
+				.nearrest-concert-title{
+					margin-bottom: 18px;
 				}
 				.nearrest-concert-decor{
 					width: 22px;
@@ -428,7 +428,7 @@
 			.video-block .video{
 				text-align: center;
 			}
-			.video-block h3{
+			.video-block .video-title{
 				margin-bottom: 21px;
 			}
 		/*---END Video page------------------------------*/
