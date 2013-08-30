@@ -73,7 +73,7 @@
 		hr{
 			margin: 32px 0px;
 		/*	color: rgba(135,35,0, 0.4);*/
-		/*	color: rgba(105,69,70, 0.4);*/
+		/*	color: rgba(105,69,70, 0.3);*/
 			color: rgba(235,235,242, 0.5);
 			clear: both;
 		}
@@ -82,7 +82,7 @@
 			font-family: DSCoptic;
 			src: url(/fonts/DSCOPTIC.TTF);
 		}
-		.menu-links li, .date, .date-bigger, .title, .title-bigger, .title-contacts, .title-page-name, .signature, .concert-name{
+		.menu-links li, .date, .date-bigger, .title, .title-bigger, .title-contacts, .title-page-name, .signature, .concert-name, .old-concert-headding{
 			font-family: DSCoptic;
 		}
 
@@ -100,7 +100,7 @@
 		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
-		a, .title, .band-photo figcaption, .title-bigger, .titile-em,.title-contacts, .title-page-name, .menu-links a, .footer, .date-bigger, .signature, .concert-name, .concert-place{
+		a, .title, .band-photo figcaption, .title-bigger, .titile-em,.title-contacts, .title-page-name, .menu-links a, .footer, .date-bigger, .signature, .old-concert-headding, .concert-name, .concert-place{
 			color: #872300;/*brown*/
 		}
 
@@ -152,23 +152,21 @@
 			float: right;
 			margin: 0px 0px 21px 32px;
 		}
-		/*----Titles-----------------*/
+		/*----Common Titles-----------------*/
 		.title, .title-bigger{
 			margin-bottom: 21px;
 		}
-		.title, .title-contacts, .title-page-name{
+		.title, .title-contacts, .title-page-name, .old-concert-headding{
 			font-size: 14px;
 		}
 		.title-bigger{
 			font-size: 16px;
 		}
-		.titile-em, .band-photo figcaption{
-			font-weight: bold;
+		.titile-em{
+			font-size: 17px;
+			line-height: 17pt;
 		}
-		.title-contacts{
-			margin-top: 32px;
-			margin-bottom: 21px;
-		}
+
 		.title-page-name{
 			margin-top: 10px;
 			margin-bottom: 28px;
@@ -383,6 +381,9 @@
 		/*---END News page------------------------------*/
 
 		/*---Concert page------------------------------*/
+			.old-concert-headding{
+				margin-bottom: 41px;
+			}
 			.concert-name{
 				margin-bottom: 11px;
 				font-size: 13px;
@@ -419,5 +420,25 @@
 			}
 			.band-photo figcaption{
 				margin-bottom: 11px;
+				font-weight: bold;
 			}
 		/*---END Band page------------------------------*/
+
+		/*---Video page------------------------------*/
+			.video-block .video{
+				text-align: center;
+			}
+			.video-block h3{
+				margin-bottom: 21px;
+			}
+		/*---END Video page------------------------------*/
+
+		/*---Contact page------------------------------*/
+			.title-contacts{
+				margin-top: 32px;
+				margin-bottom: 21px;
+			}
+			.forign-contact{
+				margin-left: 11px;
+			}
+		/*---END Contact page------------------------------*/
