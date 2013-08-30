@@ -3,19 +3,20 @@
 	<? foreach( $this->news as $item ): ?>
 		<article class="news-block">
 			<header>
+				<time class="date-bigger date-news">
+					<?= $this->prepareConcertDate($item->date_publish); ?>
+				</time>
 				<h3 class="title">
 					<a name="<?= sprintf("view%d", $item->id); ?>" href="<?php echo $this->url(array('id' => $item->id ), 'staticNewsView', true) ?>">
 						<?= $this->escape($item->title); ?>
 					</a>
 				</h3>
-				<time class="date-bigger date-news">
-					<?= $this->prepareConcertDate($item->date_publish); ?>
-				</time>
 			</header>
 			<?= $item->content; ?>
 			<footer>
 				<p class="signature"><?= $this->escape($this->moder_author); ?></p>
 			</footer>
 		</article>
+		<hr>
 	<? endforeach; ?>
 </section>

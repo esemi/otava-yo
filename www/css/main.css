@@ -63,7 +63,20 @@
 	}
 	/*End 1. Global Reset*/
 
-	/*---------------------COMMON CLASSES----------*/
+	/*---------------------COMMON CLASSES AND TAGS----------*/
+		p{
+			margin: 3px 0px 8px;
+			text-indent: 21px;
+			line-height: 14pt;
+		}
+
+		hr{
+			margin: 32px 0px;
+		/*	color: rgba(135,35,0, 0.4);*/
+		/*	color: rgba(105,69,70, 0.4);*/
+			color: rgba(235,235,242, 0.5);
+			clear: both;
+		}
 		/*----Fonts-----------------*/
 		@font-face{
 			font-family: DSCoptic;
@@ -73,7 +86,7 @@
 			font-family: DSCoptic;
 		}
 
-		/*----Color presets-----------------*/
+		/*----Common color presets-----------------*/
 		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert{
 			border-top: solid 1px #f1eeec;
 		}
@@ -88,7 +101,7 @@
 		}
 
 		a:hover, a:active, a p:hover{
-			color: #756d34; /*green*/
+			color: #696046; /*green*/
 		}
 		a p{
 			color: #322f2d; /*dark green*/
@@ -133,7 +146,7 @@
 		.date-bigger{
 			width: 85px;
 			float: right;
-			margin: 0px 0px 32px 32px;
+			margin: 0px 0px 21px 32px;
 		}
 		/*----Titles-----------------*/
 		.title, .title-bigger{
@@ -186,10 +199,6 @@
 			height: 24px;
 		}
 	/*end hack-----------------------------*/
-
-	p{
-		margin: 3px 0px 8px;
-	}
 
 	/*---Header---------------------------------*/
 		.header{
@@ -300,7 +309,7 @@
 					right: -22px;
 					top: -1px;
 					background: url(/img/sprite.png) 0px -32px no-repeat;
-					
+
 				}
 
 			/*--concert--*/
@@ -352,23 +361,19 @@
 
 		.concert-block, .news-block{
 				min-height: 85px;
-				margin-bottom: 32px;
 			}
-		/*---News page------------------------------*/
 
-		p{
-			text-indent: 21px;
-			line-height: 14pt;
-		}
-		.date-news{
-			height:58px;
-			padding-top: 27px;
-			line-height: 14pt;
-		}
-		.signature{
-			text-align: right;
-			font-size: 14px;
-		}
+		/*---News page------------------------------*/
+			.date-news{
+				height:58px;
+				padding-top: 27px;
+				line-height: 14pt;
+			}
+			.signature{
+				margin-right: 11px;
+				text-align: right;
+				font-size: 14px;
+			}
 
 		/*---END News page------------------------------*/
 
