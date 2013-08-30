@@ -11,13 +11,12 @@
 				<h2 class="nearrest-concert-title">Выступаем</h2>
 			</header>
 			<h3 class="titile-em">
-				<?= $this->escape($this->concert->title); ?>
-			</h3>
-			<? if( empty($this->concert->title) ): ?><!--ВОЗМОЖНО ТРОБУЕТ ДОРАБОТКИ-->
-				<h3 class="titile-em">
+				<? if( !empty($this->concert->title) ): ?>
+					<?= $this->escape($this->concert->title); ?>
+				<? else: ?>
 					<?= $this->escape($this->concert->place); ?>
-				</h3>
-			<? endif; ?>
+				<? endif; ?>
+			</h3>
 		<? else: ?>
 			<header>
 				<time class="date nearrest-concert-date"></time>
