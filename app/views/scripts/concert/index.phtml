@@ -3,7 +3,7 @@
 	<? foreach( $this->concerts as $item ): ?>
 		<article class="concert-block">
 			<header>
-				<time class="date-bigger date-concert">
+				<time class="date-bigger date-concert" datetime="<?= $this->prepareConcertDatetime($item->date, $item->time); ?>">
 					<?= $this->prepareConcertDate($item->date); ?>
 					<div class="time">
 						<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>
@@ -42,7 +42,7 @@
 		<? foreach( $this->oldConcerts as $item ): ?>
 			<article class="concert-block">
 				<header>
-					<time class="date-bigger date-concert">
+					<time class="date-bigger date-concert" datetime="<?= $this->prepareConcertDatetime($item->date, $item->time); ?>">
 						<?= $this->prepareConcertDate($item->date); ?>
 						<div class="time">
 							<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>

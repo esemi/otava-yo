@@ -7,10 +7,10 @@ class App_Model_DbTable_Concert extends Zend_Db_Table_Abstract
 	public function getNearest()
 	{
 		$select = $this->select()
-				->from($this, array('id','title','place','date'))
 				->where('`date` >= CURDATE()')
 				->order("date ASC")
 				->limit(1);
+		$this->_addMainFields($select);
 		return $this->fetchRow($select);
 	}
 
