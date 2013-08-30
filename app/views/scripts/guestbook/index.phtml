@@ -1,7 +1,7 @@
 <section class="field-bg">
 	<h2 class="title-page-name text-center">Гостевая книга</h2>
 	<p class="js-guestbook-add-button">@TODO BUTTON</p>
-	<div class="js-guestbook-add-form <?= (empty($this->postData)) ? 'hide' : ''; ?>">
+	<div class="js-guestbook-add-form  <?= (empty($this->postData)) ? 'hide' : ''; ?>">
 		<? if( !empty($this->errorMessage) ): ?>
 			<div><?= $this->escape($this->errorMessage); ?></div>
 		<? endif; ?>
@@ -9,15 +9,18 @@
 	</div>
 
 	<? foreach( $this->notes as $item ): ?>
-		<div>
-			<?= $this->escape($item->id); ?><br>
-			<?= $this->escape($item->author); ?><br>
-			<?= $this->escape($item->email); ?><br>
-			<?= $this->escape($item->city); ?><br>
+		<article>
+		<!--	<?= $this->escape($item->id); ?><br>--->
+		<h4>
+			<?= $this->escape($item->author); ?>
+			<?= $this->escape($item->city); ?>
+		</h4>
+			<?= $this->escape($item->email); ?>
 			<?= $this->escape($item->site); ?><br>
-			<?= $this->escape($item->date_publish); ?><br>
+			<time><?= $this->escape($item->date_publish); ?></time>
 			<?= $this->escape($item->content); ?>
-		</div>
+		</article>
+		<hr>
 	<? endforeach; ?>
 
 </section>

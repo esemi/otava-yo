@@ -83,12 +83,16 @@
 			color: rgba(235,235,242, 0.5);
 			clear: both;
 		}
+
+		.hide{
+			display: none;
+		}
 		/*----Fonts-----------------*/
 		@font-face{
 			font-family: DSCoptic;
 			src: url(/fonts/DSCOPTIC.TTF);
 		}
-		.menu-links li, .date, .date-bigger, .title, .title-bigger, .title-contacts, .title-page-name,.nearrest-concert-title, .signature, .concert-name, .old-concert-headding{
+		.menu-links li, .date, .date-bigger, .title, .title-bigger, .title-contacts, .title-page-name,.nearrest-concert-title, .signature, .concert-name, .old-concert-headding, .title-album{
 			font-family: DSCoptic;
 		}
 
@@ -106,7 +110,7 @@
 		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
-		a, .title, .nearrest-concert-title, .band-photo figcaption, .title-bigger, .titile-em,.title-contacts, .title-page-name, .menu-links a, .footer, .date-bigger, .signature, .old-concert-headding, .concert-name, .concert-place{
+		a, .title, .nearrest-concert-title, .band-photo figcaption, .title-bigger, .title-em,.title-contacts, .title-page-name, .menu-links a, .footer, .date-bigger, .signature, .old-concert-headding, .concert-name, .concert-place, .title-album, .album-year{
 			color: #872300;/*brown*/
 		}
 
@@ -162,13 +166,13 @@
 		.title, .title-bigger{
 			margin-bottom: 21px;
 		}
-		.title, .title-contacts, .title-page-name, .old-concert-headding{
+		.title, .title-contacts, .title-page-name, .old-concert-headding, .title-album{
 			font-size: 14px;
 		}
 		.title-bigger, .nearrest-concert-title{
 			font-size: 16px;
 		}
-		.titile-em, .nearrest-concert-place{
+		.title-em, .nearrest-concert-place{
 			font-size: 17px;
 			line-height: 17pt;
 		}
@@ -426,6 +430,30 @@
 				font-weight: bold;
 			}
 		/*---END Band page------------------------------*/
+
+		/*---Audio page------------------------------*/
+			.title-album{
+				margin-bottom: 9px;
+			}
+			.album-year{
+				display: block;
+				font-weight: bold;
+				margin-bottom: 21px;
+			}
+			.audio-cover{
+				float: right;
+			}
+			.audio-list{
+				margin-top: 21px;
+			}
+			.audio-list li{
+				list-style: decimal;
+				margin: 4px 0px 5px 32px;
+			}
+			.song-text{
+				margin: 11px 0px 11px 53px;
+			}
+		/*---END Audio page------------------------------*/
 
 		/*---Video page------------------------------*/
 			.video-block .video{
