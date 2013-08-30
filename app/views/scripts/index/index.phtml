@@ -5,7 +5,9 @@
 		<div class="nearrest-concert-decor"></div>
 		<? if( !is_null($this->concert) ): ?>
 			<header>
-				<time class="date nearrest-concert-date"><?= $this->prepareConcertDate($this->concert->date); ?></time>
+				<time class="date nearrest-concert-date" datetime="<?= $this->prepareConcertDatetime($this->concert->date, $this->concert->time); ?>">
+					<?= $this->prepareConcertDate($this->concert->date); ?>
+				</time>
 				<h2 class="nearrest-concert-title">Выступаем</h2>
 			</header>
 			<h3 class="nearrest-concert-place">
@@ -31,7 +33,9 @@
 	<section class="last-news">
 		<div class="last-news-decor"></div>
 			<header>
-				<time class="date last-news-date"><?= $this->prepareConcertDate($this->news->date_publish); ?></time>
+				<time class="date last-news-date" datetime="<?= $this->escape($this->news->date_publish); ?>">
+					<?= $this->prepareConcertDate($this->news->date_publish); ?>
+				</time>
 				<h2 class="title-bigger">Последние новости</h2>
 			</header>
 			<?= $this->news->content; ?>

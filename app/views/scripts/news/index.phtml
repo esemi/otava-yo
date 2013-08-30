@@ -3,7 +3,7 @@
 	<? foreach( $this->news as $item ): ?>
 		<article class="news-block">
 			<header>
-				<time class="date-bigger date-news">
+				<time class="date-bigger date-news" datetime="<?= $this->escape($item->date_publish); ?>">
 					<?= $this->prepareConcertDate($item->date_publish); ?>
 				</time>
 				<h3 class="title">
