@@ -295,6 +295,7 @@
 				.last-news{
 					height: 273px;
 					position: relative;
+					display: inline-block;
 					margin-left: 9px;
 					text-align: justify;
 				}
