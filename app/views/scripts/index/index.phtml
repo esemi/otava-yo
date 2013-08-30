@@ -3,22 +3,24 @@
 <a href="<?php echo $this->url(array('id' => $this->concert->id ), 'staticConcertView', true) ?>">
 	<section class="nearrest-concert">
 		<div class="nearrest-concert-decor"></div>
-		<!--h2 class="title">Выступаем</h2-->
 		<? if( !is_null($this->concert) ): ?>
 			<header>
 				<time class="date nearrest-concert-date"><?= $this->prepareConcertDate($this->concert->date); ?></time>
+				<h2 class="nearrest-concert-title">Выступаем</h2>
 			</header>
-			<h3 class="nearrest-concert-place">
+			<h3 class="titile-em">
 				<?= $this->escape($this->concert->title); ?>
 			</h3>
-			<? if( !empty($this->concert->place) ): ?>
-				<p><?= $this->escape($this->concert->place); ?></p>
+			<? if( empty($this->concert->title) ): ?><!--ВОЗМОЖНО ТРОБУЕТ ДОРАБОТКИ-->
+				<h3 class="titile-em">
+					<?= $this->escape($this->concert->place); ?>
+				</h3>
 			<? endif; ?>
 		<? else: ?>
 			<header>
 				<time class="date nearrest-concert-date"></time>
 			</header>
-			<h3 class="nearrest-concert-place">
+			<h3 class="titile-em">
 				<p>Концерты скоро будут</p>
 			</h3>
 		<? endif; ?>
