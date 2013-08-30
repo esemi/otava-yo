@@ -12,7 +12,7 @@ class IndexController extends Zend_Controller_Action
 		$this->view->concert = $concertTable->getNearest();
 
 		$audioModel = new App_Model_Audio();
-		$this->view->audio = $audioModel->getLastTrack();
+		$this->view->audio = $audioModel->getRandTrack();
 
 		$newsTable = new App_Model_DbTable_News();
 		$news = $newsTable->getLast(1)->current();
