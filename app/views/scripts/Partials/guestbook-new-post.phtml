@@ -1,11 +1,44 @@
 <form name="post" method="POST">
-	<input type="text" name="author" value="<?= (isset($this->postData['author'])) ? $this->escape($this->postData['author']) : ''; ?>" placeholder="имя*" maxlength="100"/><br>
-	<input type="email" name="email" value="<?= (isset($this->postData['email'])) ? $this->escape($this->postData['email']) : ''; ?>" placeholder="email" maxlength="150"/><br>
-	<input type="url" name="site" value="<?= (isset($this->postData['site'])) ? $this->escape($this->postData['site']) : ''; ?>" placeholder="сайт" maxlength="255"/><br>
-	<input type="text" name="city" value="<?= (isset($this->postData['city'])) ? $this->escape($this->postData['city']) : ''; ?>" placeholder="город/страна" maxlength="255"/><br>
-	<textarea name="message" placeholder="сообщение*" maxlength="10000"><?= (isset($this->postData['message'])) ? $this->escape($this->postData['message']) : ''; ?></textarea><br>
-	<div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<label>Имя: </label>
+				</td>
+				<td>
+					<input type="text" name="author" value="<?= (isset($this->postData['author'])) ? $this->escape($this->postData['author']) : ''; ?>" placeholder="имя*" maxlength="100"/><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>email: </label>
+				</td>
+				<td>
+					<input type="email" name="email" value="<?= (isset($this->postData['email'])) ? $this->escape($this->postData['email']) : ''; ?>" placeholder="email" maxlength="150"/><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>сайт: </label>
+				</td>
+				<td>
+					<input type="url" name="site" value="<?= (isset($this->postData['site'])) ? $this->escape($this->postData['site']) : ''; ?>" placeholder="сайт" maxlength="255"/><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label>город/страна: </label>
+				</td>
+				<td>
+					<input type="text" name="city" value="<?= (isset($this->postData['city'])) ? $this->escape($this->postData['city']) : ''; ?>" placeholder="город/страна" maxlength="255"/><br>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<label>Сообщение: </label>
+	<textarea name="message" class="message" placeholder="сообщение*" maxlength="10000"><?= (isset($this->postData['message'])) ? $this->escape($this->postData['message']) : ''; ?></textarea><br>
+	<div class="guest-recaptcha">
 		<?php echo $this->recaptcha->getHTML(); ?>
 	</div>
-	<input type="submit" name="отправить" value="отправить">
+	<input class="submit" type="submit" name="отправить" value="отправить">
 </form>

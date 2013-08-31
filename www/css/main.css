@@ -86,47 +86,69 @@
 		.hide{
 			display: none;
 		}
+
+		.error{
+			text-align: center;
+			margin: 11px 0px;
+			font-weight: bold;
+			color:#a61300;
+		}
 		/*----Fonts-----------------*/
 		@font-face{
 			font-family: DSCoptic;
 			src: url(/fonts/DSCOPTIC.TTF);
 		}
-		.menu-links li, .date, .date-bigger, .title, .title-bigger, .title-contacts, .title-page-name,.nearrest-concert-title, .signature, .concert-name, .old-concert-headding, .title-album, .guest-post-button{
+		.menu-links li, .date, .date-news, .title, .title-bigger, .title-contacts,
+		.title-page-name,.nearrest-concert-title, .signature, .concert-name,
+		.old-concert-headding, .date-concert, .date-concert-old, .title-album,
+		.guest-button, .guest-form .submit{
 			font-family: DSCoptic;
 		}
 
 		/*----Common color presets-----------------*/
-		html, body {
-			color: #322f2d;
+		html, body, a p {
+			color: #322f2d; /*dark green*/
 		}
-		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert{
-			border-top: solid 1px #f1eeec;
+		a, .title, .nearrest-concert-title, .band-photo figcaption, .title-bigger,
+		.title-em,.title-contacts, .title-page-name, .menu-links a, .footer,
+		.date-news, .signature, .old-concert-headding, .concert-name,
+		.concert-place, .title-album, .album-year, .guest-post header,
+		.guest-post a:hover{
+			color: #872300;/*brown*/
 		}
-		.menu-links, .footer-block, .last-news, .nearrest-concert, .field-bg, .out-links:hover, .last-news:hover, .nearrest-concert:hover{
+		a:hover, a:active, a p:hover, .guest-post a{
+			color: #696046; /*light green*/
+		}
+		.date, .date-news, .date-concert, .date-concert-old, .guest-button,
+		.guest-form .submit{
+			color: #ebebf2; /*light grey*/
+		}
+
+		.menu-links, .footer-block, .last-news, .nearrest-concert, .field-bg,
+		.out-links:hover, .last-news:hover, .nearrest-concert:hover{
 			background-color: rgba(235, 235, 242, 0.8);
 		}
 		.last-news, .nearrest-concert{
 			background-color: rgba(235, 235, 242, 0.75);
 		}
-		.date, .date-bigger, .guest-post-button{
-			background: #872300;
+		.date, .date-news, .date-concert, .guest-button, .guest-form .submit{
+			background-color: #872300; /*brown*/
 		}
-		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg, .guest-post-button{
-			box-shadow: 1px 1px 5px 0 #696046;
-		}
-		a, .title, .nearrest-concert-title, .band-photo figcaption, .title-bigger, .title-em,.title-contacts, .title-page-name, .menu-links a, .footer, .date-bigger, .signature, .old-concert-headding, .concert-name, .concert-place, .title-album, .album-year, .guest-post header, .guest-post a:hover{
-			color: #872300;/*brown*/
+		.date-concert-old{
+			background-color:#cac0bd; /*light brown*/
 		}
 
-		a:hover, a:active, a p:hover, .guest-post a{
-			color: #696046; /*green*/
+		.menu-block, .menu-links, .footer, .out-links, .last-news,
+		.nearrest-concert{
+			border-top: solid 1px #f1eeec; /*grey*/
 		}
-		a p{
-			color: #322f2d; /*dark green*/
+
+		.main-page-photo, .date, .menu-block, .menu-links, .footer,
+		.footer-block, .out-links, .last-news, .nearrest-concert, .field-bg,
+		.guest-button, .guest-form .submit{
+			box-shadow: 1px 1px 5px 0 #696046;
 		}
-		.date, .date-bigger, .guest-post-button{
-			color: #ebebf2; /*light grey*/
-		}
+
 		/*----Links design-----------------*/
 
 		a{
@@ -138,6 +160,7 @@
 		p a:hover, p a:active{
 			text-decoration: none;
 		}
+
 		/*----Special blocks design-----------------*/
 		.menu-block, .footer{
 				background: url('/img/bg-menu.png') repeat-x;
@@ -150,7 +173,7 @@
 			padding-right: 21px;
 		}
 
-		.date, .date-bigger{
+		.date, .date-news, .date-concert, .date-concert-old{
 			text-align: center;
 			letter-spacing: 1px;
 		}
@@ -162,7 +185,7 @@
 			font-size: 12px;
 			line-height: 11pt;
 		}
-		.date-bigger{
+		.date-news, .date-concert, .date-concert-old{
 			width: 85px;
 			float: right;
 			margin: 0px 0px 21px 32px;
@@ -171,7 +194,8 @@
 		.title, .title-bigger{
 			margin-bottom: 21px;
 		}
-		.title, .title-contacts, .title-page-name, .old-concert-headding, .title-album{
+		.title, .title-contacts, .title-page-name, .old-concert-headding,
+		.title-album, .guest-post-button, .guest-form .submit{
 			font-size: 14px;
 		}
 		.title-bigger, .nearrest-concert-title{
@@ -198,7 +222,7 @@
 			text-align: center;
 		}
 
-	/*-------------LAYOUT----------------------------------------------------------------*/
+	/*-------------LAYOUT-----------------------------------------------------*/
 	body{
 		background: url('/img/fon.jpg') no-repeat fixed center top #756d34;
 	}
@@ -292,9 +316,9 @@
 			height: 100%;
 		}
 
-	/*-------------END LAYOUT----------------------------------------------------------------*/
+	/*-------------END LAYOUT-------------------------------------------------*/
 
-	/*-------------CONTENT-------------------------------------------------------------------*/
+	/*-------------CONTENT----------------------------------------------------*/
 
 		/*---Main page------------------------------*/
 			.main-page-photo{
@@ -383,8 +407,8 @@
 
 		/*---News page------------------------------*/
 			.date-news{
-				height:58px;
-				padding-top: 27px;
+				height:61px;
+				padding-top: 24px;
 				line-height: 14pt;
 			}
 			.signature{
@@ -415,13 +439,13 @@
 		/*		margin-left: 21px;*/
 			}
 
-			.date-concert{
+			.date-concert, .date-concert-old{
 				height:71px;
 				padding-top: 14px;
 				font-size: 13px;
 				line-height: 13pt;
 			}
-			.date-concert .time{
+			.date-concert .time, .date-concert-old .time{
 				margin-top: 9px;
 			}
 		/*---END Concert page------------------------------*/
@@ -481,13 +505,16 @@
 
 
 		/*---Guest book page------------------------------*/
-			.guest-post-button{
-				width: 222px;
-				height: 35px;
-				padding-top: 18px;
+			.guest-button{
+				float: right;
+				width: 137px;
+				height: 34px;
+				padding: 19px 21px 0px;
+				margin-bottom: 32px;
 				cursor: pointer;
 				text-align: center;
 			}
+
 			.guest-post .name{
 				margin-right: 5px;
 			}
@@ -502,6 +529,29 @@
 			}
 			.guest-post time{
 				float: right;
+			}
+
+			.guest-form input, .guest-form .message{
+				margin-bottom: 11px;
+			}
+			.guest-form input{
+				width: 359px;
+				margin-left: 9px;
+			}
+			.guest-form .message{
+				width: 100%;
+				height: 137px;
+				margin: 9px 0px 21px;
+			}
+			.guest-recaptcha{
+				display: inline-block;
+			}
+			.guest-form .submit{
+				width: 137px;
+				vertical-align: bottom;
+				margin: -11px 0px 3px 21px;
+				padding: 5px 0px;
+				border: none;
 			}
 		/*---END Guest book page------------------------------*/
 

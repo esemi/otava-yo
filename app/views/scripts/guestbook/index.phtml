@@ -1,9 +1,9 @@
 <section class="field-bg">
 	<h2 class="title-page-name text-center">Гостевая книга</h2>
-	<div class="js-guestbook-add-button guest-post-button">Написать нам</div>
-	<section class="js-guestbook-add-form  <?= (empty($this->postData)) ? 'hide' : ''; ?>">
+	<div class="js-guestbook-add-button guest-button  <?= ( $this->isPost ) ? 'hide' : ''; ?>">Написать</div>
+	<section class="js-guestbook-add-form guest-form <?= ( !$this->isPost ) ? 'hide' : ''; ?>">
 		<? if( !empty($this->errorMessage) ): ?>
-			<div><?= $this->escape($this->errorMessage); ?></div>
+			<p class="error"><?= $this->escape($this->errorMessage); ?></p>
 		<? endif; ?>
 		<?= $this->partial('Partials/guestbook-new-post.phtml', array('postData' => $this->postData,'recaptcha' => $this->recaptcha)); ?>
 	</section>

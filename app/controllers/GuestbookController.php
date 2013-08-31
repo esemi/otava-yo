@@ -12,6 +12,7 @@ class GuestbookController extends Zend_Controller_Action
 		$conf = $this->getFrontController()->getParam('bootstrap')->getOption('recaptcha');
 		$this->view->recaptcha = $recaptcha = new Zend_Service_ReCaptcha($conf['pubkey'],$conf['privkey']);
 		$this->view->postData = $postData = $this->_request->getPost();
+		$this->view->isPost = $this->_request->isPost();
 		$this->view->errorMessage = '';
 
 		if( $this->_request->isPost() )
