@@ -1,15 +1,9 @@
-<div>
-	<?=(isset($this->errorMessage)) ? $this->escape($this->errorMessage) : ''; ?>
-</div>
-
 <form name="post" method="POST">
 	<input type="text" name="author" value="<?= (isset($this->postData['author'])) ? $this->escape($this->postData['author']) : ''; ?>" plceholder="имя*" maxlength="100"/><br>
 	<input type="email" name="email" value="<?= (isset($this->postData['email'])) ? $this->escape($this->postData['email']) : ''; ?>" plceholder="email" maxlength="150"/><br>
 	<input type="url" name="site" value="<?= (isset($this->postData['site'])) ? $this->escape($this->postData['site']) : ''; ?>" plceholder="сайт" maxlength="255"/><br>
 	<input type="text" name="city" value="<?= (isset($this->postData['city'])) ? $this->escape($this->postData['city']) : ''; ?>" plceholder="город/страна" maxlength="255"/><br>
-	<textarea name="message" plceholder="сообщение*" maxlength="10000">
-		<?= (isset($this->postData['message'])) ? $this->escape($this->postData['message']) : ''; ?>
-	</textarea><br>
+	<textarea name="message" plceholder="сообщение*" maxlength="10000"><?= (isset($this->postData['message'])) ? $this->escape($this->postData['message']) : ''; ?></textarea><br>
 	<div>
 		<?php echo $this->recaptcha->getHTML(); ?>
 	</div>

@@ -8,16 +8,11 @@ class GuestbookController extends Zend_Controller_Action
 
 		$bookTable = new App_Model_DbTable_Guestbook();
 		$this->view->notes = $bookTable->getLast(100);
-	}
-
-	public function newPostAction()
-	{
-		$this->view->headTitle('Гостевая книга');
-		$this->view->headTitle('Новое сообщение');
 
 		$conf = $this->getFrontController()->getParam('bootstrap')->getOption('recaptcha');
 		$this->view->recaptcha = $recaptcha = new Zend_Service_ReCaptcha($conf['pubkey'],$conf['privkey']);
 		$this->view->postData = $postData = $this->_request->getPost();
+		$this->view->errorMessage = '';
 
 		if( $this->_request->isPost() )
 		{
