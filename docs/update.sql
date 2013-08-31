@@ -25,11 +25,14 @@ CREATE TABLE IF NOT EXISTS `news` (
   KEY `date_publish` (`date_publish`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+
 CREATE TABLE IF NOT EXISTS `album` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
+  `year` smallint(4) unsigned DEFAULT NULL,
+  `desc` varchar(1024) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 ALTER TABLE `audio` ADD `album_id` INT UNSIGNED NOT NULL AFTER `id` , ADD INDEX ( `album_id` );
 

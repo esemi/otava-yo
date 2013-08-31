@@ -18,7 +18,7 @@ class App_Model_DbTable_Audio extends Zend_Db_Table_Abstract
 	{
 		$select = $this->select()
 				->from($this, array('id', 'album_id', 'title'))
-				->order('album_id');
+				->order('id');
 		return $this->fetchAll($select)->toArray();
 	}
 
