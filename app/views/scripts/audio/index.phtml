@@ -1,114 +1,26 @@
 <section class="field-bg">
 	<h2 class="title-page-name text-center">Аудио</h2>
 	<section>
-		Плеер
+		@TODO Плеер
 	</section>
-	<article>
-		<hgroup>
-			<h3 class="title-album">Рождество</h3>
-			<time class="album-year">2011</time>
-		</hgroup>
-		<div class="audio-cover">
-			<img alt="обложка альбома &laquo;Рождество&raquo;" src="/media/album_rozhdestvo.jpg">
-		</div>
-		<p>Хорошо бы некоторое описание сюда.</p>
-		<ol class="audio-list">
-			<li>Как в Иерусалиме рано зазвонили</li>
-			<li>Днесь Христос родился</li>
-			<li>Христос Спаситель</li>
-			<li>На небе зорька</li>
-			<li>Рождество Христово, ангел прилетел</li>
-			<li>Небо и земля</li>
-			<li>Уродилась коляда</li>
-			<li>Запевайте, христиане</li>
-			<li>Эта ночь святая</li>
-			<li>Торжествуйте, веселитесь</li>
-		</ol>
-	</article>
-
-	<hr>
-
-	<article>
-		<hgroup>
-			<h3 class="title-album">Жили-были</h3>
-			<time class="album-year">2009</time>
-		</hgroup>
-		<div class="audio-cover">
-			<img alt="обложка альбома &laquo;Жили-были&raquo;" src="/media/album_zhili_byli.jpg">
-		</div>
-		<p>Хорошо бы некоторое описание сюда.</p>
-		<ol class="audio-list">
-			<li>Интро</li>
-			<li>Кадриль</li>
-			<li>Жил-был у бабушки серенький козлик</li>
-			<li>Про Ивана groove</li>
-			<li>Лезгинка</li>
-			<li>Гавоты</li>
-			<li>про Диму и Петю</li>
-			<li>Во кузнице</li>
-			<li>Финская полька</li>
-			<li>
-				<h5>Иванушка рачек</h5>
-						<div class="song-text">
-							<p>Иванушка рачек</p>
-							<p>По бережку лазя</p>
-							<p>Рыбку хватая</p>
-							<p>Ульянушке нося</p>
-							<p>Ульянушка серьцем</p>
-							<p>Ест рыбку с перьцем</p>
-							<p>Сидит барин на току</p>
-							<p>Кричит барин засеку</p>
-							<p>В три сохи пашут</p>
-							<p>Четвёртая борона</p>
-							<p>Её мать продала</p>
-							<p>Не дорого узяла</p>
-							<p>Тяпку, лопатку,</p>
-							<p>Курочку хохлатку</p>
-							<p>Курочка хохлатка</p>
-							<p>Сидит на поличке</p>
-							<p>Считая яички</p>
-							<p>Раз два три четыре</p>
-							<p>Меня грамоте учили</p>
-							<p>Не читать, не писать</p>
-							<p>Только в куколки играть</p>
-							<p>Я куколку разорила</p>
-							<p>Меня маменька побила</p>
-							<p>Пап(а) пап(а) по спине</p>
-							<p>Балабайка на стене</p>
-							<p>Балабаечка упала</p>
-							<p>Свинье по горбу попала</p>
-							<p>А папаше по спине</p>
-							<p>Чтоб не ездил на свинье</p>
-						</div>
-			</li>
-			<li>Риорита</li>
-			<li>Крутится вертится шарф голубой</li>
-		</ol>
-	</article>
-
-	<hr>
-
-	<article>
-		<hgroup>
-			<h3 class="title-album">Под аптекой</h3>
-			<time class="album-year">2009</time>
-		</hgroup>
-		<div class="audio-cover">
-			<img alt="обложка альбома &laquo;Под аптекой&raquo;" src="/media/album_pod_aptekoi.jpg">
-		</div>
-		<p>Наш первый альбом.</p>
-		<ol class="audio-list">
-			<li>Reels</li>
-			<li>Saltarella/ tarantella</li>
-			<li>Bailar</li>
-			<li>Польки/ найман</li>
-			<li>Джиги</li>
-			<li>Шведская</li>
-			<li>La sansonette</li>
-			<li>Lazersong</li>
-			<li>Песня</li>
-			<li>Хит</li>
-			<li>Вальс Петрова</li>
-		</ol>
-	</article>
+	<? foreach($this->albums as $album): ?>
+		<article>
+			<hgroup>
+				<h3 class="title-album"><?= $this->escape($album['title']); ?></h3>
+				<time class="album-year">@TODO year</time>
+			</hgroup>
+			<div class="audio-cover">
+				<img alt="обложка альбома «<?= $this->escape($album['title']); ?>»" src="<?= $album['img_link']; ?>">
+			</div>
+			<p>@TODO desc</p>
+			<ol class="audio-list">
+				<? foreach($this->audio as $audio): ?>
+					<? if( $album['id'] == $audio['album_id'] ): ?>
+						<li><?= $this->escape($audio['title']) ?><?= $this->escape($audio['audio_link']) ?></li>
+					<? endif; ?>
+				<? endforeach; ?>
+			</ol>
+		</article>
+		<hr>
+	<? endforeach; ?>
 </section>
