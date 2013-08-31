@@ -1,4 +1,28 @@
 <section class="field-bg">
 	<h2 class="title-page-name text-center">Аудио</h2>
-
+	<section>
+		@TODO Плеер
+	</section>
+	<? foreach($this->albums as $album): ?>
+		<article>
+			<hgroup>
+				<h3 class="title-album"><?= $this->escape($album['title']); ?></h3>
+				<time class="album-year" datetime="<?= $this->escape($album['year']); ?>"><?= $this->escape($album['year']); ?></time>
+			</hgroup>
+			<div class="audio-cover">
+				<img alt="обложка альбома «<?= $this->escape($album['title']); ?>»" src="<?= $album['img_link']; ?>">
+			</div>
+			<? if( !empty($album['desc']) ): ?>
+				<p><?= $this->escape($album['desc']); ?></p>
+			<? endif; ?>
+			<ol class="audio-list">
+				<? foreach($this->audio as $audio): ?>
+					<? if( $album['id'] == $audio['album_id'] ): ?>
+						<li><?= $this->escape($audio['title']) ?> <?= $this->escape($audio['audio_link']) ?></li>
+					<? endif; ?>
+				<? endforeach; ?>
+			</ol>
+		</article>
+		<hr>
+	<? endforeach; ?>
 </section>

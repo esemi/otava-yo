@@ -21,7 +21,7 @@ class App_Model_Audio
 	{
 		$tracks = $this->_audioTable->getAll();
 		foreach( $tracks as &$track ){
-			$track['audio_link'] = $this->_prepareAudioLink($track['media_link']);
+			$track['audio_link'] = $this->_prepareAudioLink($track['id']);
 		}
 		return $tracks;
 	}
@@ -53,21 +53,21 @@ class App_Model_Audio
 		if( !is_null($track) ){
 			$track['album'] = $this->_albumTable->getAlbumById($track['album_id']);
 			$track['img_link'] = $this->_prepareAlbumImgLink($track['album_id']);
-			$track['audio_link'] = $this->_prepareAudioLink($track['media_link']);
+			$track['audio_link'] = $this->_prepareAudioLink($track['id']);
 		}
 
 		return $track;
 	}
 
-	protected function _prepareAudioLink($source_link)
+	protected function _prepareAudioLink($audio_id)
 	{
 		$media_url = Zend_Controller_Front::getInstance()->getParam('bootstrap')->getOption('media_url');
-		return sprintf("%s/%s", $media_url, $source_link);
+		return sprintf("%s/%s", $media_url, $this->_generateAudioFile($audio_id));
 	}
 
-	protected function _generateAudioFilename($title)
+	protected function _generateAudioFile($audio_id)
 	{
-		return md5($title) . '_' . time();
+		return sprintf('audio_track_%d.mp3', $audio_id);
 	}
 
 	protected function _prepareAlbumImgLink($album_id)
@@ -78,6 +78,6 @@ class App_Model_Audio
 
 	protected function _generateAlbumImgFilename($album_id)
 	{
-		return sprintf('album_img_%d.png', $album_id);
+		return sprintf('album_img_%d.jpg', $album_id);
 	}
 }
