@@ -4,12 +4,11 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 {
 	protected $_name = 'guestbook';
 
-	public function getLast($limit)
+	public function getAll()
 	{
 		$select = $this->select()
-				->from($this, array('id', 'author', 'date_publish','email', 'city', 'site', 'content'))
-				->order("date_publish DESC")
-				->limit($limit);
+				->from($this, array('id', 'author', 'date_publish' => "DATE_FORMAT(date_publish, '%H:%i %d-%m-%y')",'email', 'city', 'site', 'content'))
+				->order("{$this->_name}.date_publish DESC");
 		return $this->fetchAll($select);
 	}
 
