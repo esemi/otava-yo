@@ -1,6 +1,6 @@
 <img src="/img/foto.jpg" alt="Фото группы ОтаваЁ" class="center-margin main-page-photo">
 
-<a href="<?php echo $this->url(array('id' => $this->concert->id ), 'staticConcertView', true) ?>">
+<a href="<?php echo $this->url(array('id' => ( !is_null($this->concert) ) ? $this->concert->id : 0 ), 'staticConcertView', true) ?>">
 	<section class="nearrest-concert">
 		<div class="nearrest-concert-decor"></div>
 		<? if( !is_null($this->concert) ): ?>
