@@ -78,6 +78,6 @@ class App_Model_Audio
 
 	protected function _generateAlbumImgFilename($album_id)
 	{
-		return sprintf('album_img_%d.png', $album_id);
+		return sprintf('album_img_%d.jpg', $album_id);
 	}
 }

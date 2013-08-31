@@ -7,9 +7,7 @@
 		<article>
 			<hgroup>
 				<h3 class="title-album"><?= $this->escape($album['title']); ?></h3>
-				<? if( !empty($album['year']) ): ?>
-					<time class="album-year" datetime="<?= $this->escape($album['year']); ?>"><?= $this->escape($album['year']); ?></time>
-				<? endif; ?>
+				<time class="album-year" datetime="<?= $this->escape($album['year']); ?>"><?= $this->escape($album['year']); ?></time>
 			</hgroup>
 			<div class="audio-cover">
 				<img alt="обложка альбома «<?= $this->escape($album['title']); ?>»" src="<?= $album['img_link']; ?>">

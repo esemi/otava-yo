@@ -17,7 +17,7 @@ class App_Model_DbTable_Album extends Zend_Db_Table_Abstract
 	{
 		$select = $this->select()
 				->from($this, array('id', 'title', 'year', 'desc'))
-				->order('id DESC');
+				->order('year DESC');
 		return $this->fetchAll($select)->toArray();
 	}
 
