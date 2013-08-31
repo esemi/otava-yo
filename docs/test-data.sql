@@ -8,21 +8,6 @@ SET time_zone = "+00:00";
 --
 
 --
--- Dumping data for table `album`
---
-
-INSERT INTO `album` (`id`, `title`, `year`, `desc`) VALUES
-(1, 'Тестовый альбом', 2011, 'Небольшое описание альбома влдао ывдао вдлыаыв одла ыдл вао'),
-(2, 'Новый альбом', 2010, '');
-
---
--- Dumping data for table `audio`
---
-
-INSERT INTO `audio` (`id`, `album_id`, `title`) VALUES
-(1, 1, 'Тестовый трек');
-
---
 -- Dumping data for table `concert`
 --
 

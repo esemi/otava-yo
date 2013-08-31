@@ -40,3 +40,6 @@ INSERT INTO `audio` (`id`, `album_id`, `title`) VALUES
 (31, 3, 'Песня'),
 (32, 3, 'Хит'),
 (33, 3, 'Вальс Петрова');
+
+UPDATE `otava`.`album` SET `title` = 'Под аптекой',
+`desc` = 'Наш первый альбом' WHERE `album`.`id` =3;
