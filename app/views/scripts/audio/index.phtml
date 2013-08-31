@@ -12,17 +12,17 @@
 			<? if( !empty($album['desc']) ): ?>
 				<p><?= $this->escape($album['desc']); ?></p>
 			<? endif; ?>
-			<ol class="audio-list">
+			<ul class="audio-list">
 				<? foreach($this->audio as $audio): ?>
 					<? if( $album['id'] == $audio['album_id'] ): ?>
 						<li class="js-track" track-id="<?= $this->escape($audio['id']) ?>" media-link="<?= $this->escape($audio['audio_link']) ?>">
+							<div class="js-audio-item-play play"></div>
+							<div class="js-audio-item-stop stop hide"></div>
 							<?= $this->escape($audio['title']) ?>
-							<span class="js-audio-item-play">play</span>
-							<span class="js-audio-item-stop hide">stop</span>
 						</li>
 					<? endif; ?>
 				<? endforeach; ?>
-			</ol>
+			</ul>
 		</article>
 		<hr>
 	<? endforeach; ?>
