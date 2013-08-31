@@ -7,7 +7,7 @@ $this->headMeta()
 $version = $this->cacheVersion();
 
 $this->headScript()->appendFile( "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js");
-$this->headScript()->appendFile( "/js/jPlayer.2.4.0/jquery.jplayer.min.js");
+$this->headScript()->appendFile( "/js/jPlayer/jquery.jplayer.min.js");
 $this->headScript()->appendFile( "/js/main.js?{$version}");
 
 $this->headLink()->appendStylesheet("http://fonts.googleapis.com/css?family=Ruslan+Display&subset=latin,cyrillic-ext");
@@ -39,9 +39,6 @@ echo $this->doctype();
 				<a href="<?php echo $this->url(array(), 'staticIndex', true) ?>">
 					<img src="/img/otava_logo_main.png" class="logo">
 				</a>
-				<!--div>
-					<iframe src="/player.html"></iframe>
-				</div-->
 				<aside class="out-links-block">
 					<a rel="nofollow" target="_blank" href="http://www.youtube.com/user/ABelkin?feature=watch" class="out-links out-link-youtube"></a>
 					<a rel="nofollow" target="_blank" href="http://vk.com/club662700" class="out-links out-link-vk"></a>
