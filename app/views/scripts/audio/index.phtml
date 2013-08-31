@@ -15,7 +15,7 @@
 			<ol class="audio-list">
 				<? foreach($this->audio as $audio): ?>
 					<? if( $album['id'] == $audio['album_id'] ): ?>
-						<li media-link="<?= $this->escape($audio['audio_link']) ?>">
+						<li class="js-track" track-id="<?= $this->escape($audio['id']) ?>" media-link="<?= $this->escape($audio['audio_link']) ?>">
 							<?= $this->escape($audio['title']) ?>
 							<span class="js-audio-item-play">play</span>
 							<span class="js-audio-item-stop hide">stop</span>
