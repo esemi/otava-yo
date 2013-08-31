@@ -66,7 +66,6 @@
 	/*---------------------COMMON CLASSES AND TAGS----------*/
 		html, body {
 			height: 100%;
-			color: #322f2d;
 			font-family: Trebuchet MS, Verdana, sans-serif;
 		}
 
@@ -92,11 +91,14 @@
 			font-family: DSCoptic;
 			src: url(/fonts/DSCOPTIC.TTF);
 		}
-		.menu-links li, .date, .date-bigger, .title, .title-bigger, .title-contacts, .title-page-name,.nearrest-concert-title, .signature, .concert-name, .old-concert-headding, .title-album{
+		.menu-links li, .date, .date-bigger, .title, .title-bigger, .title-contacts, .title-page-name,.nearrest-concert-title, .signature, .concert-name, .old-concert-headding, .title-album, .guest-post-button{
 			font-family: DSCoptic;
 		}
 
 		/*----Common color presets-----------------*/
+		html, body {
+			color: #322f2d;
+		}
 		.menu-block, .menu-links, .footer, .out-links, .last-news, .nearrest-concert{
 			border-top: solid 1px #f1eeec;
 		}
@@ -106,26 +108,31 @@
 		.last-news, .nearrest-concert{
 			background-color: rgba(235, 235, 242, 0.75);
 		}
-
-		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg{
+		.date, .date-bigger, .guest-post-button{
+			background: #872300;
+		}
+		.main-page-photo, .date, .menu-block, .menu-links, .footer, .footer-block, .out-links, .last-news, .nearrest-concert, .field-bg, .guest-post-button{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
-		a, .title, .nearrest-concert-title, .band-photo figcaption, .title-bigger, .title-em,.title-contacts, .title-page-name, .menu-links a, .footer, .date-bigger, .signature, .old-concert-headding, .concert-name, .concert-place, .title-album, .album-year{
+		a, .title, .nearrest-concert-title, .band-photo figcaption, .title-bigger, .title-em,.title-contacts, .title-page-name, .menu-links a, .footer, .date-bigger, .signature, .old-concert-headding, .concert-name, .concert-place, .title-album, .album-year, .guest-post header, .guest-post a:hover{
 			color: #872300;/*brown*/
 		}
 
-		a:hover, a:active, a p:hover{
+		a:hover, a:active, a p:hover, .guest-post a{
 			color: #696046; /*green*/
 		}
 		a p{
 			color: #322f2d; /*dark green*/
+		}
+		.date, .date-bigger, .guest-post-button{
+			color: #ebebf2; /*light grey*/
 		}
 		/*----Links design-----------------*/
 
 		a{
 			text-decoration: none;
 		}
-		p a{
+		p a, .guest-post a:hover{
 			text-decoration: underline;
 		}
 		p a:hover, p a:active{
@@ -146,8 +153,6 @@
 		.date, .date-bigger{
 			text-align: center;
 			letter-spacing: 1px;
-			background: #872300;
-			color: #ebebf2;
 		}
 		.date{
 			display: block;
@@ -182,6 +187,9 @@
 			margin-bottom: 28px;
 		}
 
+		.band-photo figcaption, .album-year{
+			font-weight: bold;
+		}
 		/*----Common position and text position classes-----------------*/
 		.center-margin{
 			margin: 0px auto;
@@ -387,6 +395,8 @@
 
 		/*---END News page------------------------------*/
 
+
+
 		/*---Concert page------------------------------*/
 			.old-concert-headding{
 				margin-bottom: 41px;
@@ -416,6 +426,8 @@
 			}
 		/*---END Concert page------------------------------*/
 
+
+
 		/*---Band page------------------------------*/
 			.band-photo{
 				margin: 0px 0px 21px;
@@ -427,9 +439,10 @@
 			}
 			.band-photo figcaption{
 				margin-bottom: 11px;
-				font-weight: bold;
 			}
 		/*---END Band page------------------------------*/
+
+
 
 		/*---Audio page------------------------------*/
 			.title-album{
@@ -437,7 +450,6 @@
 			}
 			.album-year{
 				display: block;
-				font-weight: bold;
 				margin-bottom: 21px;
 			}
 			.audio-cover{
@@ -455,6 +467,8 @@
 			}
 		/*---END Audio page------------------------------*/
 
+
+
 		/*---Video page------------------------------*/
 			.video-block .video{
 				text-align: center;
@@ -463,6 +477,35 @@
 				margin-bottom: 21px;
 			}
 		/*---END Video page------------------------------*/
+
+
+
+		/*---Guest book page------------------------------*/
+			.guest-post-button{
+				width: 222px;
+				height: 35px;
+				padding-top: 18px;
+				cursor: pointer;
+				text-align: center;
+			}
+			.guest-post .name{
+				margin-right: 5px;
+			}
+			.guest-post .city{
+				margin-right: 3px;
+			}
+			.guest-post .email, .guest-post .site{
+				margin-left: 9px;
+			}
+			.guest-post header{
+				margin-bottom: 11px;
+			}
+			.guest-post time{
+				float: right;
+			}
+		/*---END Guest book page------------------------------*/
+
+
 
 		/*---Contact page------------------------------*/
 			.title-contacts{
