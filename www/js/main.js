@@ -2,12 +2,16 @@
  * Main js file
  */
 
-$(document).ready(function(){
+jQuery(document).ready(function(){
 
-	/**
-	 * jPlayer on main template
-	 */
-	console.log($("#jquery_jplayer_1"));
+	//guest book add form slider
+	jQuery(".js-guestbook-add-button").click(function(){
+		jQuery(".js-guestbook-add-form").removeClass('hide');
+		jQuery(".js-guestbook-add-button").remove();
+	});
+
+
+	//jPlayer on index page
 	$("#jquery_jplayer_1").jPlayer({
 		ready: function(){
 			$(this).jPlayer("setMedia", {
@@ -17,6 +21,4 @@ $(document).ready(function(){
 		swfPath: "/js/jPlayer.2.4.0/",
 		supplied: "mp3"
 	});
-
-
 });

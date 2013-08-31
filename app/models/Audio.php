@@ -13,18 +13,47 @@ class App_Model_Audio
 	}
 
 	/**
+	 * Return all tracks
+	 *
+	 * @return Array
+	 */
+	public function getAllAudio()
+	{
+		$tracks = $this->_audioTable->getAll();
+		foreach( $tracks as &$track ){
+			$track['audio_link'] = $this->_prepareAudioLink($track['media_link']);
+		}
+		return $tracks;
+	}
+
+	/**
+	 * Return all albums
+	 *
+	 * @return Array
+	 */
+	public function getAllAlbum()
+	{
+		$albums = $this->_albumTable->getAll();
+		foreach( $albums as &$album ){
+			$album['img_link'] = $this->_prepareAlbumImgLink($album['id']);
+		}
+		return $albums;
+	}
+
+
+	/**
 	 * Return last audio track
 	 *
 	 * @return Array|null
 	 */
-	public function getLastTrack()
+	public function getRandTrack()
 	{
-		$track = $this->_audioTable->getLastTrack();
+		$track = $this->_audioTable->getRand();
 
 		if( !is_null($track) ){
-			$track['audio_link'] = $this->_prepareAudioLink($track['media_link']);
 			$track['album'] = $this->_albumTable->getAlbumById($track['album_id']);
 			$track['img_link'] = $this->_prepareAlbumImgLink($track['album_id']);
+			$track['audio_link'] = $this->_prepareAudioLink($track['media_link']);
 		}
 
 		return $track;

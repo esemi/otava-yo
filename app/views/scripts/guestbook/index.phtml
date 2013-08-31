@@ -1,16 +1,23 @@
 <section class="field-bg">
 	<h2 class="title-page-name text-center">Гостевая книга</h2>
+	<p class="js-guestbook-add-button">@TODO BUTTON</p>
+	<div class="js-guestbook-add-form <?= (empty($this->postData)) ? 'hide' : ''; ?>">
+		<? if( !empty($this->errorMessage) ): ?>
+			<div><?= $this->escape($this->errorMessage); ?></div>
+		<? endif; ?>
+		<?= $this->partial('Partials/guestbook-new-post.phtml', array('postData' => $this->postData,'recaptcha' => $this->recaptcha)); ?>
+	</div>
+
 	<? foreach( $this->notes as $item ): ?>
 		<div>
-		<?= $this->escape($item->id); ?><br>
-		<?= $this->escape($item->author); ?><br>
-		<?= $this->escape($item->email); ?><br>
-		<?= $this->escape($item->city); ?><br>
-		<?= $this->escape($item->site); ?><br>
-		<?= $this->escape($item->date_publish); ?><br>
-		<?= $this->escape($item->content); ?>
+			<?= $this->escape($item->id); ?><br>
+			<?= $this->escape($item->author); ?><br>
+			<?= $this->escape($item->email); ?><br>
+			<?= $this->escape($item->city); ?><br>
+			<?= $this->escape($item->site); ?><br>
+			<?= $this->escape($item->date_publish); ?><br>
+			<?= $this->escape($item->content); ?>
 		</div>
 	<? endforeach; ?>
 
-	<a href="<?php echo $this->url(array(), 'addPostGuestbook', true) ?>">добавить сообщение</a>
 </section>
