@@ -13,6 +13,7 @@
 *.phtml text
 *.js text
 *.css text
+*.sql text
 
 # Standard to msysgit
 *.doc    diff=astextplain
