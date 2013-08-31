@@ -11,15 +11,47 @@ jQuery(document).ready(function(){
 	});
 
 
-	//jPlayer on index page
-	res = jQuery("#jquery_jplayer_1").jPlayer({
-		ready: function(){
-			$(this).jPlayer("setMedia", {
-				mp3: "/media/d464efc8a6963167a66667e27875ff2c_1377176502.mp3"
-			});
-		},
-		swfPath: "/js/jPlayer/",
-		supplied: "mp3"
-	});
-	console.log(res);
+	//jPlayer on audio page
+	(function(){
+
+		function stopAllTracks(){
+			jQuery('.js-audio-item-stop').hide();
+			jQuery('.js-audio-item-play').show();
+		}
+
+		function playTrack(elem){
+			var li = jQuery(elem).parents('li:first');
+			li.find('.js-audio-item-stop').show();
+			li.find('.js-audio-item-play').hide();
+		}
+
+		//jPlayer init
+		jQuery("#jquery_jplayer_audio").jPlayer({
+			ready: function(){
+				var player = jQuery(this);
+
+				//play buttons
+				jQuery('.js-audio-item-play').click(function(){
+					stopAllTracks();
+					playTrack(this);
+					player.jPlayer("setMedia", { mp3: jQuery(this).parents('li:first').attr('media-link') });
+					player.jPlayer("play");
+				});
+
+				//stop buttons
+				jQuery('.js-audio-item-stop').click(function(){
+					stopAllTracks();
+					player.jPlayer("clearMedia");
+				});
+			},
+
+			//@TODO when ended - play next audio
+
+			volume: 1.0,
+			swfPath: "/js/jPlayer/",
+			supplied: "mp3"
+		});
+	})();
+
+
 });
