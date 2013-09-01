@@ -264,9 +264,10 @@
 		}
 		.out-links{
 			display: inline-block;
+			margin-top: 1px;
 			margin-left: 5px;
 			width: 32px;
-			height: 31px;
+			height: 29px;
 			border-radius: 16px;
 		}
 		.out-link-youtube{
