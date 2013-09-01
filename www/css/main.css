@@ -120,20 +120,24 @@
 			color: #696046; /*light green*/
 		}
 		.date, .date-news, .date-concert, .date-concert-old, .guest-button,
-		.guest-form .submit{
+		.guest-form .submit, .music-title{
 			color: #ebebf2; /*light grey*/
 		}
 
 		.out-link-youtube, .out-link-vk, .out-link-kroogi, .out-link-myspace,
 		.donate, a.jp-play, a.jp-pause{
-			background-color: rgba(235, 235, 242, 0.7);
+			background-color: rgba(235, 235, 242, 0.7); /*light grey*/
 		}
 		.menu-links, .footer-block, .last-news, .nearrest-concert, .field-bg,
-		.out-links:hover, .last-news:hover, .nearrest-concert:hover, .donate:hover{
-			background-color: rgba(235, 235, 242, 0.8);
+		.out-links:hover, .last-news:hover, .nearrest-concert:hover,
+		.donate:hover, a.jp-play:hover, a.jp-pause:hover{
+			background-color: rgba(235, 235, 242, 0.8); /*light grey*/
 		}
 		.last-news, .nearrest-concert{
-			background-color: rgba(235, 235, 242, 0.75);
+			background-color: rgba(235, 235, 242, 0.75); /*light grey*/
+		}
+		.music-title{
+			background-color: rgba(105, 96, 70, 0.8); /*light green*/
 		}
 		.date, .date-news, .date-concert, .guest-button, .guest-form .submit{
 			background-color: #872300; /*brown*/
@@ -326,6 +330,7 @@
 
 	/*---Content------------*/
 		.content{
+			position: relative;
 			width: 940px;
 			margin: 0px auto;
 		}
@@ -378,8 +383,9 @@
 
 			/*--concert--*/
 				.nearrest-concert{
-					position: relative;
 					float: right;
+					display: inline-block;
+					position: relative;
 					margin-right: 9px;
 				}
 				.nearrest-concert-date{
@@ -398,11 +404,25 @@
 					top: -1px;
 					background: url(/img/sprite.png) -22px -32px no-repeat;
 				}
-
+			.right{
+				width: 309px;
+				float: right;
+			}
 			/*--music--*/
 				.music{
+					width: 327px;
 					float: right;
-					margin: 260px 32px 0px;
+					margin: 42px 0px 0px;
+				}
+				.music-title{
+					position: relative;
+					height: 23px;
+					width: 245px;
+					float: left;
+					padding-top: 2px;
+					margin-top: 27px;
+					margin-left: 73px;
+					z-index: -1;
 				}
 				.jp-stop, .jp-mute, .jp-unmute, .jp-volume-max, .jp-progress,
 				.jp-volume-bar, .jp-time-holder, .jp-title {
@@ -413,10 +433,10 @@
 					display:block;
 				}
 
-				a.jp-play, a.jp-pause {
-					border-radius: 26px;
-					width:53px;
-					height:52px;
+				.jp-audio, a.jp-play, a.jp-pause {
+					border-radius: 38px;
+					width:75px;
+					height:74px;
 				}
 
 				a.jp-play {
@@ -426,19 +446,19 @@
 				}
 				a.jp-play:hover {
 					background-image: url(/img/sprite.png);
-					background-position: 0px -130px;
+					background-position: 0px -152px;
 					background-repeat: no-repeat;
 				}
 				a.jp-pause {
 					display: none;
 					background-image: url(/img/sprite.png);
-					background-position: -53px -77px;
+					background-position: -75px -77px;
 					background-repeat: no-repeat;
 				}
 				a.jp-pause:hover {
 					display: none;
 					background-image: url(/img/sprite.png);
-					background-position: -53px -130px;
+					background-position: -75px -152px;
 					background-repeat: no-repeat;
 				}
 
