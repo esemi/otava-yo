@@ -29,4 +29,9 @@ class IndexController extends Zend_Controller_Action
 	{
 		$this->view->headTitle('Контакты');
 	}
+
+	public function donateAction()
+	{
+		$this->view->headTitle('Поддержать проект');
+	}
 }

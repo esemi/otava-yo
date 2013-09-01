@@ -40,7 +40,9 @@ echo $this->doctype();
 					<img src="/img/otava_logo_main.png" class="logo">
 				</a>
 				<a href="#">
-					<aside class="donate">Поддержать проект</aside>
+					<aside class="donate">
+						<a href="<?php echo $this->url(array(), 'staticDonate', true) ?>">Поддержать проект</a>
+					</aside>
 				</a>
 				<aside class="out-links-block">
 					<a rel="nofollow" target="_blank" href="http://www.youtube.com/user/ABelkin?feature=watch" class="out-links out-link-youtube"></a>
