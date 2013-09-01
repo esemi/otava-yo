@@ -101,7 +101,7 @@
 		.menu-links li, .date, .date-news, .title, .title-bigger, .title-contacts,
 		.title-page-name,.nearrest-concert-title, .signature, .concert-name,
 		.old-concert-headding, .date-concert, .date-concert-old, .title-album,
-		.guest-button, .guest-form .submit{
+		.guest-button, .guest-form .submit, .donate{
 			font-family: DSCoptic;
 		}
 
@@ -113,7 +113,7 @@
 		.title-em,.title-contacts, .title-page-name, .menu-links a, .footer,
 		.date-news, .signature, .old-concert-headding, .concert-name,
 		.concert-place, .title-album, .album-year, .guest-post header,
-		.guest-post a:hover, .album-desc .list span{
+		.guest-post a:hover, .album-desc .list span, .donate{
 			color: #872300;/*brown*/
 		}
 		a:hover, a:active, a p:hover, .guest-post a{
@@ -124,8 +124,11 @@
 			color: #ebebf2; /*light grey*/
 		}
 
+		.out-link-youtube, .out-link-vk, .out-link-kroogi, .out-link-myspace, .donate{
+			background-color: rgba(235, 235, 242, 0.7);
+		}
 		.menu-links, .footer-block, .last-news, .nearrest-concert, .field-bg,
-		.out-links:hover, .last-news:hover, .nearrest-concert:hover{
+		.out-links:hover, .last-news:hover, .nearrest-concert:hover, .donate:hover{
 			background-color: rgba(235, 235, 242, 0.8);
 		}
 		.last-news, .nearrest-concert{
@@ -139,13 +142,13 @@
 		}
 
 		.menu-block, .menu-links, .footer, .out-links, .last-news,
-		.nearrest-concert{
+		.nearrest-concert, .donate{
 			border-top: solid 1px #f1eeec; /*grey*/
 		}
 
 		.main-page-photo, .date, .menu-block, .menu-links, .footer,
 		.footer-block, .out-links, .last-news, .nearrest-concert, .field-bg,
-		.guest-button, .guest-form .submit{
+		.guest-button, .guest-form .submit, .donate{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
 
@@ -166,7 +169,7 @@
 			background: url('/img/bg-menu.png') repeat-x;
 		}
 
-		.header, .menu-links, .footer-block{
+		.menu-links, .footer-block{
 			margin: 0px auto;
 			width: 898px;
 			padding-left: 21px;
@@ -242,7 +245,10 @@
 
 	/*---Header---------------------------------*/
 		.header{
+			margin: 0px auto;
+			width: 919px;
 			padding-top: 12px;
+			padding-left: 21px;
 		}
 		.logo{
 			position: relative;
@@ -250,30 +256,46 @@
 			display: inline-block;
 			margin-bottom: -21px;
 		}
-		.out-links-block{
+
+		.out-links-block, .donate{
 			margin-top: 36px;
 			float: right;
 		}
 		.out-links{
 			display: inline-block;
-			margin-left: 8px;
+			margin-left: 5px;
 			width: 32px;
 			height: 31px;
 			border-radius: 16px;
 		}
 		.out-link-youtube{
-			background: url(/img/sprite.png) 0px 0px, rgba(235, 235, 242, 0.7) no-repeat;
+			background-image: url(/img/sprite.png);
+			background-position: 0px 0px;
+			background-repeat: no-repeat;
 		}
 		.out-link-vk{
-			background: url(/img/sprite.png) 96px 0px, rgba(235, 235, 242, 0.7) no-repeat;
+			background-image: url(/img/sprite.png);
+			background-position: -32px 0px;
+			background-repeat: no-repeat;
 		}
 		.out-link-kroogi{
-			background: url(/img/sprite.png) 63px 0px, rgba(235, 235, 242, 0.7) no-repeat;
+			background-image: url(/img/sprite.png);
+			background-position: -65px 0px;
+			background-repeat: no-repeat;
 		}
 		.out-link-myspace{
-			background: url(/img/sprite.png) 32px 0px, rgba(235, 235, 242, 0.7) no-repeat;
+			background-image: url(/img/sprite.png);
+			background-position: -96px 0px;
+			background-repeat: no-repeat;
 		}
 
+		.donate{
+			height: 22px;
+			padding: 9px 11px 0px;
+			margin-left: 32px;
+			font-size: 11px;
+			border-radius: 16px;
+		}
 		/*--menu--*/
 			.menu-block{
 				height: 52px;
