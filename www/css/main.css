@@ -264,9 +264,10 @@
 		}
 		.out-links{
 			display: inline-block;
+			margin-top: 1px;
 			margin-left: 5px;
 			width: 32px;
-			height: 31px;
+			height: 29px;
 			border-radius: 16px;
 		}
 		.out-link-youtube{
@@ -399,13 +400,12 @@
 				}
 
 			/*--music--*/
-				.player{
-					visibility: hidden;
+				.music{
 					float: right;
-					margin-top: -32px;
+					margin: 260px 32px 0px;
 				}
 				.jp-stop, .jp-mute, .jp-unmute, .jp-volume-max, .jp-progress,
-				.jp-volume-bar, .jp-time-holder {
+				.jp-volume-bar, .jp-time-holder, .jp-title {
 					display: none !important;
 				}
 
@@ -420,17 +420,26 @@
 				}
 
 				a.jp-play {
-
+					background-image: url(/img/sprite.png);
+					background-position: 0px -77px;
+					background-repeat: no-repeat;
 				}
 				a.jp-play:hover {
-
+					background-image: url(/img/sprite.png);
+					background-position: 0px -130px;
+					background-repeat: no-repeat;
 				}
 				a.jp-pause {
-
 					display: none;
+					background-image: url(/img/sprite.png);
+					background-position: -53px -77px;
+					background-repeat: no-repeat;
 				}
 				a.jp-pause:hover {
-
+					display: none;
+					background-image: url(/img/sprite.png);
+					background-position: -53px -130px;
+					background-repeat: no-repeat;
 				}
 
 		/*---END Main page------------------------------*/
@@ -508,6 +517,12 @@
 
 
 		/*---Audio page------------------------------*/
+			.player{
+					visibility: hidden;
+					float: right;
+					margin-top: -32px;
+				}
+
 			.title-album{
 				margin-bottom: 9px;
 			}
