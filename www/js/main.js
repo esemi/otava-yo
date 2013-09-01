@@ -69,4 +69,14 @@ jQuery(document).ready(function(){
 	})();
 
 
+	//jPlayer on index page
+	jQuery("#jquery_jplayer_index").jPlayer({
+		ready: function(){
+			jQuery(this).jPlayer("setMedia", { mp3: '/media/audio_track_1.mp3' });
+		},
+		volume: 1.0,
+		swfPath: "/js/jPlayer/",
+		supplied: "mp3"
+	});
+
 });
