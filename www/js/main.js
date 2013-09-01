@@ -27,7 +27,8 @@ jQuery(document).ready(function(){
 		}
 
 		//jPlayer init
-		jQuery("#jquery_jplayer_audio").jPlayer({
+		console.log('test');
+		res = jQuery("#jquery_jplayer_audio").jPlayer({
 
 			//ready play tracks
 			ready: function(){
@@ -66,6 +67,7 @@ jQuery(document).ready(function(){
 			swfPath: "/js/jPlayer/",
 			supplied: "mp3"
 		});
+		console.log(res);
 	})();
 
 

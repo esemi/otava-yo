@@ -124,7 +124,8 @@
 			color: #ebebf2; /*light grey*/
 		}
 
-		.out-link-youtube, .out-link-vk, .out-link-kroogi, .out-link-myspace, .donate{
+		.out-link-youtube, .out-link-vk, .out-link-kroogi, .out-link-myspace,
+		.donate, a.jp-play, a.jp-pause{
 			background-color: rgba(235, 235, 242, 0.7);
 		}
 		.menu-links, .footer-block, .last-news, .nearrest-concert, .field-bg,
@@ -142,13 +143,13 @@
 		}
 
 		.menu-block, .menu-links, .footer, .out-links, .last-news,
-		.nearrest-concert, .donate{
+		.nearrest-concert, .donate, a.jp-play, a.jp-pause{
 			border-top: solid 1px #f1eeec; /*grey*/
 		}
 
 		.main-page-photo, .date, .menu-block, .menu-links, .footer,
 		.footer-block, .out-links, .last-news, .nearrest-concert, .field-bg,
-		.guest-button, .guest-form .submit, .donate{
+		.guest-button, .guest-form .submit, .donate, a.jp-play, a.jp-pause{
 			box-shadow: 1px 1px 5px 0 #696046;
 		}
 
@@ -372,7 +373,6 @@
 					right: -22px;
 					top: -1px;
 					background: url(/img/sprite.png) 0px -32px no-repeat;
-
 				}
 
 			/*--concert--*/
@@ -399,21 +399,38 @@
 				}
 
 			/*--music--*/
-				.music{
-					margin-top: 32px;
-					width: 335px;
+				.player{
+					visibility: hidden;
 					float: right;
+					margin-top: -32px;
+				}
+				.jp-stop, .jp-mute, .jp-unmute, .jp-volume-max, .jp-progress,
+				.jp-volume-bar, .jp-time-holder {
+					display: none !important;
 				}
 
-				.music-cover{
-					margin: -26px 0px 0px 11px;
-					width: 84px;
-					height: 84px;
+				div.jp-interface ul.jp-controls a {
+					display:block;
 				}
-				.music-player{
-					width:228px;
-					margin-top: 11px;
-					float: right;
+
+				a.jp-play, a.jp-pause {
+					border-radius: 26px;
+					width:53px;
+					height:52px;
+				}
+
+				a.jp-play {
+
+				}
+				a.jp-play:hover {
+
+				}
+				a.jp-pause {
+
+					display: none;
+				}
+				a.jp-pause:hover {
+
 				}
 
 		/*---END Main page------------------------------*/
@@ -528,16 +545,16 @@
 				cursor: pointer;
 			}
 			.play{
-				background: url(/img/sprite_player.png) -26px 0px no-repeat;
+				background: url(/img/sprite.png) -70px -32px no-repeat;
 			}
 			.stop{
-				background: url(/img/sprite_player.png) -13px 0px no-repeat;
+				background: url(/img/sprite.png) -57px -32px no-repeat;
 			}
 			.play:hover{
-				background: url(/img/sprite_player.png) 0px 0px no-repeat;
+				background: url(/img/sprite.png) -44px -32px no-repeat;
 			}
 			.stop:hover{
-				background: url(/img/sprite_player.png) -39px 0px no-repeat;
+				background: url(/img/sprite.png) -83px -32px no-repeat;
 			}
 		/*---END Audio page------------------------------*/
 
