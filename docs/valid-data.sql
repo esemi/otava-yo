@@ -44,3 +44,27 @@ INSERT INTO `audio` (`id`, `album_id`, `title`) VALUES
 
 UPDATE `otava`.`album` SET `title` = 'Под аптекой',
 `desc` = 'Наш первый альбом' WHERE `album`.`id` =3;
+
+
+INSERT INTO `concert` (`id`, `date`, `title`, `link`, `place`, `time`, `cost`, `desc`) VALUES
+(4, '2013-08-23', '', 'http://www.mjr.lt/arc/mjr2012/en/festival/about-festival', 'Lithuania', NULL, NULL, ''),
+(5, '2013-07-10', '', 'http://virufolk.ee/', 'Estonia, Виру', NULL, NULL, ''),
+(6, '2013-07-27', '', '', 'Latvia, Цесис', NULL, NULL, 'Фестиваль организованный лэйблом Lauska по поводу своего юбилея и выхода нового сборника Sviests 5 с нашим участием'),
+(7, '2013-07-15', '', '', 'Austria, Mistelbach', NULL, NULL, 'Концерт в пабе'),
+(8, '2013-07-13', '', 'http://www.wellenklaenge.at', 'Austria', NULL, NULL, ''),
+(9, '2013-07-12', '', 'http://www.wackelsteinfestival.at', 'Austria', NULL, NULL, ''),
+(10, '2013-07-10', 'Kaustinen folk festival', 'http://kaustinen.net/en/', 'Finland', NULL, NULL, ''),
+(11, '2013-07-09', 'Kaustinen folk festival', 'http://kaustinen.net/en/', 'Finland', NULL, NULL, ''),
+(12, '2013-06-30', 'Cекретный летний концерт', '', 'СПб, Восточная африка', NULL, NULL, ''),
+(13, '2013-06-23', 'Фестиваль живой музыки "Троица - всё живое"', 'http://www.3fest.ru', 'Электроугли', NULL, 0, ''),
+(14, '2013-06-22', 'Фестиваль "Солнцестояние"', 'http://www.solarfest.su/', 'Омская область, Муромский район, д. Окунёво', NULL, NULL, ''),
+(15, '2013-06-21', 'Фестиваль "Солнцестояние"', 'http://www.solarfest.su/', 'Омская область, Муромский район, д. Окунёво', NULL, NULL, ''),
+(16, '2013-06-08', 'Фестиваль "Puude taga on inimene"', 'http://puudetagaoninimene.ee/', 'Таллин', NULL, NULL, '');
+
+
+INSERT INTO `video` (`id`, `player_code`, `desc`) VALUES
+(1, '<object height="385" width="480"><param value="http://www.youtube.com/v/ps9RqYpdkX0?fs=1&amp;hl=en_US" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed height="385" width="480" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/ps9RqYpdkX0?fs=1&amp;hl=en_US" quality="low"><param name="quality" value="low"></object>', 'Эфир на канале СТО, 24го Сентября 2009 года. Авторская мелодия А. Белкина, слова народные'),
+(2, '<object height="385" width="640"><param value="http://www.youtube.com/v/Ui2oKFXPHxI?fs=1&amp;hl=en_US" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed height="385" width="640" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/Ui2oKFXPHxI?fs=1&amp;hl=en_US" quality="low"><param name="quality" value="low"></object>', 'Мы сняли клип на песню "про диму и петю"!'),
+(3, '<iframe height="390" frameborder="0" width="480" allowfullscreen="" src="http://www.youtube.com/embed/1A4zZmHCv8k" title="YouTube video player"></iframe>', '"Кадриль", видео с концерта'),
+(4, '<object height="360" width="640">\r\n<param value="http://www.youtube.com/v/YbBU06irWT8?version=3&amp;hl=en_US" name="movie">\r\n<param value="true" name="allowFullScreen">\r\n\r\n<param value="always" name="allowscriptaccess">\r\n<embed height="360" width="640" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/YbBU06irWT8?version=3&amp;hl=en_US" quality="low"><param name="quality" value="low"></object>', 'Новый клип "про ивана groove"'),
+(5, '<object height="360" width="640"><param value="http://www.youtube.com/v/eIa7ZfJUeGU?version=3&amp;hl=en_US" name="movie">\r\n\r\n<param value="true" name="allowFullScreen">\r\n\r\n<param value="always" name="allowscriptaccess">\r\n<embed height="360" width="640" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/eIa7ZfJUeGU?version=3&amp;hl=en_US" quality="low"><param name="quality" value="low"></object>', 'Третий официальный видеоклип фолк-группы Отава Ё, песня на стихи Даниила Хармса. Снято в марте 2012 года во дворе музея Анны Ахматовой, в Санкт-Петербурге');

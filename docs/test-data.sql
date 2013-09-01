@@ -8,15 +8,6 @@ SET time_zone = "+00:00";
 --
 
 --
--- Dumping data for table `concert`
---
-
-INSERT INTO `concert` (`id`, `date`, `title`, `link`, `place`, `time`, `cost`, `desc`) VALUES
-(1, '2013-08-23', 'Latvia, Цесис', 'http://www.mjr.lt/arc/mjr2012/en/festival/about-festival', '', '18:30:00', NULL, 'Фестиваль организованный лэйблом Lauska по поводу своего юбилея и выхода нового сборника Sviests 5 с нашим участием.'),
-(2, '2013-08-12', 'Рыба в рыбе', '', 'СПб, клуб А2 (зал "Мир"),проспект Медиков 3', '23:15:00', 500, 'атата и нету описания'),
-(3, '2013-08-30', 'Рыбонька', 'http://www.mjr.lt/arc/mjr2012/en/festival/about-festival', 'СПб, клуб А2 (зал "Мир"),проспект Медиков 3', NULL, NULL, 'немного описания ещё');
-
---
 -- Dumping data for table `guestbook`
 --
 
@@ -35,10 +26,4 @@ INSERT INTO `news` (`id`, `date_publish`, `title`, `content`) VALUES
 -- Dumping data for table `video`
 --
 
-INSERT INTO `video` (`id`, `player_code`, `desc`) VALUES
-(1, '<object height="385" width="480"><param value="http://www.youtube.com/v/ps9RqYpdkX0?fs=1&amp;hl=en_US" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed height="385" width="480" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/ps9RqYpdkX0?fs=1&amp;hl=en_US" quality="low"><param name="quality" value="low"></object>', 'Эфир на канале СТО, 24го Сентября 2009 года. Авторская мелодия А. Белкина, слова народные'),
-(2, '<object height="385" width="640"><param value="http://www.youtube.com/v/Ui2oKFXPHxI?fs=1&amp;hl=en_US" name="movie"><param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess"><embed height="385" width="640" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/Ui2oKFXPHxI?fs=1&amp;hl=en_US" quality="low"><param name="quality" value="low"></object>', 'Мы сняли клип на песню "про диму и петю"!'),
-(3, '<iframe height="390" frameborder="0" width="480" allowfullscreen="" src="http://www.youtube.com/embed/1A4zZmHCv8k" title="YouTube video player"></iframe>', '"Кадриль", видео с концерта'),
-(4, '<object height="360" width="640">\r\n<param value="http://www.youtube.com/v/YbBU06irWT8?version=3&amp;hl=en_US" name="movie">\r\n<param value="true" name="allowFullScreen">\r\n\r\n<param value="always" name="allowscriptaccess">\r\n<embed height="360" width="640" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/YbBU06irWT8?version=3&amp;hl=en_US" quality="low"><param name="quality" value="low"></object>', 'Новый клип "про ивана groove"'),
-(5, '<object height="360" width="640"><param value="http://www.youtube.com/v/eIa7ZfJUeGU?version=3&amp;hl=en_US" name="movie">\r\n\r\n<param value="true" name="allowFullScreen">\r\n\r\n<param value="always" name="allowscriptaccess">\r\n<embed height="360" width="640" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="http://www.youtube.com/v/eIa7ZfJUeGU?version=3&amp;hl=en_US" quality="low"><param name="quality" value="low"></object>', 'Третий официальный видеоклип фолк-группы Отава Ё, песня на стихи Даниила Хармса. Снято в марте 2012 года во дворе музея Анны Ахматовой, в Санкт-Петербурге');
 SET FOREIGN_KEY_CHECKS=1;
