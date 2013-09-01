@@ -106,3 +106,5 @@ CREATE TABLE IF NOT EXISTS `video` (
 --
 ALTER TABLE `audio`
   ADD CONSTRAINT `audio_ibfk_1` FOREIGN KEY (`album_id`) REFERENCES `album` (`id`);
+
+ALTER TABLE `album` CHANGE `desc` `desc` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;

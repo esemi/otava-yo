@@ -113,7 +113,7 @@
 		.title-em,.title-contacts, .title-page-name, .menu-links a, .footer,
 		.date-news, .signature, .old-concert-headding, .concert-name,
 		.concert-place, .title-album, .album-year, .guest-post header,
-		.guest-post a:hover{
+		.guest-post a:hover, .album-desc .list span{
 			color: #872300;/*brown*/
 		}
 		a:hover, a:active, a p:hover, .guest-post a{
@@ -163,7 +163,7 @@
 
 		/*----Special blocks design-----------------*/
 		.menu-block, .footer{
-				background: url('/img/bg-menu.png') repeat-x;
+			background: url('/img/bg-menu.png') repeat-x;
 		}
 
 		.header, .menu-links, .footer-block{
@@ -476,9 +476,18 @@
 				display: block;
 				margin-bottom: 21px;
 			}
-			.audio-cover{
+			.album-cover{
 				float: right;
+				margin: 0px 0px 32px 32px;
 			}
+
+			.album-desc .list{
+				margin-left: 53px;
+			}
+			.album-desc .list li{
+				margin-bottom: 11px;
+			}
+
 			.audio-list{
 				margin-top: 21px;
 			}
