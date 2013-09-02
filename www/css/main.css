@@ -205,6 +205,7 @@
 		.title, .title-contacts, .title-page-name, .old-concert-headding,
 		.title-album, .guest-post-button, .guest-form .submit{
 			font-size: 14px;
+			line-height: 21px;
 		}
 		.title-bigger, .nearrest-concert-title{
 			font-size: 16px;
@@ -415,14 +416,12 @@
 					margin: 42px 0px 0px;
 				}
 				.music-title{
-					position: relative;
 					height: 23px;
 					width: 245px;
 					float: left;
 					padding-top: 2px;
 					margin-top: 27px;
 					margin-left: 73px;
-					z-index: -1;
 				}
 				.jp-stop, .jp-mute, .jp-unmute, .jp-volume-max, .jp-progress,
 				.jp-volume-bar, .jp-time-holder, .jp-title {
@@ -434,9 +433,11 @@
 				}
 
 				.jp-audio, a.jp-play, a.jp-pause {
+					position: relative;
 					border-radius: 38px;
 					width:75px;
 					height:74px;
+					z-index: 2;
 				}
 
 				a.jp-play {
@@ -556,10 +557,10 @@
 			}
 
 			.album-desc .list{
-				margin-left: 53px;
+				margin: 11px 0px 11px 53px;
 			}
 			.album-desc .list li{
-				margin-bottom: 11px;
+				margin-bottom: 9px;
 			}
 
 			.audio-list{
