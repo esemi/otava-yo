@@ -91,7 +91,7 @@
 			text-align: center;
 			margin: 11px 0px;
 			font-weight: bold;
-			color:#a61300;
+
 		}
 		/*----Fonts-----------------*/
 		@font-face{
@@ -109,6 +109,9 @@
 		html, body, a p {
 			color: #322f2d; /*dark green*/
 		}
+		.error{
+			color:#a61300;/*red*/
+		}
 		a, .title, .nearrest-concert-title, .band-photo figcaption, .title-bigger,
 		.title-em,.title-contacts, .title-page-name, .menu-links a, .footer,
 		.date-news, .signature, .old-concert-headding, .concert-name,
@@ -120,26 +123,28 @@
 			color: #696046; /*light green*/
 		}
 		.date, .date-news, .date-concert, .date-concert-old, .guest-button,
-		.guest-form .submit, .music-title{
+		.guest-form .submit, .music-title, .jp-no-solution, .jp-no-solution a{
 			color: #ebebf2; /*light grey*/
 		}
 
+
 		.out-link-youtube, .out-link-vk, .out-link-kroogi, .out-link-myspace,
 		.donate, a.jp-play, a.jp-pause{
-			background-color: rgba(235, 235, 242, 0.7); /*light grey*/
+			background: rgba(235, 235, 242, 0.7); /*light grey*/
 		}
-		.menu-links, .footer-block, .last-news, .nearrest-concert, .field-bg,
+		.menu-links, .footer-block, .field-bg,
 		.out-links:hover, .last-news:hover, .nearrest-concert:hover,
 		.donate:hover, a.jp-play:hover, a.jp-pause:hover{
-			background-color: rgba(235, 235, 242, 0.8); /*light grey*/
+			background: rgba(235, 235, 242, 0.8); /*light grey*/
 		}
 		.last-news, .nearrest-concert{
-			background-color: rgba(235, 235, 242, 0.75); /*light grey*/
+			background: rgba(235, 235, 242, 0.75); /*light grey*/
 		}
 		.music-title{
 			background-color: rgba(105, 96, 70, 0.8); /*light green*/
 		}
-		.date, .date-news, .date-concert, .guest-button, .guest-form .submit{
+		.date, .date-news, .date-concert, .guest-button, .guest-form .submit,
+		.jp-no-solution{
 			background-color: #872300; /*brown*/
 		}
 		.date-concert-old{
@@ -151,10 +156,12 @@
 			border-top: solid 1px #f1eeec; /*grey*/
 		}
 
-		.main-page-photo, .date, .menu-block, .menu-links, .footer,
+		.main-page-photo, .date, .menu-block, .menu-links,
 		.footer-block, .out-links, .last-news, .nearrest-concert, .field-bg,
 		.guest-button, .guest-form .submit, .donate, a.jp-play, a.jp-pause{
 			box-shadow: 1px 1px 5px 0 #696046;
+			-webkit-box-shadow: 1px 1px 5px 0 #696046;
+			-moz-box-shadow: 1px 1px 5px 0 #696046;
 		}
 
 		/*----Links design-----------------*/
@@ -162,10 +169,10 @@
 		a{
 			text-decoration: none;
 		}
-		p a, .guest-post a:hover{
+		p a, .guest-post a:hover, .jp-no-solution a{
 			text-decoration: underline;
 		}
-		p a:hover, p a:active{
+		p a:hover, p a:active, .jp-no-solution a:hover, .jp-no-solution a:active{
 			text-decoration: none;
 		}
 
@@ -274,6 +281,8 @@
 			width: 32px;
 			height: 29px;
 			border-radius: 16px;
+			-webkit-border-radius: 16px;
+			-moz-border-radius: 16px;
 		}
 		.out-link-youtube{
 			background-image: url(/img/sprite.png);
@@ -406,7 +415,7 @@
 					background: url(/img/sprite.png) -22px -32px no-repeat;
 				}
 			.right{
-				width: 309px;
+				width: 327px;
 				float: right;
 			}
 			/*--music--*/
@@ -427,12 +436,17 @@
 				.jp-volume-bar, .jp-time-holder, .jp-title {
 					display: none !important;
 				}
-
 				div.jp-interface ul.jp-controls a {
 					display:block;
 				}
+				.jp-no-solution{
+					width: 94%;
+					margin-top: 21px;
+					padding: 5px;
+				}
 
-				.jp-audio, a.jp-play, a.jp-pause {
+
+				a.jp-play, a.jp-pause {
 					position: relative;
 					border-radius: 38px;
 					width:75px;
