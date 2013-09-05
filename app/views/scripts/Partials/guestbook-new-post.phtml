@@ -38,7 +38,7 @@
 	<label>Сообщение: </label>
 	<textarea name="message" class="message" placeholder="сообщение*" maxlength="10000"><?= (isset($this->postData['message'])) ? $this->escape($this->postData['message']) : ''; ?></textarea><br>
 	<div class="guest-recaptcha">
-		<?php echo $this->recaptcha->getHTML(); ?>
+		<?= $this->recaptcha->getHTML(); ?>
 	</div>
 	<input class="submit" type="submit" name="отправить" value="отправить">
 </form>

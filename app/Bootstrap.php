@@ -28,6 +28,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$router->addRoute('staticContacts',
 				new Zend_Controller_Router_Route_Static('/contacts',
 						array( 'controller' => 'index', 'action' => 'contact' )));
+
 		$router->addRoute('staticNews',
 				new Zend_Controller_Router_Route_Static('/news',
 						array( 'controller' => 'news', 'action' => 'index' )));
@@ -36,6 +37,18 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 						array( 'controller' => 'news', 'action' => 'index'),
 						array( 'id' => 1),
 						'news#view%d'));
+		$router->addRoute('staticNewsCreate',
+				new Zend_Controller_Router_Route_Static('/news/create',
+						array( 'controller' => 'news', 'action' => 'create' )));
+		$router->addRoute('staticNewsEdit',
+				new Zend_Controller_Router_Route('/news/edit/:idN/',
+						array( 'controller' => 'news', 'action' => 'edit' ),
+						array( 'idN' => '\d+' )));
+		$router->addRoute('staticNewsDelete',
+				new Zend_Controller_Router_Route('/news/delete/:idN',
+						array( 'controller' => 'news', 'action' => 'delete' ),
+						array( 'idN' => '\d+' )));
+
 		$router->addRoute('staticConcert',
 				new Zend_Controller_Router_Route_Static('/concerts',
 						array( 'controller' => 'concert', 'action' => 'index' )));

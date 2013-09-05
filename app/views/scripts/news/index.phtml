@@ -1,5 +1,17 @@
+<?php
+
+$authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess();
+
+?>
+
+
 <section class="field-bg">
 	<h2 class="title-page-name text-center">новости</h2>
+
+	<? if( $authFlag ): ?>
+		<a href="<?= $this->url(array(), 'staticNewsCreate', true) ?>">create</a>
+	<? endif; ?>
+
 	<?
 	$currentYear = date('Y');
 	foreach( $this->news as $item ):
@@ -16,7 +28,7 @@
 					<?= $this->prepareConcertDate($item->date_publish); ?>
 				</time>
 				<h3 class="title">
-					<a name="<?= sprintf("view%d", $item->id); ?>" href="<?php echo $this->url(array('id' => $item->id ), 'staticNewsView', true) ?>">
+					<a name="<?= sprintf("view%d", $item->id); ?>" href="<?= $this->url(array('id' => $item->id ), 'staticNewsView', true) ?>">
 						<?= $this->escape($item->title); ?>
 					</a>
 				</h3>
@@ -24,6 +36,10 @@
 			<?= $item->content; ?>
 			<footer>
 				<p class="signature"><?= $this->escape($this->moder_author); ?></p>
+				<? if( $authFlag ): ?>
+					<a href="<?= $this->url(array('idN' => $item->id ), 'staticNewsEdit', true) ?>">edit</a>
+					<a href="<?= $this->url(array('idN' => $item->id ), 'staticNewsDelete', true) ?>">delete</a>
+				<? endif; ?>
 			</footer>
 		</article>
 		<hr>
