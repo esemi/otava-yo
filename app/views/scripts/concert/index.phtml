@@ -44,7 +44,16 @@
 
 	<section>
 		<h2 class="old-concert-headding text-center">прошедшие концерты</h2>
-		<? foreach( $this->oldConcerts as $item ): ?>
+		<?php
+		$currentYear = date('Y');
+		foreach( $this->oldConcerts as $item ):
+			$itemYear = DateTime::createFromFormat('Y-m-d', $item->date)->format('Y');
+			if( $itemYear != $currentYear )
+			{
+				printf('<h3 class="old-concert-headding text-center">%s</h3>', $this->escape($itemYear));
+				$currentYear = $itemYear;
+			}
+		?>
 			<article class="concert-block">
 				<header>
 					<time class="date-concert-old" datetime="<?= $this->prepareConcertDatetime($item->date, $item->time); ?>">
