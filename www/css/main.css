@@ -77,8 +77,6 @@
 
 		hr{
 			margin: 32px 0px;
-		/*	color: rgba(135,35,0, 0.4);*/
-		/*	color: rgba(105,69,70, 0.3);*/
 			color: rgba(235,235,242, 0.5);
 			clear: both;
 		}
@@ -96,7 +94,10 @@
 		/*----Fonts-----------------*/
 		@font-face{
 			font-family: DSCoptic;
-			src: url(/fonts/DSCOPTIC.TTF);
+			src: url('/fonts/DSCOPTIC.eot?') format('eot'),
+			url('/fonts/DSCOPTIC.woff') format('woff'),
+			url('/fonts/DSCOPTIC.ttf') format('truetype'),
+			url('/fonts/DSCOPTIC.svg#DSCoptic') format('svg');
 		}
 		.menu-links li, .date, .date-news, .title, .title-bigger, .title-contacts,
 		.title-page-name,.nearrest-concert-title, .signature, .concert-name,
@@ -319,9 +320,10 @@
 			.menu-links{
 			 /* сделать совместимость с ие*/
 				height: 100%;
-				 position: relative;
+				position: relative;
 				z-index: 1;
 				text-align: justify;
+				text-align-last: justify;
 			}
 			/*--Inline justify hack------*/
 			.menu-links:after, .band-photo:after{
@@ -332,6 +334,7 @@
 			.menu-links li{
 				margin-top: 22px;
 				display: inline-block;
+				text-align: center;
 				font-size: 14px;
 			}
 			.menu-links a{
@@ -578,7 +581,7 @@
 			}
 
 			.audio-list{
-				margin-top: 21px;
+				margin-bottom: 21px;
 			}
 			.audio-list li{
 				margin: 0px 0px 11px 32px;
