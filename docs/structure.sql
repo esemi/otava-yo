@@ -108,3 +108,4 @@ ALTER TABLE `audio`
   ADD CONSTRAINT `audio_ibfk_1` FOREIGN KEY (`album_id`) REFERENCES `album` (`id`);
 
 ALTER TABLE `album` CHANGE `desc` `desc` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;
+ALTER TABLE `concert` CHANGE `cost` `cost` VARCHAR( 100 ) NOT NULL;
