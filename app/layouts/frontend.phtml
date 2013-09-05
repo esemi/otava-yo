@@ -50,6 +50,9 @@ echo $this->doctype();
 					<a rel="nofollow" target="_blank" href="http://otavae.kroogi.ru" class="out-links out-link-kroogi"></a>
 					<a rel="nofollow" target="_blank" href="http://myspace.com/otavae" class="out-links out-link-myspace"></a>
 				</aside>
+				<? if( Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess() ): ?>
+					Вы залогинены! <a href="<?php echo $this->url(array(), 'logout', true) ?>">логаут</a>
+				<? endif; ?>
 			</header>
 			<div class="menu-block">
 				<nav class="menu-links">
