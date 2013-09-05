@@ -7,8 +7,10 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 	public function getAll()
 	{
 		$select = $this->select()
-				->from($this, array('id', 'author', 'date_publish' => "DATE_FORMAT(date_publish, '%H:%i %d-%m-%y')",'email', 'city', 'site', 'content'))
-				->order("{$this->_name}.date_publish DESC");
+				->from($this, array(
+					'id', 'author', 'user_date' => "DATE_FORMAT(date_publish, '%H:%i %d-%m-%y')",
+					'email', 'city', 'site', 'content', 'iso_date' => "DATE_FORMAT(date_publish, '%Y-%m-%dT%H:%i')"))
+				->order("date_publish DESC");
 		return $this->fetchAll($select);
 	}
 
