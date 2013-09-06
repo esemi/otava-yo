@@ -22,13 +22,13 @@ echo $this->doctype();
 ?>
 <html>
 	<head>
-		<?php echo $this->headMeta(); ?>
-		<?php echo $this->headTitle(); ?>
-		<?php echo $this->render('counters.phtml'); ?>
+		<?= $this->headMeta(); ?>
+		<?= $this->headTitle(); ?>
+		<?= $this->render('counters.phtml'); ?>
 		<link rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
 		<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon"/>
 		<link rel="author" href="/humans.txt" />
-		<?php echo $this->headLink(); ?>
+		<?= $this->headLink(); ?>
 		<!--[if lt IE 9]>
 			<script src="/js/html5shiv.js"></script>
 			<link type="text/css" rel="stylesheet" media="screen" href="/css/style_less_ie8.css">
@@ -39,7 +39,7 @@ echo $this->doctype();
 			<header class="header" >
 				<a href="#">
 					<aside class="donate">
-						<a href="<?php echo $this->url(array(), 'staticDonate', true) ?>">Поддержать проект</a>
+						<a href="<?= $this->url(array(), 'staticDonate', true) ?>">Поддержать проект</a>
 					</aside>
 				</a>
 				<aside class="out-links-block">
@@ -51,22 +51,25 @@ echo $this->doctype();
 				<a href="<?php echo $this->url(array(), 'staticIndex', true) ?>">
 					<img src="/img/otava_logo_main.png" class="logo">
 				</a>
+				<? if( Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess() ): ?>
+					Вы залогинены! <a href="<?= $this->url(array(), 'logout', true) ?>">логаут</a>
+				<? endif; ?>
 			</header>
 			<div class="menu-block">
 				<nav class="menu-links">
-					<li><a href="<?php echo $this->url(array(), 'staticIndex', true) ?>">главная</a></li>
-					<li><a href="<?php echo $this->url(array(), 'staticNews', true) ?>">новости</a></li>
-					<li><a href="<?php echo $this->url(array(), 'staticConcert', true) ?>">концерты</a></li>
-					<li><a href="<?php echo $this->url(array(), 'staticBand', true) ?>">о группе</a></li>
-					<li><a href="<?php echo $this->url(array(), 'staticAudio', true) ?>">аудио</a></li>
-					<li><a href="<?php echo $this->url(array(), 'staticVideo', true) ?>">видео</a></li>
-					<li><a href="<?php echo $this->url(array(), 'staticGuestbook', true) ?>">гостевая</a></li>
-					<li><a href="<?php echo $this->url(array(), 'staticContacts', true) ?>">контакты</a></li>
+					<li><a href="<?= $this->url(array(), 'staticIndex', true) ?>">главная</a></li>
+					<li><a href="<?= $this->url(array(), 'staticNews', true) ?>">новости</a></li>
+					<li><a href="<?= $this->url(array(), 'staticConcert', true) ?>">концерты</a></li>
+					<li><a href="<?= $this->url(array(), 'staticBand', true) ?>">о группе</a></li>
+					<li><a href="<?= $this->url(array(), 'staticAudio', true) ?>">аудио</a></li>
+					<li><a href="<?= $this->url(array(), 'staticVideo', true) ?>">видео</a></li>
+					<li><a href="<?= $this->url(array(), 'staticGuestbook', true) ?>">гостевая</a></li>
+					<li><a href="<?= $this->url(array(), 'staticContacts', true) ?>">контакты</a></li>
 				</nav>
 			</div>
 
 			<div class="content">
-				<?php echo $this->layout()->content; ?>
+				<?= $this->layout()->content; ?>
 			</div>
 			<div class="push"></div>
 		</div>
@@ -77,6 +80,6 @@ echo $this->doctype();
 			</footer>
 		</div>
 
-		<?php echo $this->headScript(); ?>
+		<?= $this->headScript(); ?>
 	</body>
 </html>

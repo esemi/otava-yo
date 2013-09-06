@@ -1,0 +1,4 @@
+<? if( !empty($this->errorMessage) ): ?>
+	<p class="error"><?= $this->escape($this->errorMessage); ?></p>
+<? endif; ?>
+<?= $this->partial('Partials/news-create-edit-form.phtml', array('newsData' => $this->newsData)); ?>

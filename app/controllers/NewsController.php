@@ -11,4 +11,30 @@ class NewsController extends Zend_Controller_Action
 
 		$this->view->moder_author = $this->getFrontController()->getParam('bootstrap')->getOption('guestbook_reserved_name');
 	}
+
+
+	public function createAction()
+	{
+		$this->view->headTitle('Новости');
+		$this->view->headTitle('Создание');
+
+		// @todo release
+	}
+
+	public function editAction()
+	{
+		$this->view->headTitle('Новости');
+		$this->view->headTitle('Редактирование');
+
+		// @todo release
+	}
+
+	public function deleteAction()
+	{
+		$this->view->headTitle('Новости');
+		$this->view->headTitle('Удаление');
+
+		// @todo release
+	}
+
 }
