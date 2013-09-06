@@ -3,34 +3,34 @@
 		<tbody>
 			<tr>
 				<td>
-					<label>Имя: </label>
+					<label for="author">Имя: </label>
 				</td>
 				<td>
-					<input type="text" name="author" value="<?= (isset($this->postData['author'])) ? $this->escape($this->postData['author']) : ''; ?>" placeholder="имя*" maxlength="100"/><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label>email: </label>
-				</td>
-				<td>
-					<input type="email" name="email" value="<?= (isset($this->postData['email'])) ? $this->escape($this->postData['email']) : ''; ?>" placeholder="email" maxlength="150"/><br>
+					<input type="text" id="author" name="author" value="<?= (isset($this->postData['author'])) ? $this->escape($this->postData['author']) : ''; ?>" placeholder="имя*" maxlength="100"/><br>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label>сайт: </label>
+					<label for="email">email: </label>
 				</td>
 				<td>
-					<input type="url" name="site" value="<?= (isset($this->postData['site'])) ? $this->escape($this->postData['site']) : ''; ?>" placeholder="сайт" maxlength="255"/><br>
+					<input type="email" id="email" name="email" value="<?= (isset($this->postData['email'])) ? $this->escape($this->postData['email']) : ''; ?>" placeholder="email" maxlength="150"/><br>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label>город/страна: </label>
+					<label for="site">сайт: </label>
 				</td>
 				<td>
-					<input type="text" name="city" value="<?= (isset($this->postData['city'])) ? $this->escape($this->postData['city']) : ''; ?>" placeholder="город/страна" maxlength="255"/><br>
+					<input type="url" id="site" name="site" value="<?= (isset($this->postData['site'])) ? $this->escape($this->postData['site']) : ''; ?>" placeholder="сайт" maxlength="255"/><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="city">город/страна: </label>
+				</td>
+				<td>
+					<input type="text" id="city" name="city" value="<?= (isset($this->postData['city'])) ? $this->escape($this->postData['city']) : ''; ?>" placeholder="город/страна" maxlength="255"/><br>
 				</td>
 			</tr>
 		</tbody>

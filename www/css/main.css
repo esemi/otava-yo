@@ -81,6 +81,10 @@
 			clear: both;
 		}
 
+		label{
+			cursor: pointer;
+		}
+
 		.hide{
 			display: none;
 		}
