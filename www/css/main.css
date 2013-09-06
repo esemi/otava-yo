@@ -128,25 +128,26 @@
 		.concert-place, .title-album, .album-year, .guest-post header,
 		.guest-post a:hover, .album-desc .list span, .donate,
 		.concert-ticets .ticets{
-			color: #872300;/*brown*/
+			color: #7b2e20;/*brown*/
 		}
 		a:hover, a:active, a p:hover, .guest-post a{
 			color: #696046; /*light green*/
 		}
 		.date, .date-news, .date-concert, .date-concert-old, .guest-button,
-		.guest-form .submit, .music-title, .jp-no-solution, .jp-no-solution a{
+		.guest-form .submit, .music-title, .jp-no-solution, .jp-no-solution a,
+		.login-status{
 			color: #ebebf2; /*light grey*/
 		}
 
 
 		.out-link-youtube, .out-link-vk, .out-link-kroogi, .out-link-myspace,
 		.donate, a.jp-play, a.jp-pause{
-			background: rgba(235, 235, 242, 0.7); /*light grey*/
+			background-color: rgba(235, 235, 242, 0.7); /*light grey*/
 		}
 		.menu-links, .footer-block, .field-bg,
 		.out-links:hover, .last-news:hover, .nearrest-concert:hover,
 		.donate:hover, a.jp-play:hover, a.jp-pause:hover{
-			background: rgba(235, 235, 242, 0.8); /*light grey*/
+			background-color: rgba(235, 235, 242, 0.8); /*light grey*/
 		}
 		.last-news, .nearrest-concert{
 			background: rgba(235, 235, 242, 0.75); /*light grey*/
@@ -155,8 +156,8 @@
 			background-color: rgba(105, 96, 70, 0.8); /*light green*/
 		}
 		.date, .date-news, .date-concert, .guest-button, .guest-form .submit,
-		.jp-no-solution{
-			background-color: #872300; /*brown*/
+		.jp-no-solution, .login-status{
+			background-color: #7b2e20; /*brown*/
 		}
 		.date-concert-old{
 			background-color:#cac0bd; /*light brown*/
@@ -169,7 +170,8 @@
 
 		.main-page-photo, .date, .menu-block, .menu-links,
 		.footer-block, .out-links, .last-news, .nearrest-concert, .field-bg,
-		.guest-button, .guest-form .submit, .donate, a.jp-play, a.jp-pause{
+		.guest-button, .guest-form .submit, .donate, a.jp-play, a.jp-pause,
+		.login-status{
 			box-shadow: 1px 1px 5px 0 #696046;
 			-webkit-box-shadow: 1px 1px 5px 0 #696046;
 			-moz-box-shadow: 1px 1px 5px 0 #696046;
@@ -281,19 +283,23 @@
 			margin-bottom: -21px;
 		}
 
-		.out-links-block, .donate{
+		.out-links-block, .donate, .login-status{
 			margin-top: 36px;
 			float: right;
 		}
+		.out-links, .donate, .login-status{
+			border-radius: 16px;
+			-webkit-border-radius: 16px;
+			-moz-border-radius: 16px;
+		}
+
 		.out-links{
 			display: inline-block;
 			margin-top: 1px;
 			margin-left: 5px;
 			width: 32px;
 			height: 29px;
-			border-radius: 16px;
-			-webkit-border-radius: 16px;
-			-moz-border-radius: 16px;
+
 		}
 		.out-link-youtube{
 			background-image: url(/img/sprite.png);
@@ -321,7 +327,19 @@
 			padding: 9px 11px 0px;
 			margin-left: 32px;
 			font-size: 11px;
-			border-radius: 16px;
+		}
+
+		.login-status{
+			height: 24px;
+			padding: 8px 7px 0px 11px;
+			margin-left: 32px;
+		}
+		.logout{
+			width: 21px;
+			height: 21px;
+			float: right;
+			margin-left: 11px;
+			background: url('/img/sprite.png') -44px -48px no-repeat;
 		}
 		/*--menu--*/
 			.menu-block{
