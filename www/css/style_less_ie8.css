@@ -1,0 +1,93 @@
+/*
+    Document   : style_less_ie8
+    Created on : 04.09.2013, 13:21:58
+    Author     : Ирина
+    Description:
+        Purpose of the stylesheet follows.
+*/
+/*fill color instead of rgba transparency*/
+	.out-link-youtube, .out-link-vk, .out-link-kroogi, .out-link-myspace,
+	.donate, a.jp-play, a.jp-pause, .menu-links, .footer-block, .field-bg,
+	.out-links:hover, .last-news:hover, .nearrest-concert:hover,
+	.donate:hover, a.jp-play:hover, a.jp-pause:hover, .last-news, .nearrest-concert{
+		background: rgb(235, 235, 242);/* RGBa fallback for very old browsers*/
+	}
+	.music-title{
+		background: rgb(105, 96, 70); /*light green*/
+	}
+	hr{
+		color: rgb(176, 172, 164);
+	}
+	/*against multipal background*/
+	.out-link-youtube{
+			background: url(/img/sprite.png)  0px -227px no-repeat;
+		}
+		.out-link-vk{
+			background: url(/img/sprite.png) -32px -227px no-repeat;
+		}
+		.out-link-kroogi{
+			background: url(/img/sprite.png) -65px -227px no-repeat;
+		}
+		.out-link-myspace{
+			background: url(/img/sprite.png) -96px -227px no-repeat;
+		}
+
+/*png images instead of rgba transparency*/
+	.donate, a.jp-play, a.jp-pause, .last-news, .nearrest-concert{
+		background:url('/img/1x1_grey_07.png');
+	}
+
+	.menu-links, .footer-block, .field-bg,
+	.out-links:hover, .last-news:hover, .nearrest-concert:hover,
+	.donate:hover, a.jp-play:hover, a.jp-pause:hover{
+		background:url('/img/1x1_grey_08.png');
+	}
+
+	.music-title{
+		background:url('/img/1x1_green_08.png'); /*light green*/
+	}
+/*border instead of box-shadow*/
+	.main-page-photo, .date, .menu-block, .menu-links,
+		.footer-block, .out-links, .last-news, .nearrest-concert, .field-bg,
+		.guest-button, .guest-form .submit, .donate, a.jp-play, a.jp-pause,
+		.music-title{
+			border-left: solid 1px #9a9072;
+			border-right: solid 1px #696046;
+	}
+	.main-page-photo, .date, .menu-block, .menu-links,
+	.out-links, .last-news, .nearrest-concert, .field-bg,
+	.guest-button, .guest-form .submit, .donate, a.jp-play, a.jp-pause,
+	.music-title{
+		border-bottom: solid 1px #696046;
+	}
+	.menu-links{
+		margin-top: -1px;
+		border-top: solid 1px #9a9072;
+		border-bottom: solid 2px #696046;
+	}
+
+/*inline-block fix*/
+
+	.logo, .out-links, .menu-links:after, .band-photo:after, .menu-links li,
+	.last-news,.nearrest-concert, .band-photo figure, guest-recaptcha{
+		zoom: 1;
+		*display: inline;
+	}
+
+
+	.menu-links li {
+		line-height: 1.4em;
+
+	}
+
+
+	* html .menu-links { text-justify: newspaper; zoom: 1 }
+	* html .menu-links li { display: inline;  zoom: 1 }
+	* html .band-photo { text-justify: newspaper; zoom: 1 }
+	* html .band-photo figure { display: inline; margin: 0; zoom: 1 }
+
+	*+html .menu-links { text-justify: newspaper; zoom: 1 }
+	*+html .menu-links li { display: inline; zoom: 1 }
+	*+html .band-photo { text-justify: newspaper; zoom: 1 }
+	*+html .band-photo figure { display: inline; margin: 0; zoom: 1 }
+

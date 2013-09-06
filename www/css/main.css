@@ -61,7 +61,7 @@
 	h1, h2, h3, h4, h5, h6 {
 			font-weight:normal;
 	}
-	/*End 1. Global Reset*/
+	/*End 1. Global Reset------------------------------*/
 
 	/*---------------------COMMON CLASSES AND TAGS----------*/
 		html, body {
@@ -83,6 +83,11 @@
 
 		label{
 			cursor: pointer;
+			vertical-align: middle;
+		}
+
+		input, .guest-form .message{
+			margin-bottom: 11px;
 		}
 
 		.hide{
@@ -365,7 +370,22 @@
 
 	/*-------------END LAYOUT-------------------------------------------------*/
 
+
 	/*-------------CONTENT----------------------------------------------------*/
+
+		/*---Autorisation---------------------------*/
+			.login-form .login, .login-form .pass{
+				width: 137px;
+			}
+			.auth-login{
+				margin-right: 7pt;
+			}
+			.login-form .submit{
+				width: 85px;
+				margin-left: 11px;
+			}
+
+		/*---END Autorisation-----------------------*/
 
 		/*---Main page------------------------------*/
 			.main-page-photo{
@@ -437,7 +457,7 @@
 					width: 245px;
 					float: left;
 					padding-top: 2px;
-					margin-top: 27px;
+					margin-top: 26px;
 					margin-left: 73px;
 				}
 				.jp-stop, .jp-mute, .jp-unmute, .jp-volume-max, .jp-progress,
@@ -657,9 +677,7 @@
 				float: right;
 			}
 
-			.guest-form input, .guest-form .message{
-				margin-bottom: 11px;
-			}
+
 			.guest-form input{
 				width: 359px;
 				margin-left: 9px;
