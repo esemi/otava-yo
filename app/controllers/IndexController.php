@@ -16,6 +16,7 @@ class IndexController extends Zend_Controller_Action
 
 		$newsTable = new App_Model_DbTable_News();
 		$news = $newsTable->getLast(1)->current();
+
 		$news->content = $newsTable->stripContent($news->content, 400);
 		$this->view->news = $news;
 	}
