@@ -27,8 +27,7 @@ jQuery(document).ready(function(){
 		}
 
 		//jPlayer init
-		console.log('test');
-		res = jQuery("#jquery_jplayer_audio").jPlayer({
+		jQuery("#jquery_jplayer_audio").jPlayer({
 
 			//ready play tracks
 			ready: function(){
@@ -67,7 +66,6 @@ jQuery(document).ready(function(){
 			swfPath: "/js/jPlayer/",
 			supplied: "mp3"
 		});
-		console.log(res);
 	})();
 
 
@@ -80,5 +78,9 @@ jQuery(document).ready(function(){
 		swfPath: "/js/jPlayer/",
 		supplied: "mp3"
 	});
+
+
+	//cke-editor on news moderation page
+	jQuery('.js-editor-news').ckeditor();
 
 });

@@ -6,8 +6,8 @@ $this->headMeta()
 
 $version = $this->cacheVersion();
 
-$this->headScript()->appendFile( "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js");
-$this->headScript()->appendFile( "/js/jPlayer/jquery.jplayer.min.js");
+$this->headScript()->prependFile( "/js/jPlayer/jquery.jplayer.min.js");
+$this->headScript()->prependFile( "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js");
 $this->headScript()->appendFile( "/js/main.js?{$version}");
 
 $this->headLink()->appendStylesheet("http://fonts.googleapis.com/css?family=Ruslan+Display&subset=latin,cyrillic-ext");
