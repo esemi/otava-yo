@@ -7,7 +7,6 @@ class GuestbookController extends Zend_Controller_Action
 		$this->view->headTitle('Гостевая книга');
 
 		$bookTable = new App_Model_DbTable_Guestbook();
-		$this->view->notes = $bookTable->getAll();
 
 		$conf = $this->getFrontController()->getParam('bootstrap')->getOption('recaptcha');
 		$this->view->recaptcha = $recaptcha = new Zend_Service_ReCaptcha($conf['pubkey'],$conf['privkey']);
@@ -30,5 +29,7 @@ class GuestbookController extends Zend_Controller_Action
 				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(),'staticGuestbook',true));
 			}
 		}
+
+		$this->view->notes = $bookTable->getAll();
 	}
 }
