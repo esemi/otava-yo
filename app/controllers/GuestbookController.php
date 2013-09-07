@@ -10,26 +10,30 @@ class GuestbookController extends Zend_Controller_Action
 
 		$conf = $this->getFrontController()->getParam('bootstrap')->getOption('recaptcha');
 		$this->view->recaptcha = $recaptcha = new Zend_Service_ReCaptcha($conf['pubkey'],$conf['privkey']);
-		$this->view->postData = $postData = $this->_request->getPost();
-		$this->view->isPost = $this->_request->isPost();
-		$this->view->errorMessage = '';
+		$this->view->showForm = false;
 
 		if( $this->_request->isPost() )
 		{
+			$postData = $this->_request->getPost();
+
 			if( !$this->_helper->checkCaptcha($recaptcha) ){
 				$this->view->errorMessage = 'Текст с изображения введён неверно';
-				return;
+			}else{
+				list($validData, $res) = $bookTable->prepareNewPost($postData);
+				if( !empty($res) ){
+					$this->view->errorMessage = implode('<br>', $res);
+				}else{
+					$bookTable->addPost($validData['author'], $validData['message'], $validData['email'], $validData['site'], $validData['city']);
+				}
 			}
 
-			list($validData, $res) = $bookTable->prepareNewPost($postData);
-			if( !empty($res) ){
-				$this->view->errorMessage = implode('<br>', $res);
-			}else{
-				$bookTable->addPost($validData['author'], $validData['message'], $validData['email'], $validData['site'], $validData['city']);
-				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(),'staticGuestbook',true));
+			if( !empty($this->view->errorMessage) ){
+				$this->view->postData = $postData;
+				$this->view->showForm = true;
 			}
 		}
 
+		
 		$this->view->notes = $bookTable->getAll();
 	}
 }
