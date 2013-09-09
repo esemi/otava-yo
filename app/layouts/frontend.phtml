@@ -36,6 +36,14 @@ echo $this->doctype();
 	<body>
 		<div class="wrapper">
 			<header class="header" >
+				<? if( Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess() ): ?>
+						<aside class="login-status">
+							я модератор
+							<a href="<?= $this->url(array(), 'logout', true) ?>">
+								<div class="logout"></div>
+							</a>
+						</aside>
+				<? endif; ?>
 				<a href="<?= $this->url(array(), 'staticDonate', true) ?>">
 					<aside class="donate">
 						Поддержать проект
@@ -47,12 +55,10 @@ echo $this->doctype();
 					<a rel="nofollow" target="_blank" href="http://otavae.kroogi.ru" class="out-links out-link-kroogi"></a>
 					<a rel="nofollow" target="_blank" href="http://myspace.com/otavae" class="out-links out-link-myspace"></a>
 				</aside>
+
 				<a href="<?php echo $this->url(array(), 'staticIndex', true) ?>">
 					<img src="/img/otava_logo_main.png" class="logo">
 				</a>
-				<? if( Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess() ): ?>
-					Вы залогинены! <a href="<?= $this->url(array(), 'logout', true) ?>">логаут</a>
-				<? endif; ?>
 			</header>
 			<div class="menu-block">
 				<nav class="menu-links">

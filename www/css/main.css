@@ -150,7 +150,7 @@
 			background-color: rgba(235, 235, 242, 0.8); /*light grey*/
 		}
 		.last-news, .nearrest-concert{
-			background: rgba(235, 235, 242, 0.75); /*light grey*/
+			background-color: rgba(235, 235, 242, 0.75); /*light grey*/
 		}
 		.music-title{
 			background-color: rgba(105, 96, 70, 0.8); /*light green*/
@@ -330,8 +330,8 @@
 		}
 
 		.login-status{
-			height: 24px;
-			padding: 8px 7px 0px 11px;
+			height: 26px;
+			padding: 6px 7px 0px 14px;
 			margin-left: 32px;
 		}
 		.logout{
@@ -339,7 +339,10 @@
 			height: 21px;
 			float: right;
 			margin-left: 11px;
-			background: url('/img/sprite.png') -44px -48px no-repeat;
+			background: url('/img/sprite.png') -44px -47px no-repeat;
+		}
+		.logout:hover{
+			background: url('/img/sprite.png') -65px -47px no-repeat;
 		}
 		/*--menu--*/
 			.menu-block{
