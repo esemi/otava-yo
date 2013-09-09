@@ -561,7 +561,22 @@
 				.news-titile-form{
 					width: 359px;
 				}
-
+				.edit, .delete div{
+					width: 21px;
+					height: 21px;
+					display: inline-block;
+				}
+				.delete{
+					float: right;
+					margin-bottom: 4px;
+				}
+				.edit{
+					background: url('/img/sprite.png') -97px -54px no-repeat;
+				}
+				.delete div{
+					background: url('/img/sprite.png') -97px -32px no-repeat;
+					margin-bottom: -4px;
+				}
 		/*---END News page------------------------------*/
 
 
