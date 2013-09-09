@@ -59,17 +59,20 @@ echo $this->doctype();
 				<a href="<?php echo $this->url(array(), 'staticIndex', true) ?>">
 					<img src="/img/otava_logo_main.png" class="logo">
 				</a>
+
+				<a href="<?php echo $this->url(array('lang' => 'ru')) ?>">RU</a>
+				<a href="<?php echo $this->url(array('lang' => 'en')) ?>">EN</a>
 			</header>
 			<div class="menu-block">
 				<nav class="menu-links">
-					<li><a href="<?= $this->url(array(), 'staticIndex', true) ?>">главная</a></li>
-					<li><a href="<?= $this->url(array(), 'staticNews', true) ?>">новости</a></li>
-					<li><a href="<?= $this->url(array(), 'staticConcert', true) ?>">концерты</a></li>
-					<li><a href="<?= $this->url(array(), 'staticBand', true) ?>">о группе</a></li>
-					<li><a href="<?= $this->url(array(), 'staticAudio', true) ?>">аудио</a></li>
-					<li><a href="<?= $this->url(array(), 'staticVideo', true) ?>">видео</a></li>
-					<li><a href="<?= $this->url(array(), 'staticGuestbook', true) ?>">гостевая</a></li>
-					<li><a href="<?= $this->url(array(), 'staticContacts', true) ?>">контакты</a></li>
+					<li><a href="<?= $this->url(array(), 'staticIndex') ?>">главная</a></li>
+					<li><a href="<?= $this->url(array(), 'staticNews') ?>">новости</a></li>
+					<li><a href="<?= $this->url(array(), 'staticConcert') ?>">концерты</a></li>
+					<li><a href="<?= $this->url(array(), 'staticBand') ?>">о группе</a></li>
+					<li><a href="<?= $this->url(array(), 'staticAudio') ?>">аудио</a></li>
+					<li><a href="<?= $this->url(array(), 'staticVideo') ?>">видео</a></li>
+					<li><a href="<?= $this->url(array(), 'staticGuestbook') ?>">гостевая</a></li>
+					<li><a href="<?= $this->url(array(), 'staticContacts') ?>">контакты</a></li>
 				</nav>
 			</div>
 
