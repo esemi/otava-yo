@@ -10,56 +10,40 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 		Zend_Session::registerValidator( new Zend_Session_Validator_HttpUserAgent() );
 		Zend_Session::registerValidator( new Mylib_Session_Validator_IPAdress() );
+
+		$this->bootstrap('frontcontroller');
+		Zend_Controller_Action_HelperBroker::getStaticHelper('CheckLocale');
 	}
 
 	protected function _initRoute()
 	{
-		$front = Zend_Controller_Front::getInstance();
-		$router = $front->getRouter();
-
+		$router = Zend_Controller_Front::getInstance()->getRouter();
 		$router->removeDefaultRoutes();
 
-		$router->addRoute('staticIndex',
-				new Zend_Controller_Router_Route_Static('/',
-						array( 'controller' => 'index', 'action' => 'index' )));
-		$router->addRoute('staticBand',
-				new Zend_Controller_Router_Route_Static('/band',
-						array( 'controller' => 'index', 'action' => 'band' )));
-		$router->addRoute('staticContacts',
-				new Zend_Controller_Router_Route_Static('/contacts',
-						array( 'controller' => 'index', 'action' => 'contact' )));
-		$router->addRoute('staticNews',
-				new Zend_Controller_Router_Route_Static('/news',
-						array( 'controller' => 'news', 'action' => 'index' )));
-		$router->addRoute('staticNewsView',
-				new Zend_Controller_Router_Route_Regex('/news\#view(\d+)',
-						array( 'controller' => 'news', 'action' => 'index'),
-						array( 'id' => 1),
-						'news#view%d'));
-		$router->addRoute('staticConcert',
-				new Zend_Controller_Router_Route_Static('/concerts',
-						array( 'controller' => 'concert', 'action' => 'index' )));
-		$router->addRoute('staticConcertView',
-				new Zend_Controller_Router_Route_Regex('/concerts\#view(\d+)',
-						array( 'controller' => 'concert', 'action' => 'index'),
-						array( 'id' => 1),
-						'concerts#view%d'));
-		$router->addRoute('staticGuestbook',
-				new Zend_Controller_Router_Route_Static('/guestbook',
-						array( 'controller' => 'guestbook', 'action' => 'index' )));
-		$router->addRoute('staticVideo',
-				new Zend_Controller_Router_Route_Static('/video',
-						array( 'controller' => 'video', 'action' => 'index' )));
-		$router->addRoute('staticAudio',
-				new Zend_Controller_Router_Route_Static('/audio',
-						array( 'controller' => 'audio', 'action' => 'index' )));
+		//@TODO locales from config
 
-		$router->addRoute('login',
-				new Zend_Controller_Router_Route_Static('/auth/login',
-						array( 'controller' => 'auth', 'action' => 'login' )));
-		$router->addRoute('logout',
-				new Zend_Controller_Router_Route_Static('/auth/logout',
-						array( 'controller' => 'auth', 'action' => 'logout' )));
+		$langRoute = new Zend_Controller_Router_Route('/:lang',
+			array('lang' => 'ru'),
+			array('lang' => '(ru|en)'));
+
+		$routes = array();
+
+		$routes['staticIndex'] = new Zend_Controller_Router_Route_Static('/', array( 'controller' => 'index', 'action' => 'index'));
+		$routes['staticBand'] = new Zend_Controller_Router_Route_Static('/band', array( 'controller' => 'index', 'action' => 'band' ));
+		$routes['staticContacts'] = new Zend_Controller_Router_Route_Static('/contacts', array( 'controller' => 'index', 'action' => 'contact' ));
+		$routes['staticNews'] = new Zend_Controller_Router_Route_Static('/news', array( 'controller' => 'news', 'action' => 'index' ));
+		$routes['staticNewsView'] = new Zend_Controller_Router_Route_Regex('/news\#view(\d+)', array( 'controller' => 'news', 'action' => 'index'), array( 'id' => 1), 'news#view%d');
+		$routes['staticConcert'] = new Zend_Controller_Router_Route_Static('/concerts', array( 'controller' => 'concert', 'action' => 'index' ));
+		$routes['staticConcertView'] = new Zend_Controller_Router_Route_Regex('/concerts\#view(\d+)', array( 'controller' => 'concert', 'action' => 'index'), array( 'id' => 1), 'concerts#view%d');
+		$routes['staticGuestbook'] = new Zend_Controller_Router_Route_Static('/guestbook', array( 'controller' => 'guestbook', 'action' => 'index' ));
+		$routes['staticVideo'] = new Zend_Controller_Router_Route_Static('/video', array( 'controller' => 'video', 'action' => 'index' ));
+		$routes['staticAudio'] = new Zend_Controller_Router_Route_Static('/audio', array( 'controller' => 'audio', 'action' => 'index' ));
+		$routes['login'] = new Zend_Controller_Router_Route_Static('/auth/login', array( 'controller' => 'auth', 'action' => 'login' ));
+		$routes['logout'] = new Zend_Controller_Router_Route_Static('/auth/logout', array( 'controller' => 'auth', 'action' => 'logout' ));
+
+		foreach( $routes as $name => $route ){
+			$router->addRoute($name, $langRoute->chain($route));
+		}
 
 	}
 
