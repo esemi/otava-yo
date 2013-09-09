@@ -111,7 +111,7 @@
 		.menu-links li, .date, .date-news, .title, .title-bigger, .title-contacts,
 		.title-page-name,.nearrest-concert-title, .signature, .concert-name,
 		.old-concert-headding, .date-concert, .date-concert-old, .title-album,
-		.guest-button, .guest-form .submit, .donate{
+		.guest-button, .news-button, .guest-form .submit, .donate{
 			font-family: DSCoptic;
 		}
 
@@ -134,8 +134,8 @@
 			color: #696046; /*light green*/
 		}
 		.date, .date-news, .date-concert, .date-concert-old, .guest-button,
-		.guest-form .submit, .music-title, .jp-no-solution, .jp-no-solution a,
-		.login-status{
+		.news-button, .guest-form .submit, .music-title, .jp-no-solution,
+		.jp-no-solution a, .login-status, .news-button:hover{
 			color: #ebebf2; /*light grey*/
 		}
 
@@ -155,7 +155,7 @@
 		.music-title{
 			background-color: rgba(105, 96, 70, 0.8); /*light green*/
 		}
-		.date, .date-news, .date-concert, .guest-button, .guest-form .submit,
+		.date, .date-news, .date-concert, .guest-button, .news-button, .guest-form .submit,
 		.jp-no-solution, .login-status{
 			background-color: #7b2e20; /*brown*/
 		}
@@ -170,7 +170,7 @@
 
 		.main-page-photo, .date, .menu-block, .menu-links,
 		.footer-block, .out-links, .last-news, .nearrest-concert, .field-bg,
-		.guest-button, .guest-form .submit, .donate, a.jp-play, a.jp-pause,
+		.guest-button,.news-button, .guest-form .submit, .donate, a.jp-play, a.jp-pause,
 		.login-status{
 			box-shadow: 1px 1px 5px 0 #696046;
 			-webkit-box-shadow: 1px 1px 5px 0 #696046;
@@ -217,6 +217,15 @@
 			width: 85px;
 			float: right;
 			margin: 0px 0px 21px 32px;
+		}
+		.guest-button, .news-button{
+			display: block;
+			width: 137px;
+			height: 34px;
+			padding: 19px 21px 0px;
+			margin-bottom: 32px;
+			cursor: pointer;
+			text-align: center;
 		}
 		/*----Common Titles-----------------*/
 		.title, .title-bigger{
@@ -548,6 +557,10 @@
 				text-align: right;
 				font-size: 14px;
 			}
+			/*--moderating news-------------*/
+				.news-titile-form{
+					width: 359px;
+				}
 
 		/*---END News page------------------------------*/
 
@@ -674,12 +687,6 @@
 		/*---Guest book page------------------------------*/
 			.guest-button{
 				float: right;
-				width: 137px;
-				height: 34px;
-				padding: 19px 21px 0px;
-				margin-bottom: 32px;
-				cursor: pointer;
-				text-align: center;
 			}
 
 			.guest-post .name{
