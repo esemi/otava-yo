@@ -14,7 +14,7 @@
 
 					<hgroup>
 						<h3 class="concert-name">
-							<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?= $this->url(array('id' => $item->id ), 'staticConcertView', true) ?>">
+							<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?= $this->url(array('id' => $item->id ), 'staticConcertView') ?>">
 								<?= $this->escape($item->title); ?>
 							</a>
 						</h3>
@@ -65,7 +65,7 @@
 
 					<hgroup>
 						<h3 class="concert-name">
-							<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?= $this->url(array('id' => $item->id ), 'staticConcertView', true) ?>">
+							<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?= $this->url(array('id' => $item->id ), 'staticConcertView') ?>">
 								<?= $this->escape($item->title); ?>
 							</a>
 						</h3>

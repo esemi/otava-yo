@@ -1,3 +1,6 @@
-<?= $this->partial('Partials/news-create-edit-form.phtml', array(
-	'error' => $this->errorMessage,
-	'newsData' => $this->newsData)); ?>
+<section class="field-bg">
+	<h2 class="title-page-name text-center">новые новости</h2>
+	<?= $this->partial('Partials/news-create-edit-form.phtml', array(
+		'error' => $this->errorMessage,
+		'newsData' => $this->newsData)); ?>
+</section>

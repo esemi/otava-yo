@@ -8,7 +8,7 @@ class App_Model_DbTable_News extends Zend_Db_Table_Abstract
 	{
 		$select = $this->select()
 				->from($this, array('id','date_publish','title','content'))
-				->order("id DESC")
+				->order("date_publish DESC")
 				->limit($limit);
 		return $this->fetchAll($select);
 	}
@@ -17,7 +17,7 @@ class App_Model_DbTable_News extends Zend_Db_Table_Abstract
 	{
 		$select = $this->select()
 				->from($this, array('id','date_publish','title','content'))
-				->order("id DESC");
+				->order("date_publish DESC");
 		return $this->fetchAll($select);
 	}
 

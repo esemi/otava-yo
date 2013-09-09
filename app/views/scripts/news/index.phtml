@@ -9,7 +9,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 	<h2 class="title-page-name text-center">новости</h2>
 
 	<? if( $authFlag ): ?>
-		<a href="<?= $this->url(array(), 'staticNewsCreate', true) ?>">create</a>
+		<a class="news-button" href="<?= $this->url(array(), 'staticNewsCreate') ?>">написать</a>
 	<? endif; ?>
 
 	<?
@@ -23,12 +23,22 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 		}
 	?>
 		<article class="news-block">
+			<? if( $authFlag ): ?>
+				<aside>
+					<a href="<?= $this->url(array('idN' => $item->id ), 'staticNewsEdit') ?>">Редактировать
+						<div class="edit"></div>
+					</a>
+					<a class="delete" href="<?= $this->url(array('idN' => $item->id ), 'staticNewsDelete') ?>">удалить новость
+						<div class=""></div>
+					</a>
+				</aside>
+				<? endif; ?>
 			<header>
 				<time class="date-news" datetime="<?= $this->escape($item->date_publish); ?>">
 					<?= $this->prepareConcertDate($item->date_publish); ?>
 				</time>
 				<h3 class="title">
-					<a name="<?= sprintf("view%d", $item->id); ?>" href="<?= $this->url(array('id' => $item->id ), 'staticNewsView', true) ?>">
+					<a name="<?= sprintf("view%d", $item->id); ?>" href="<?= $this->url(array('id' => $item->id ), 'staticNewsView') ?>">
 						<?= $this->escape($item->title); ?>
 					</a>
 				</h3>
@@ -36,10 +46,6 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 			<?= $item->content; ?>
 			<footer>
 				<p class="signature"><?= $this->escape($this->moder_author); ?></p>
-				<? if( $authFlag ): ?>
-					<a href="<?= $this->url(array('idN' => $item->id ), 'staticNewsEdit', true) ?>">edit</a>
-					<a href="<?= $this->url(array('idN' => $item->id ), 'staticNewsDelete', true) ?>">delete</a>
-				<? endif; ?>
 			</footer>
 		</article>
 		<hr>
