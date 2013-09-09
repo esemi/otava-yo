@@ -5,8 +5,12 @@ $this->headScript()->appendFile( "/js/ckeditor/adapters/jquery.js");
 
 ?>
 
+<? if( !empty($this->error) ): ?>
+	<p class="error"><?= $this->error; ?></p>
+<? endif; ?>
+
 <form name="post" method="POST">
-	<input type="text" name="title" value="<?= (isset($this->postData['title'])) ? $this->escape($this->postData['title']) : ''; ?>" placeholder="Заголовок" maxlength="255"/><br>
-	<textarea class="js-editor-news" name="content" placeholder="текст новости"><?= (isset($this->postData['content'])) ? $this->escape($this->postData['content']) : ''; ?></textarea><br>
+	<input type="text" name="title" value="<?= (isset($this->newsData['title'])) ? $this->escape($this->newsData['title']) : ''; ?>" placeholder="Заголовок" maxlength="255"/><br>
+	<textarea class="js-editor-news" name="content" placeholder="текст новости"><?= (isset($this->newsData['content'])) ? $this->escape($this->newsData['content']) : ''; ?></textarea><br>
 	<input class="submit" type="submit" name="отправить" value="отправить">
 </form>
