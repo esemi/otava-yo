@@ -21,7 +21,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	{
 		$router = Zend_Controller_Front::getInstance()->getRouter();
 		$router->removeDefaultRoutes();
-		$router->addRoute('default', new Zend_Controller_Router_Route(':all', array( 'controller' => 'error', 'action' => 'error', 'all' => '')));
+		$router->addRoute('default', new Zend_Controller_Router_Route('*', array('controller' => 'default-router-fail')));
 
 		$locales = $this->getOption('locales');
 

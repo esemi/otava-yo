@@ -3,16 +3,17 @@
 class Action_Helper_CheckLocale extends Zend_Controller_Action_Helper_Abstract
 {
 
-	public function preDispatch()
+	public function init()
 	{
 		$avaliableLangs =  $this->getFrontController()->getParam('bootstrap')->getOption('locales');
 		$lang = $this->getRequest()->getParam('lang');
 
-		if( in_array($lang, $avaliableLangs) ){
-			$translate = $this->getActionController()->getInvokeArg('bootstrap')->getResource('Translate');
-
-			$viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
-			var_dump($translate->getAdapter()->setLocale($lang), $viewRenderer->view->translate('menu.index'));die;
+		if( !in_array($lang, $avaliableLangs) ){
+			$lang = $avaliableLangs[0];
 		}
+
+		$oTranslate = $this->getActionController()->getInvokeArg('bootstrap')->getResource('Translate');
+		$oTranslate->getAdapter()->setOptions( array('log' => $this->getActionController()->getInvokeArg('bootstrap')->getResource('Log')) );
+		$oTranslate->getAdapter()->setLocale($lang);
 	}
 }
