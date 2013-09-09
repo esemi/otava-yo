@@ -5,6 +5,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	{
 		$this->bootstrap('cachemanager');
 		Zend_Db_Table_Abstract::setDefaultMetadataCache( $this->getResource('cachemanager')->getCache('long') );
+		Zend_Translate::setCache( $this->getResource('cachemanager')->getCache('long') );
+
 		Zend_Paginator::setDefaultScrollingStyle('Elastic');
 		Zend_View_Helper_PaginationControl::setDefaultViewPartial('Partials/pagination.phtml');
 
@@ -19,12 +21,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	{
 		$router = Zend_Controller_Front::getInstance()->getRouter();
 		$router->removeDefaultRoutes();
+		$router->addRoute('default', new Zend_Controller_Router_Route(':all', array( 'controller' => 'error', 'action' => 'error', 'all' => '')));
 
-		//@TODO locales from config
+		$locales = $this->getOption('locales');
 
 		$langRoute = new Zend_Controller_Router_Route('/:lang',
-			array('lang' => 'ru'),
-			array('lang' => '(ru|en)'));
+			array( 'lang' => $locales[0] ),
+			array( 'lang' => sprintf('(%s)', implode('|', $locales)) ));
 
 		$routes = array();
 
@@ -41,7 +44,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$routes['staticGuestbook'] = new Zend_Controller_Router_Route_Static('/guestbook', array( 'controller' => 'guestbook', 'action' => 'index' ));
 		$routes['staticVideo'] = new Zend_Controller_Router_Route_Static('/video', array( 'controller' => 'video', 'action' => 'index' ));
 		$routes['staticAudio'] = new Zend_Controller_Router_Route_Static('/audio', array( 'controller' => 'audio', 'action' => 'index' ));
-		$routes['staticDonate'] = new Zend_Controller_Router_Route_Static('/audio', array( 'controller' => 'index', 'action' => 'donate' ));
+		$routes['staticDonate'] = new Zend_Controller_Router_Route_Static('/donate', array( 'controller' => 'index', 'action' => 'donate' ));
 		$routes['login'] = new Zend_Controller_Router_Route_Static('/auth/login', array( 'controller' => 'auth', 'action' => 'login' ));
 		$routes['logout'] = new Zend_Controller_Router_Route_Static('/auth/logout', array( 'controller' => 'auth', 'action' => 'logout' ));
 

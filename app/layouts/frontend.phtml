@@ -39,12 +39,12 @@ echo $this->doctype();
 				<? if( Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess() ): ?>
 						<aside class="login-status">
 							я модератор
-							<a href="<?= $this->url(array(), 'logout', true) ?>">
+							<a href="<?= $this->url(array(), 'logout') ?>">
 								<div class="logout"></div>
 							</a>
 						</aside>
 				<? endif; ?>
-				<a href="<?= $this->url(array(), 'staticDonate', true) ?>">
+				<a href="<?= $this->url(array(), 'staticDonate') ?>">
 					<aside class="donate">
 						Поддержать проект
 					</aside>
@@ -56,7 +56,7 @@ echo $this->doctype();
 					<a rel="nofollow" target="_blank" href="http://myspace.com/otavae" class="out-links out-link-myspace"></a>
 				</aside>
 
-				<a href="<?php echo $this->url(array(), 'staticIndex', true) ?>">
+				<a href="<?php echo $this->url(array(), 'staticIndex') ?>">
 					<img src="/img/otava_logo_main.png" class="logo">
 				</a>
 
