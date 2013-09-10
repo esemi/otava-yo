@@ -284,12 +284,35 @@
 			width: 919px;
 			padding-top: 12px;
 			padding-left: 21px;
+			position: relative;
 		}
 		.logo{
 			position: relative;
 			z-index: 2;
 			display: inline-block;
 			margin-bottom: -21px;
+		}
+		.lang-block{
+			position: absolute;
+			right: 21px;
+		}
+		.lang-ru, .lang-en{
+			width: 19px;
+			height: 19px;
+			margin-left: 7px;
+			display: inline-block;
+		}
+		.lang-en{
+			background: url('/img/sprite.png') -57px -291px no-repeat;
+		}
+		.lang-ru{
+			background: url('/img/sprite.png') -38px -291px no-repeat;
+		}
+		.lang-en:hover{
+			background: url('/img/sprite.png') -19px -291px no-repeat;
+		}
+		.lang-ru:hover{
+			background: url('/img/sprite.png') 0px -291px no-repeat;
 		}
 
 		.out-links-block, .donate, .login-status{
