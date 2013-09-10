@@ -4,8 +4,6 @@ class NewsController extends Zend_Controller_Action
 {
 	public function indexAction()
 	{
-		$this->view->headTitle('Новости');
-
 		$newsTable = new App_Model_DbTable_News();
 		$this->view->news = $newsTable->getAll();
 
@@ -15,9 +13,6 @@ class NewsController extends Zend_Controller_Action
 
 	public function createAction()
 	{
-		$this->view->headTitle('Новости');
-		$this->view->headTitle('Создание');
-
 		$newsTable = new App_Model_DbTable_News();
 
 		$this->view->newsData = $postData = $this->_request->getPost();
@@ -36,9 +31,6 @@ class NewsController extends Zend_Controller_Action
 
 	public function editAction()
 	{
-		$this->view->headTitle('Новости');
-		$this->view->headTitle('Редактирование');
-
 		$newsTable = new App_Model_DbTable_News();
 
 		$newsData = $newsTable->findById((int) $this->_getParam('idN'));
@@ -63,9 +55,6 @@ class NewsController extends Zend_Controller_Action
 
 	public function deleteAction()
 	{
-		$this->view->headTitle('Новости');
-		$this->view->headTitle('Удаление');
-
 		$newsTable = new App_Model_DbTable_News();
 
 		$newsData = $newsTable->findById((int) $this->_getParam('idN'));
