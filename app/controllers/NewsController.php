@@ -66,7 +66,18 @@ class NewsController extends Zend_Controller_Action
 		$this->view->headTitle('Новости');
 		$this->view->headTitle('Удаление');
 
-		// @todo release
+		$newsTable = new App_Model_DbTable_News();
+
+		$newsData = $newsTable->findById((int) $this->_getParam('idN'));
+		if( is_null($newsData) ){
+			throw new Mylib_Exception_NotFound('News not found');
+		}
+
+		if( $this->_request->isPost() )
+		{
+			$newsTable->delPost($newsData['id']);
+			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array('id' => $newsData['id']),'staticNewsView'));
+		}
 	}
 
 }

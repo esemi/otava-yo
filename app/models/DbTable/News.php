@@ -99,4 +99,17 @@ class App_Model_DbTable_News extends Zend_Db_Table_Abstract
 			array( $this->_db->quoteInto( 'id = ?', $id, Zend_Db::INT_TYPE ) ) );
 	}
 
+
+	/**
+	 * Delete message from news
+	 *
+	 * @param int $id
+
+	 * @return int Count of deleted rows
+	 */
+	public function delPost($id)
+	{
+		return $this->delete( array( $this->_db->quoteInto( 'id = ?', $id, Zend_Db::INT_TYPE ) ) );
+	}
+
 }
