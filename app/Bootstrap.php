@@ -51,7 +51,5 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		foreach( $routes as $name => $route ){
 			$router->addRoute($name, $langRoute->chain($route));
 		}
-
 	}
-
 }

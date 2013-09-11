@@ -26,7 +26,7 @@ class AuthController extends Zend_Controller_Action
 				$this->view->errorMessage = 'Неверная пара логин/пароль';
 				return;
 			}
-			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(),'staticIndex',true));
+			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(),'staticIndex'));
 		}
 
 	}
