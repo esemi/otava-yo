@@ -1,24 +1,26 @@
-	<h2 class="small-title mrg-left-13 mrg-top-21">
-	<?= $this->message ?>
+<section class="field-bg">
+	<h2 class="title-page-name text-center">
+		<?= $this->message ?>
 	</h2>
 
-	<?php if (isset($this->exceptionMessage)): ?>
-	<p class="mrg-left-21">
-	<?= $this->exceptionMessage ?>
-	</p>
-	<?php endif ?>
-
-
-	<?php if (isset($this->exception)): ?>
-	<h3 class="subtitle mrg-left-13">Exception information:</h3>
-	<p class="mrg-left-21">
-	<strong class="bold">Message:</strong>
-	<?= $this->exception->getMessage() ?>
-	</p>
-	<h3 class="subtitle mrg-left-13">Stack trace:</h3>
-	<pre><?= $this->exception->getTraceAsString() ?>
-	</pre>
-		<h3>Request Parameters:</h3>
-	<pre><?= var_export($this->request->getParams(), true) ?>
-	</pre>
+		<?php if (isset($this->exceptionMessage)): ?>
+		<p>
+		<?= $this->exceptionMessage ?>
+		</p>
 		<?php endif ?>
+
+
+		<?php if (isset($this->exception)): ?>
+		<h3 class="title-error">Exception information:</h3>
+		<p>
+		<strong class="bold">Message:</strong>
+		<?= $this->exception->getMessage() ?>
+		</p>
+		<h3 class="title-error">Stack trace:</h3>
+		<pre><?= $this->exception->getTraceAsString() ?>
+		</pre>
+			<h3 class="title-error">Request Parameters:</h3>
+		<pre><?= var_export($this->request->getParams(), true) ?>
+		</pre>
+			<?php endif ?>
+</section>
