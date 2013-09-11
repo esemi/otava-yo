@@ -13,7 +13,7 @@ $this->headScript()->appendFile( "/js/main.js?{$version}");
 $this->headLink()->appendStylesheet("http://fonts.googleapis.com/css?family=Ruslan+Display&subset=latin,cyrillic-ext");
 $this->headLink()->appendStylesheet("/css/main.css?{$version}");
 
-$this->headTitle('Отава Ё');
+$this->headTitle($this->translate('menu.index'));
 $this->headTitle()->setSeparator(' / ');
 
 
@@ -84,7 +84,10 @@ echo $this->doctype();
 
 		<div class="footer">
 			<footer class="footer-block">
-				копирайты итд
+				<div>
+					© Эйдук И.В. 2013
+				</div>
+				<a class="humans-txt" href="/humans.txt"></a>
 			</footer>
 		</div>
 
