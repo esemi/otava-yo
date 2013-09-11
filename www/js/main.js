@@ -70,17 +70,56 @@ jQuery(document).ready(function(){
 
 
 	//jPlayer on index page
-	jQuery("#jquery_jplayer_index").jPlayer({
-		ready: function(){
-			jQuery(this).jPlayer("setMedia", { mp3: '/media/audio_track_1.mp3' });
-		},
-		volume: 1.0,
-		swfPath: "/js/jPlayer/",
-		supplied: "mp3"
-	});
+	(function(){
 
-	//@todo check avaliable ckeeditor
-	//cke-editor on news moderation page
-	jQuery('.js-editor-news').ckeditor();
+		function hideTitle(){
+			jQuery('.js-audio-song-name').hide();
+		};
+
+		jQuery("#jquery_jplayer_index").jPlayer({
+
+			ready: function(e){
+				jQuery(this).jPlayer("setMedia", {
+					mp3: jQuery("#jquery_jplayer_index").attr('track-src')
+				});
+			},
+
+			play: function(e){
+				jQuery('.js-audio-song-name').show();
+			},
+
+			pause: function(e){
+				hideTitle();
+			},
+
+			ended: function(e){
+				hideTitle();
+
+				var player = jQuery(this);
+				jQuery.getJSON(
+					jQuery("#jquery_jplayer_index").attr('get-next-url'),
+					function(data){
+						if( typeof data.track !== 'undefined' ){
+							jQuery('.js-audio-song-name').text(data.track['title']);
+							player.jPlayer("setMedia", { mp3: data.track['audio_link'] });
+							player.jPlayer("play");
+						}
+					}
+				);
+			},
+
+			volume: 1.0,
+			swfPath: "/js/jPlayer/",
+			supplied: "mp3"
+		});
+	})();
+
+	//check avaliable ckeeditor
+	if( typeof jQuery().ckeditor !== 'undefined' ){
+
+		//cke-editor on news moderation page
+		jQuery('.js-editor-news').ckeditor();
+
+	}
 
 });
