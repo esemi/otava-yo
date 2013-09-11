@@ -15,6 +15,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 		$this->bootstrap('frontcontroller');
 		Zend_Controller_Action_HelperBroker::getStaticHelper('CheckLocale');
+		Zend_Controller_Action_HelperBroker::getStaticHelper('TitleSetter');
 	}
 
 	protected function _initRoute()

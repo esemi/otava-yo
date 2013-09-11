@@ -4,8 +4,6 @@ class GuestbookController extends Zend_Controller_Action
 {
 	public function indexAction()
 	{
-		$this->view->headTitle('Гостевая книга');
-
 		$bookTable = new App_Model_DbTable_Guestbook();
 
 		$conf = $this->getFrontController()->getParam('bootstrap')->getOption('recaptcha');
