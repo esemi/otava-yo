@@ -79,7 +79,7 @@ jQuery(document).ready(function(){
 		supplied: "mp3"
 	});
 
-
+	//@todo check avaliable ckeeditor
 	//cke-editor on news moderation page
 	jQuery('.js-editor-news').ckeditor();
 
