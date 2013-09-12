@@ -69,6 +69,13 @@
 			font-family: Trebuchet MS, Verdana, sans-serif;
 		}
 
+		strong{
+			font-weight: bold;
+		}
+		em{
+			font-style: italic;
+		}
+
 		p{
 			margin: 3px 0px 8px;
 			text-indent: 21px;
