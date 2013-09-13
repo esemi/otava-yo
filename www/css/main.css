@@ -301,19 +301,22 @@
 		}
 		.lang-block{
 			padding-top: 12px;
-			margin-right: 186px;
+			margin-top: 36px;
+			margin-left: 32px;
+			display: inline-block;
+			vertical-align: top;
 		}
 		.lang-ru, .lang-en{
 			width: 19px;
 			height: 19px;
 			border-radius: 9px;
-			margin-left: 9px;
 			display: inline-block;
 		}
 		.lang-en{
 			background: url('/img/sprite.png') -57px -291px no-repeat;
 		}
 		.lang-ru{
+			margin-right: 9px;
 			background: url('/img/sprite.png') -38px -291px no-repeat;
 		}
 		.lang-en:hover{
@@ -323,7 +326,7 @@
 			background: url('/img/sprite.png') 0px -291px no-repeat;
 		}
 
-		.out-links-block, .donate, .login-status, .lang-block{
+		.out-links-block, .donate, .login-status{
 			margin-top: 36px;
 			float: right;
 		}
@@ -370,19 +373,20 @@
 		}
 
 		.login-status{
-			height: 26px;
-			padding: 6px 7px 0px 14px;
+			height: 23px;
+			padding: 6px 7px 3px 14px;
 			margin-left: 32px;
 		}
 		.logout{
-			width: 21px;
-			height: 21px;
-			float: right;
-			margin-left: 11px;
-			background: url('/img/sprite.png') -44px -47px no-repeat;
+			width: 18px;
+			height: 14px;
+			display: inline-block;
+			margin-left: 9px;
+			margin-bottom: -2px;
+			background: url('/img/sprite.png') -47px -49px no-repeat;
 		}
 		.logout:hover{
-			background: url('/img/sprite.png') -65px -47px no-repeat;
+			background: url('/img/sprite.png') -68px -49px no-repeat;
 		}
 		/*--menu--*/
 			.menu-block{
