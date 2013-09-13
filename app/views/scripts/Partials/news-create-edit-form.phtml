@@ -10,6 +10,7 @@ $this->headScript()->appendFile( "/js/ckeditor/adapters/jquery.js");
 <? endif; ?>
 
 <form name="post" method="POST">
+	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 	<label for="title">Заголовок: </label>
 	<input type="text" name="title" id="title" class="news-titile-form" value="<?= (isset($this->newsData['title'])) ? $this->escape($this->newsData['title']) : ''; ?>" placeholder="Заголовок" maxlength="255"/><br>
 	<textarea class="js-editor-news" name="content" placeholder="текст новости"><?= (isset($this->newsData['content'])) ? $this->escape($this->newsData['content']) : ''; ?></textarea><br>

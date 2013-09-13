@@ -22,6 +22,8 @@ class NewsController extends Zend_Controller_Action
 
 		if( $this->_request->isPost() )
 		{
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+
 			list($validData, $res) = $newsTable->validate($postData);
 			if( !empty($res) ){
 				$this->view->errorMessage = implode('<br>', $res);
@@ -46,6 +48,8 @@ class NewsController extends Zend_Controller_Action
 
 		if( $this->_request->isPost() )
 		{
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+
 			$this->view->newsData = $postData = $this->_request->getPost();
 			list($validData, $res) = $newsTable->validate($postData);
 			if( !empty($res) ){
@@ -73,6 +77,8 @@ class NewsController extends Zend_Controller_Action
 
 		if( $this->_request->isPost() )
 		{
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+			
 			$newsTable->delPost($newsData['id']);
 			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array('id' => $newsData['id']),'staticNewsView'));
 		}

@@ -2,6 +2,7 @@
 	<h2 class="title-page-name text-center">Удаление новости</h2>
 	<p class="error"><?= $this->escape('Вы уверены, что хотите удалить эту новость?'); ?></p>
 	<form method="POST">
+		<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 		<input type="submit" name="удалить!" value="удалить!">
 	</form>
 
