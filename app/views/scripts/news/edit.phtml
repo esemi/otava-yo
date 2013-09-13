@@ -1,7 +1,6 @@
 <section class="field-bg">
 	<h2 class="title-page-name text-center">Редактирование новости</h2>
-	<? if( !empty($this->errorMessage) ): ?>
-		<p class="error"><?= $this->escape($this->errorMessage); ?></p>
-	<? endif; ?>
-<?= $this->partial('Partials/news-create-edit-form.phtml', array('newsData' => $this->newsData)); ?>
+	<?= $this->partial('Partials/news-create-edit-form.phtml', array(
+		'error' => $this->errorMessage,
+		'newsData' => $this->newsData)); ?>
 </section>

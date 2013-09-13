@@ -12,13 +12,24 @@ class ErrorController extends Zend_Controller_Action
 			Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION
 		);
 
-		if( in_array($errors->type, $notFoundTypes) || $errors->exception instanceof Mylib_Exception_NotFound)
-		{
-			$this->_setNotFoundMeta();
+		if( in_array($errors->type, $notFoundTypes) || $errors->exception instanceof Mylib_Exception_NotFound)		{
+
+			$this->getResponse()->setHttpResponseCode(404);
+			$this->view->message = $this->view->translate('errors.404');
 			$this->getInvokeArg('bootstrap')->getResource('Log')->notice($errors->exception->getMessage());
-		}else{
-			$this->_setFatalErrorMeta();
+
+		}elseif( $errors->exception instanceof Mylib_Exception_Forbidden ){
+
+			$this->getResponse()->setHttpResponseCode(403);
+			$this->view->message = $this->view->translate('errors.403');
 			$this->getInvokeArg('bootstrap')->getResource('Log')->crit($errors->exception->getMessage());
+
+		}else{
+
+			$this->getResponse()->setHttpResponseCode(500);
+			$this->view->message = $this->view->translate('errors.500');
+			$this->getInvokeArg('bootstrap')->getResource('Log')->crit($errors->exception->getMessage());
+
 		}
 
 		if ($this->getInvokeArg('displayExceptionMessage') == true)
@@ -29,23 +40,5 @@ class ErrorController extends Zend_Controller_Action
 			$this->view->exception = $errors->exception;
 
 		$this->view->request = $errors->request;
-	}
-
-	protected function _setNotFoundMeta()
-	{
-		$this->getResponse()->setHttpResponseCode(404);
-		$this->view->keywords = '404, Страница не найдена';
-		$this->view->description = 'Страница не найдена';
-		$this->view->title = 'Страница не найдена';
-		$this->view->message = 'Страница не найдена';
-	}
-
-	protected function _setFatalErrorMeta()
-	{
-		$this->getResponse()->setHttpResponseCode(500);
-		$this->view->keywords = 'Ошибка, Error';
-		$this->view->description = 'Ошибка приложения';
-		$this->view->title = 'Ошибка приложения';
-		$this->view->message = 'Ошибка приложения';
 	}
 }

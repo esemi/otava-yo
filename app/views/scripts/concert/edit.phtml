@@ -1,0 +1,6 @@
+<section class="field-bg">
+	<h2 class="title-page-name text-center">Редактирование концерта</h2>
+	<?= $this->partial('Partials/concert-create-edit-form.phtml', array(
+		'error' => $this->errorMessage,
+		'concertData' => $this->concertData)); ?>
+</section>

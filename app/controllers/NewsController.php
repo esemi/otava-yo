@@ -13,6 +13,9 @@ class NewsController extends Zend_Controller_Action
 
 	public function createAction()
 	{
+		if( !$this->_helper->checkAccess() )
+			throw new Mylib_Exception_Forbidden();
+
 		$newsTable = new App_Model_DbTable_News();
 
 		$this->view->newsData = $postData = $this->_request->getPost();
@@ -31,6 +34,9 @@ class NewsController extends Zend_Controller_Action
 
 	public function editAction()
 	{
+		if( !$this->_helper->checkAccess() )
+			throw new Mylib_Exception_Forbidden();
+
 		$newsTable = new App_Model_DbTable_News();
 
 		$newsData = $newsTable->findById((int) $this->_getParam('idN'));
@@ -55,6 +61,9 @@ class NewsController extends Zend_Controller_Action
 
 	public function deleteAction()
 	{
+		if( !$this->_helper->checkAccess() )
+			throw new Mylib_Exception_Forbidden();
+
 		$newsTable = new App_Model_DbTable_News();
 
 		$newsData = $newsTable->findById((int) $this->_getParam('idN'));

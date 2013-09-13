@@ -1,0 +1,15 @@
+<? if( !empty($this->error) ): ?>
+	<p class="error"><?= $this->error; ?></p>
+<? endif; ?>
+
+<form name="concert-form" method="POST">
+	<input type="text" name="title" value="<?= (isset($this->concertData['title'])) ? $this->escape($this->concertData['title']) : ''; ?>" placeholder="Заголовок" maxlength="1024"/><br>
+	<input type="text" name="link" value="<?= (isset($this->concertData['link'])) ? $this->escape($this->concertData['link']) : ''; ?>" placeholder="Ссылка" maxlength="1024"/><br>
+	<input type="text" name="place" value="<?= (isset($this->concertData['place'])) ? $this->escape($this->concertData['place']) : ''; ?>" placeholder="Место" maxlength="1024"/><br>
+	<input type="text" name="cost" value="<?= (isset($this->concertData['cost'])) ? $this->escape($this->concertData['cost']) : ''; ?>" placeholder="Цена билетов" maxlength="100"/><br>
+	<input type="date" name="date" value="<?= (isset($this->concertData['date'])) ? $this->escape($this->concertData['date']) : ''; ?>" placeholder="Дата dd.mm.yy" maxlength="10"/><br>
+	<input type="time" name="time" value="<?= (isset($this->concertData['time'])) ? $this->escape($this->concertData['time']) : ''; ?>" placeholder="Время hh:mm" maxlength="5"/><br>
+	<textarea name="desc" placeholder="Описание"><?= (isset($this->concertData['desc'])) ? $this->escape($this->concertData['desc']) : ''; ?></textarea><br>
+
+	<input class="submit" type="submit" name="отправить" value="отправить">
+</form>

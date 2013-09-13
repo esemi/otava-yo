@@ -1,26 +1,23 @@
 <section class="field-bg">
 	<h2 class="title-page-name text-center">
-		<?= $this->message ?>
+		<?= $this->escape($this->message); ?>
 	</h2>
 
-		<?php if (isset($this->exceptionMessage)): ?>
-		<p>
-		<?= $this->exceptionMessage ?>
-		</p>
-		<?php endif ?>
+	<?php if (isset($this->exceptionMessage)): ?>
+		<p><?= $this->escape($this->exceptionMessage); ?></p>
+	<?php endif ?>
 
 
-		<?php if (isset($this->exception)): ?>
+	<?php if (isset($this->exception)): ?>
 		<h3 class="title-error">Exception information:</h3>
 		<p>
-		<strong class="bold">Message:</strong>
-		<?= $this->exception->getMessage() ?>
+			<strong class="bold">Message:</strong>
+			<?= $this->escape($this->exception->getMessage()); ?>
 		</p>
 		<h3 class="title-error">Stack trace:</h3>
-		<pre><?= $this->exception->getTraceAsString() ?>
-		</pre>
-			<h3 class="title-error">Request Parameters:</h3>
-		<pre><?= var_export($this->request->getParams(), true) ?>
-		</pre>
-			<?php endif ?>
+		<pre><?= $this->escape($this->exception->getTraceAsString()) ?></pre>
+
+		<h3 class="title-error">Request Parameters:</h3>
+		<pre><?= var_export($this->request->getParams(), true) ?></pre>
+	<?php endif ?>
 </section>

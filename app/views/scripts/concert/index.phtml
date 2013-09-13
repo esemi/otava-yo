@@ -1,9 +1,30 @@
+<?php
+
+$authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess();
+
+?>
+
 <section class="field-bg">
+
+	<? if( $authFlag ): ?>
+		<a class="news-button" href="<?= $this->url(array(), 'staticConcertCreate') ?>">добавить</a>
+	<? endif; ?>
+
 	<? if( $this->concerts->count() > 0 ): ?>
 	<section>
 		<h2 class="title-page-name text-center">ближайшие концерты</h2>
 		<? foreach( $this->concerts as $item ): ?>
 			<article class="concert-block">
+				<? if( $authFlag ): ?>
+					<aside>
+						<a href="<?= $this->url(array('idC' => $item->id ), 'staticConcertEdit') ?>">Редактировать
+							<div class="edit"></div>
+						</a>
+						<a class="delete" href="<?= $this->url(array('idC' => $item->id ), 'staticConcertDelete') ?>">удалить концерт
+							<div class=""></div>
+						</a>
+					</aside>
+				<? endif; ?>
 				<header>
 					<time class="date-concert" datetime="<?= $this->prepareConcertDatetime($item->date, $item->time); ?>">
 						<?= $this->prepareConcertDate($item->date); ?>
@@ -33,6 +54,7 @@
 						<a rel="nofollow" target="_blank" href="<?= $item->link ?>" rel="nofollow"><?= $this->escape($item->link); ?></a>
 					</p>
 				<? endif; ?>
+
 				<? if( !empty($item->cost) ): ?>
 					<p class="concert-ticets"><span class="ticets">Билеты:</span> <?= $this->escape($item->cost); ?></p>
 				<? endif; ?>

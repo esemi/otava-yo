@@ -42,6 +42,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$routes['staticNewsView'] = new Zend_Controller_Router_Route_Regex('/news\#view(\d+)', array( 'controller' => 'news', 'action' => 'index'), array( 'id' => 1), 'news#view%d');
 		$routes['staticConcert'] = new Zend_Controller_Router_Route_Static('/concerts', array( 'controller' => 'concert', 'action' => 'index' ));
 		$routes['staticConcertView'] = new Zend_Controller_Router_Route_Regex('/concerts\#view(\d+)', array( 'controller' => 'concert', 'action' => 'index'), array( 'id' => 1), 'concerts#view%d');
+		$routes['staticConcertCreate'] = new Zend_Controller_Router_Route_Static('/concerts/create', array( 'controller' => 'concert', 'action' => 'create' ));
+		$routes['staticConcertEdit'] = new Zend_Controller_Router_Route('/concerts/edit/:idC/', array( 'controller' => 'concert', 'action' => 'edit' ), array( 'idC' => '\d+' ));
+		$routes['staticConcertDelete'] = new Zend_Controller_Router_Route('/concerts/delete/:idC', array( 'controller' => 'concert', 'action' => 'delete' ), array( 'idC' => '\d+' ));
 		$routes['staticGuestbook'] = new Zend_Controller_Router_Route_Static('/guestbook', array( 'controller' => 'guestbook', 'action' => 'index' ));
 		$routes['staticVideo'] = new Zend_Controller_Router_Route_Static('/video', array( 'controller' => 'video', 'action' => 'index' ));
 		$routes['staticAudio'] = new Zend_Controller_Router_Route_Static('/audio', array( 'controller' => 'audio', 'action' => 'index' ));
