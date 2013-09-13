@@ -2,6 +2,9 @@
 	<h2 class="title-page-name text-center">Удаление новости</h2>
 	<p class="error"><?= $this->escape('Вы уверены, что хотите удалить эту новость?'); ?></p>
 	<form method="POST">
-		<input type="submit" name="удалить!"/>
+		<input type="submit" name="удалить!" value="удалить!">
 	</form>
+
+	<input type="button" onclick="history.back();" name="cancel" value="отменить">
+
 </section>

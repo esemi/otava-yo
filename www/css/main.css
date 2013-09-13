@@ -611,24 +611,24 @@
 				.news-titile-form{
 					width: 359px;
 				}
-				.edit, .delete div{
+				.edit, .delete{
 					width: 21px;
 					height: 21px;
+					margin-top: 3px;
 					display: inline-block;
-				}
-				.delete{
-					float: right;
-					margin-bottom: 4px;
 				}
 				.edit{
 					background: url('/img/sprite.png') -97px -54px no-repeat;
+					margin: 0px 9px 0px 21px;
 				}
 				.edit:hover{
 					background: url('/img/sprite.png') -121px -54px no-repeat;
 				}
-				.delete div{
+				.delete{
 					background: url('/img/sprite.png') -97px -32px no-repeat;
-					margin-bottom: -4px;
+				}
+				.delete:hover{
+					background: url('/img/sprite.png') -121px -32px no-repeat;
 				}
 		/*---END News page------------------------------*/
 
