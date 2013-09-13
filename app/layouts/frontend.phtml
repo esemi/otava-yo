@@ -36,10 +36,6 @@ echo $this->doctype();
 	<body>
 		<div class="wrapper">
 			<header class="header" >
-				<div class="lang-block">
-					<a class="lang-ru" href="<?php echo $this->url(array('lang' => 'ru')) ?>"></a>
-					<a class="lang-en" href="<?php echo $this->url(array('lang' => 'en')) ?>"></a>
-				</div>
 
 				<? if( Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess() ): ?>
 						<aside class="login-status">
@@ -62,6 +58,10 @@ echo $this->doctype();
 				<a href="<?php echo $this->url(array(), 'staticIndex') ?>">
 					<img src="/img/otava_logo_main.png" class="logo">
 				</a>
+				<div class="lang-block">
+					<a class="lang-ru" href="<?php echo $this->url(array('lang' => 'ru')) ?>"></a>
+					<a class="lang-en" href="<?php echo $this->url(array('lang' => 'en')) ?>"></a>
+				</div>
 			</header>
 			<div class="menu-block">
 				<nav class="menu-links">

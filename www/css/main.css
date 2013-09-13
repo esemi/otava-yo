@@ -162,8 +162,8 @@
 		.music-title{
 			background-color: rgba(105, 96, 70, 0.8); /*light green*/
 		}
-		.date, .date-news, .date-concert, .guest-button, .news-button, .guest-form .submit,
-		.jp-no-solution, .login-status{
+		.date, .date-news, .date-concert, .guest-button, .news-button,
+		.guest-form .submit, .jp-no-solution, .login-status{
 			background-color: #7b2e20; /*brown*/
 		}
 		.date-concert-old{
@@ -177,8 +177,8 @@
 
 		.main-page-photo, .date, .menu-block, .menu-links,
 		.footer-block, .out-links, .last-news, .nearrest-concert, .field-bg,
-		.guest-button,.news-button, .guest-form .submit, .donate, a.jp-play, a.jp-pause,
-		.login-status{
+		.guest-button,.news-button, .guest-form .submit, .donate, a.jp-play,
+		a.jp-pause, .login-status, .lang-ru, .lang-en{
 			box-shadow: 1px 1px 5px 0 #696046;
 			-webkit-box-shadow: 1px 1px 5px 0 #696046;
 			-moz-box-shadow: 1px 1px 5px 0 #696046;
@@ -300,13 +300,14 @@
 			margin-bottom: -21px;
 		}
 		.lang-block{
-			position: absolute;
-			right: 21px;
+			padding-top: 12px;
+			margin-right: 186px;
 		}
 		.lang-ru, .lang-en{
 			width: 19px;
 			height: 19px;
-			margin-left: 7px;
+			border-radius: 9px;
+			margin-left: 9px;
 			display: inline-block;
 		}
 		.lang-en{
@@ -322,7 +323,7 @@
 			background: url('/img/sprite.png') 0px -291px no-repeat;
 		}
 
-		.out-links-block, .donate, .login-status{
+		.out-links-block, .donate, .login-status, .lang-block{
 			margin-top: 36px;
 			float: right;
 		}
