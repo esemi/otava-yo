@@ -1,3 +1,17 @@
+<?php
+$authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess();
+$moderAuthor = Zend_Controller_Front::getInstance()->getParam('bootstrap')->getOption('guestbook_reserved_name');
+
+if( !empty($this->postData['author']) ){
+	$authorField = $this->postData['author'];
+}elseif( $authFlag === true ){
+	$authorField = $moderAuthor;
+}else{
+	$authorField = '';
+}
+
+?>
+
 <? if( !empty($this->error) ): ?>
 	<p class="error"><?= $this->error ?></p>
 <? endif; ?>
@@ -9,7 +23,7 @@
 					<label for="author">Имя: </label>
 				</td>
 				<td>
-					<input type="text" id="author" name="author" value="<?= (isset($this->postData['author'])) ? $this->escape($this->postData['author']) : ''; ?>" placeholder="имя*" maxlength="100"/><br>
+					<input type="text" id="author" name="author" value="<?= $this->escape($authorField); ?>" placeholder="имя*" maxlength="100"/><br>
 				</td>
 			</tr>
 			<tr>
@@ -39,9 +53,14 @@
 		</tbody>
 	</table>
 	<label>Сообщение: </label>
-	<textarea name="message" class="message" placeholder="сообщение*" maxlength="10000"><?= (isset($this->postData['message'])) ? $this->escape($this->postData['message']) : ''; ?></textarea><br>
-	<div class="guest-recaptcha">
-		<?= $this->recaptcha->getHTML(); ?>
-	</div>
+	<textarea name="content" class="message" placeholder="сообщение*" maxlength="10000"><?= (isset($this->postData['content'])) ? $this->escape($this->postData['content']) : ''; ?></textarea><br>
+
+	<? if( !is_null($this->recaptcha) && $authFlag === false ): ?>
+		<div class="guest-recaptcha">
+			<?= $this->recaptcha->getHTML(); ?>
+		</div>
+	<? endif; ?>
+
+	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 	<input class="submit" type="submit" name="отправить" value="отправить">
 </form>

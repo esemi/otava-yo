@@ -6,6 +6,8 @@ class GuestbookController extends Zend_Controller_Action
 	{
 		$bookTable = new App_Model_DbTable_Guestbook();
 
+		$moderFlag = $this->_helper->checkAccess();
+
 		$conf = $this->getFrontController()->getParam('bootstrap')->getOption('recaptcha');
 		$this->view->recaptcha = $recaptcha = new Zend_Service_ReCaptcha($conf['pubkey'],$conf['privkey']);
 		$this->view->showForm = false;
@@ -14,14 +16,18 @@ class GuestbookController extends Zend_Controller_Action
 		{
 			$postData = $this->_request->getPost();
 
-			if( !$this->_helper->checkCaptcha($recaptcha) ){
+			if( $moderFlag === true ){
+				$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+			}
+
+			if( $moderFlag === false && !$this->_helper->checkCaptcha($recaptcha) ){
 				$this->view->errorMessage = 'Текст с изображения введён неверно';
 			}else{
-				list($validData, $res) = $bookTable->prepareNewPost($postData);
+				list($validData, $res) = $bookTable->validate($postData, $moderFlag);
 				if( !empty($res) ){
 					$this->view->errorMessage = implode('<br>', $res);
 				}else{
-					$bookTable->addPost($validData['author'], $validData['message'], $validData['email'], $validData['site'], $validData['city']);
+					$bookTable->addPost($validData['author'], $validData['content'], $validData['email'], $validData['site'], $validData['city']);
 				}
 			}
 
@@ -32,5 +38,55 @@ class GuestbookController extends Zend_Controller_Action
 		}
 
 		$this->view->notes = $bookTable->getAll();
+	}
+
+	public function deleteAction()
+	{
+		if( !$this->_helper->checkAccess() )
+			throw new Mylib_Exception_Forbidden();
+
+		$bookTable = new App_Model_DbTable_Guestbook();
+
+		$bookData = $bookTable->findById((int) $this->_getParam('idP',0));
+		if( is_null($bookData) ){
+			throw new Mylib_Exception_NotFound('Post not found');
+		}
+
+		if( $this->_request->isPost() )
+		{
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+
+			$bookTable->delPost($bookData['id']);
+			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(),'staticGuestbook'));
+		}
+	}
+
+	public function editAction()
+	{
+		if( !$this->_helper->checkAccess() )
+			throw new Mylib_Exception_Forbidden();
+
+		$bookTable = new App_Model_DbTable_Guestbook();
+
+		$bookData = $bookTable->findById((int) $this->_getParam('idP'));
+		if( is_null($bookData) ){
+			throw new Mylib_Exception_NotFound('Post not found');
+		}
+
+		if( $this->_request->isPost() )
+		{
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+
+			$this->view->postData = $postData = $this->_request->getPost();
+			list($validData, $res) = $bookTable->validate($postData);
+			if( !empty($res) ){
+				$this->view->errorMessage = implode('<br>', $res);
+			}else{
+				$bookTable->editPost($bookData['id'], $validData['author'], $validData['content'], $validData['email'], $validData['site'], $validData['city']);
+				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(),'staticGuestbook'));
+			}
+		}else{
+			$this->view->postData = $bookData;
+		}
 	}
 }

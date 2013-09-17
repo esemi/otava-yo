@@ -35,26 +35,33 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$routes['staticIndex'] = new Zend_Controller_Router_Route_Static('/', array( 'controller' => 'index', 'action' => 'index'));
 		$routes['staticBand'] = new Zend_Controller_Router_Route_Static('/band', array( 'controller' => 'index', 'action' => 'band' ));
 		$routes['staticContacts'] = new Zend_Controller_Router_Route_Static('/contacts', array( 'controller' => 'index', 'action' => 'contact' ));
+		$routes['staticDonate'] = new Zend_Controller_Router_Route_Static('/donate', array( 'controller' => 'index', 'action' => 'donate' ));
+		$routes['login'] = new Zend_Controller_Router_Route_Static('/auth/login', array( 'controller' => 'auth', 'action' => 'login' ));
+		$routes['logout'] = new Zend_Controller_Router_Route_Static('/auth/logout', array( 'controller' => 'auth', 'action' => 'logout' ));
+
 		$routes['staticNews'] = new Zend_Controller_Router_Route_Static('/news', array( 'controller' => 'news', 'action' => 'index' ));
 		$routes['staticNewsCreate'] = new Zend_Controller_Router_Route_Static('/news/create', array( 'controller' => 'news', 'action' => 'create' ));
 		$routes['staticNewsEdit'] = new Zend_Controller_Router_Route('/news/edit/:idN/', array( 'controller' => 'news', 'action' => 'edit' ), array( 'idN' => '\d+' ));
 		$routes['staticNewsDelete'] = new Zend_Controller_Router_Route('/news/delete/:idN', array( 'controller' => 'news', 'action' => 'delete' ), array( 'idN' => '\d+' ));
 		$routes['staticNewsView'] = new Zend_Controller_Router_Route_Regex('/news\#view(\d+)', array( 'controller' => 'news', 'action' => 'index'), array( 'id' => 1), 'news#view%d');
+
 		$routes['staticConcert'] = new Zend_Controller_Router_Route_Static('/concerts', array( 'controller' => 'concert', 'action' => 'index' ));
 		$routes['staticConcertView'] = new Zend_Controller_Router_Route_Regex('/concerts\#view(\d+)', array( 'controller' => 'concert', 'action' => 'index'), array( 'id' => 1), 'concerts#view%d');
 		$routes['staticConcertCreate'] = new Zend_Controller_Router_Route_Static('/concerts/create', array( 'controller' => 'concert', 'action' => 'create' ));
 		$routes['staticConcertEdit'] = new Zend_Controller_Router_Route('/concerts/edit/:idC/', array( 'controller' => 'concert', 'action' => 'edit' ), array( 'idC' => '\d+' ));
 		$routes['staticConcertDelete'] = new Zend_Controller_Router_Route('/concerts/delete/:idC', array( 'controller' => 'concert', 'action' => 'delete' ), array( 'idC' => '\d+' ));
+
 		$routes['staticGuestbook'] = new Zend_Controller_Router_Route_Static('/guestbook', array( 'controller' => 'guestbook', 'action' => 'index' ));
+		$routes['staticGuestbookEdit'] = new Zend_Controller_Router_Route('/guestbook/edit/:idP/', array( 'controller' => 'guestbook', 'action' => 'edit' ), array( 'idP' => '\d+' ));
+		$routes['staticGuestbookDelete'] = new Zend_Controller_Router_Route('/guestbook/delete/:idP', array( 'controller' => 'guestbook', 'action' => 'delete' ), array( 'idP' => '\d+' ));
+
 		$routes['staticVideo'] = new Zend_Controller_Router_Route_Static('/video', array( 'controller' => 'video', 'action' => 'index' ));
 		$routes['staticVideoCreate'] = new Zend_Controller_Router_Route_Static('/video/create', array( 'controller' => 'video', 'action' => 'create' ));
 		$routes['staticVideoEdit'] = new Zend_Controller_Router_Route('/video/edit/:idV/', array( 'controller' => 'video', 'action' => 'edit' ), array( 'idV' => '\d+' ));
 		$routes['staticVideoDelete'] = new Zend_Controller_Router_Route('/video/delete/:idV', array( 'controller' => 'video', 'action' => 'delete' ), array( 'idV' => '\d+' ));
+
 		$routes['staticAudio'] = new Zend_Controller_Router_Route_Static('/audio', array( 'controller' => 'audio', 'action' => 'index' ));
 		$routes['audioGetRand'] = new Zend_Controller_Router_Route_Static('/audio/get-rand.json', array( 'controller' => 'audio', 'action' => 'get-rand' ));
-		$routes['staticDonate'] = new Zend_Controller_Router_Route_Static('/donate', array( 'controller' => 'index', 'action' => 'donate' ));
-		$routes['login'] = new Zend_Controller_Router_Route_Static('/auth/login', array( 'controller' => 'auth', 'action' => 'login' ));
-		$routes['logout'] = new Zend_Controller_Router_Route_Static('/auth/logout', array( 'controller' => 'auth', 'action' => 'logout' ));
 
 
 		foreach( $routes as $name => $route ){
