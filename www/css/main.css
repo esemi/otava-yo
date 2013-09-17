@@ -300,11 +300,8 @@
 			margin-bottom: -21px;
 		}
 		.lang-block{
-			padding-top: 12px;
-			margin-top: 36px;
-			margin-left: 32px;
-			display: inline-block;
-			vertical-align: top;
+			position: absolute;
+			right: 21px;
 		}
 		.lang-ru, .lang-en{
 			width: 19px;
