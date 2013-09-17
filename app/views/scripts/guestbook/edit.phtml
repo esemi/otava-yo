@@ -1,0 +1,7 @@
+<section class="field-bg">
+	<h2 class="title-page-name text-center">Редактирование сообщения</h2>
+	<?= $this->partial('Partials/guestbook-new-post.phtml', array(
+			'postData' => $this->postData,
+			'error' => $this->errorMessage,
+			'recaptcha' => null)); ?>
+</section>

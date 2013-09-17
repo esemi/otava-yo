@@ -38,6 +38,8 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 			'email' => '',
 			'site' => '',
 			'city' => '',
+			'author' => '',
+			'content' => '',
 		);
 
 		$moderAuthor = Zend_Controller_Front::getInstance()->getParam('bootstrap')->getOption('guestbook_reserved_name');
@@ -49,16 +51,16 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 			$validData['author'] = $data['author'];
 		}
 
-		if( empty($data['message']) || mb_strlen($data['message']) > 10000 ){
+		if( empty($data['content']) || mb_strlen($data['content']) > 10000 ){
 			$errors[] = 'Некорректное сообщение';
 		}else{
-			$validData['message'] = $data['message'];
+			$validData['content'] = $data['content'];
 		}
 
 		$validMail = new Zend_Validate_EmailAddress( array( 'mx' => true, 'deep' => true ) );
 		if( !empty($data['email']) )
 		{
-			if( mb_strlen($data['city']) > 150 || !$validMail->isValid($data['email']) )
+			if( mb_strlen($data['email']) > 150 || !$validMail->isValid($data['email']) )
 			{
 				$errors[] = 'Некорректный адрес электронной почты';
 			}else{
@@ -95,22 +97,47 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 	 * Add new message to guestbook
 	 *
 	 * @param string $author
-	 * @param string $message
+	 * @param string $content
 	 * @param string $email
 	 * @param string $site
 	 * @param string $city
 	 *
 	 * @return int Count of inserted rows
 	 */
-	public function addPost($author, $message, $email='', $site='', $city='')
+	public function addPost($author, $content, $email='', $site='', $city='')
 	{
 		return $this->insert( array(
 			'author' => $author,
-			'content' => $message,
+			'content' => $content,
 			'email' => $email,
 			'city' => $city,
 			'site' => $site,
 			'date_publish' => new Zend_Db_Expr('NOW()') ));
+	}
+
+	/**
+	 * Edit post from guestbook
+	 *
+	 * @param int $id
+	 * @param string $author
+	 * @param string $content
+	 * @param string $email
+	 * @param string $site
+	 * @param string $city
+	 *
+	 * @return int Count of updated rows
+	 */
+	public function editPost($id, $author, $content, $email='', $site='', $city='')
+	{
+		return $this->update(
+			array(
+				'author' => $author,
+				'content' => $content,
+				'email' => $email,
+				'city' => $city,
+				'site' => $site ),
+			array( $this->_db->quoteInto( 'id = ?', $id, Zend_Db::INT_TYPE ) )
+		);
 	}
 
 	/**

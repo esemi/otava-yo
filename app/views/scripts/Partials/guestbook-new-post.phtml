@@ -39,9 +39,14 @@
 		</tbody>
 	</table>
 	<label>Сообщение: </label>
-	<textarea name="message" class="message" placeholder="сообщение*" maxlength="10000"><?= (isset($this->postData['message'])) ? $this->escape($this->postData['message']) : ''; ?></textarea><br>
-	<div class="guest-recaptcha">
-		<?= $this->recaptcha->getHTML(); ?>
-	</div>
+	<textarea name="content" class="message" placeholder="сообщение*" maxlength="10000"><?= (isset($this->postData['content'])) ? $this->escape($this->postData['content']) : ''; ?></textarea><br>
+
+	<? if( !is_null($this->recaptcha) ): ?>
+		<div class="guest-recaptcha">
+			<?= $this->recaptcha->getHTML(); ?>
+		</div>
+	<? endif; ?>
+
+	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 	<input class="submit" type="submit" name="отправить" value="отправить">
 </form>
