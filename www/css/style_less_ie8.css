@@ -20,8 +20,8 @@
 		color: rgb(176, 172, 164);
 	}
 	/*against multipal background*/
-	.out-link-youtube{
-			background: url(/img/sprite.png)  0px -227px no-repeat;
+		.out-link-youtube{
+			background: url(/img/sprite.png) 0px -227px no-repeat;
 		}
 		.out-link-vk{
 			background: url(/img/sprite.png) -32px -227px no-repeat;
@@ -32,15 +32,26 @@
 		.out-link-myspace{
 			background: url(/img/sprite.png) -96px -227px no-repeat;
 		}
+		.out-link-youtube:hover{
+			background: url(/img/sprite.png) 0px -259px no-repeat;
+		}
+		.out-link-vk:hover{
+			background: url(/img/sprite.png) -32px -259px no-repeat;
+		}
+		.out-link-kroogi:hover{
+			background: url(/img/sprite.png) -65px -259px no-repeat;
+		}
+		.out-link-myspace:hover{
+			background: url(/img/sprite.png) -96px -259px no-repeat;
+		}
 
 /*png images instead of rgba transparency*/
 	.donate, a.jp-play, a.jp-pause, .last-news, .nearrest-concert{
 		background:url('/img/1x1_grey_07.png');
 	}
 
-	.menu-links, .footer-block, .field-bg,
-	.out-links:hover, .last-news:hover, .nearrest-concert:hover,
-	.donate:hover, a.jp-play:hover, a.jp-pause:hover{
+	.menu-links, .footer-block, .field-bg,	 .last-news:hover,
+	.nearrest-concert:hover, .donate:hover, a.jp-play:hover, a.jp-pause:hover{
 		background:url('/img/1x1_grey_08.png');
 	}
 
