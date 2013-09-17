@@ -1,5 +1,16 @@
+<?php
+
+$authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess();
+
+?>
+
 <section class="field-bg">
 	<h2 class="title-page-name text-center">ВИДЕО</h2>
+
+	<? if( $authFlag ): ?>
+		<a class="news-button" href="<?= $this->url(array(), 'staticVideoCreate') ?>">добавить</a>
+	<? endif; ?>
+
 	<? foreach( $this->video as $item ): ?>
 		<article class="video-block">
 			<header>
@@ -10,6 +21,12 @@
 			<div class="video">
 				<?= $item->player_code; ?>
 			</div>
+			<footer>
+				<? if( $authFlag ): ?>
+					<a class="edit" title="редактировать" href="<?= $this->url(array('idV' => $item->id ), 'staticVideoEdit') ?>"></a>
+					<a class="delete" title="удалить" href="<?= $this->url(array('idV' => $item->id ), 'staticVideoDelete') ?>"></a>
+				<? endif; ?>
+			</footer>
 		</article>
 	<hr>
 	<? endforeach; ?>

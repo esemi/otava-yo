@@ -20,6 +20,8 @@ class ConcertController extends Zend_Controller_Action
 
 		if( $this->_request->isPost() )
 		{
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+			
 			list($validData, $res) = $concertTable->validate($postData);
 			if( !empty($res) ){
 				$this->view->errorMessage = implode('<br>', $res);
@@ -44,6 +46,8 @@ class ConcertController extends Zend_Controller_Action
 
 		if( $this->_request->isPost() )
 		{
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+
 			$this->view->concertData = $postData = $this->_request->getPost();
 			list($validData, $res) = $concertTable->validate($postData);
 			if( !empty($res) ){
@@ -71,6 +75,8 @@ class ConcertController extends Zend_Controller_Action
 
 		if( $this->_request->isPost() )
 		{
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+
 			$concertTable->delConcert($concertData['id']);
 			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array('id' => $concertData['id']),'staticConcertView'));
 		}

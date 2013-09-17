@@ -1,0 +1,6 @@
+<section class="field-bg">
+	<h2 class="title-page-name text-center">Редактирование видео</h2>
+	<?= $this->partial('Partials/video-create-edit-form.phtml', array(
+		'error' => $this->errorMessage,
+		'videoData' => $this->videoData)); ?>
+</section>

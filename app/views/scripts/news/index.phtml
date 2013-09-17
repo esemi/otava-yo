@@ -33,14 +33,15 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 					</a>
 				</h3>
 			</header>
+
 			<?= $item->content; ?>
+
 			<footer>
 				<? if( $authFlag ): ?>
-						<a class="edit" title="редактировать" href="<?= $this->url(array('idN' => $item->id ), 'staticNewsEdit') ?>"></a>
-						<a class="delete" title="удалить" href="<?= $this->url(array('idN' => $item->id ), 'staticNewsDelete') ?>"></a>
+					<a class="edit" title="редактировать" href="<?= $this->url(array('idN' => $item->id ), 'staticNewsEdit') ?>"></a>
+					<a class="delete" title="удалить" href="<?= $this->url(array('idN' => $item->id ), 'staticNewsDelete') ?>"></a>
 				<? endif; ?>
 				<p class="signature"><?= $this->escape($this->moder_author); ?></p>
-
 			</footer>
 		</article>
 		<hr>

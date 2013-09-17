@@ -1,0 +1,11 @@
+<section class="field-bg">
+	<h2 class="title-page-name text-center">Удаление видео</h2>
+	<p class="error"><?= $this->escape('Вы уверены, что хотите удалить это видео?'); ?></p>
+	<form method="POST">
+		<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
+		<input type="submit" name="удалить!" value="удалить!">
+	</form>
+
+	<input type="button" onclick="history.back();" name="cancel" value="отменить">
+
+</section>

@@ -47,6 +47,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$routes['staticConcertDelete'] = new Zend_Controller_Router_Route('/concerts/delete/:idC', array( 'controller' => 'concert', 'action' => 'delete' ), array( 'idC' => '\d+' ));
 		$routes['staticGuestbook'] = new Zend_Controller_Router_Route_Static('/guestbook', array( 'controller' => 'guestbook', 'action' => 'index' ));
 		$routes['staticVideo'] = new Zend_Controller_Router_Route_Static('/video', array( 'controller' => 'video', 'action' => 'index' ));
+		$routes['staticVideoCreate'] = new Zend_Controller_Router_Route_Static('/video/create', array( 'controller' => 'video', 'action' => 'create' ));
+		$routes['staticVideoEdit'] = new Zend_Controller_Router_Route('/video/edit/:idV/', array( 'controller' => 'video', 'action' => 'edit' ), array( 'idV' => '\d+' ));
+		$routes['staticVideoDelete'] = new Zend_Controller_Router_Route('/video/delete/:idV', array( 'controller' => 'video', 'action' => 'delete' ), array( 'idV' => '\d+' ));
 		$routes['staticAudio'] = new Zend_Controller_Router_Route_Static('/audio', array( 'controller' => 'audio', 'action' => 'index' ));
 		$routes['audioGetRand'] = new Zend_Controller_Router_Route_Static('/audio/get-rand.json', array( 'controller' => 'audio', 'action' => 'get-rand' ));
 		$routes['staticDonate'] = new Zend_Controller_Router_Route_Static('/donate', array( 'controller' => 'index', 'action' => 'donate' ));
