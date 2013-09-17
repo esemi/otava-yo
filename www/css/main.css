@@ -110,11 +110,13 @@
 		/*----Fonts-----------------*/
 		@font-face{
 			font-family: DSCoptic;
-			src: url('/fonts/DSCOPTIC.eot?') format('eot'),
-			url('/fonts/DSCOPTIC.woff') format('woff'),
-			url('/fonts/DSCOPTIC.ttf') format('truetype'),
-			url('/fonts/DSCOPTIC.svg#DSCoptic') format('svg');
+			src: url('/fonts/dscoptic.eot');
+			src: url('/fonts/dscoptic.eot?#iefix') format('embedded-opentype'),
+				 url('/fonts/dscoptic.woff') format('woff'),
+				 url('/fonts/dscoptic.ttf') format('truetype'),
+				 url('/fonts/dscoptic.svg#DSCoptic') format('svg');
 		}
+
 		.menu-links li, .date, .date-news, .title, .title-bigger, .title-contacts,
 		.title-page-name,.nearrest-concert-title, .signature, .concert-name,
 		.old-concert-headding, .date-concert, .date-concert-old, .title-album,
