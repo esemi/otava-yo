@@ -6,6 +6,8 @@ class GuestbookController extends Zend_Controller_Action
 	{
 		$bookTable = new App_Model_DbTable_Guestbook();
 
+		$moderFlag = $this->_helper->checkAccess();
+
 		$conf = $this->getFrontController()->getParam('bootstrap')->getOption('recaptcha');
 		$this->view->recaptcha = $recaptcha = new Zend_Service_ReCaptcha($conf['pubkey'],$conf['privkey']);
 		$this->view->showForm = false;
@@ -14,10 +16,14 @@ class GuestbookController extends Zend_Controller_Action
 		{
 			$postData = $this->_request->getPost();
 
-			if( !$this->_helper->checkCaptcha($recaptcha) ){
+			if( $moderFlag === true ){
+				$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+			}
+
+			if( $moderFlag === false && !$this->_helper->checkCaptcha($recaptcha) ){
 				$this->view->errorMessage = 'Текст с изображения введён неверно';
 			}else{
-				list($validData, $res) = $bookTable->validate($postData);
+				list($validData, $res) = $bookTable->validate($postData, $moderFlag);
 				if( !empty($res) ){
 					$this->view->errorMessage = implode('<br>', $res);
 				}else{

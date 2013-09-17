@@ -2,6 +2,8 @@
 
 class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 {
+	const NAME_LEVENSTEIN_DISTANCE_BORDER = 3;
+
 	protected $_name = 'guestbook';
 
 	public function getAll()
@@ -27,9 +29,10 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 	 * Prepare data for new post
 	 *
 	 * @param array $data post params (author*, email, city, site, message*)
+	 * @param boolean $authFlag
 	 * @return array Contains array of valid data and array of errors
 	 */
-	public function validate($data)
+	public function validate($data, $authFlag)
 	{
 		array_walk($data, 'trim');
 
@@ -45,8 +48,8 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 		$moderAuthor = Zend_Controller_Front::getInstance()->getParam('bootstrap')->getOption('guestbook_reserved_name');
 		if( empty($data['author']) || mb_strlen($data['author']) > 100 ){
 			$errors[] = 'Некорректное имя автора';
-		}elseif( levenshtein($data['author'], $moderAuthor) < 3 ){
-			$errors[] = 'Данное имя зарезервированно';
+		}elseif( $authFlag === false && levenshtein($data['author'], $moderAuthor) < self::NAME_LEVENSTEIN_DISTANCE_BORDER ){
+			$errors[] = 'Данное имя зарезервированно за администрацией сайта';
 		}else{
 			$validData['author'] = $data['author'];
 		}
