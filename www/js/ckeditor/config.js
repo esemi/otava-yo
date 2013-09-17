@@ -1,14 +1,6 @@
-/**
- * @license Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.html or http://ckeditor.com/license
- */
-
 CKEDITOR.editorConfig = function( config ) {
-	// Define changes to default configuration here.
-	// For the complete reference:
 	// http://docs.ckeditor.com/#!/api/CKEDITOR.config
 
-	// The toolbar groups arrangement, optimized for a single toolbar row.
 	config.toolbarGroups = [
 		{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
@@ -25,10 +17,11 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'about' }
 	];
 
-	// The default plugins included in the basic setup define some buttons that
-	// we don't want too have in a basic editor. We remove them here.
-	config.removeButtons = 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript';
+	config.removeButtons = 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript,About';
 
-	// Let's have it basic on dialogs as well.
-	config.removeDialogTabs = 'link:advanced';
+	config.linkShowAdvancedTab = false;
+
+	config.colorButton_colors = '000,800000,8B4513'; //@TODO valid colors
+
+	//config.language = 'ru'; @TODO setting by url
 };
