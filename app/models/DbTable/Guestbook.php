@@ -14,13 +14,22 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 		return $this->fetchAll($select);
 	}
 
+	public function findById($id)
+	{
+		$select = $this->select()
+						->from($this, array( 'id', 'author', 'email', 'city', 'site', 'content' ))
+						->where('id = ?', $id, Zend_Db::INT_TYPE)
+						->limit(1);
+		return $this->fetchRow($select);
+	}
+
 	/**
 	 * Prepare data for new post
 	 *
 	 * @param array $data post params (author*, email, city, site, message*)
 	 * @return array Contains array of valid data and array of errors
 	 */
-	public function prepareNewPost($data)
+	public function validate($data)
 	{
 		array_walk($data, 'trim');
 
@@ -102,6 +111,18 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 			'city' => $city,
 			'site' => $site,
 			'date_publish' => new Zend_Db_Expr('NOW()') ));
+	}
+
+	/**
+	 * Delete message from guestbook
+	 *
+	 * @param int $id
+
+	 * @return int Count of deleted rows
+	 */
+	public function delPost($id)
+	{
+		return $this->delete( array( $this->_db->quoteInto( 'id = ?', $id, Zend_Db::INT_TYPE ) ) );
 	}
 
 }

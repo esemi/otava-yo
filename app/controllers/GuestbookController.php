@@ -17,7 +17,7 @@ class GuestbookController extends Zend_Controller_Action
 			if( !$this->_helper->checkCaptcha($recaptcha) ){
 				$this->view->errorMessage = 'Текст с изображения введён неверно';
 			}else{
-				list($validData, $res) = $bookTable->prepareNewPost($postData);
+				list($validData, $res) = $bookTable->validate($postData);
 				if( !empty($res) ){
 					$this->view->errorMessage = implode('<br>', $res);
 				}else{
@@ -32,5 +32,26 @@ class GuestbookController extends Zend_Controller_Action
 		}
 
 		$this->view->notes = $bookTable->getAll();
+	}
+
+	public function deleteAction()
+	{
+		if( !$this->_helper->checkAccess() )
+			throw new Mylib_Exception_Forbidden();
+
+		$bookTable = new App_Model_DbTable_Guestbook();
+
+		$bookData = $bookTable->findById((int) $this->_getParam('idP',0));
+		if( is_null($bookData) ){
+			throw new Mylib_Exception_NotFound('Post not found');
+		}
+
+		if( $this->_request->isPost() )
+		{
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+
+			$bookTable->delPost($bookData['id']);
+			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(),'staticGuestbook'));
+		}
 	}
 }
