@@ -9,7 +9,8 @@
 	.out-link-youtube, .out-link-vk, .out-link-kroogi, .out-link-myspace,
 	.donate, a.jp-play, a.jp-pause, .menu-links, .footer-block, .field-bg,
 	.out-links:hover, .last-news:hover, .nearrest-concert:hover,
-	.donate:hover, a.jp-play:hover, a.jp-pause:hover, .last-news, .nearrest-concert{
+	.donate:hover, a.jp-play:hover, a.jp-pause:hover, .last-news,
+	.nearrest-concert{
 		background: rgb(235, 235, 242);/* RGBa fallback for very old browsers*/
 	}
 	.music-title{
@@ -46,11 +47,32 @@
 	.music-title{
 		background:url('/img/1x1_green_08.png'); /*light green*/
 	}
+
+	a.jp-play{
+		background-image: url("/img/sprite.png");
+		background-position: -156px 0px;
+		background-repeat: no-repeat;
+	}
+	a.jp-pause{
+		background-image: url("/img/sprite.png");
+		background-position: -156px -77px;
+		background-repeat: no-repeat;
+	}
+	a.jp-play:hover{
+		background-image: url("/img/sprite.png");
+		background-position: -156px -225px;
+		background-repeat: no-repeat;
+	}
+	a.jp-pause:hover{
+		background-image: url("/img/sprite.png");
+		background-position: -156px -154px;
+		background-repeat: no-repeat;
+	}
 /*border instead of box-shadow*/
 	.main-page-photo, .date, .menu-block, .menu-links,
-		.footer-block, .out-links, .last-news, .nearrest-concert, .field-bg,
-		.guest-button, .guest-form .submit, .donate, a.jp-play, a.jp-pause,
-		.music-title{
+	.footer-block, .out-links, .last-news, .nearrest-concert, .field-bg,
+	.guest-button, .guest-form .submit, .donate, a.jp-play, a.jp-pause,
+	.music-title{
 			border-left: solid 1px #9a9072;
 			border-right: solid 1px #696046;
 	}
@@ -77,9 +99,7 @@
 
 	.menu-links li {
 		line-height: 1.4em;
-
 	}
-
 
 	* html .menu-links { text-justify: newspaper; zoom: 1 }
 	* html .menu-links li { display: inline;  zoom: 1 }

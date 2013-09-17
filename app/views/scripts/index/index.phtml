@@ -29,7 +29,7 @@
 		</section>
 	</a>
 	<section class="music">
-		<p class="music-title js-audio-song-name hide"><?= $this->escape($this->audio['title']); ?></p>
+		<span class="music-title js-audio-song-name hide"><?= $this->escape($this->audio['title']); ?></span>
 
 		<div id="jquery_jplayer_index" class="jp-jplayer" track-src="<?= $this->escape($this->audio['audio_link']); ?>" get-next-url="<?= $this->url(array(), 'audioGetRand') ?>"></div>
 		<div id="jp_container_1" class="jp-audio">

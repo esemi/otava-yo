@@ -226,7 +226,6 @@
 			margin: 0px 0px 21px 32px;
 		}
 		.guest-button, .news-button{
-			display: block;
 			width: 137px;
 			height: 34px;
 			padding: 19px 21px 0px;
@@ -534,12 +533,15 @@
 					margin: 42px 0px 0px;
 				}
 				.music-title{
-					height: 23px;
-					width: 245px;
+					height: 20px;
+					width: 240px;
 					float: left;
-					padding-top: 2px;
+					text-align: center;
+					padding-top: 5px;
+					padding-left: 5px;
 					margin-top: 26px;
 					margin-left: 73px;
+					font-size: 14px;
 				}
 				.jp-stop, .jp-mute, .jp-unmute, .jp-volume-max, .jp-progress,
 				.jp-volume-bar, .jp-time-holder, .jp-title {
@@ -609,6 +611,9 @@
 				font-size: 14px;
 			}
 			/*--moderating news-------------*/
+				.news-button{
+					display: block;
+				}
 				.news-titile-form{
 					width: 359px;
 				}

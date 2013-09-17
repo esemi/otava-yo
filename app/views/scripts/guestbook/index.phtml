@@ -6,7 +6,9 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 
 <section class="field-bg">
 	<h2 class="title-page-name text-center"><?= $this->translate('title.guestbook.index'); ?></h2>
-	<div class="js-guestbook-add-button guest-button  <?= ( $this->showForm ) ? 'hide' : ''; ?>">Написать</div>
+	<div class="js-guestbook-add-button guest-button  <?= ( $this->showForm ) ? 'hide' : ''; ?>">
+		<?= $this->translate('guestbook.button.write'); ?>
+	</div>
 	<section class="js-guestbook-add-form guest-form <?= ( !$this->showForm ) ? 'hide' : ''; ?>">
 		<?= $this->partial('Partials/guestbook-new-post.phtml', array(
 			'postData' => $this->postData,

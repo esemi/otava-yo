@@ -62,5 +62,5 @@ if( !empty($this->postData['author']) ){
 	<? endif; ?>
 
 	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
-	<input class="submit" type="submit" name="отправить" value="отправить">
+	<input class="submit" type="submit" name="отправить" value="<?= $this->translate('guestbook.button.send'); ?>">
 </form>

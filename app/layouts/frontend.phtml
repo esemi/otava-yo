@@ -35,7 +35,11 @@ echo $this->doctype();
 	</head>
 	<body>
 		<div class="wrapper">
-			<header class="header" >
+			<header class="header">
+				<div class="lang-block">
+					<a class="lang-ru" href="<?php echo $this->url(array('lang' => 'ru')) ?>"></a>
+					<a class="lang-en" href="<?php echo $this->url(array('lang' => 'en')) ?>"></a>
+				</div>
 
 				<? if( Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess() ): ?>
 						<aside class="login-status">
@@ -45,7 +49,7 @@ echo $this->doctype();
 						</aside>
 				<? endif; ?>
 				<a class="donate" href="<?= $this->url(array(), 'staticDonate') ?>">
-					Поддержать проект
+						<?= $this->translate('title.index.donate'); ?>
 				</a>
 				<aside class="out-links-block">
 					<a rel="nofollow" target="_blank" href="http://www.youtube.com/user/ABelkin?feature=watch" class="out-links out-link-youtube"></a>
@@ -57,10 +61,7 @@ echo $this->doctype();
 				<a href="<?php echo $this->url(array(), 'staticIndex') ?>">
 					<img src="/img/otava_logo_main.png" class="logo">
 				</a>
-				<div class="lang-block">
-					<a class="lang-ru" href="<?php echo $this->url(array('lang' => 'ru')) ?>"></a>
-					<a class="lang-en" href="<?php echo $this->url(array('lang' => 'en')) ?>"></a>
-				</div>
+
 			</header>
 			<div class="menu-block">
 				<nav class="menu-links">
