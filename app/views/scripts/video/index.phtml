@@ -23,8 +23,8 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 			</div>
 			<footer>
 				<? if( $authFlag ): ?>
-					<a class="edit" title="редактировать" href="<?= $this->url(array('idV' => $item->id ), 'staticVideoEdit') ?>"></a>
-					<a class="delete" title="удалить" href="<?= $this->url(array('idV' => $item->id ), 'staticVideoDelete') ?>"></a>
+					<a class="edit" title="редактировать" href="<?= $this->url(array('idV' => $item->id ), 'staticVideoEdit') ?>">редактировать</a>
+					<a class="delete" title="удалить" href="<?= $this->url(array('idV' => $item->id ), 'staticVideoDelete') ?>">удалить</a>
 				<? endif; ?>
 			</footer>
 		</article>
