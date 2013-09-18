@@ -1,5 +1,5 @@
 <section class="field-bg">
-	<h2 class="title-page-name text-center">Редактирование сообщения</h2>
+	<h2 class="title-page-name text-center"><?= $this->translate('title.guestbook.edit'); ?></h2>
 	<?= $this->partial('Partials/guestbook-new-post.phtml', array(
 			'postData' => $this->postData,
 			'error' => $this->errorMessage,

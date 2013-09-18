@@ -37,7 +37,7 @@ class AuthController extends Zend_Controller_Action
 		if( $auth->hasIdentity() ){
 			$this->_logout();
 		}
-		$this->_helper->redirector->gotoRouteAndExit(array(), 'staticIndex', true);
+		$this->_helper->redirector->gotoRouteAndExit(array(), 'staticIndex');
 	}
 
 	protected function _logout()
