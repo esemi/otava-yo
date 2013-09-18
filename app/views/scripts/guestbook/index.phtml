@@ -9,7 +9,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 	<div class="js-guestbook-add-button guest-button  <?= ( $this->showForm ) ? 'hide' : ''; ?>">
 		<?= $this->translate('guestbook.button.write'); ?>
 	</div>
-	<section class="js-guestbook-add-form guest-form <?= ( !$this->showForm ) ? 'hide' : ''; ?>">
+	<section class="js-guestbook-add-form <?= ( !$this->showForm ) ? 'hide' : ''; ?>">
 		<?= $this->partial('Partials/guestbook-new-post.phtml', array(
 			'postData' => $this->postData,
 			'error' => $this->errorMessage,
@@ -38,8 +38,8 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 
 			<? if( $authFlag ): ?>
 				<footer>
-					<a class="edit" title="редактировать" href="<?= $this->url(array('idP' => $item->id ), 'staticGuestbookEdit') ?>"></a>
-					<a class="delete" title="удалить" href="<?= $this->url(array('idP' => $item->id ), 'staticGuestbookDelete') ?>"></a>
+					<a class="edit" title="редактировать" href="<?= $this->url(array('idP' => $item->id ), 'staticGuestbookEdit') ?>">редактировать</a>
+					<a class="delete" title="удалить" href="<?= $this->url(array('idP' => $item->id ), 'staticGuestbookDelete') ?>">удалить</a>
 				</footer>
 			<? endif; ?>
 		</article>
