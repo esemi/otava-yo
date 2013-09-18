@@ -1,11 +1,15 @@
 <section class="field-bg">
 	<h2 class="title-page-name text-center"><?= $this->translate('title.guestbook.delete'); ?></h2>
-	<p class="error"><?= $this->escape('Вы уверены, что хотите удалить это сообщение?'); ?></p>
-	<form method="POST">
-		<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
-		<input type="submit" name="удалить!" value="удалить!">
-	</form>
+	<p class="error"><?= $this->escape($this->translate('guestbook.confirm')); ?></p>
+	<div class="text-center">
+		<form class="delete-button" action="<?= $this->url(array(), 'staticGuestbook') ?>" method="POST">
+			<input type="submit" name="cancel" value="<?= $this->translate('button.cancel'); ?>">
+		</form>
+		<form class="delete-button" method="POST">
+			<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
+			<input type="submit" name="удалить!" value="<?= $this->translate('button.delete'); ?>">
+		</form>
 
-	<input type="button" onclick="history.back();" name="cancel" value="отменить">
+	</div>
 
 </section>

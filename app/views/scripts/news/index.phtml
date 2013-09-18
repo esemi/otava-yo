@@ -9,7 +9,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 	<h2 class="title-page-name text-center"><?= $this->translate('title.news.index'); ?></h2>
 
 	<? if( $authFlag ): ?>
-		<a class="news-button" href="<?= $this->url(array(), 'staticNewsCreate') ?>">написать</a>
+		<a class="news-button" href="<?= $this->url(array(), 'staticNewsCreate') ?>"><?= $this->translate('news.button.write'); ?></a>
 	<? endif; ?>
 
 	<?
@@ -38,8 +38,8 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 
 			<footer>
 				<? if( $authFlag ): ?>
-					<a class="edit" title="редактировать" href="<?= $this->url(array('idN' => $item->id ), 'staticNewsEdit') ?>"></a>
-					<a class="delete" title="удалить" href="<?= $this->url(array('idN' => $item->id ), 'staticNewsDelete') ?>"></a>
+					<a class="edit" title="редактировать" href="<?= $this->url(array('idN' => $item->id ), 'staticNewsEdit') ?>">редактировать</a>
+					<a class="delete" title="удалить" href="<?= $this->url(array('idN' => $item->id ), 'staticNewsDelete') ?>">удалить</a>
 				<? endif; ?>
 				<p class="signature"><?= $this->escape($this->moder_author); ?></p>
 			</footer>
