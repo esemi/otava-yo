@@ -7,7 +7,7 @@
 			<? if( !is_null($this->concert) ): ?>
 				<header>
 					<time class="date nearrest-concert-date" datetime="<?= $this->prepareConcertDatetime($this->concert->date, $this->concert->time); ?>">
-						<?= $this->prepareConcertDate($this->concert->date); ?>
+						<?= $this->prepareConcertDate(DateTime::createFromFormat('Y-m-d', $this->concert->date)); ?>
 					</time>
 					<h2 class="nearrest-concert-title"><?= $this->translate('page.title.index.concert'); ?></h2>
 				</header>
@@ -79,7 +79,7 @@
 		<div class="last-news-decor"></div>
 			<header>
 				<time class="date last-news-date" datetime="<?= $this->escape($this->news->date_publish); ?>">
-					<?= $this->prepareConcertDate($this->news->date_publish); ?>
+					<?= $this->prepareConcertDate(DateTime::createFromFormat('Y-m-d', $this->news->date_publish)); ?>
 				</time>
 				<h2 class="title-bigger"><?= $this->translate('page.title.index.news'); ?></h2>
 			</header>

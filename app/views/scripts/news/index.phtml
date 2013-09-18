@@ -14,18 +14,20 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 
 	<?
 	$currentYear = date('Y');
+	$yearChangedFlag = false;
 	foreach( $this->news as $item ):
-		$itemYear = DateTime::createFromFormat('Y-m-d', $item->date_publish)->format('Y');
-		if( $itemYear != $currentYear )
+		$itemDate = DateTime::createFromFormat('Y-m-d', $item->date_publish);
+		if( $itemDate->format('Y') != $currentYear )
 		{
-			printf('<h3 class="old-concert-headding text-center">%s</h3>', $this->escape($itemYear));
-			$currentYear = $itemYear;
+			printf('<h3 class="old-concert-headding text-center">%s</h3>', $this->escape($itemDate->format('Y')));
+			$currentYear = $itemDate->format('Y');
+			$yearChangedFlag = true;
 		}
 	?>
 		<article class="news-block">
 			<header>
 				<time class="date-news" datetime="<?= $this->escape($item->date_publish); ?>">
-					<?= $this->prepareConcertDate($item->date_publish); ?>
+					<?= $this->prepareConcertDate($itemDate, $yearChangedFlag); ?>
 				</time>
 				<h3 class="title">
 					<a name="<?= sprintf("view%d", $item->id); ?>" href="<?= $this->url(array('id' => $item->id ), 'staticNewsView') ?>">

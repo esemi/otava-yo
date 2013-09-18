@@ -13,14 +13,14 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 	<? if( $this->concerts->count() > 0 ): ?>
 	<section>
 		<h2 class="title-page-name text-center"><?= $this->translate('page.title.concert.nearest'); ?></h2>
-		<? foreach( $this->concerts as $item ): ?>
+		<?
+		foreach( $this->concerts as $item ):
+			$itemDate = DateTime::createFromFormat('Y-m-d', $item->date);
+		?>
 			<article class="concert-block">
 				<header>
 					<time class="date-concert" datetime="<?= $this->prepareConcertDatetime($item->date, $item->time); ?>">
-						<?= $this->prepareConcertDate($item->date); ?>
-						<div class="time">
-							<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>
-						</div>
+						<?= $this->prepareConcertDate($itemDate, false, $item->time); ?>
 					</time>
 
 					<hgroup>
@@ -65,21 +65,20 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 		<h2 class="old-concert-headding text-center"><?= $this->translate('page.title.concert.oldest'); ?></h2>
 		<?php
 		$currentYear = date('Y');
+		$yearChangedFlag = false;
 		foreach( $this->oldConcerts as $item ):
-			$itemYear = DateTime::createFromFormat('Y-m-d', $item->date)->format('Y');
-			if( $itemYear != $currentYear )
+			$itemDate = DateTime::createFromFormat('Y-m-d', $item->date);
+			if( $itemDate->format('Y') != $currentYear )
 			{
-				printf('<h3 class="old-concert-headding text-center">%s</h3>', $this->escape($itemYear));
-				$currentYear = $itemYear;
+				printf('<h3 class="old-concert-headding text-center">%s</h3>', $this->escape($itemDate->format('Y')));
+				$currentYear = $itemDate->format('Y');
+				$yearChangedFlag = true;
 			}
 		?>
 			<article class="concert-block">
 				<header>
 					<time class="date-concert-old" datetime="<?= $this->prepareConcertDatetime($item->date, $item->time); ?>">
-						<?= $this->prepareConcertDate($item->date); ?>
-						<div class="time">
-							<?= ( !empty($item->time) ) ? $this->escape($item->time) : ''; ?>
-						</div>
+						<?= $this->prepareConcertDate($itemDate, $yearChangedFlag); ?>
 					</time>
 
 					<hgroup>
