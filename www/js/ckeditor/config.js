@@ -21,7 +21,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 	config.linkShowAdvancedTab = false;
 
-	config.colorButton_colors = '000,800000,8B4513'; //@TODO valid colors
+	config.colorButton_colors = '322f2d,7b2e20,696046,ebebf2';
 
 	//config.language = 'ru'; @TODO setting by url
 };
