@@ -7,7 +7,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 <section class="field-bg">
 
 	<? if( $authFlag ): ?>
-		<a class="news-button" href="<?= $this->url(array(), 'staticConcertCreate') ?>">добавить</a>
+		<a class="news-button" title="добавить концерт" href="<?= $this->url(array(), 'staticConcertCreate') ?>">добавить</a>
 	<? endif; ?>
 
 	<? if( $this->concerts->count() > 0 ): ?>
@@ -99,6 +99,12 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 				<? endif; ?>
 				<? if( !empty($item->cost) ): ?>
 					<p class="concert-ticets"><span class="ticets">Билеты:</span> <?= $this->escape($item->cost); ?></p>
+				<? endif; ?>
+				<? if( $authFlag ): ?>
+					<footer>
+						<a class="edit" title="редактировать" href="<?= $this->url(array('idC' => $item->id ), 'staticConcertEdit') ?>">редактировать</a>
+						<a class="delete" title="удалить" href="<?= $this->url(array('idC' => $item->id ), 'staticConcertDelete') ?>">удалить</a>
+					</footer>
 				<? endif; ?>
 			</article>
 			<hr>

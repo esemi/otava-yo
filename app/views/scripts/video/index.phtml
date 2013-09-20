@@ -8,7 +8,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 	<h2 class="title-page-name text-center"><?= $this->translate('title.video.index'); ?></h2>
 
 	<? if( $authFlag ): ?>
-		<a class="news-button" href="<?= $this->url(array(), 'staticVideoCreate') ?>">добавить</a>
+		<a title="добавить видео" class="news-button" href="<?= $this->url(array(), 'staticVideoCreate') ?>">добавить</a>
 	<? endif; ?>
 
 	<? foreach( $this->video as $item ): ?>
