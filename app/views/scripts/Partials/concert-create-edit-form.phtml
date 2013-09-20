@@ -58,5 +58,8 @@
 	<label for="desc"><?= $this->translate('label.desc'); ?>: </label><br>
 	<textarea class="message" name="desc" id="desc" placeholder="<?= $this->translate('placeholder.enter.text'); ?>"><?= (isset($this->concertData['desc'])) ? $this->escape($this->concertData['desc']) : ''; ?></textarea><br>
 
+	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
+
 	<input class="submit" type="submit" name="отправить" value="<?= $this->translate('button.submit'); ?>">
+
 </form>

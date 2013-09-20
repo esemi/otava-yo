@@ -1,5 +1,16 @@
+<?php
+
+$authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess();
+
+?>
+
 <section class="field-bg">
 	<h2 class="title-page-name text-center"><?= $this->translate('title.audio.index'); ?></h2>
+
+	<? if( $authFlag ): ?>
+		<a class="news-button" href="<?= $this->url(array(), 'staticAlbumCreate') ?>"><?= $this->translate('button.album.add'); ?></a>
+	<? endif; ?>
+
 	<? foreach($this->albums as $album): ?>
 		<article>
 			<hgroup>
@@ -21,9 +32,7 @@
 				<? endforeach; ?>
 			</ul>
 			<? if( !empty($album['desc']) ): ?>
-				<div class="album-desc">
-					<?= $album['desc']; ?>
-				</div>
+				<div class="album-desc"><?= $album['desc']; ?></div>
 			<? endif; ?>
 
 		</article>
