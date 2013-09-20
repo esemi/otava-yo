@@ -144,7 +144,8 @@
 		}
 		.date, .date-news, .date-concert, .date-concert-old, .guest-button,
 		.news-button, .guest-form .submit, .music-title, .jp-no-solution,
-		.jp-no-solution a, .login-status, .news-button:hover{
+		.jp-no-solution a, .login-status, .news-button:hover,
+		.old-browser-message{
 			color: #ebebf2; /*light grey*/
 		}
 
@@ -165,7 +166,8 @@
 			background-color: rgba(105, 96, 70, 0.8); /*light green*/
 		}
 		.date, .date-news, .date-concert, .guest-button, .news-button,
-		.guest-form .submit, .jp-no-solution, .login-status{
+		.guest-form .submit, .jp-no-solution, .login-status,
+		.old-browser-message{
 			background-color: #7b2e20; /*brown*/
 		}
 		.date-concert-old{
@@ -202,8 +204,12 @@
 		.menu-block, .footer{
 			background: url('/img/bg-menu.png') repeat-x;
 		}
+		.old-browser-message{
+			padding-top: 9px;
+			padding-bottom: 11px;
+		}
 
-		.menu-links, .footer-block{
+		.menu-links, .footer-block, .old-browser-message{
 			margin: 0px auto;
 			width: 898px;
 			padding-left: 21px;
