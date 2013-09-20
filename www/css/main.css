@@ -117,10 +117,11 @@
 				 url('/fonts/dscoptic.svg#DSCoptic') format('svg');
 		}
 
-		.menu-links li, .date, .date-news, .title, .title-bigger, .title-contacts,
+		.menu-links li, .date, .date-news, .title, .title-bigger,
 		.title-page-name,.nearrest-concert-title, .signature, .concert-name,
 		.old-concert-headding, .date-concert, .date-concert-old, .title-album,
-		.guest-button, .news-button, .guest-form .submit, .donate, .title-error{
+		.guest-button, .news-button, .guest-form .submit, .donate, .title-error,
+		.title-contacts{
 			font-family: DSCoptic;
 		}
 
@@ -131,11 +132,11 @@
 		.error{
 			color:#a61300;/*red*/
 		}
-		a, a:visited, .title, .nearrest-concert-title, .band-photo figcaption, .title-bigger,
+		a, a:visited, .title, .nearrest-concert-title, .band-photo figcaption,
 		.title-em,.title-contacts, .title-page-name, .menu-links a, .footer,
 		.date-news, .signature, .old-concert-headding, .concert-name,
 		.concert-place, .title-album, .album-year, .guest-post header,
-		.guest-post a:hover, .album-desc .list span, .donate,
+		.guest-post a:hover, .album-desc .list span, .donate, .title-bigger,
 		.concert-ticets .ticets, .title-error{
 			color: #7b2e20;/*brown*/
 		}
@@ -197,7 +198,8 @@
 		p a, .guest-post a:hover, .jp-no-solution a{
 			text-decoration: underline;
 		}
-		p a:hover, p a:active, .jp-no-solution a:hover, .jp-no-solution a:active{
+		p a:hover, p a:active, .jp-no-solution a:hover,
+		.jp-no-solution a:active{
 			text-decoration: none;
 		}
 
@@ -299,17 +301,17 @@
 			width: 919px;
 			padding-top: 12px;
 			padding-left: 21px;
-			position: relative;
 		}
 		.logo{
 			position: relative;
 			z-index: 2;
 			display: inline-block;
-			margin-bottom: -21px;
+			margin: -21px 0px;
+
 		}
 		.lang-block{
-			position: absolute;
-			right: 21px;
+			text-align: right;
+			margin-right: 21px;
 		}
 		.lang-ru, .lang-en{
 			width: 19px;
@@ -332,7 +334,7 @@
 		}
 
 		.out-links-block, .donate, .login-status{
-			margin-top: 36px;
+			margin-top: 15px;
 			float: right;
 		}
 		.out-links, .donate, .login-status{
