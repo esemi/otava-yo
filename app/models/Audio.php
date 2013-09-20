@@ -80,4 +80,58 @@ class App_Model_Audio
 	{
 		return sprintf('album_img_%d.jpg', $album_id);
 	}
+
+	public function albumValidate($data)
+	{
+		array_walk($data, 'trim');
+
+		$errors = array();
+		$validData = array(
+			'title' => '',//required
+			'year' => '',//required
+			'desc' => '',
+			'tracks' => array()
+		);
+
+		if( empty($data['title']) ){
+			$errors[] = 'Укажите название';
+		}elseif( mb_strlen($data['title']) > 255 ){
+			$errors[] = 'Слишком длинное название';
+		}else{
+			$validData['title'] = $data['title'];
+		}
+
+
+		if( empty($data['year']) ){
+			$errors[] = 'Укажите год';
+		}elseif( !preg_match( '/^[\d]{4}$/', $data['year']) ){
+			$errors[] = 'Некорректный год';
+		}else{
+			$validData['year'] = intval($data['year']);
+		}
+
+		if( !empty($data['desc']) ){
+			$validData['desc'] = $data['desc'];
+		}
+
+		if( !empty($data['playlist']) ){
+			$validData['tracks'] = $this->decodeAlbumPlaylist($data['playlist']);
+		}
+
+		return array($validData, $errors);
+	}
+
+	/**
+	 * Decode playlist string to track names array
+	 *
+	 * @param string $playlist
+	 * @return array Track names
+	 */
+	public function decodeAlbumPlaylist($playlist)
+	{
+		$tracks = explode("\n", $playlist);
+		array_walk($tracks, 'trim');
+		
+		return $tracks;
+	}
 }

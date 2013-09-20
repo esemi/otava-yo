@@ -1,7 +1,6 @@
 /**
  * Main js file
  */
-
 jQuery(document).ready(function(){
 
 	//guest book add form slider
@@ -114,12 +113,15 @@ jQuery(document).ready(function(){
 		});
 	})();
 
+
 	//check avaliable ckeeditor
 	if( typeof jQuery().ckeditor !== 'undefined' ){
 
 		//cke-editor on news moderation page
 		jQuery('.js-editor-news').ckeditor();
 
+		//cke-editor on album moderation page
+		jQuery('.js-editor-album').ckeditor();
 	}
 
 });

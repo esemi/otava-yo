@@ -61,6 +61,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$routes['staticVideoDelete'] = new Zend_Controller_Router_Route('/video/delete/:idV', array( 'controller' => 'video', 'action' => 'delete' ), array( 'idV' => '\d+' ));
 
 		$routes['staticAudio'] = new Zend_Controller_Router_Route_Static('/audio', array( 'controller' => 'audio', 'action' => 'index' ));
+		$routes['staticAlbumCreate'] = new Zend_Controller_Router_Route_Static('/audio/album-create', array( 'controller' => 'audio', 'action' => 'album-create' ));
 		$routes['audioGetRand'] = new Zend_Controller_Router_Route_Static('/audio/get-rand.json', array( 'controller' => 'audio', 'action' => 'get-rand' ));
 
 

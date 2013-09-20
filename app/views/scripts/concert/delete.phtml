@@ -6,6 +6,7 @@
 			<input type="submit" name="cancel" value="<?= $this->translate('button.cancel'); ?>">
 		</form>
 		<form class="delete-button" method="POST">
+			<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 			<input type="submit" name="удалить!" value="<?= $this->translate('button.delete'); ?>">
 		</form>
 	</div>

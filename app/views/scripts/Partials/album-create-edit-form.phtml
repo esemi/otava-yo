@@ -1,0 +1,43 @@
+<?
+
+$this->headScript()->appendFile( "/js/ckeditor/ckeditor.js");
+$this->headScript()->appendFile( "/js/ckeditor/adapters/jquery.js");
+
+?>
+
+<? if( !empty($this->error) ): ?>
+	<p class="error"><?= $this->error; ?></p>
+<? endif; ?>
+
+<form enctype="multipart/form-data" name="album-form" method="POST" class="album-form">
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<label for="title">Название: </label>
+				</td>
+				<td>
+					<input type="text" name="title" id="title" value="<?= (isset($this->albumData['title'])) ? $this->escape($this->albumData['title']) : ''; ?>" placeholder="Название" maxlength="255"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="year">Год: </label>
+				</td>
+				<td>
+					<input type="number" name="year" id="year" value="<?= (isset($this->albumData['year'])) ? $this->escape($this->albumData['year']) : ''; ?>" placeholder="Год yyyy" maxlength="4"/>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		image<br/>
+		<input name="album_image" type="file" />
+	</div>
+
+	<label for="desc">Описание: </label><br>
+	<textarea class="js-editor-album" name="desc" id="desc" placeholder="Описание"><?= (isset($this->albumData['desc'])) ? $this->escape($this->albumData['desc']) : ''; ?></textarea><br>
+
+	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
+	<input class="submit" type="submit" name="отправить" value="отправить">
+</form>

@@ -58,5 +58,7 @@
 	<label for="desc">Описание: </label><br>
 	<textarea class="message" name="desc" id="desc" placeholder="Описание"><?= (isset($this->concertData['desc'])) ? $this->escape($this->concertData['desc']) : ''; ?></textarea><br>
 
+	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
+	
 	<input class="submit" type="submit" name="отправить" value="отправить">
 </form>
