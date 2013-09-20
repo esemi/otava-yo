@@ -68,9 +68,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 		$yearChangedFlag = false;
 		foreach( $this->oldConcerts as $item ):
 			$itemDate = DateTime::createFromFormat('Y-m-d', $item->date);
-			if( $itemDate->format('Y') != $currentYear )
-			{
-				printf('<h3 class="old-concert-headding text-center">%s</h3>', $this->escape($itemDate->format('Y')));
+			if( $itemDate->format('Y') != $currentYear ){
 				$currentYear = $itemDate->format('Y');
 				$yearChangedFlag = true;
 			}

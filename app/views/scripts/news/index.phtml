@@ -4,7 +4,6 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 
 ?>
 
-
 <section class="field-bg">
 	<h2 class="title-page-name text-center"><?= $this->translate('title.news.index'); ?></h2>
 
@@ -19,7 +18,6 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 		$itemDate = DateTime::createFromFormat('Y-m-d', $item->date_publish);
 		if( $itemDate->format('Y') != $currentYear )
 		{
-			printf('<h3 class="old-concert-headding text-center">%s</h3>', $this->escape($itemDate->format('Y')));
 			$currentYear = $itemDate->format('Y');
 			$yearChangedFlag = true;
 		}
