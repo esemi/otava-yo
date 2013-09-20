@@ -2,10 +2,10 @@
 	<p class="error"><?= $this->error; ?></p>
 <? endif; ?>
 
-<form name="post" method="POST">
+<form name="post" method="POST" class="video-form">
 	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 	<label for="desc">Заголовок: </label>
 	<input type="text" name="desc" id="desc" value="<?= (isset($this->videoData['desc'])) ? $this->escape($this->videoData['desc']) : ''; ?>" placeholder="Описание видео" maxlength="1024"/><br>
-	<textarea name="player_code" placeholder="код вставки"><?= (isset($this->videoData['player_code'])) ? $this->escape($this->videoData['player_code']) : ''; ?></textarea><br>
+	<textarea class="message" name="player_code" placeholder="код вставки"><?= (isset($this->videoData['player_code'])) ? $this->escape($this->videoData['player_code']) : ''; ?></textarea><br>
 	<input class="submit" type="submit" name="отправить" value="отправить">
 </form>
