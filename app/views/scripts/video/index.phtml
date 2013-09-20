@@ -8,7 +8,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 	<h2 class="title-page-name text-center"><?= $this->translate('title.video.index'); ?></h2>
 
 	<? if( $authFlag ): ?>
-		<a class="news-button" href="<?= $this->url(array(), 'staticVideoCreate') ?>">добавить</a>
+		<a title="добавить видео" class="news-button" href="<?= $this->url(array(), 'staticVideoCreate') ?>"><?= $this->translate('button.add'); ?></a>
 	<? endif; ?>
 
 	<? foreach( $this->video as $item ): ?>
@@ -23,8 +23,8 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 			</div>
 			<footer>
 				<? if( $authFlag ): ?>
-					<a class="edit" title="редактировать" href="<?= $this->url(array('idV' => $item->id ), 'staticVideoEdit') ?>">редактировать</a>
-					<a class="delete" title="удалить" href="<?= $this->url(array('idV' => $item->id ), 'staticVideoDelete') ?>">удалить</a>
+					<a class="edit" title="редактировать" href="<?= $this->url(array('idV' => $item->id ), 'staticVideoEdit') ?>"><?= $this->translate('button.edit'); ?></a>
+					<a class="delete" title="удалить" href="<?= $this->url(array('idV' => $item->id ), 'staticVideoDelete') ?>"><?= $this->translate('button.delete'); ?></a>
 				<? endif; ?>
 			</footer>
 		</article>

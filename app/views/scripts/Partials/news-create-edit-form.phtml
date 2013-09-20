@@ -11,8 +11,8 @@ $this->headScript()->appendFile( "/js/ckeditor/adapters/jquery.js");
 
 <form name="post" method="POST">
 	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
-	<label for="title">Заголовок: </label>
-	<input type="text" name="title" id="title" class="news-titile-form" value="<?= (isset($this->newsData['title'])) ? $this->escape($this->newsData['title']) : ''; ?>" placeholder="Заголовок" maxlength="255"/><br>
-	<textarea class="js-editor-news" name="content" placeholder="текст новости"><?= (isset($this->newsData['content'])) ? $this->escape($this->newsData['content']) : ''; ?></textarea><br>
-	<input class="submit" type="submit" name="отправить" value="отправить">
+	<label for="title"><?= $this->translate('label.title'); ?>: </label>
+	<input type="text" name="title" id="title" class="news-titile-form" value="<?= (isset($this->newsData['title'])) ? $this->escape($this->newsData['title']) : ''; ?>" placeholder="<?= $this->translate('label.title'); ?>" maxlength="255"/><br>
+	<textarea class="js-editor-news" name="content" placeholder="<?= $this->translate('placeholder.enter.text'); ?>"><?= (isset($this->newsData['content'])) ? $this->escape($this->newsData['content']) : ''; ?></textarea><br>
+	<input class="submit" type="submit" name="отправить" value="<?= $this->translate('button.submit'); ?>">
 </form>

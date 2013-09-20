@@ -102,7 +102,8 @@
 /*inline-block fix*/
 
 	.logo, .out-links, .menu-links:after, .band-photo:after, .menu-links li,
-	.last-news,.nearrest-concert, .band-photo figure, guest-recaptcha{
+	.last-news,.nearrest-concert, .band-photo figure, .guest-recaptcha, .lang-ru,
+	.lang-en, .logout, .delete-button, .edit, .delete{
 		zoom: 1;
 		*display: inline;
 	}
@@ -122,3 +123,10 @@
 	*+html .band-photo { text-justify: newspaper; zoom: 1 }
 	*+html .band-photo figure { display: inline; margin: 0; zoom: 1 }
 
+/*visibility: hidden fix*/
+	.player{
+		visibility: visible;
+		position: absolute;
+		top: 0;
+		margin-top: -1000px;
+	}

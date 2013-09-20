@@ -25,10 +25,10 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 					<span class="city">(<?= $this->escape($item->city); ?>)</span>
 				<? endif; ?>
 				<? if( !empty($item->email) ): ?>
-					<a class="email" href="mailto:<?= $this->escape($item->email); ?>" target="_blank" rel="nofollow">почта</a>
+					<a title="почта" class="email" href="mailto:<?= $this->escape($item->email); ?>" target="_blank" rel="nofollow">почта</a>
 				<? endif; ?>
 				<? if( !empty($item->site) ): ?>
-					<a class="site" href="<?= $this->escape($item->site); ?>" target="_blank" rel="nofollow">сайт</a>
+					<a title="сайт" class="site" href="<?= $this->escape($item->site); ?>" target="_blank" rel="nofollow">сайт</a>
 				<? endif; ?>
 				<time datetime="<?= $this->escape($item->iso_date); ?>"><?= $this->escape($item->user_date); ?></time>
 			</header>
@@ -38,8 +38,8 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 
 			<? if( $authFlag ): ?>
 				<footer>
-					<a class="edit" title="редактировать" href="<?= $this->url(array('idP' => $item->id ), 'staticGuestbookEdit') ?>">редактировать</a>
-					<a class="delete" title="удалить" href="<?= $this->url(array('idP' => $item->id ), 'staticGuestbookDelete') ?>">удалить</a>
+					<a class="edit" title="редактировать" href="<?= $this->url(array('idP' => $item->id ), 'staticGuestbookEdit') ?>"><?= $this->translate('button.edit'); ?></a>
+					<a class="delete" title="удалить" href="<?= $this->url(array('idP' => $item->id ), 'staticGuestbookDelete') ?>"><?= $this->translate('button.delete'); ?></a>
 				</footer>
 			<? endif; ?>
 		</article>

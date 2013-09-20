@@ -34,44 +34,50 @@ echo $this->doctype();
 	</head>
 	<body>
 		<div class="wrapper">
+			<!--[if lt IE 7]>
+				<section class="old-browser-message">
+					<p>Вы пользетесь устаревшим браузером, который не поддерживает современные веб-стандарты и представляет угрозу безопасности вашего компьютера.</p>
+					<p>Рекомендуем Вам установить новый браузер.</p>
+				</section>
+			<![endif]-->
 			<header class="header">
 				<div class="lang-block">
-					<a class="lang-ru" href="<?php echo $this->url(array('lang' => 'ru')) ?>"></a>
-					<a class="lang-en" href="<?php echo $this->url(array('lang' => 'en')) ?>"></a>
+					<a class="lang-ru" title="русский" href="<?php echo $this->url(array('lang' => 'ru')) ?>"></a>
+					<a class="lang-en" title="английский" href="<?php echo $this->url(array('lang' => 'en')) ?>"></a>
 				</div>
 
 				<? if( Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess() ): ?>
 						<aside class="login-status">
 							я модератор
-							<a class="logout" href="<?= $this->url(array(), 'logout') ?>">
+							<a class="logout" title="выйти" href="<?= $this->url(array(), 'logout') ?>">
 							</a>
 						</aside>
 				<? endif; ?>
-				<a class="donate" href="<?= $this->url(array(), 'staticDonate') ?>">
+				<a class="donate" title="донат" href="<?= $this->url(array(), 'staticDonate') ?>">
 						<?= $this->translate('title.index.donate'); ?>
 				</a>
 				<aside class="out-links-block">
-					<a rel="nofollow" target="_blank" href="http://www.youtube.com/user/ABelkin?feature=watch" class="out-links out-link-youtube"></a>
-					<a rel="nofollow" target="_blank" href="http://vk.com/club662700" class="out-links out-link-vk"></a>
-					<a rel="nofollow" target="_blank" href="http://otavae.kroogi.ru" class="out-links out-link-kroogi"></a>
-					<a rel="nofollow" target="_blank" href="http://myspace.com/otavae" class="out-links out-link-myspace"></a>
+					<a rel="nofollow" title="youtube.com" target="_blank" href="http://www.youtube.com/user/ABelkin?feature=watch" class="out-links out-link-youtube"></a>
+					<a rel="nofollow" title="vk.com" target="_blank" href="http://vk.com/club662700" class="out-links out-link-vk"></a>
+					<a rel="nofollow" title="kroogi.ru" target="_blank" href="http://otavae.kroogi.ru" class="out-links out-link-kroogi"></a>
+					<a rel="nofollow" title="myspace.com" target="_blank" href="http://myspace.com/otavae" class="out-links out-link-myspace"></a>
 				</aside>
 
-				<a href="<?php echo $this->url(array(), 'staticIndex') ?>">
+				<a href="<?php echo $this->url(array(), 'staticIndex') ?>" title="на главную">
 					<img src="/img/otava_logo_main.png" class="logo">
 				</a>
 
 			</header>
 			<div class="menu-block">
 				<nav class="menu-links">
-					<li><a href="<?= $this->url(array(), 'staticIndex') ?>"><?= $this->translate('menu.index'); ?></a></li>
-					<li><a href="<?= $this->url(array(), 'staticNews') ?>"><?= $this->translate('menu.news'); ?></a></li>
-					<li><a href="<?= $this->url(array(), 'staticConcert') ?>"><?= $this->translate('menu.concerts'); ?></a></li>
-					<li><a href="<?= $this->url(array(), 'staticBand') ?>"><?= $this->translate('menu.band'); ?></a></li>
-					<li><a href="<?= $this->url(array(), 'staticAudio') ?>"><?= $this->translate('menu.audio'); ?></a></li>
-					<li><a href="<?= $this->url(array(), 'staticVideo') ?>"><?= $this->translate('menu.video'); ?></a></li>
-					<li><a href="<?= $this->url(array(), 'staticGuestbook') ?>"><?= $this->translate('menu.guestbook'); ?></a></li>
-					<li><a href="<?= $this->url(array(), 'staticContacts') ?>"><?= $this->translate('menu.contacts'); ?></a></li>
+					<li><a title="главная" href="<?= $this->url(array(), 'staticIndex') ?>"><?= $this->translate('menu.index'); ?></a></li>
+					<li><a title="новости" href="<?= $this->url(array(), 'staticNews') ?>"><?= $this->translate('menu.news'); ?></a></li>
+					<li><a title="концерты" href="<?= $this->url(array(), 'staticConcert') ?>"><?= $this->translate('menu.concerts'); ?></a></li>
+					<li><a title="о группе" href="<?= $this->url(array(), 'staticBand') ?>"><?= $this->translate('menu.band'); ?></a></li>
+					<li><a title="аудио" href="<?= $this->url(array(), 'staticAudio') ?>"><?= $this->translate('menu.audio'); ?></a></li>
+					<li><a title="видео" href="<?= $this->url(array(), 'staticVideo') ?>"><?= $this->translate('menu.video'); ?></a></li>
+					<li><a title="гостевая" href="<?= $this->url(array(), 'staticGuestbook') ?>"><?= $this->translate('menu.guestbook'); ?></a></li>
+					<li><a title="контакты" href="<?= $this->url(array(), 'staticContacts') ?>"><?= $this->translate('menu.contacts'); ?></a></li>
 				</nav>
 			</div>
 
@@ -84,9 +90,9 @@ echo $this->doctype();
 		<div class="footer">
 			<footer class="footer-block">
 				<div>
-					© Эйдук И.В. 2013
+					© <?= $this->translate('footer.copyright'); ?> 2013
 				</div>
-				<a class="humans-txt" href="/humans.txt"></a>
+				<a title="humans-txt" class="humans-txt" href="/humans.txt"></a>
 			</footer>
 		</div>
 
