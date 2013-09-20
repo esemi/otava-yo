@@ -122,3 +122,10 @@
 	*+html .band-photo { text-justify: newspaper; zoom: 1 }
 	*+html .band-photo figure { display: inline; margin: 0; zoom: 1 }
 
+/*visibility: hidden fix*/
+	.player{
+		visibility: visible;
+		position: absolute;
+		top: 0;
+		margin-top: -1000px;
+	}
