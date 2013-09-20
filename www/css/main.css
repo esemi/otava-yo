@@ -131,7 +131,7 @@
 		.error{
 			color:#a61300;/*red*/
 		}
-		a, .title, .nearrest-concert-title, .band-photo figcaption, .title-bigger,
+		a, a:visited, .title, .nearrest-concert-title, .band-photo figcaption, .title-bigger,
 		.title-em,.title-contacts, .title-page-name, .menu-links a, .footer,
 		.date-news, .signature, .old-concert-headding, .concert-name,
 		.concert-place, .title-album, .album-year, .guest-post header,
@@ -143,8 +143,9 @@
 			color: #696046; /*light green*/
 		}
 		.date, .date-news, .date-concert, .date-concert-old, .guest-button,
-		.news-button, .guest-form .submit, .music-title, .jp-no-solution,
-		.jp-no-solution a, .login-status, .news-button:hover,
+		.news-button, .news-button:visited, .guest-form .submit, .music-title,
+		.jp-no-solution, .guest-button, .jp-no-solution a, .login-status,
+		.news-button:hover,
 		.old-browser-message{
 			color: #ebebf2; /*light grey*/
 		}
