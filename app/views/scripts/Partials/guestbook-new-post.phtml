@@ -20,40 +20,40 @@ if( !empty($this->postData['author']) ){
 		<tbody>
 			<tr>
 				<td>
-					<label for="author">Имя: </label>
+					<label for="author"><?= $this->translate('label.name'); ?>: </label>
 				</td>
 				<td>
-					<input type="text" id="author" name="author" value="<?= $this->escape($authorField); ?>" placeholder="имя*" maxlength="100"/><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label for="email">email: </label>
-				</td>
-				<td>
-					<input type="email" id="email" name="email" value="<?= (isset($this->postData['email'])) ? $this->escape($this->postData['email']) : ''; ?>" placeholder="email" maxlength="150"/><br>
+					<input type="text" id="author" name="author" value="<?= $this->escape($authorField); ?>" placeholder="<?= $this->translate('label.name'); ?>*" maxlength="100"/><br>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label for="site">сайт: </label>
+					<label for="email"><?= $this->translate('label.email'); ?>: </label>
 				</td>
 				<td>
-					<input type="url" id="site" name="site" value="<?= (isset($this->postData['site'])) ? $this->escape($this->postData['site']) : ''; ?>" placeholder="сайт" maxlength="255"/><br>
+					<input type="email" id="email" name="email" value="<?= (isset($this->postData['email'])) ? $this->escape($this->postData['email']) : ''; ?>" placeholder="<?= $this->translate('label.email'); ?>" maxlength="150"/><br>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label for="city">город/страна: </label>
+					<label for="site"><?= $this->translate('label.site'); ?>: </label>
 				</td>
 				<td>
-					<input type="text" id="city" name="city" value="<?= (isset($this->postData['city'])) ? $this->escape($this->postData['city']) : ''; ?>" placeholder="город/страна" maxlength="255"/><br>
+					<input type="url" id="site" name="site" value="<?= (isset($this->postData['site'])) ? $this->escape($this->postData['site']) : ''; ?>" placeholder="<?= $this->translate('label.site'); ?>" maxlength="255"/><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="city"><?= $this->translate('label.country'); ?>: </label>
+				</td>
+				<td>
+					<input type="text" id="city" name="city" value="<?= (isset($this->postData['city'])) ? $this->escape($this->postData['city']) : ''; ?>" placeholder="<?= $this->translate('label.country'); ?>" maxlength="255"/><br>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<label>Сообщение: </label>
-	<textarea name="content" class="message" placeholder="сообщение*" maxlength="10000"><?= (isset($this->postData['content'])) ? $this->escape($this->postData['content']) : ''; ?></textarea><br>
+	<label><?= $this->translate('label.message'); ?>: </label>
+	<textarea name="content" class="message" placeholder="<?= $this->translate('label.message'); ?>*" maxlength="10000"><?= (isset($this->postData['content'])) ? $this->escape($this->postData['content']) : ''; ?></textarea><br>
 
 	<? if( !is_null($this->recaptcha) && $authFlag === false ): ?>
 		<div class="guest-recaptcha">
@@ -62,5 +62,5 @@ if( !empty($this->postData['author']) ){
 	<? endif; ?>
 
 	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
-	<input class="submit" type="submit" name="отправить" value="<?= $this->translate('guestbook.button.send'); ?>">
+	<input class="submit" type="submit" name="отправить" value="<?= $this->translate('button.submit'); ?>">
 </form>

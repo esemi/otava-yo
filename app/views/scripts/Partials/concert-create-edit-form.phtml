@@ -7,56 +7,56 @@
 		<tbody>
 			<tr>
 				<td>
-					<label for="title">Заголовок: </label>
+					<label for="title"><?= $this->translate('label.title'); ?>: </label>
 				</td>
 				<td>
-					<input type="text" name="title" id="title" value="<?= (isset($this->concertData['title'])) ? $this->escape($this->concertData['title']) : ''; ?>" placeholder="Заголовок" maxlength="1024"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label for="place">Место: </label>
-				</td>
-				<td>
-					<input type="text" name="place" id="place" value="<?= (isset($this->concertData['place'])) ? $this->escape($this->concertData['place']) : ''; ?>" placeholder="Место" maxlength="1024"/>
+					<input type="text" name="title" id="title" value="<?= (isset($this->concertData['title'])) ? $this->escape($this->concertData['title']) : ''; ?>" placeholder="<?= $this->translate('label.title'); ?>" maxlength="1024"/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label for="link">Ссылка: </label>
+					<label for="place"><?= $this->translate('label.place'); ?>: </label>
 				</td>
 				<td>
-					<input type="text" name="link" id="link" value="<?= (isset($this->concertData['link'])) ? $this->escape($this->concertData['link']) : ''; ?>" placeholder="Ссылка" maxlength="1024"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label for="cost">Стоимость: </label>
-				</td>
-				<td>
-					<input type="text" name="cost" id="cost" value="<?= (isset($this->concertData['cost'])) ? $this->escape($this->concertData['cost']) : ''; ?>" placeholder="Цена билетов" maxlength="100"/>
+					<input type="text" name="place" id="place" value="<?= (isset($this->concertData['place'])) ? $this->escape($this->concertData['place']) : ''; ?>" placeholder="<?= $this->translate('label.place'); ?>" maxlength="1024"/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label for="date">Дата: </label>
+					<label for="link"><?= $this->translate('label.link'); ?>: </label>
 				</td>
 				<td>
-					<input type="date" name="date" id="date" value="<?= (isset($this->concertData['date'])) ? $this->escape($this->concertData['date']) : ''; ?>" placeholder="Дата dd.mm.yy" maxlength="10"/>
+					<input type="text" name="link" id="link" value="<?= (isset($this->concertData['link'])) ? $this->escape($this->concertData['link']) : ''; ?>" placeholder="<?= $this->translate('label.link'); ?>" maxlength="1024"/>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label for="time">Время: </label>
+					<label for="cost"><?= $this->translate('label.cost'); ?>: </label>
 				</td>
 				<td>
-					<input type="time" name="time" id="time" value="<?= (isset($this->concertData['time'])) ? $this->escape($this->concertData['time']) : ''; ?>" placeholder="Время hh:mm" maxlength="5"/>
+					<input type="text" name="cost" id="cost" value="<?= (isset($this->concertData['cost'])) ? $this->escape($this->concertData['cost']) : ''; ?>" placeholder="<?= $this->translate('placeholder.cost.tickets'); ?>" maxlength="100"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="date"><?= $this->translate('label.date'); ?>: </label>
+				</td>
+				<td>
+					<input type="date" name="date" id="date" value="<?= (isset($this->concertData['date'])) ? $this->escape($this->concertData['date']) : ''; ?>" placeholder="<?= $this->translate('label.date'); ?> dd.mm.yy" maxlength="10"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="time"><?= $this->translate('label.time'); ?>: </label>
+				</td>
+				<td>
+					<input type="time" name="time" id="time" value="<?= (isset($this->concertData['time'])) ? $this->escape($this->concertData['time']) : ''; ?>" placeholder="<?= $this->translate('label.time'); ?> hh:mm" maxlength="5"/>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<label for="desc">Описание: </label><br>
-	<textarea class="message" name="desc" id="desc" placeholder="Описание"><?= (isset($this->concertData['desc'])) ? $this->escape($this->concertData['desc']) : ''; ?></textarea><br>
+	<label for="desc"><?= $this->translate('label.desc'); ?>: </label><br>
+	<textarea class="message" name="desc" id="desc" placeholder="<?= $this->translate('placeholder.enter.text'); ?>"><?= (isset($this->concertData['desc'])) ? $this->escape($this->concertData['desc']) : ''; ?></textarea><br>
 
-	<input class="submit" type="submit" name="отправить" value="отправить">
+	<input class="submit" type="submit" name="отправить" value="<?= $this->translate('button.submit'); ?>">
 </form>
