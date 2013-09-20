@@ -483,7 +483,10 @@
 				margin-bottom: 32px;
 				border: 1px solid #132d20;
 			}
-
+			.right-side-block{
+				width: 362px;
+				float: right;
+			}
 			.last-news, .nearrest-concert{
 				width: 309px;
 				padding: 21px;
@@ -533,10 +536,7 @@
 					top: -1px;
 					background: url(/img/sprite.png) -22px -32px no-repeat;
 				}
-			.right{
-				width: 327px;
-				float: right;
-			}
+
 			/*--music--*/
 				.music{
 					width: 327px;
@@ -546,12 +546,12 @@
 				.music-title{
 					height: 20px;
 					width: 240px;
-					float: left;
+					float: right;
 					text-align: center;
 					padding-top: 5px;
 					padding-left: 5px;
 					margin-top: 26px;
-					margin-left: 73px;
+					margin-right: 9px;
 					font-size: 14px;
 				}
 				.jp-stop, .jp-mute, .jp-unmute, .jp-volume-max, .jp-progress,
