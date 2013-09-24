@@ -134,3 +134,8 @@
 	.bg-fix-ie7{
 		height: 1px;
 	}
+
+/*fix length of song name on main page*/
+	.music-title{
+		width: 234px;
+	}
