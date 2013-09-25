@@ -186,5 +186,12 @@ class App_Model_Audio
 		chmod($albumImgPath , 0444);
 	}
 
+	public function delAlbum($id)
+	{
+		$this->_audioTable->delByAlbum($id);
+		$res = $this->_albumTable->delAlbum($id);
+		@unlink(WWW_PATH . $this->_prepareAlbumImgLink($id));
+		return $res;
+	}
 
 }

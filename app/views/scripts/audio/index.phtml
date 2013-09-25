@@ -38,6 +38,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 			<? if( $authFlag ): ?>
 				<footer>
 					<a class="edit" title="редактировать" href="<?= $this->url(array('idAl' => $album['id'] ), 'staticAlbumEdit') ?>"><?= $this->translate('button.edit'); ?></a>
+					<a class="delete" title="удалить" href="<?= $this->url(array('idAl' => $album['id'] ), 'staticAlbumDelete') ?>"><?= $this->translate('button.delete'); ?></a>
 				</footer>
 			<? endif; ?>
 		</article>

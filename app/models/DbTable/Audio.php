@@ -22,4 +22,15 @@ class App_Model_DbTable_Audio extends Zend_Db_Table_Abstract
 		return $this->fetchAll($select)->toArray();
 	}
 
+	/**
+	 * Delete by album id
+	 *
+	 * @param int $id
+
+	 * @return int Count of deleted rows
+	 */
+	public function delByAlbum($id)
+	{
+		return $this->delete( array( $this->_db->quoteInto( 'album_id = ?', $id, Zend_Db::INT_TYPE ) ) );
+	}
 }

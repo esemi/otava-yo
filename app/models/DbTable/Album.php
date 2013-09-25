@@ -64,7 +64,7 @@ class App_Model_DbTable_Album extends Zend_Db_Table_Abstract
 
 	 * @return int Count of deleted rows
 	 */
-	public function delPost($id)
+	public function delAlbum($id)
 	{
 		return $this->delete( array( $this->_db->quoteInto( 'id = ?', $id, Zend_Db::INT_TYPE ) ) );
 	}

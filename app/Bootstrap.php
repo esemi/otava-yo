@@ -63,6 +63,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$routes['staticAudio'] = new Zend_Controller_Router_Route_Static('/audio', array( 'controller' => 'audio', 'action' => 'index' ));
 		$routes['staticAlbumCreate'] = new Zend_Controller_Router_Route_Static('/audio/album-create', array( 'controller' => 'audio', 'action' => 'album-create' ));
 		$routes['staticAlbumEdit'] = new Zend_Controller_Router_Route('/audio/album-edit/:idAl', array( 'controller' => 'audio', 'action' => 'album-edit' ), array( 'idAl' => '\d+' ));
+		$routes['staticAlbumDelete'] = new Zend_Controller_Router_Route('/audio/album-delete/:idAl', array( 'controller' => 'audio', 'action' => 'album-delete' ), array( 'idAl' => '\d+' ));
 		$routes['audioGetRand'] = new Zend_Controller_Router_Route_Static('/audio/get-rand.json', array( 'controller' => 'audio', 'action' => 'get-rand' ));
 
 
