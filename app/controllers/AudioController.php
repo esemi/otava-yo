@@ -34,7 +34,7 @@ class AudioController extends Zend_Controller_Action
 			if( !empty($res) ){
 				$this->view->errorMessage = implode('<br>', $res);
 			}else{
-				$audioModel->addAlbum($validData['content'], $validData['title']);
+				$audioModel->addAlbum($validData['title'], $validData['year'], $validData['album_image'], $validData['desc']);
 				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(),'staticAudio'));
 			}
 		}

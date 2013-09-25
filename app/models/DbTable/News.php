@@ -73,7 +73,7 @@ class App_Model_DbTable_News extends Zend_Db_Table_Abstract
 	 * @param string $content
 	 * @param string $title
 
-	 * @return int Count of inserted rows
+	 * @return int Inserted id
 	 */
 	public function addPost($content, $title='')
 	{

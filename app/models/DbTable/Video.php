@@ -70,7 +70,7 @@ class App_Model_DbTable_Video extends Zend_Db_Table_Abstract
 	 * @param string $code
 	 * @param string $desc
 
-	 * @return int Count of updated rows
+	 * @return int Inserted id
 	 */
 	public function editVideo($id, $code, $desc='')
 	{

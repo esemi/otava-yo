@@ -133,7 +133,7 @@ class App_Model_DbTable_Concert extends Zend_Db_Table_Abstract
 	 *
 	 * @param array $params Assoc array contains fields for insert
 
-	 * @return int Count of inserted rows
+	 * @return int Inserted id
 	 */
 	public function addConcert($params)
 	{

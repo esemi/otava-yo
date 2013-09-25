@@ -105,7 +105,7 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 	 * @param string $site
 	 * @param string $city
 	 *
-	 * @return int Count of inserted rows
+	 * @return int Inserted id
 	 */
 	public function addPost($author, $content, $email='', $site='', $city='')
 	{

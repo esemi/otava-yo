@@ -87,10 +87,10 @@ class App_Model_Audio
 
 		$errors = array();
 		$validData = array(
-			'title' => '',//required
-			'year' => '',//required
+			'title' => '',	//required
+			'year' => '',	//required
+			'album_image' => null,	//required
 			'desc' => '',
-			'tracks' => array()
 		);
 
 		if( empty($data['title']) ){
@@ -114,24 +114,49 @@ class App_Model_Audio
 			$validData['desc'] = $data['desc'];
 		}
 
-		if( !empty($data['playlist']) ){
-			$validData['tracks'] = $this->decodeAlbumPlaylist($data['playlist']);
+		//check img file
+		$upload = new Zend_File_Transfer();
+
+
+		$files = $upload->getFileInfo('album_image');
+		if( empty($files['album_image']) ){
+			$errors[] = 'Загрузите файл обложки альбома';
+		}elseif( !$upload->isUploaded() ){
+			$errors[] = 'Файл не был загружен';
+		}else{
+			$file = $files['album_image'];
+
+			$exts = 'jpg,png,bmp,jpeg';
+			$extensionValidate = new Zend_Validate_File_Extension($exts);
+			if( ! $extensionValidate->isValid($file['tmp_name'], $file) ){
+				$errors[] = "Недопустимое расширение файла ({$exts})";
+			}
+
+			$sizeValidate = new Zend_Validate_File_Size(2000000);
+			if( ! $sizeValidate->isValid($file['tmp_name'], $file) ){
+				$errors[] = "Файл слишком большой";
+			}
+
+			try{
+				$img = new Imagick($file['tmp_name']);
+				$res = $img->thumbnailImage(222, 200, true);
+				if( $res === true ){
+					$validData['album_image'] = $img;
+				}
+			}catch( ImagickException $e ){}
+
+			if( !($validData['album_image'] instanceof Imagick) ){
+				$errors[] = "Ошибка при преобразовании файла";
+			}
 		}
 
 		return array($validData, $errors);
 	}
 
-	/**
-	 * Decode playlist string to track names array
-	 *
-	 * @param string $playlist
-	 * @return array Track names
-	 */
-	public function decodeAlbumPlaylist($playlist)
-	{
-		$tracks = explode("\n", $playlist);
-		array_walk($tracks, 'trim');
-		
-		return $tracks;
+	public function addAlbum($title, $year, Imagick $image, $desc=''){
+		$albumId = $this->_albumTable->addAlbum($title, $year, $desc);
+		$albumImgPath = WWW_PATH . $this->_prepareAlbumImgLink($albumId);
+		$image->writeimage($albumImgPath);
+		chmod($albumImgPath , 0444);
 	}
 }

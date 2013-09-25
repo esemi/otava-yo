@@ -4,6 +4,8 @@ define('APPLICATION_ENV', (getenv('APPLICATION_ENV')) ? getenv('APPLICATION_ENV'
 
 define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../app'));
 
+define('WWW_PATH', realpath(dirname(__FILE__) . '/../www'));
+
 define('ZEND_PATH', realpath(dirname(__FILE__) . '/../../Zend'));
 
 define('LOG_PATH', realpath(dirname(__FILE__) . '/../../logs/ottava'));
