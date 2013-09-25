@@ -35,6 +35,11 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 				<div class="album-desc"><?= $album['desc']; ?></div>
 			<? endif; ?>
 
+			<? if( $authFlag ): ?>
+				<footer>
+					<a class="edit" title="редактировать" href="<?= $this->url(array('idAl' => $album['id'] ), 'staticAlbumEdit') ?>"><?= $this->translate('button.edit'); ?></a>
+				</footer>
+			<? endif; ?>
 		</article>
 		<hr>
 	<? endforeach; ?>

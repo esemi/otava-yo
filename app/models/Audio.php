@@ -12,6 +12,18 @@ class App_Model_Audio
 		$this->_albumTable = new App_Model_DbTable_Album();
 	}
 
+	public function findAlbumById($id)
+	{
+		$album = $this->_albumTable->findById($id);
+		if( !is_null($album) ){
+			$album = $album->toArray();
+			$album['img_link'] = $this->_prepareAlbumImgLink($album['id']);
+			return $album;
+		}else{
+			return null;
+		}
+	}
+
 	/**
 	 * Return all tracks
 	 *
@@ -51,7 +63,7 @@ class App_Model_Audio
 		$track = $this->_audioTable->getRand();
 
 		if( !is_null($track) ){
-			$track['album'] = $this->_albumTable->getAlbumById($track['album_id']);
+			$track['album'] = $this->_albumTable->findById($track['album_id']);
 			$track['img_link'] = $this->_prepareAlbumImgLink($track['album_id']);
 			$track['audio_link'] = $this->_prepareAudioLink($track['id']);
 		}
@@ -81,7 +93,7 @@ class App_Model_Audio
 		return sprintf('album_img_%d.jpg', $album_id);
 	}
 
-	public function albumValidate($data)
+	public function albumValidate($data, $imgRequired = true)
 	{
 		array_walk($data, 'trim');
 
@@ -89,7 +101,7 @@ class App_Model_Audio
 		$validData = array(
 			'title' => '',	//required
 			'year' => '',	//required
-			'album_image' => null,	//required
+			'album_image' => null,	//required if create
 			'desc' => '',
 		);
 
@@ -116,13 +128,11 @@ class App_Model_Audio
 
 		//check img file
 		$upload = new Zend_File_Transfer();
-
-
 		$files = $upload->getFileInfo('album_image');
-		if( empty($files['album_image']) ){
-			$errors[] = 'Загрузите файл обложки альбома';
-		}elseif( !$upload->isUploaded() ){
-			$errors[] = 'Файл не был загружен';
+		if( empty($files['album_image']) || !$upload->isUploaded() ){
+			if( $imgRequired === true ){
+				$errors[] = 'Загрузите файл обложки альбома';
+			}
 		}else{
 			$file = $files['album_image'];
 
@@ -148,15 +158,33 @@ class App_Model_Audio
 			if( !($validData['album_image'] instanceof Imagick) ){
 				$errors[] = "Ошибка при преобразовании файла";
 			}
+
+			@unlink($file['tmp_name']);
 		}
 
 		return array($validData, $errors);
 	}
 
-	public function addAlbum($title, $year, Imagick $image, $desc=''){
+	public function addAlbum($title, $year, Imagick $image, $desc='')
+	{
 		$albumId = $this->_albumTable->addAlbum($title, $year, $desc);
+		$this->_saveAlbumImg($albumId, $image);
+	}
+
+	public function editAlbum($id, $title, $year, $image, $desc='')
+	{
+		$res = $this->_albumTable->editAlbum($id, $title, $year, $desc);
+		if( $image instanceof Imagick ){
+			$this->_saveAlbumImg($id, $image);
+		}
+		return $res;
+	}
+
+	protected function _saveAlbumImg($albumId, Imagick $img){
 		$albumImgPath = WWW_PATH . $this->_prepareAlbumImgLink($albumId);
-		$image->writeimage($albumImgPath);
+		$img->writeimage($albumImgPath);
 		chmod($albumImgPath , 0444);
 	}
+
+
 }

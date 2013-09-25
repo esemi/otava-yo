@@ -31,13 +31,16 @@ $this->headScript()->appendFile( "/js/ckeditor/adapters/jquery.js");
 		</tbody>
 	</table>
 	<div>
+		<?php if( !empty($this->albumData['img_link']) ): ?>
+			<img alt="album cover" title="album cover" src="<?= $this->albumData['img_link']; ?>"/>
+		<?php endif; ?>
 		<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
-		image<br/>
+		cover image: max 2MB, 222x200 px resizing<br/>
 		<input name="album_image" type="file" />
 	</div>
 
 	<label for="desc">Описание: </label><br>
-	<textarea class="js-editor-album" name="desc" id="desc" placeholder="Описание"><?= (isset($this->albumData['desc'])) ? $this->escape($this->albumData['desc']) : ''; ?></textarea><br>
+	<textarea class="js-editor-album" name="desc" id="desc" placeholder="Описание"><?= (isset($this->albumData['desc'])) ? $this->albumData['desc'] : ''; ?></textarea><br>
 
 	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 	<input class="submit" type="submit" name="отправить" value="отправить">
