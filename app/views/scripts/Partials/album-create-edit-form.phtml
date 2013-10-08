@@ -1,5 +1,9 @@
 <?
+$version = $this->cacheVersion();
 
+$this->headLink()->appendStylesheet("/css/jquery-ui-1.10.3.custom.min.css?{$version}");
+
+$this->headScript()->appendFile( "/js/jquery-ui-1.10.3.custom.min.js");
 $this->headScript()->appendFile( "/js/ckeditor/ckeditor.js");
 $this->headScript()->appendFile( "/js/ckeditor/adapters/jquery.js");
 

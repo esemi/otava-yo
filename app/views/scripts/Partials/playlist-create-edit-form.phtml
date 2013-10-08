@@ -1,0 +1,21 @@
+<?
+$version = $this->cacheVersion();
+
+$this->headLink()->appendStylesheet("/css/jquery-ui-1.10.3.custom.min.css?{$version}");
+$this->headScript()->appendFile( "/js/jquery-ui-1.10.3.custom.min.js");
+
+?>
+
+<? if( !empty($this->error) ): ?>
+	<p class="error"><?= $this->error; ?></p>
+<? endif; ?>
+
+<form enctype="multipart/form-data" name="playlist-form" method="POST" class="playlist-form">
+	<div>
+		Плейлист:
+
+	</div>
+
+	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
+	<input class="submit" type="submit" name="отправить" value="отправить">
+</form>

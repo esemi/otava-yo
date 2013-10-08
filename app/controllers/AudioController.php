@@ -90,4 +90,27 @@ class AudioController extends Zend_Controller_Action
 			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(),'staticAudio'));
 		}
 	}
+
+	public function playlistEditAction()
+	{
+		if( !$this->_helper->checkAccess() )
+			throw new Mylib_Exception_Forbidden();
+
+		$audioModel = new App_Model_Audio();
+
+		$albumData = $audioModel->findAlbumById((int) $this->_getParam('idAl'));
+		if( is_null($albumData) ){
+			throw new Mylib_Exception_NotFound('Album not found');
+		}
+
+		if( $this->_request->isPost() )
+		{
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+
+
+		}else{
+			$this->view->albumData = $albumData;
+			//$this->view->playlistData = $albumData;
+		}
+	}
 }

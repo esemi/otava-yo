@@ -126,6 +126,7 @@ jQuery(document).ready(function(){
 
 
 	//check avaliable datepickr
+	//@TODO replace to jquery UI datepicker
 	if( typeof datepickr !== 'undefined' ){
 
 		//datepickr on concert admin interface
@@ -143,5 +144,10 @@ jQuery(document).ready(function(){
 			new datepickr('datepick', opt);
 		}
 	}
+
+	//playlist admin interface
+	(function(){
+		
+	})();
 
 });

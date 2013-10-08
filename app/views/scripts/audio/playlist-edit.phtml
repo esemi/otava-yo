@@ -1,0 +1,6 @@
+<section class="field-bg">
+	<h2 class="title-page-name text-center"><?= $this->translate('title.audio.playlist-edit'); ?></h2>
+	<?= $this->partial('Partials/playlist-create-edit-form.phtml', array(
+		'error' => $this->errorMessage,
+		'albumData' => $this->albumData)); ?>
+</section>
