@@ -1,3 +1,13 @@
+<?php
+
+$version = $this->cacheVersion();
+
+$this->headLink()->appendStylesheet("/css/datepickr.css?{$version}");
+$this->headScript()->appendFile( "/js/datepickr.js?{$version}");
+
+?>
+
+
 <? if( !empty($this->error) ): ?>
 	<p class="error"><?= $this->error; ?></p>
 <? endif; ?>
@@ -39,10 +49,10 @@
 			</tr>
 			<tr>
 				<td>
-					<label for="date"><?= $this->translate('label.date'); ?>: </label>
+					<label for="datepick"><?= $this->translate('label.date'); ?>: </label>
 				</td>
 				<td>
-					<input type="date" name="date" id="date" value="<?= (isset($this->concertData['date'])) ? $this->escape($this->concertData['date']) : ''; ?>" placeholder="<?= $this->translate('label.date'); ?> dd.mm.yy" maxlength="10"/>
+					<input type="text" name="date" id="datepick" value="<?= (isset($this->concertData['date'])) ? $this->escape($this->concertData['date']) : ''; ?>" placeholder="<?= $this->translate('label.date'); ?> dd.mm.yy" maxlength="8"/>
 				</td>
 			</tr>
 			<tr>

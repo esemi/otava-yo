@@ -124,4 +124,24 @@ jQuery(document).ready(function(){
 		jQuery('.js-editor-album').ckeditor();
 	}
 
+
+	//check avaliable datepickr
+	if( typeof datepickr !== 'undefined' ){
+
+		//datepickr on concert admin interface
+		if( jQuery('#datepick').length > 0 ){
+
+			var opt = {
+				fullCurrentMonth: true,
+				dateFormat: 'd.m.y',
+				weekdays: ['Вск', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+				months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+			};
+
+			//@TODO select current month and year by default
+
+			new datepickr('datepick', opt);
+		}
+	}
+
 });
