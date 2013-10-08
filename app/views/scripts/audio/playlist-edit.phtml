@@ -1,6 +1,30 @@
+<?
+$version = $this->cacheVersion();
+
+$this->headLink()->appendStylesheet("/css/jquery-ui-1.10.3.custom.min.css?{$version}");
+$this->headScript()->appendFile( "/js/jquery-ui-1.10.3.custom.min.js");
+
+?>
+
+
 <section class="field-bg">
 	<h2 class="title-page-name text-center"><?= $this->translate('title.audio.playlist-edit'); ?></h2>
-	<?= $this->partial('Partials/playlist-create-edit-form.phtml', array(
-		'error' => $this->errorMessage,
-		'albumData' => $this->albumData)); ?>
+
+	<? if( !empty($this->error) ): ?>
+		<p class="error"><?= $this->error; ?></p>
+	<? endif; ?>
+
+	<div>
+		<h3><?= $this->escape($this->albumData['title']); ?></h3>
+
+		<div class="js-playlist-editable">
+			<ul>
+			<? foreach( $this->playlistData as $track ): ?>
+				<li data-id="<?= $this->escape($track->id); ?>"><?= $this->escape($track->title); ?></li>
+			<? endforeach; ?>
+			</ul>
+		</div>
+	</div>
+
+	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 </section>

@@ -22,6 +22,15 @@ class App_Model_DbTable_Audio extends Zend_Db_Table_Abstract
 		return $this->fetchAll($select)->toArray();
 	}
 
+
+	public function findByAlbumId($albumId)
+	{
+		$select = $this->select()
+						->from($this, array('id', 'title'))
+						->where('album_id = ?', $albumId, Zend_Db::INT_TYPE);
+		return $this->fetchAll($select);
+	}
+
 	/**
 	 * Delete by album id
 	 *

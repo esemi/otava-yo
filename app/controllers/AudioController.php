@@ -98,19 +98,10 @@ class AudioController extends Zend_Controller_Action
 
 		$audioModel = new App_Model_Audio();
 
-		$albumData = $audioModel->findAlbumById((int) $this->_getParam('idAl'));
+		$this->view->albumData = $albumData = $audioModel->findAlbumById((int) $this->_getParam('idAl'));
 		if( is_null($albumData) ){
 			throw new Mylib_Exception_NotFound('Album not found');
 		}
-
-		if( $this->_request->isPost() )
-		{
-			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
-
-
-		}else{
-			$this->view->albumData = $albumData;
-			//$this->view->playlistData = $albumData;
-		}
+		$this->view->playlistData = $audioModel->getPlaylist($albumData['id']);
 	}
 }
