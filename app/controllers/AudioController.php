@@ -2,6 +2,7 @@
 
 class AudioController extends Zend_Controller_Action
 {
+
 	public function indexAction()
 	{
 		$audioModel = new App_Model_Audio();
@@ -17,91 +18,107 @@ class AudioController extends Zend_Controller_Action
 		$this->view->track = $audioModel->getRandTrack();
 	}
 
+	public function removeTrackAction()
+	{
+		$this->_helper->forceAjaxRequest();
+
+		$this->_helper->csrfTokenCheck($this->_request->getPost('csrfToken'));
+
+		if (!$this->_helper->checkAccess()) {
+			$this->view->status = 'error';
+			$this->view->error = 'access denied';
+			return;
+		}
+
+		$audioModel = new App_Model_Audio();
+		$audioModel->removeTrack((int) $this->_request->getPost('idTrack', 0));
+
+		$this->view->status = 'success';
+	}
+
 	public function albumCreateAction()
 	{
-		if( !$this->_helper->checkAccess() )
+		if (!$this->_helper->checkAccess())
 			throw new Mylib_Exception_Forbidden();
 
 		$audioModel = new App_Model_Audio();
 
 		$this->view->albumData = $postData = $this->_request->getPost();
 
-		if( $this->_request->isPost() )
-		{
+		if ($this->_request->isPost()) {
 			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
 
 			list($validData, $res) = $audioModel->albumValidate($postData);
-			if( !empty($res) ){
+			if (!empty($res)) {
 				$this->view->errorMessage = implode('<br>', $res);
-			}else{
+			} else {
 				$audioModel->addAlbum($validData['title'], $validData['year'], $validData['album_image'], $validData['desc']);
-				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(),'staticAudio'));
+				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(), 'staticAudio'));
 			}
 		}
 	}
 
 	public function albumEditAction()
 	{
-		if( !$this->_helper->checkAccess() )
+		if (!$this->_helper->checkAccess())
 			throw new Mylib_Exception_Forbidden();
 
 		$audioModel = new App_Model_Audio();
 
 		$albumData = $audioModel->findAlbumById((int) $this->_getParam('idAl'));
-		if( is_null($albumData) ){
+		if (is_null($albumData)) {
 			throw new Mylib_Exception_NotFound('Album not found');
 		}
 
-		if( $this->_request->isPost() )
-		{
+		if ($this->_request->isPost()) {
 			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
 
 			$this->view->albumData = $postData = $this->_request->getPost();
 			$this->view->albumData['img_link'] = $albumData['img_link'];
 
 			list($validData, $res) = $audioModel->albumValidate($postData, false);
-			if( !empty($res) ){
+			if (!empty($res)) {
 				$this->view->errorMessage = implode('<br>', $res);
-			}else{
+			} else {
 				$audioModel->editAlbum($albumData['id'], $validData['title'], $validData['year'], $validData['album_image'], $validData['desc']);
-				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(),'staticAudio'));
+				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(), 'staticAudio'));
 			}
-		}else{
+		} else {
 			$this->view->albumData = $albumData;
 		}
 	}
 
 	public function albumDeleteAction()
 	{
-		if( !$this->_helper->checkAccess() )
+		if (!$this->_helper->checkAccess())
 			throw new Mylib_Exception_Forbidden();
 
 		$audioModel = new App_Model_Audio();
 		$albumData = $audioModel->findAlbumById((int) $this->_getParam('idAl'));
-		if( is_null($albumData) ){
+		if (is_null($albumData)) {
 			throw new Mylib_Exception_NotFound('Album not found');
 		}
 
-		if( $this->_request->isPost() )
-		{
+		if ($this->_request->isPost()) {
 			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
 
 			$audioModel->delAlbum($albumData['id']);
-			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(),'staticAudio'));
+			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(), 'staticAudio'));
 		}
 	}
 
 	public function playlistEditAction()
 	{
-		if( !$this->_helper->checkAccess() )
+		if (!$this->_helper->checkAccess())
 			throw new Mylib_Exception_Forbidden();
 
 		$audioModel = new App_Model_Audio();
 
 		$this->view->albumData = $albumData = $audioModel->findAlbumById((int) $this->_getParam('idAl'));
-		if( is_null($albumData) ){
+		if (is_null($albumData)) {
 			throw new Mylib_Exception_NotFound('Album not found');
 		}
 		$this->view->playlistData = $audioModel->getPlaylist($albumData['id']);
 	}
+
 }

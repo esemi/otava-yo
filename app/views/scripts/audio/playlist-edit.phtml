@@ -9,18 +9,28 @@ $this->headScript()->appendFile( "/js/jquery-ui-1.10.3.custom.min.js");
 
 <section class="field-bg">
 	<h2 class="title-page-name text-center"><?= $this->translate('title.audio.playlist-edit'); ?></h2>
-
-	<? if( !empty($this->error) ): ?>
-		<p class="error"><?= $this->error; ?></p>
-	<? endif; ?>
+	<p class="error js-ajax-error">
+		<? if( !empty($this->error) ): ?>
+			<?= $this->escape($this->error); ?>
+		<? endif; ?>
+	</p>
 
 	<div>
 		<h3><?= $this->escape($this->albumData['title']); ?></h3>
 
-		<div class="js-playlist-editable">
-			<ul>
+		<div>
+			<style>
+				.js-playlist-editable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+				.js-playlist-editable li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; height: 1.5em; }
+				html>body .js-playlist-editable li { height: 1.5em; line-height: 1.2em; }
+				.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+			</style>
+			<ul class="js-playlist-editable" data-remove-url="<?= $this->url(array(), 'audioRemoveTrack'); ?>">
 			<? foreach( $this->playlistData as $track ): ?>
-				<li data-id="<?= $this->escape($track->id); ?>"><?= $this->escape($track->title); ?></li>
+				<li data-id="<?= $this->escape($track->id); ?>">
+					<?= $this->escape($track->title); ?>
+					<span class="js-playlist-remove-button hide">del</span>
+				</li>
 			<? endforeach; ?>
 			</ul>
 		</div>

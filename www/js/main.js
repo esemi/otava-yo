@@ -146,8 +146,52 @@ jQuery(document).ready(function(){
 	}
 
 	//playlist admin interface
-	(function(){
-		
-	})();
+	if( typeof jQuery().sortable !== 'undefined' ){
+
+		// show/hide remove button for hover on li elements
+		jQuery(".js-playlist-editable li").on({
+			mouseenter: function(e){
+				jQuery(this).find('.js-playlist-remove-button').show();
+			},
+			mouseleave: function(e){
+				jQuery(this).find('.js-playlist-remove-button').hide();
+			}
+		});
+
+		//delete track if remove button clicked
+		jQuery('.js-playlist-remove-button').click(function(e){
+
+			if( !confirm("Вы уверены, что хотите удалить данный трек?") ){
+				return false;
+			}
+
+			var elem = jQuery(this).parents('li:first');
+			jQuery.post(
+				jQuery(".js-playlist-editable").attr('data-remove-url'),
+				{
+					idTrack: elem.attr('data-id'),
+					csrfToken: jQuery('input[name=csrf]').val()
+				},
+				function(data){
+					if( typeof data.status !== 'undefined' && data.status === 'success' ){
+						elem.remove();
+					}else{
+						var err = 'неизвестная ошибка';
+						if( typeof data.error !== 'undefined' ){
+							err = data.error;
+						}
+						jQuery('.js-ajax-error').text(err);
+					}
+				},
+				'json'
+			);
+		});
+
+		//sort playlist and save order
+		jQuery(".js-playlist-editable").sortable({
+			placeholder: "ui-state-highlight"
+		});
+		jQuery( "#sortable" ).disableSelection();
+	}
 
 });

@@ -24,6 +24,16 @@ class App_Model_Audio
 		}
 	}
 
+	public function findTrackById($id)
+	{
+		$track = $this->_audioTable->findById($id);
+		if( !is_null($track) ){
+			return $track->toArray();
+		}else{
+			return null;
+		}
+	}
+
 
 	public function getPlaylist($albumId)
 	{
@@ -196,14 +206,18 @@ class App_Model_Audio
 	{
 		$tracks = $this->_audioTable->findByAlbumId($id);
 		foreach( $tracks as $track ){
-			@unlink(WWW_PATH . $this->_prepareAudioLink($track['id']));
+			$this->removeTrack($track['id']);
 		}
-		$this->_audioTable->delByAlbum($id);
 
 		$res = $this->_albumTable->delAlbum($id);
 		@unlink(WWW_PATH . $this->_prepareAlbumImgLink($id));
-		
+
 		return $res;
+	}
+
+	public function removeTrack($id){
+		$this->_audioTable->delById($id);
+		@unlink(WWW_PATH . $this->_prepareAudioLink($id));
 	}
 
 }
