@@ -36,6 +36,37 @@ class AudioController extends Zend_Controller_Action
 		$this->view->status = 'success';
 	}
 
+	public function editTrackAction()
+	{
+		$this->_helper->forceAjaxRequest();
+
+		$this->_helper->csrfTokenCheck($this->_request->getPost('csrfToken'));
+
+		if (!$this->_helper->checkAccess()) {
+			$this->view->status = 'error';
+			$this->view->error = 'access denied';
+			return;
+		}
+
+		$audioModel = new App_Model_Audio();
+
+		$trackData = $audioModel->findTrackById((int) $this->_request->getPost('idTrack', 0));
+		if( is_null($trackData) ){
+			$this->view->status = 'error';
+			$this->view->error = 'not found track';
+			return;
+		}
+
+		list($title, $errors) = $audioModel->validateTrackTitle($this->_request->getPost('title'));
+		if( count($errors) === 0 ){
+			$audioModel->editTrack($trackData['id'], $title);
+			$this->view->status = 'success';
+		}else{
+			$this->view->status = 'error';
+			$this->view->error = $errors[0];
+		}
+	}
+
 	public function albumCreateAction()
 	{
 		if (!$this->_helper->checkAccess())

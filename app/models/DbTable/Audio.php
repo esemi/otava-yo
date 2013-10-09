@@ -51,4 +51,19 @@ class App_Model_DbTable_Audio extends Zend_Db_Table_Abstract
 	{
 		return $this->delete( array( $this->_db->quoteInto( 'id = ?', $id, Zend_Db::INT_TYPE ) ) );
 	}
+
+	/**
+	 * Edit track
+	 *
+	 * @param int $id
+	 * @param string $title
+
+	 * @return int Count of updated rows
+	 */
+	public function editTrack($id, $title)
+	{
+		return $this->update(
+			array( 'title' => $title ),
+			array( $this->_db->quoteInto( 'id = ?', $id, Zend_Db::INT_TYPE ) ) );
+	}
 }

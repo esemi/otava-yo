@@ -149,17 +149,18 @@ jQuery(document).ready(function(){
 	if( typeof jQuery().sortable !== 'undefined' ){
 
 		// show/hide remove button for hover on li elements
-		jQuery(".js-playlist-editable li").on({
+		//@TODO replace to hover if reload page after add new elements
+		jQuery(".js-playlist-editable").on({
 			mouseenter: function(e){
-				jQuery(this).find('.js-playlist-remove-button').show();
+				jQuery(this).find('.js-playlist-remove-button, .js-playlist-edit-button').removeClass('hide');
 			},
 			mouseleave: function(e){
-				jQuery(this).find('.js-playlist-remove-button').hide();
+				jQuery(this).find('.js-playlist-remove-button, .js-playlist-edit-button').addClass('hide');
 			}
-		});
+		}, 'li');
 
 		//delete track if remove button clicked
-		jQuery('.js-playlist-remove-button').click(function(e){
+		jQuery('.js-playlist-remove-button').on('click', function(){
 
 			if( !confirm("Вы уверены, что хотите удалить данный трек?") ){
 				return false;
@@ -187,11 +188,46 @@ jQuery(document).ready(function(){
 			);
 		});
 
+		//enable edit area if edit button clicked
+		jQuery('.js-playlist-edit-button').on('click', function(){
+
+			var button = jQuery(this);
+			var liElem = jQuery(this).parents('li:first');
+			var inputElem = liElem.find('input');
+
+			if( button.text() === 'edit' ){
+				button.text('save');
+				inputElem.removeAttr('disabled');
+			}else{
+				jQuery.post(
+					jQuery(".js-playlist-editable").attr('data-edit-url'),
+					{
+						idTrack: liElem.attr('data-id'),
+						title: inputElem.val(),
+						csrfToken: jQuery('input[name=csrf]').val()
+					},
+					function(data){
+						if( typeof data.status !== 'undefined' && data.status === 'success' ){
+							button.text('edit');
+							inputElem.attr('disabled', 'disabled');
+						}else{
+							var err = 'неизвестная ошибка';
+							if( typeof data.error !== 'undefined' ){
+								err = data.error;
+							}
+							jQuery('.js-ajax-error').text(err);
+						}
+					},
+					'json'
+				);
+			}
+		});
+
 		//sort playlist and save order
 		jQuery(".js-playlist-editable").sortable({
 			placeholder: "ui-state-highlight"
 		});
-		jQuery( "#sortable" ).disableSelection();
+		jQuery(".js-playlist-editable").disableSelection();
 	}
 
 });

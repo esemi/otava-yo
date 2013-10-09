@@ -181,6 +181,19 @@ class App_Model_Audio
 		return array($validData, $errors);
 	}
 
+	public function validateTrackTitle($title){
+		$errors = array();
+		$title = trim($title);
+
+		if( empty($title) ){
+			$errors[] = 'Укажите название';
+		}elseif( mb_strlen($title) > 255 ){
+			$errors[] = 'Слишком длинное название';
+		}
+
+		return array($title, $errors);
+	}
+
 	public function addAlbum($title, $year, Imagick $image, $desc='')
 	{
 		$albumId = $this->_albumTable->addAlbum($title, $year, $desc);
@@ -194,6 +207,11 @@ class App_Model_Audio
 			$this->_saveAlbumImg($id, $image);
 		}
 		return $res;
+	}
+
+	public function editTrack($id, $title)
+	{
+		return $this->_audioTable->editTrack($id, $title);
 	}
 
 	protected function _saveAlbumImg($albumId, Imagick $img){
