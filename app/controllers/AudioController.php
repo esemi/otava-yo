@@ -36,6 +36,33 @@ class AudioController extends Zend_Controller_Action
 		$this->view->status = 'success';
 	}
 
+	public function sortPlaylistAction()
+	{
+		$this->_helper->forceAjaxRequest();
+
+		$this->_helper->csrfTokenCheck($this->_request->getPost('csrfToken'));
+
+		if (!$this->_helper->checkAccess()) {
+			$this->view->status = 'error';
+			$this->view->error = 'access denied';
+			return;
+		}
+
+		$list = $this->_request->getPost('list');
+		if( !is_array($list) ){
+			$this->view->status = 'error';
+			$this->view->error = 'invalid params';
+			return;
+		}
+
+		$audioModel = new App_Model_Audio();
+		foreach( $list as $index => $id ){
+			$audioModel->updTrackSortIndex((int) $id, $index);
+		}
+
+		$this->view->status = 'success';
+	}
+
 	public function editTrackAction()
 	{
 		$this->_helper->forceAjaxRequest();
@@ -59,7 +86,7 @@ class AudioController extends Zend_Controller_Action
 
 		list($title, $errors) = $audioModel->validateTrackTitle($this->_request->getPost('title'));
 		if( count($errors) === 0 ){
-			$audioModel->editTrack($trackData['id'], $title);
+			$audioModel->updTrackTitle($trackData['id'], $title);
 			$this->view->status = 'success';
 		}else{
 			$this->view->status = 'error';

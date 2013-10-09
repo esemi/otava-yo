@@ -209,9 +209,14 @@ class App_Model_Audio
 		return $res;
 	}
 
-	public function editTrack($id, $title)
+	public function updTrackTitle($id, $title)
 	{
-		return $this->_audioTable->editTrack($id, $title);
+		return $this->_audioTable->updTrackTitle($id, $title);
+	}
+
+	public function updTrackSortIndex($id, $index)
+	{
+		return $this->_audioTable->updTrackSortIndex($id, $index);
 	}
 
 	protected function _saveAlbumImg($albumId, Imagick $img){

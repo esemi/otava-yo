@@ -27,7 +27,7 @@ class App_Model_DbTable_Audio extends Zend_Db_Table_Abstract
 	{
 		$select = $this->select()
 				->from($this, array('id', 'album_id', 'title'))
-				->order('id');
+				->order('sort_index');
 		return $this->fetchAll($select)->toArray();
 	}
 
@@ -36,7 +36,8 @@ class App_Model_DbTable_Audio extends Zend_Db_Table_Abstract
 	{
 		$select = $this->select()
 						->from($this, array('id', 'title'))
-						->where('album_id = ?', $albumId, Zend_Db::INT_TYPE);
+						->where('album_id = ?', $albumId, Zend_Db::INT_TYPE)
+						->order('sort_index');
 		return $this->fetchAll($select);
 	}
 
@@ -53,17 +54,31 @@ class App_Model_DbTable_Audio extends Zend_Db_Table_Abstract
 	}
 
 	/**
-	 * Edit track
+	 * Edit track title
 	 *
 	 * @param int $id
 	 * @param string $title
 
 	 * @return int Count of updated rows
 	 */
-	public function editTrack($id, $title)
+	public function updTrackTitle($id, $title)
 	{
 		return $this->update(
 			array( 'title' => $title ),
+			array( $this->_db->quoteInto( 'id = ?', $id, Zend_Db::INT_TYPE ) ) );
+	}
+	/**
+	 * Edit track sort index
+	 *
+	 * @param int $id
+	 * @param string $title
+
+	 * @return int Count of updated rows
+	 */
+	public function updTrackSortIndex($id, $title)
+	{
+		return $this->update(
+			array( 'sort_index' => $title ),
 			array( $this->_db->quoteInto( 'id = ?', $id, Zend_Db::INT_TYPE ) ) );
 	}
 }

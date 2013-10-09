@@ -25,7 +25,10 @@ $this->headScript()->appendFile( "/js/jquery-ui-1.10.3.custom.min.js");
 				html>body .js-playlist-editable li { height: 1.5em; line-height: 1.2em; }
 				.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
 			</style>
-			<ul class="js-playlist-editable" data-remove-url="<?= $this->url(array(), 'audioRemoveTrack'); ?>" data-edit-url="<?= $this->url(array(), 'audioEditTrack'); ?>">
+			<ul class="js-playlist-editable"
+				data-remove-url="<?= $this->url(array(), 'audioRemoveTrack'); ?>"
+				data-edit-url="<?= $this->url(array(), 'audioEditTrack'); ?>"
+				data-sort-url="<?= $this->url(array(), 'audioSortPlaylist'); ?>">
 			<? foreach( $this->playlistData as $track ): ?>
 				<li data-id="<?= $this->escape($track->id); ?>">
 					<span class="js-playlist-order-button">ползунок</span>

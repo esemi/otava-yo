@@ -68,7 +68,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$routes['audioGetRand'] = new Zend_Controller_Router_Route_Static('/audio/get-rand.json', array( 'controller' => 'audio', 'action' => 'get-rand' ));
 		$routes['audioRemoveTrack'] = new Zend_Controller_Router_Route_Static('/audio/remove-track.json', array( 'controller' => 'audio', 'action' => 'remove-track' ));
 		$routes['audioEditTrack'] = new Zend_Controller_Router_Route_Static('/audio/edit-track.json', array( 'controller' => 'audio', 'action' => 'edit-track' ));
-
+		$routes['audioSortPlaylist'] = new Zend_Controller_Router_Route_Static('/audio/sort-playlist.json', array( 'controller' => 'audio', 'action' => 'sort-playlist' ));
 
 		foreach( $routes as $name => $route ){
 			$router->addRoute($name, $langRoute->chain($route));

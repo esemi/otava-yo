@@ -147,69 +147,35 @@ jQuery(document).ready(function(){
 
 	//playlist admin interface
 	if( typeof jQuery().sortable !== 'undefined' ){
-
-		// show/hide remove button for hover on li elements
-		//@TODO replace to hover if reload page after add new elements
-		jQuery(".js-playlist-editable").on({
-			mouseenter: function(e){
-				jQuery(this).find('.js-playlist-remove-button, .js-playlist-edit-button').removeClass('hide');
-			},
-			mouseleave: function(e){
-				jQuery(this).find('.js-playlist-remove-button, .js-playlist-edit-button').addClass('hide');
-			}
-		}, 'li');
-
-		//delete track if remove button clicked
-		jQuery('.js-playlist-remove-button').on('click', function(){
-
-			if( !confirm("Вы уверены, что хотите удалить данный трек?") ){
-				return false;
-			}
-
-			var elem = jQuery(this).parents('li:first');
-			jQuery.post(
-				jQuery(".js-playlist-editable").attr('data-remove-url'),
-				{
-					idTrack: elem.attr('data-id'),
-					csrfToken: jQuery('input[name=csrf]').val()
+		(function(){
+			// show/hide remove button for hover on li elements
+			//@TODO replace to hover if reload page after add new elements
+			jQuery(".js-playlist-editable").on({
+				mouseenter: function(e){
+					jQuery(this).find('.js-playlist-remove-button, .js-playlist-edit-button').removeClass('hide');
 				},
-				function(data){
-					if( typeof data.status !== 'undefined' && data.status === 'success' ){
-						elem.remove();
-					}else{
-						var err = 'неизвестная ошибка';
-						if( typeof data.error !== 'undefined' ){
-							err = data.error;
-						}
-						jQuery('.js-ajax-error').text(err);
-					}
-				},
-				'json'
-			);
-		});
+				mouseleave: function(e){
+					jQuery(this).find('.js-playlist-remove-button, .js-playlist-edit-button').addClass('hide');
+				}
+			}, 'li');
 
-		//enable edit area if edit button clicked
-		jQuery('.js-playlist-edit-button').on('click', function(){
+			//delete track if remove button clicked
+			jQuery('.js-playlist-remove-button').on('click', function(){
 
-			var button = jQuery(this);
-			var liElem = jQuery(this).parents('li:first');
-			var inputElem = liElem.find('input');
+				if( !confirm("Вы уверены, что хотите удалить данный трек?") ){
+					return false;
+				}
 
-			if( button.text() === 'edit' ){
-				button.text('save');
-				inputElem.removeAttr('disabled');
-			}else{
+				var elem = jQuery(this).parents('li:first');
 				jQuery.post(
-					jQuery(".js-playlist-editable").attr('data-edit-url'),
+					jQuery(".js-playlist-editable").attr('data-remove-url'),
 					{
-						idTrack: liElem.attr('data-id'),
-						title: inputElem.val(),
+						idTrack: elem.attr('data-id'),
 						csrfToken: jQuery('input[name=csrf]').val()
 					},
 					function(data){
 						if( typeof data.status !== 'undefined' && data.status === 'success' ){
-							button.text('edit');
-							inputElem.attr('disabled', 'disabled');
+							elem.remove();
 						}else{
 							var err = 'неизвестная ошибка';
 							if( typeof data.error !== 'undefined' ){
@@ -220,14 +186,73 @@ jQuery(document).ready(function(){
 					},
 					'json'
 				);
-			}
-		});
+			});
 
-		//sort playlist and save order
-		jQuery(".js-playlist-editable").sortable({
-			placeholder: "ui-state-highlight"
-		});
-		jQuery(".js-playlist-editable").disableSelection();
+			//enable edit area if edit button clicked
+			jQuery('.js-playlist-edit-button').on('click', function(){
+
+				var button = jQuery(this);
+				var liElem = jQuery(this).parents('li:first');
+				var inputElem = liElem.find('input');
+
+				if( button.text() === 'edit' ){
+					button.text('save');
+					inputElem.removeAttr('disabled');
+				}else{
+					jQuery.post(
+						jQuery(".js-playlist-editable").attr('data-edit-url'),
+						{
+							idTrack: liElem.attr('data-id'),
+							title: inputElem.val(),
+							csrfToken: jQuery('input[name=csrf]').val()
+						},
+						function(data){
+							if( typeof data.status !== 'undefined' && data.status === 'success' ){
+								button.text('edit');
+								inputElem.attr('disabled', 'disabled');
+							}else{
+								var err = 'неизвестная ошибка';
+								if( typeof data.error !== 'undefined' ){
+									err = data.error;
+								}
+								jQuery('.js-ajax-error').text(err);
+							}
+						},
+						'json'
+					);
+				}
+			});
+
+			//sort playlist and save order
+			jQuery(".js-playlist-editable").sortable({
+				placeholder: "ui-state-highlight",
+				update: function( event, ui ) {
+					var list = [];
+					jQuery(".js-playlist-editable li").each(function(key, li){
+						list[key] = jQuery(li).attr('data-id');
+					});
+
+					jQuery.post(
+						jQuery(".js-playlist-editable").attr('data-sort-url'),
+						{
+							list: list,
+							csrfToken: jQuery('input[name=csrf]').val()
+						},
+						function(data){
+							if( typeof data.status === 'undefined' || data.status !== 'success' ){
+								var err = 'неизвестная ошибка';
+								if( typeof data.error !== 'undefined' ){
+									err = data.error;
+								}
+								jQuery('.js-ajax-error').text(err);
+							}
+						},
+						'json'
+					);
+				}
+			});
+			jQuery(".js-playlist-editable").disableSelection();
+		})();
 	}
 
 });

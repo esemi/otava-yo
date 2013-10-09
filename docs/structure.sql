@@ -109,3 +109,5 @@ ALTER TABLE `audio`
 
 ALTER TABLE `album` CHANGE `desc` `desc` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;
 ALTER TABLE `concert` CHANGE `cost` `cost` VARCHAR( 100 ) NOT NULL;
+
+ALTER TABLE `audio` ADD `sort_index` SMALLINT UNSIGNED NOT NULL , ADD INDEX ( `sort_index` );
