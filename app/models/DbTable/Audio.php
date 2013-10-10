@@ -81,4 +81,21 @@ class App_Model_DbTable_Audio extends Zend_Db_Table_Abstract
 			array( 'sort_index' => $title ),
 			array( $this->_db->quoteInto( 'id = ?', $id, Zend_Db::INT_TYPE ) ) );
 	}
+
+	/**
+	 * Add new track
+	 *
+	 * @param int $albumId
+	 * @param string $title
+
+	 * @return int Inserted id
+	 */
+	public function addTrack($albumId, $title)
+	{
+		return $this->insert( array(
+			'title' => $title,
+			'album_id' => $albumId,
+			'sort_index' => 999 ));
+	}
+
 }

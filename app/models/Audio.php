@@ -186,7 +186,7 @@ class App_Model_Audio
 		$title = trim($title);
 
 		if( empty($title) ){
-			$errors[] = 'Укажите название';
+			$errors[] = 'Название слишком короткое';
 		}elseif( mb_strlen($title) > 255 ){
 			$errors[] = 'Слишком длинное название';
 		}
@@ -198,6 +198,11 @@ class App_Model_Audio
 	{
 		$albumId = $this->_albumTable->addAlbum($title, $year, $desc);
 		$this->_saveAlbumImg($albumId, $image);
+	}
+
+	public function addTrack($albumId, $title)
+	{
+		return $this->_audioTable->addTrack($albumId, $title);
 	}
 
 	public function editAlbum($id, $title, $year, $image, $desc='')

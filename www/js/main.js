@@ -146,8 +146,8 @@ jQuery(document).ready(function(){
 	}
 
 	//playlist admin interface
-	if( typeof jQuery().sortable !== 'undefined' ){
-		(function(){
+	(function(){
+		if( typeof jQuery().sortable !== 'undefined' ){
 			// show/hide remove button for hover on li elements
 			//@TODO replace to hover if reload page after add new elements
 			jQuery(".js-playlist-editable").on({
@@ -195,7 +195,8 @@ jQuery(document).ready(function(){
 				var liElem = jQuery(this).parents('li:first');
 				var inputElem = liElem.find('input');
 
-				if( button.text() === 'edit' ){
+				if( button.attr('data-mode') === 'edit' ){
+					button.attr('data-mode', 'save');
 					button.text('save');
 					inputElem.removeAttr('disabled');
 				}else{
@@ -208,6 +209,7 @@ jQuery(document).ready(function(){
 						},
 						function(data){
 							if( typeof data.status !== 'undefined' && data.status === 'success' ){
+								button.attr('data-mode', 'edit');
 								button.text('edit');
 								inputElem.attr('disabled', 'disabled');
 							}else{
@@ -252,7 +254,42 @@ jQuery(document).ready(function(){
 				}
 			});
 			jQuery(".js-playlist-editable").disableSelection();
-		})();
-	}
+
+			//handler for add button
+			jQuery('.js-playlist-add-button').on('click', function(){
+
+				var inputForm = jQuery('.js-playlist-add-title');
+				var ulElem = jQuery(".js-playlist-editable");
+
+				jQuery.post(
+					ulElem.attr('data-add-url'),
+					{
+						albumId: ulElem.attr('data-album-id'),
+						title: inputForm.val(),
+						csrfToken: jQuery('input[name=csrf]').val()
+					},
+					function(data){
+						if( typeof data.status !== 'undefined' &&
+							data.status === 'success' &&
+							typeof data.track_id !== 'undefined' ){
+							var elem = jQuery('.js-playlist-item-template li:first').clone(true);
+							elem.attr('data-id', data.track_id);
+							elem.find('input').val(inputForm.val());
+							ulElem.append(elem);
+							inputForm.val('');
+						}else{
+							var err = 'неизвестная ошибка';
+							if( typeof data.error !== 'undefined' ){
+								err = data.error;
+							}
+							jQuery('.js-ajax-error').text(err);
+						}
+					},
+					'json'
+				);
+			});
+
+		}
+	})();
 
 });
