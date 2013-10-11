@@ -49,7 +49,9 @@ class App_Model_Audio
 	{
 		$tracks = $this->_audioTable->getAll();
 		foreach( $tracks as &$track ){
-			$track['audio_link'] = $this->_prepareAudioLink($track['id']);
+
+			$trackPath = WWW_PATH . $this->_prepareAudioLink($track['id']);
+			$track['audio_link'] = ( file_exists($trackPath) && is_readable($trackPath) ) ? $this->_prepareAudioLink($track['id']) : null;
 		}
 		return $tracks;
 	}
@@ -76,13 +78,13 @@ class App_Model_Audio
 	 */
 	public function getRandTrack()
 	{
-		$track = $this->_audioTable->getRand();
+		$tracks = $this->getAllAudio();
+		$tracks = array_filter($tracks, function($x){ return !is_null($x['audio_link']); });
+		shuffle($tracks);
 
-		if( !is_null($track) ){
-			$track['album'] = $this->_albumTable->findById($track['album_id']);
-			$track['img_link'] = $this->_prepareAlbumImgLink($track['album_id']);
-			$track['audio_link'] = $this->_prepareAudioLink($track['id']);
-		}
+		$track = array_shift($tracks);
+		$track['album'] = $this->_albumTable->findById($track['album_id']);
+		$track['img_link'] = $this->_prepareAlbumImgLink($track['album_id']);
 
 		return $track;
 	}

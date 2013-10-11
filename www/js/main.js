@@ -145,6 +145,7 @@ jQuery(document).ready(function(){
 		}
 	}
 
+
 	//playlist admin interface
 	(function(){
 		if( typeof jQuery().sortable !== 'undefined' ){
