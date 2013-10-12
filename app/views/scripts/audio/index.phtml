@@ -23,9 +23,11 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 			<ul class="audio-list">
 				<? foreach($this->audio as $audio): ?>
 					<? if( $album['id'] == $audio['album_id'] ): ?>
-						<li class="js-track" track-id="<?= $this->escape($audio['id']) ?>" media-link="<?= $this->escape($audio['audio_link']) ?>">
-							<div class="js-audio-item-play play"></div>
-							<div class="js-audio-item-stop stop hide"></div>
+						<li class="<? if( !is_null($audio['audio_link']) ) echo 'js-track'; ?>" track-id="<?= $this->escape($audio['id']) ?>" media-link="<?= $this->escape($audio['audio_link']) ?>">
+							<? if( !is_null($audio['audio_link']) ): ?>
+								<div class="js-audio-item-play play"></div>
+								<div class="js-audio-item-stop stop hide"></div>
+							<? endif; ?>
 							<?= $this->escape($audio['title']) ?>
 						</li>
 					<? endif; ?>

@@ -55,7 +55,7 @@ jQuery(document).ready(function(){
 			ended: function(){
 				stopAllTracks();
 
-				var nextTrack = jQuery('.js-track[track-id=' + currentTrackId + ']').next('.js-track');
+				var nextTrack = jQuery('.js-track[track-id=' + currentTrackId + ']').nextAll('.js-track:first');
 				if( nextTrack.length > 0 ){
 					nextTrack.find('.js-audio-item-play').trigger('click');
 				}
