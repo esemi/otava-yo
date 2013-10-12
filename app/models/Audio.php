@@ -196,6 +196,36 @@ class App_Model_Audio
 		return array($title, $errors);
 	}
 
+	public function validateTrackAudiofile(){
+		$errors = array();
+		$filesrc = '';
+
+		//check img file
+		$upload = new Zend_File_Transfer();
+		$files = $upload->getFileInfo('audiofile_src');
+		if( empty($files['audiofile_src']) || !$upload->isUploaded() ){
+			$errors[] = 'Загрузите аудио файл';
+		}else{
+			$file = $files['audiofile_src'];
+
+			$exts = 'mp3';
+			$extensionValidate = new Zend_Validate_File_Extension($exts);
+			if( ! $extensionValidate->isValid($file['tmp_name'], $file) ){
+				$errors[] = "Недопустимое расширение файла ({$exts})";
+			}
+
+			$sizeValidate = new Zend_Validate_File_Size(30000000);
+			if( ! $sizeValidate->isValid($file['tmp_name'], $file) ){
+				$errors[] = "Файл слишком большой";
+			}
+
+			$filesrc = file_get_contents($file['tmp_name']);
+			@unlink($file['tmp_name']);
+		}
+
+		return array($filesrc, $errors);
+	}
+
 	public function addAlbum($title, $year, Imagick $image, $desc='')
 	{
 		$albumId = $this->_albumTable->addAlbum($title, $year, $desc);
@@ -229,7 +259,7 @@ class App_Model_Audio
 	protected function _saveAlbumImg($albumId, Imagick $img){
 		$albumImgPath = WWW_PATH . $this->_prepareAlbumImgLink($albumId);
 		$img->writeimage($albumImgPath);
-		chmod($albumImgPath , 0444);
+		chmod($albumImgPath , 0666);
 	}
 
 	public function delAlbum($id)
@@ -252,5 +282,14 @@ class App_Model_Audio
 
 	public function removeAudioFile($id){
 		@unlink(WWW_PATH . $this->_prepareAudioLink($id));
+	}
+
+	public function editAudioFile($id, $content){
+		$fname = WWW_PATH . $this->_prepareAudioLink($id);
+		$r = file_put_contents($fname, $content);
+
+		if( $r ){
+			chmod($fname , 0666);
+		}
 	}
 }

@@ -216,6 +216,29 @@ class AudioController extends Zend_Controller_Action
 		}
 	}
 
+	public function audiofileEditAction()
+	{
+		if (!$this->_helper->checkAccess())
+			throw new Mylib_Exception_Forbidden();
+
+		$audioModel = new App_Model_Audio();
+		$trackData = $audioModel->findTrackById((int) $this->_getParam('idTrack'));
+		if (is_null($trackData)) {
+			throw new Mylib_Exception_NotFound('Track not found');
+		}
+
+		if ($this->_request->isPost()) {
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+
+			list($audioSrc, $res) = $audioModel->validateTrackAudiofile();
+			if (!empty($res)) {
+				$this->view->errorMessage = implode('<br>', $res);
+			} else {
+				$audioModel->editAudioFile($trackData['id'], $audioSrc);
+				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(), 'staticAudio'));
+			}
+		}
+	}
 
 	public function playlistEditAction()
 	{

@@ -1,0 +1,20 @@
+<section class="field-bg">
+	<h2 class="title-page-name text-center"><?= $this->translate('title.audio.audiofile-edit'); ?></h2>
+
+	<? if( !empty($this->errorMessage) ): ?>
+		<p class="error"><?= $this->errorMessage; ?></p>
+	<? endif; ?>
+
+	<form enctype="multipart/form-data" name="audiofile-form" method="POST" class="audiofile-form">
+		<div>
+			<label for="audiofile_src">Новый аудиофайл:</label>
+			<input name="audiofile_src" id="audiofile_src" type="file"/>
+			<input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
+			<p>максимальный размер 30MB, только mp3</p>
+		</div>
+
+		<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
+		<input class="submit" type="submit" name="отправить" value="отправить">
+	</form>
+
+</section>
