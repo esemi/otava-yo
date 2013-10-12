@@ -29,6 +29,14 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 								<div class="js-audio-item-stop stop hide"></div>
 							<? endif; ?>
 							<?= $this->escape($audio['title']) ?>
+							<? if( $authFlag ): ?>
+								<? if( !is_null($audio['audio_link']) ): ?>
+									<a href="<?= $this->url(array('idTrack' => $this->escape($audio['id'])), 'audioAddAudioTrack'); ?>">edit</a>
+									<a href="<?= $this->url(array('idTrack' => $this->escape($audio['id'])), 'audioRemoveAudioTrack'); ?>">del</a>
+								<? else: ?>
+									<a href="<?= $this->url(array('idTrack' => $this->escape($audio['id'])), 'audioAddAudioTrack'); ?>">add</a>
+								<? endif; ?>
+							<? endif; ?>
 						</li>
 					<? endif; ?>
 				<? endforeach; ?>

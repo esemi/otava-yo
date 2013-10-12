@@ -247,7 +247,10 @@ class App_Model_Audio
 
 	public function removeTrack($id){
 		$this->_audioTable->delById($id);
-		@unlink(WWW_PATH . $this->_prepareAudioLink($id));
+		$this->removeAudioFile($id);
 	}
 
+	public function removeAudioFile($id){
+		@unlink(WWW_PATH . $this->_prepareAudioLink($id));
+	}
 }

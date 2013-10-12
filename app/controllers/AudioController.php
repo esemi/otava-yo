@@ -197,6 +197,26 @@ class AudioController extends Zend_Controller_Action
 		}
 	}
 
+	public function audiofileRemoveAction()
+	{
+		if (!$this->_helper->checkAccess())
+			throw new Mylib_Exception_Forbidden();
+
+		$audioModel = new App_Model_Audio();
+		$trackData = $audioModel->findTrackById((int) $this->_getParam('idTrack'));
+		if (is_null($trackData)) {
+			throw new Mylib_Exception_NotFound('Track not found');
+		}
+
+		if ($this->_request->isPost()) {
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+
+			$audioModel->removeAudioFile($trackData['id']);
+			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(), 'staticAudio'));
+		}
+	}
+
+
 	public function playlistEditAction()
 	{
 		if (!$this->_helper->checkAccess())
