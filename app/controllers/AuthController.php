@@ -17,11 +17,10 @@ class AuthController extends Zend_Controller_Action
 			$this->view->login = $login = $this->_request->getPost('login', '');
 			$pass = $this->_request->getPost('pass', '');
 
-			/* @TODOuncomment for production
 			if( !$this->_helper->checkCaptcha($recaptcha) ){
 				$this->view->errorMessage = 'Текст с изображения введён неверно';
 				return;
-			}*/
+			}
 
 			if( !$this->_login($login, $pass) ){
 				$this->view->errorMessage = 'Неверная пара логин/пароль';
