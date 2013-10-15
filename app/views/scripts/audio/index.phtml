@@ -31,8 +31,8 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 							<?= $this->escape($audio['title']) ?>
 							<? if( $authFlag ): ?>
 								<? if( !is_null($audio['audio_link']) ): ?>
-									<a href="<?= $this->url(array('idTrack' => $this->escape($audio['id'])), 'audioAddAudioTrack'); ?>">edit</a>
-									<a href="<?= $this->url(array('idTrack' => $this->escape($audio['id'])), 'audioRemoveAudioTrack'); ?>">del</a>
+									<a class="delete-track" href="<?= $this->url(array('idTrack' => $this->escape($audio['id'])), 'audioRemoveAudioTrack'); ?>"></a>
+									<a class="edit-track" href="<?= $this->url(array('idTrack' => $this->escape($audio['id'])), 'audioAddAudioTrack'); ?>"></a>
 								<? else: ?>
 									<a href="<?= $this->url(array('idTrack' => $this->escape($audio['id'])), 'audioAddAudioTrack'); ?>">add</a>
 								<? endif; ?>
