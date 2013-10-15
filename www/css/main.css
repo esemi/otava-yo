@@ -125,7 +125,10 @@
 			font-family: DSCoptic;
 		}
 
-		/*----Common color presets-----------------*/
+	/*
+		Common color presets
+	*/
+		/*font*/
 		html, body, a p {
 			color: #322f2d; /*dark green*/
 		}
@@ -151,14 +154,15 @@
 			color: #ebebf2; /*light grey*/
 		}
 
-
+		/*background*/
 		.out-link-youtube, .out-link-vk, .out-link-kroogi, .out-link-myspace,
-		.donate, a.jp-play, a.jp-pause{
+		.donate, a.jp-play, a.jp-pause, .js-playlist-editable li{
 			background-color: rgba(235, 235, 242, 0.7); /*light grey*/
 		}
 		.menu-links, .footer-block, .field-bg,
 		.out-links:hover, .last-news:hover, .nearrest-concert:hover,
-		.donate:hover, a.jp-play:hover, a.jp-pause:hover{
+		.donate:hover, a.jp-play:hover, a.jp-pause:hover,
+		.js-playlist-editable li:hover{
 			background-color: rgba(235, 235, 242, 0.8); /*light grey*/
 		}
 		.last-news, .nearrest-concert{
@@ -176,21 +180,25 @@
 			background-color:#cac0bd; /*light brown*/
 		}
 
+		/*border*/
 		.menu-block, .menu-links, .footer, .out-links, .last-news,
 		.nearrest-concert, .donate, a.jp-play, a.jp-pause{
 			border-top: solid 1px #f1eeec; /*grey*/
 		}
 
+		/*shadow*/
 		.main-page-photo, .date, .menu-block, .menu-links,
 		.footer-block, .out-links, .last-news, .nearrest-concert, .field-bg,
 		.guest-button,.news-button, .guest-form .submit, .donate, a.jp-play,
-		a.jp-pause, .login-status, .lang-ru, .lang-en{
+		a.jp-pause, .login-status, .lang-ru, .lang-en, .js-playlist-editable li{
 			box-shadow: 1px 1px 5px 0 #696046;
 			-webkit-box-shadow: 1px 1px 5px 0 #696046;
 			-moz-box-shadow: 1px 1px 5px 0 #696046;
 		}
 
-		/*----Links design-----------------*/
+	/*
+		Links design
+	*/
 
 		a{
 			text-decoration: none;
@@ -290,7 +298,10 @@
 			text-align: center;
 		}
 
-	/*-------------LAYOUT-----------------------------------------------------*/
+/*
+	 LAYOUT
+*/
+
 	body{
 		background: url('/img/fon.jpg') no-repeat fixed center top #756d34;
 	}
@@ -463,13 +474,15 @@
 			height: 21px;
 			width: 88px;
 			float: right;
-			background: url(/img/sprite.png) 0px -310px no-repeat;
+			background: url('/img/sprite.png') 0px -310px no-repeat;
 		}
 
 	/*-------------END LAYOUT-------------------------------------------------*/
 
 
-	/*-------------CONTENT----------------------------------------------------*/
+/*
+	CONTENT
+*/
 
 		/*---Autorisation---------------------------*/
 			.login-form .login, .login-form .pass{
@@ -490,7 +503,9 @@
 			}
 		/*---END Error page-----------------------*/
 
-		/*---Main page------------------------------*/
+	/*
+		Main page
+	*/
 			.main-page-photo{
 				display: block;
 				margin-bottom: 32px;
@@ -523,7 +538,7 @@
 					position: absolute;
 					right: -22px;
 					top: -1px;
-					background: url(/img/sprite.png) 0px -32px no-repeat;
+					background: url('/img/sprite.png') 0px -32px no-repeat;
 				}
 
 			/*--concert--*/
@@ -547,7 +562,7 @@
 					position: absolute;
 					left: -22px;
 					top: -1px;
-					background: url(/img/sprite.png) -22px -32px no-repeat;
+					background: url('/img/sprite.png') -22px -32px no-repeat;
 				}
 
 			/*--music--*/
@@ -592,29 +607,29 @@
 				}
 
 				a.jp-play {
-					background-image: url(/img/sprite.png);
+					background-image: url('/img/sprite.png');
 					background-position: 0px -77px;
 					background-repeat: no-repeat;
 				}
 				a.jp-play:hover {
-					background-image: url(/img/sprite.png);
+					background-image: url('/img/sprite.png');
 					background-position: 0px -152px;
 					background-repeat: no-repeat;
 				}
 				a.jp-pause {
 					display: none;
-					background-image: url(/img/sprite.png);
+					background-image: url('/img/sprite.png');
 					background-position: -75px -77px;
 					background-repeat: no-repeat;
 				}
 				a.jp-pause:hover {
 					display: none;
-					background-image: url(/img/sprite.png);
+					background-image: url('/img/sprite.png');
 					background-position: -75px -152px;
 					background-repeat: no-repeat;
 				}
 
-		/*---END Main page------------------------------*/
+	/*---END Main page------------------------------*/
 
 		.field-bg{
 			padding: 32px;
@@ -629,7 +644,9 @@
 				margin: 11px 74px 0px 96px;
 			}
 
-		/*---News page------------------------------*/
+	/*
+		News page
+	*/
 			.date-news{
 				height:61px;
 				padding-top: 24px;
@@ -654,11 +671,11 @@
 					font-size: 17px;
 				}
 
-		/*---END News page------------------------------*/
+	/*---END News page------------------------------*/
 
-
-
-		/*---Concert page------------------------------*/
+	/*
+		Concert page
+	*/
 			.old-concert-headding{
 				margin-bottom: 41px;
 			}
@@ -691,11 +708,11 @@
 				margin-left: 0px;
 			}
 
-		/*---END Concert page------------------------------*/
+	/*---END Concert page------------------------------*/
 
-
-
-		/*---Band page------------------------------*/
+	/*
+		Band page
+	*/
 			.band-photo{
 				margin: 0px 0px 21px;
 				text-align: justify;
@@ -708,11 +725,13 @@
 			.band-photo figcaption{
 				margin-bottom: 11px;
 			}
-		/*---END Band page------------------------------*/
+	/*---END Band page------------------------------*/
 
 
 
-		/*---Audio page------------------------------*/
+	/*
+		Audio page
+	*/
 			.player{
 					visibility: hidden;
 					float: right;
@@ -739,6 +758,7 @@
 			}
 
 			.audio-list{
+				margin-right: 254px;
 				margin-bottom: 21px;
 			}
 			.audio-list li{
@@ -756,23 +776,58 @@
 				cursor: pointer;
 			}
 			.play{
-				background: url(/img/sprite.png) -70px -32px no-repeat;
+				background: url('/img/sprite.png') -70px -32px no-repeat;
 			}
 			.stop{
-				background: url(/img/sprite.png) -57px -32px no-repeat;
+				background: url('/img/sprite.png') -57px -32px no-repeat;
 			}
 			.play:hover{
-				background: url(/img/sprite.png) -44px -32px no-repeat;
+				background: url('/img/sprite.png') -44px -32px no-repeat;
 			}
 			.stop:hover{
-				background: url(/img/sprite.png) -83px -32px no-repeat;
+				background: url('/img/sprite.png') -83px -32px no-repeat;
 			}
 
 			.adding-album-image{
 				width: auto !important;
 				margin-bottom: 0px;
 			}
-		/*---END Audio page------------------------------*/
+
+			/*editing playlist*/
+				.js-playlist-editable li{
+					padding: 9px;
+					border: solid 1px #f1eeec;
+					cursor: move;
+				}
+				.js-playlist-editable .edit-track,
+				.js-playlist-editable .delete-track{
+					float: right;
+					display: inline-block;
+					width: 21px;
+					height: 21px;
+					margin-left: 9px;
+				}
+				.js-playlist-editable .delete-track{
+					background: url('/img/sprite.png') -86px -47px no-repeat;
+				}
+				.js-playlist-editable .delete-track:hover{
+					background: url('/img/sprite.png') -64px -47px no-repeat;
+				}
+				js-playlist-editable .edit-track{
+					background: url('/img/sprite.png') -137px -46px no-repeat;
+				}
+				.js-playlist-editable .edit-track:hover{
+					background: url('/img/sprite.png') -113px -46px no-repeat;
+				}
+
+				.js-playlist-editable input{
+					width: 359px;
+				}
+				.ui-state-highlight {
+					height: 1.5em;
+					line-height: 1.2em;
+				}
+	/*---END Audio page------------------------------*/
 
 
 
