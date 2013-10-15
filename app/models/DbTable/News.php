@@ -32,12 +32,16 @@ class App_Model_DbTable_News extends Zend_Db_Table_Abstract
 
 	public function stripContent($content, $limit)
 	{
-		$short = mb_substr(strip_tags($content), 0, $limit - 3);
-		$pos = mb_strrpos($short, " ");
-		if( $pos > 0 ){
-			$short = mb_substr($short, 0, $pos);
+		$preparedContent = trim(strip_tags($content));
+		if( count($preparedContent) > $limit ){
+			$preparedContent = mb_substr($preparedContent, 0, $limit - 3);
+			$pos = mb_strrpos($preparedContent, " ");
+			if( $pos > 0 ){
+				$preparedContent = mb_substr($preparedContent, 0, $pos);
+			}
+			$preparedContent = $preparedContent . '...';
 		}
-		return $short . '...';
+		return $preparedContent;
 	}
 
 	public function validate($data)
