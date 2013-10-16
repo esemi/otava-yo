@@ -34,7 +34,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 				<time datetime="<?= $this->escape($item->iso_date); ?>"><?= $this->escape($item->user_date); ?></time>
 			</header>
 			<p>
-				<?= $this->escape($item->content); ?>
+				<?= str_replace("\n", '<br>', $this->escape($item->content)); ?>
 			</p>
 
 			<? if( $authFlag ): ?>

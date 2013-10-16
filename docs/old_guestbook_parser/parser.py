@@ -3,10 +3,11 @@
 
 __author__ = 'esemi'
 
-from dateutil.parser import parse as date_parser
+from datetime import datetime
 import os
 import logging
 import re
+import csv
 
 
 CURRENT_PATH = os.path.realpath(os.path.dirname(os.path.realpath(__file__)))
@@ -16,6 +17,17 @@ EMAIL_RE = re.compile(u'&lt;<a href="mailto:(.+)">(.+)</a>&gt;', re.U | re.I)
 AUTHOR_RE = re.compile(u'(.+)&lt;|(.+)<br>', re.U | re.I)
 CITY_RE = re.compile(u'<br>(.+)\s-\s', re.U | re.I)
 DATE_RE = re.compile(u'\s-\s(.+)', re.U | re.I)
+
+ADMIN_NAMES = ('аб', 'отава ё', 'Отава ё', 'ab', 'Отава Ё', 'Аб')
+ADMIN_NAME_NEW = 'Отава Ё'
+
+
+def save_result_csv(res):
+    result_filename = os.path.join(CURRENT_PATH, 'result.csv')
+    fh = open(result_filename, "wb")
+    writer = csv.writer(fh, delimiter='\t', quotechar='"', quoting=csv.QUOTE_ALL)
+    writer.writerows(res)
+    fh.close()
 
 
 def split_posts(content):
@@ -50,7 +62,7 @@ def parse_post(content):
     if email is not None:
         post['email'] = email.group(1).strip()
 
-    # parse author todo replace аб to Отава Ё
+    # parse author
     author_from_site = SITE_RE.search(parts[1])
     author_from_str = AUTHOR_RE.search(parts[1])
     if author_from_site is not None:
@@ -58,18 +70,18 @@ def parse_post(content):
     elif author_from_str is not None:
         post['author'] = filter(lambda x: x is not None, list(author_from_str.groups()))[0].strip()
 
+    if post['author'] in ADMIN_NAMES:
+        post['author'] = ADMIN_NAME_NEW
+
     # parse city
     city = CITY_RE.search(parts[1])
     if city is not None:
         post['city'] = city.group(1).strip(' ,')
 
-    # parse date todo
+    # parse date
     date = DATE_RE.search(parts[1])
     if date is not None:
-        post['date_publish'] = date.group(1).strip()
-        # todo parse date
-        print post['date_publish']
-        print date_parser(post['date_publish'])
+        post['date_publish'] = datetime.strptime(date.group(1).strip()[:-6], '%A, %B %d, %Y at %H:%M:%S').isoformat()
 
     return post
 
@@ -86,16 +98,13 @@ if __name__ == '__main__':
         posts = split_posts(content)
         logging.info('parse %d posts' % len(posts))
 
+        parsed_posts = list()
         for num, post in enumerate(posts):
             logging.info('process %d post' % num)
-            post = post.strip()
+            post = parse_post(post.strip())
+            parsed_posts.append(post.values())
 
-            parsed_post = parse_post(post)
-            logging.info(parsed_post)
-
-            # todo validate fields
-
-
+        save_result_csv(parsed_posts)
 
 
 
