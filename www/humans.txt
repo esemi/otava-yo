@@ -10,6 +10,6 @@
 	From: Saint-Petersburg, Russia
 
 /* SITE */
-	Language: Russian
+	Language: Russian, English
 	Doctype:HTML5
-	IDE: Netbeans, Photoshop
+	IDE: Netbeans, Photoshop, PyCharm
