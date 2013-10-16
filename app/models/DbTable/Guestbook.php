@@ -85,7 +85,7 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 		if( !empty($data['site']) )
 		{
 			$url = 'http://' . str_replace(array('http://', 'https://'), '', $data['site']);
-			if( mb_strlen($url) > 255 || !$validUrl->isValid($url) )
+			if( mb_strlen($url) > 2055 || !$validUrl->isValid($url) )
 			{
 				$errors[] = 'Некорректный адрес домашней странички';
 			}else{
@@ -107,7 +107,7 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 	 *
 	 * @return int Inserted id
 	 */
-	public function addPost($author, $content, $email='', $site='', $city='')
+	public function addPost($author, $content, $email='', $site='', $city='', $date=null)
 	{
 		return $this->insert( array(
 			'author' => $author,
@@ -115,7 +115,7 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 			'email' => $email,
 			'city' => $city,
 			'site' => $site,
-			'date_publish' => new Zend_Db_Expr('NOW()') ));
+			'date_publish' => (is_null($date)) ? new Zend_Db_Expr('NOW()') : $date ));
 	}
 
 	/**

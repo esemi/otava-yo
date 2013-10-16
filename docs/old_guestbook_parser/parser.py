@@ -25,7 +25,7 @@ ADMIN_NAME_NEW = 'Отава Ё'
 def save_result_csv(res):
     result_filename = os.path.join(CURRENT_PATH, 'result.csv')
     fh = open(result_filename, "wb")
-    writer = csv.writer(fh, delimiter='\t', quotechar='"', quoting=csv.QUOTE_ALL)
+    writer = csv.writer(fh, delimiter='\t', quotechar='', quoting=csv.QUOTE_NONE)
     writer.writerows(res)
     fh.close()
 
@@ -55,7 +55,7 @@ def parse_post(content):
     # parse site
     site = SITE_RE.search(parts[1].replace('<a href="http:///">', ''))
     if site is not None:
-        post['site'] = site.group(1).replace('otava-yo.spb.ru/guestbook/', '').strip()
+        post['site'] = 'http://' + site.group(1).replace('otava-yo.spb.ru/guestbook/', '').strip()
 
     # parse email
     email = EMAIL_RE.search(parts[1])

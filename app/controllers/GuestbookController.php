@@ -40,6 +40,31 @@ class GuestbookController extends Zend_Controller_Action
 		$this->view->notes = $bookTable->getAll();
 	}
 
+	public function parserAction()
+	{
+		$bookTable = new App_Model_DbTable_Guestbook();
+		$posts = file(realpath(APPLICATION_PATH . '/../docs/old_guestbook_parser/result.csv'));
+		var_dump(count($posts));
+		foreach ($posts as $post){
+			$postArr = explode("\t", $post);
+			$postData = array(
+				'email' => trim($postArr[5]),
+				'site' => trim($postArr[4]),
+				'city' => trim($postArr[1]),
+				'author' => trim($postArr[2]),
+				'content' => trim($postArr[0]),
+			);
+			list($validData, $res) = $bookTable->validate($postData, true);
+
+			if( !empty($res) ){
+				var_dump($postData, $res);
+			}else{
+				$bookTable->addPost($validData['author'], $validData['content'], $validData['email'], $validData['site'], $validData['city'], $postArr[3]);
+			}
+		}
+		die;
+	}
+
 	public function deleteAction()
 	{
 		if( !$this->_helper->checkAccess() )

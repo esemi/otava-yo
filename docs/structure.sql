@@ -1,3 +1,21 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.5
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Oct 16, 2013 at 08:42 PM
+-- Server version: 10.0.4-MariaDB
+-- PHP Version: 5.4.19
+
+SET FOREIGN_KEY_CHECKS=0;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `otava`
+--
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `album`
@@ -8,10 +26,10 @@ CREATE TABLE IF NOT EXISTS `album` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `year` smallint(4) unsigned NOT NULL,
-  `desc` varchar(1024) NOT NULL,
+  `desc` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `year` (`year`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
@@ -24,9 +42,11 @@ CREATE TABLE IF NOT EXISTS `audio` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `album_id` int(10) unsigned NOT NULL,
   `title` varchar(255) NOT NULL,
+  `sort_index` smallint(5) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `album_id` (`album_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `album_id` (`album_id`),
+  KEY `sort_index` (`sort_index`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=45 ;
 
 -- --------------------------------------------------------
 
@@ -42,11 +62,11 @@ CREATE TABLE IF NOT EXISTS `concert` (
   `link` varchar(1024) NOT NULL,
   `place` varchar(1024) NOT NULL,
   `time` time DEFAULT NULL,
-  `cost` int(11) DEFAULT NULL,
+  `cost` varchar(100) NOT NULL,
   `desc` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `date` (`date`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=228 ;
 
 -- --------------------------------------------------------
 
@@ -65,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `guestbook` (
   `content` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `date_publish` (`date_publish`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -81,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `content` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `date_publish` (`date_publish`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=56 ;
 
 -- --------------------------------------------------------
 
@@ -95,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `video` (
   `player_code` text NOT NULL,
   `desc` varchar(1024) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Constraints for dumped tables
@@ -107,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `video` (
 ALTER TABLE `audio`
   ADD CONSTRAINT `audio_ibfk_1` FOREIGN KEY (`album_id`) REFERENCES `album` (`id`);
 
-ALTER TABLE `album` CHANGE `desc` `desc` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;
-ALTER TABLE `concert` CHANGE `cost` `cost` VARCHAR( 100 ) NOT NULL;
+ALTER TABLE `guestbook` CHANGE `site` `site` VARCHAR( 2055 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
 
-ALTER TABLE `audio` ADD `sort_index` SMALLINT UNSIGNED NOT NULL , ADD INDEX ( `sort_index` );
+
+SET FOREIGN_KEY_CHECKS=1;
