@@ -62,5 +62,6 @@ if( !empty($this->postData['author']) ){
 	<? endif; ?>
 
 	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
+	<input type="hidden" name="custom_captcha" value="">
 	<input class="submit" type="submit" name="отправить" value="<?= $this->translate('button.submit'); ?>">
 </form>

@@ -45,6 +45,10 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 			'content' => '',
 		);
 
+		if( empty($data['custom_captcha']) || $data['custom_captcha'] !== 'Ё' ){
+			$errors[] = 'Для отправки сообщения необходимо включить JavaScript';
+		}
+
 		$moderAuthor = Zend_Controller_Front::getInstance()->getParam('bootstrap')->getOption('guestbook_reserved_name');
 		if( empty($data['author']) || mb_strlen($data['author']) > 100 ){
 			$errors[] = 'Некорректное имя автора';

@@ -3,6 +3,9 @@
  */
 jQuery(document).ready(function(){
 
+	//guestbook custom captcha
+	jQuery('input[name="custom_captcha"]').val('Ё');
+
 	//guest book add form slider
 	jQuery(".js-guestbook-add-button").click(function(){
 		jQuery(".js-guestbook-add-form").removeClass('hide');

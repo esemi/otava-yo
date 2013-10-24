@@ -20,7 +20,9 @@ class GuestbookController extends Zend_Controller_Action
 				$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
 			}
 
-			if( $moderFlag === false && !$this->_helper->checkCaptcha($recaptcha) ){
+			if( $moderFlag === false &&
+				!$this->_helper->checkCaptcha($recaptcha)
+			){
 				$this->view->errorMessage = 'Текст с изображения введён неверно';
 			}else{
 				list($validData, $res) = $bookTable->validate($postData, $moderFlag);
