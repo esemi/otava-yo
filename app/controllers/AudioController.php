@@ -63,34 +63,41 @@ class AudioController extends Zend_Controller_Action
 		$this->view->status = 'success';
 	}
 
-	public function editTrackAction()
+	public function trackEditAction()
 	{
-		$this->_helper->forceAjaxRequest();
-
-		$this->_helper->csrfTokenCheck($this->_request->getPost('csrfToken'));
-
-		if (!$this->_helper->checkAccess()) {
-			$this->view->status = 'error';
-			$this->view->error = 'access denied';
-			return;
-		}
+		if (!$this->_helper->checkAccess())
+			throw new Mylib_Exception_Forbidden();
 
 		$audioModel = new App_Model_Audio();
 
-		$trackData = $audioModel->findTrackById((int) $this->_request->getPost('idTrack', 0));
-		if( is_null($trackData) ){
-			$this->view->status = 'error';
-			$this->view->error = 'not found track';
-			return;
+		$trackData = $audioModel->findTrackById((int) $this->_getParam('idT'));
+		if (is_null($trackData)) {
+			throw new Mylib_Exception_NotFound('Track not found');
 		}
 
-		list($title, $errors) = $audioModel->validateTrackTitle($this->_request->getPost('title'));
-		if( count($errors) === 0 ){
-			$audioModel->updTrackTitle($trackData['id'], $title);
-			$this->view->status = 'success';
-		}else{
-			$this->view->status = 'error';
-			$this->view->error = $errors[0];
+		if ($this->_request->isPost()) {
+			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+
+			$this->view->trackData = $postData = $this->_request->getPost();
+
+			$errors = array();
+			list($title, $res) = $audioModel->validateTrackTitle($this->_request->getPost('title', ''));
+			$errors = array_merge($errors, $res);
+
+			list($audioSrc, $res) = $audioModel->validateTrackAudiofile('audiofile_src', false);
+			$errors = array_merge($errors, $res);
+
+			if (!empty($errors)) {
+				$this->view->errorMessage = implode('<br>', $errors);
+			} else {
+				$audioModel->updTrackTitle($trackData['id'], $title);
+				if( !empty($audioSrc) ){
+					$audioModel->editAudioFile($trackData['id'], $audioSrc);
+				}
+				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(), 'staticAudio'));
+			}
+		} else {
+			$this->view->trackData = $trackData;
 		}
 	}
 
@@ -196,62 +203,4 @@ class AudioController extends Zend_Controller_Action
 			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(), 'staticAudio'));
 		}
 	}
-
-	public function audiofileRemoveAction()
-	{
-		if (!$this->_helper->checkAccess())
-			throw new Mylib_Exception_Forbidden();
-
-		$audioModel = new App_Model_Audio();
-		$trackData = $audioModel->findTrackById((int) $this->_getParam('idTrack'));
-		if (is_null($trackData)) {
-			throw new Mylib_Exception_NotFound('Track not found');
-		}
-
-		if ($this->_request->isPost()) {
-			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
-
-			$audioModel->removeAudioFile($trackData['id']);
-			$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(), 'staticAudio'));
-		}
-	}
-
-	public function audiofileEditAction()
-	{
-		if (!$this->_helper->checkAccess())
-			throw new Mylib_Exception_Forbidden();
-
-		$audioModel = new App_Model_Audio();
-		$trackData = $audioModel->findTrackById((int) $this->_getParam('idTrack'));
-		if (is_null($trackData)) {
-			throw new Mylib_Exception_NotFound('Track not found');
-		}
-
-		if ($this->_request->isPost()) {
-			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
-
-			list($audioSrc, $res) = $audioModel->validateTrackAudiofile();
-			if (!empty($res)) {
-				$this->view->errorMessage = implode('<br>', $res);
-			} else {
-				$audioModel->editAudioFile($trackData['id'], $audioSrc);
-				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(), 'staticAudio'));
-			}
-		}
-	}
-
-	public function playlistEditAction()
-	{
-		if (!$this->_helper->checkAccess())
-			throw new Mylib_Exception_Forbidden();
-
-		$audioModel = new App_Model_Audio();
-
-		$this->view->albumData = $albumData = $audioModel->findAlbumById((int) $this->_getParam('idAl'));
-		if (is_null($albumData)) {
-			throw new Mylib_Exception_NotFound('Album not found');
-		}
-		$this->view->playlistData = $audioModel->getPlaylist($albumData['id']);
-	}
-
 }

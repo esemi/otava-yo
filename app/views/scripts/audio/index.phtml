@@ -1,11 +1,22 @@
 <?php
 
+$version = $this->cacheVersion();
+
+$this->headLink()->appendStylesheet("/css/jquery-ui-1.10.3.custom.min.css?{$version}");
+$this->headScript()->appendFile( "/js/jquery-ui-1.10.3.custom.min.js");
+
 $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess();
 
 ?>
 
 <section class="field-bg">
 	<h2 class="title-page-name text-center"><?= $this->translate('title.audio.index'); ?></h2>
+
+	<p class="error js-ajax-error">
+		<? if( !empty($this->error) ): ?>
+			<?= $this->escape($this->error); ?>
+		<? endif; ?>
+	</p>
 
 	<? if( $authFlag ): ?>
 		<a class="news-button" href="<?= $this->url(array(), 'staticAlbumCreate') ?>"><?= $this->translate('button.album.add'); ?></a>
@@ -20,27 +31,38 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 			<div class="album-cover">
 				<img alt="обложка альбома «<?= $this->escape($album['title']); ?>»" src="<?= $album['img_link']; ?>">
 			</div>
-			<ul class="audio-list">
-				<? foreach($this->audio as $audio): ?>
-					<? if( $album['id'] == $audio['album_id'] ): ?>
-						<li class="<? if( !is_null($audio['audio_link']) ) echo 'js-track'; ?>" track-id="<?= $this->escape($audio['id']) ?>" media-link="<?= $this->escape($audio['audio_link']) ?>">
-							<? if( !is_null($audio['audio_link']) ): ?>
-								<div class="js-audio-item-play play"></div>
-								<div class="js-audio-item-stop stop hide"></div>
-							<? endif; ?>
-							<?= $this->escape($audio['title']) ?>
-							<? if( $authFlag ): ?>
-								<? if( !is_null($audio['audio_link']) ): ?>
-									<a class="delete-track" href="<?= $this->url(array('idTrack' => $this->escape($audio['id'])), 'audioRemoveAudioTrack'); ?>">del</a>
-									<a class="edit-track" href="<?= $this->url(array('idTrack' => $this->escape($audio['id'])), 'audioAddAudioTrack'); ?>">edit</a>
-								<? else: ?>
-									<a href="<?= $this->url(array('idTrack' => $this->escape($audio['id'])), 'audioAddAudioTrack'); ?>">add</a>
-								<? endif; ?>
-							<? endif; ?>
-						</li>
-					<? endif; ?>
-				<? endforeach; ?>
+			<? if( $authFlag ): ?>
+				<ul class="js-playlist-editable"
+					data-album-id="<?= $this->escape($album['id']); ?>"
+					data-remove-url="<?= $this->url(array(), 'audioRemoveTrack'); ?>"
+					data-sort-url="<?= $this->url(array(), 'audioSortPlaylist'); ?>"
+					data-add-url="<?= $this->url(array(), 'audioAddTrack'); ?>">
+			<? else: ?>
+				<ul class="audio-list">
+			<? endif; ?>
+			<? foreach($this->audio as $audio): ?>
+				<?
+					if( $album['id'] == $audio['album_id'] ){
+						echo $this->partial('Partials/audio-item.phtml', array(
+							'audio' => $audio,
+							'authFlag' => $authFlag));
+					}
+				?>
+			<? endforeach; ?>
 			</ul>
+
+			<? if( $authFlag ): ?>
+				<div>добавить трек<br/>
+					<div class="hide js-playlist-item-template">
+						<?= $this->partial('Partials/audio-item.phtml', array(
+							'audio' => array('audio_link' => null, 'id' => '%id%', 'title' => ''),
+							'authFlag' => $authFlag)); ?>
+					</div>
+					<input type="text" value="" placeholder="Введите название трека" class="js-playlist-add-title">
+					<span class="js-playlist-add-button" data-mode="add">add</span>
+				</div>
+			<? endif; ?>
+
 			<? if( !empty($album['desc']) ): ?>
 				<div class="album-desc"><?= $album['desc']; ?></div>
 			<? endif; ?>
@@ -48,7 +70,6 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 			<? if( $authFlag ): ?>
 				<footer>
 					<a class="edit" title="редактировать" href="<?= $this->url(array('idAl' => $album['id'] ), 'staticAlbumEdit') ?>"><?= $this->translate('button.edit'); ?></a>
-					<a class="edit" title="редактировать плейлист" href="<?= $this->url(array('idAl' => $album['id'] ), 'staticPlaylistEdit') ?>"><?= $this->translate('button.edit-playlist'); ?></a>
 					<a class="delete" title="удалить" href="<?= $this->url(array('idAl' => $album['id'] ), 'staticAlbumDelete') ?>"><?= $this->translate('button.delete'); ?></a>
 				</footer>
 			<? endif; ?>
@@ -86,4 +107,6 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 			</div>
 		</div>
 	</div>
+
+	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 </section>

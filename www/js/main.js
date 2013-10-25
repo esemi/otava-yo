@@ -152,16 +152,6 @@ jQuery(document).ready(function(){
 	//playlist admin interface
 	(function(){
 		if( typeof jQuery().sortable !== 'undefined' ){
-			// show/hide remove button for hover on li elements
-			//@TODO replace to hover if reload page after add new elements
-			jQuery(".js-playlist-editable").on({
-				mouseenter: function(e){
-					jQuery(this).find('.js-playlist-remove-button, .js-playlist-edit-button').removeClass('hide');
-				},
-				mouseleave: function(e){
-					jQuery(this).find('.js-playlist-remove-button, .js-playlist-edit-button').addClass('hide');
-				}
-			}, 'li');
 
 			//delete track if remove button clicked
 			jQuery('.js-playlist-remove-button').on('click', function(){
@@ -174,7 +164,7 @@ jQuery(document).ready(function(){
 				jQuery.post(
 					jQuery(".js-playlist-editable").attr('data-remove-url'),
 					{
-						idTrack: elem.attr('data-id'),
+						idTrack: elem.attr('track-id'),
 						csrfToken: jQuery('input[name=csrf]').val()
 					},
 					function(data){
@@ -192,50 +182,14 @@ jQuery(document).ready(function(){
 				);
 			});
 
-			//enable edit area if edit button clicked
-			jQuery('.js-playlist-edit-button').on('click', function(){
-
-				var button = jQuery(this);
-				var liElem = jQuery(this).parents('li:first');
-				var inputElem = liElem.find('input');
-
-				if( button.attr('data-mode') === 'edit' ){
-					button.attr('data-mode', 'save');
-					button.text('save');
-					inputElem.removeAttr('disabled');
-				}else{
-					jQuery.post(
-						jQuery(".js-playlist-editable").attr('data-edit-url'),
-						{
-							idTrack: liElem.attr('data-id'),
-							title: inputElem.val(),
-							csrfToken: jQuery('input[name=csrf]').val()
-						},
-						function(data){
-							if( typeof data.status !== 'undefined' && data.status === 'success' ){
-								button.attr('data-mode', 'edit');
-								button.text('edit');
-								inputElem.attr('disabled', 'disabled');
-							}else{
-								var err = 'неизвестная ошибка';
-								if( typeof data.error !== 'undefined' ){
-									err = data.error;
-								}
-								jQuery('.js-ajax-error').text(err);
-							}
-						},
-						'json'
-					);
-				}
-			});
-
 			//sort playlist and save order
 			jQuery(".js-playlist-editable").sortable({
 				placeholder: "ui-state-highlight",
 				update: function( event, ui ) {
+					
 					var list = [];
-					jQuery(".js-playlist-editable li").each(function(key, li){
-						list[key] = jQuery(li).attr('data-id');
+					ui.item.parents('.js-playlist-editable').find('li').each(function(key, li){
+						list[key] = jQuery(li).attr('track-id');
 					});
 
 					jQuery.post(

@@ -1,5 +1,5 @@
 <section class="field-bg">
-	<h2 class="title-page-name text-center"><?= $this->translate('title.audio.audiofile-edit'); ?></h2>
+	<h2 class="title-page-name text-center"><?= $this->translate('title.audio.track-edit'); ?></h2>
 
 	<? if( !empty($this->errorMessage) ): ?>
 		<p class="error"><?= $this->errorMessage; ?></p>
@@ -7,6 +7,11 @@
 
 	<form enctype="multipart/form-data" name="audiofile-form" method="POST" class="audiofile-form">
 		<div>
+			<input type="text"
+				name="title"
+				value="<?= (isset($this->trackData['title'])) ? $this->escape($this->trackData['title']) : ''; ?>"
+				placeholder="Введите название трека"
+				maxlength="255"><br>
 			<label for="audiofile_src">Новый аудиофайл:</label>
 			<input name="audiofile_src" id="audiofile_src" type="file"/>
 			<input type="hidden" name="MAX_FILE_SIZE" value="30000000" />

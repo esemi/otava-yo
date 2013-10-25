@@ -64,14 +64,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$routes['staticAlbumCreate'] = new Zend_Controller_Router_Route_Static('/audio/album-create', array( 'controller' => 'audio', 'action' => 'album-create' ));
 		$routes['staticAlbumEdit'] = new Zend_Controller_Router_Route('/audio/album-edit/:idAl', array( 'controller' => 'audio', 'action' => 'album-edit' ), array( 'idAl' => '\d+' ));
 		$routes['staticAlbumDelete'] = new Zend_Controller_Router_Route('/audio/album-delete/:idAl', array( 'controller' => 'audio', 'action' => 'album-delete' ), array( 'idAl' => '\d+' ));
-		$routes['staticPlaylistEdit'] = new Zend_Controller_Router_Route('/audio/playlist-edit/:idAl', array( 'controller' => 'audio', 'action' => 'playlist-edit' ), array( 'idAl' => '\d+' ));
+		$routes['staticTrackEdit'] = new Zend_Controller_Router_Route('/audio/track-edit/:idT', array( 'controller' => 'audio', 'action' => 'track-edit' ), array( 'idT' => '\d+' ));
 		$routes['audioGetRand'] = new Zend_Controller_Router_Route_Static('/audio/get-rand.json', array( 'controller' => 'audio', 'action' => 'get-rand' ));
 		$routes['audioRemoveTrack'] = new Zend_Controller_Router_Route_Static('/audio/remove-track.json', array( 'controller' => 'audio', 'action' => 'remove-track' ));
-		$routes['audioEditTrack'] = new Zend_Controller_Router_Route_Static('/audio/edit-track.json', array( 'controller' => 'audio', 'action' => 'edit-track' ));
 		$routes['audioAddTrack'] = new Zend_Controller_Router_Route_Static('/audio/add-track.json', array( 'controller' => 'audio', 'action' => 'add-track' ));
 		$routes['audioSortPlaylist'] = new Zend_Controller_Router_Route_Static('/audio/sort-playlist.json', array( 'controller' => 'audio', 'action' => 'sort-playlist' ));
-		$routes['audioAddAudioTrack'] = new Zend_Controller_Router_Route('/audio/add-audio/:idTrack', array( 'controller' => 'audio', 'action' => 'audiofile-edit' ), array( 'idTrack' => '\d+' ));
-		$routes['audioRemoveAudioTrack'] = new Zend_Controller_Router_Route('/audio/remove-audio/:idTrack', array( 'controller' => 'audio', 'action' => 'audiofile-remove' ), array( 'idTrack' => '\d+' ));
 
 		foreach( $routes as $name => $route ){
 			$router->addRoute($name, $langRoute->chain($route));

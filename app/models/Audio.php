@@ -196,17 +196,20 @@ class App_Model_Audio
 		return array($title, $errors);
 	}
 
-	public function validateTrackAudiofile(){
+	public function validateTrackAudiofile($name, $require = true){
 		$errors = array();
 		$filesrc = '';
 
 		//check img file
 		$upload = new Zend_File_Transfer();
-		$files = $upload->getFileInfo('audiofile_src');
-		if( empty($files['audiofile_src']) || !$upload->isUploaded() ){
-			$errors[] = 'Загрузите аудио файл';
+		$files = $upload->getFileInfo($name);
+
+		if( empty($files[$name]) || !$upload->isUploaded() ){
+			if( $require ){
+				$errors[] = 'Загрузите аудио файл';
+			}
 		}else{
-			$file = $files['audiofile_src'];
+			$file = $files[$name];
 
 			$exts = 'mp3';
 			$extensionValidate = new Zend_Validate_File_Extension($exts);
@@ -285,9 +288,9 @@ class App_Model_Audio
 	}
 
 	public function editAudioFile($id, $content){
+		$this->removeAudioFile($id);
 		$fname = WWW_PATH . $this->_prepareAudioLink($id);
 		$r = file_put_contents($fname, $content);
-
 		if( $r ){
 			chmod($fname , 0666);
 		}
