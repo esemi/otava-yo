@@ -52,14 +52,15 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 			</ul>
 
 			<? if( $authFlag ): ?>
-				<div>добавить трек<br/>
+				<div class="adding-new-track">
+					<label for="track-name"><?= $this->translate('label.new.track'); ?>:</label>
 					<div class="hide js-playlist-item-template">
 						<?= $this->partial('Partials/audio-item.phtml', array(
 							'audio' => array('audio_link' => null, 'id' => '%id%', 'title' => ''),
 							'authFlag' => $authFlag)); ?>
 					</div>
-					<input type="text" value="" placeholder="Введите название трека" class="js-playlist-add-title">
-					<span class="js-playlist-add-button" data-mode="add">add</span>
+					<input type="text" id="track-name" value="" placeholder="Введите название трека" class="js-playlist-add-title">
+					<span class="js-playlist-add-button" data-mode="add"><?= $this->translate('button.add.lowercase'); ?></span>
 				</div>
 			<? endif; ?>
 
