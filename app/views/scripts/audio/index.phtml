@@ -59,7 +59,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 							'audio' => array('audio_link' => null, 'id' => '%id%', 'title' => ''),
 							'authFlag' => $authFlag)); ?>
 					</div>
-					<input type="text" id="track-name" value="" placeholder="Введите название трека" class="js-playlist-add-title">
+					<input type="text" id="track-name" value="" placeholder="Введите название трека" class="js-playlist-add-title input-song-name">
 					<span class="js-playlist-add-button" data-mode="add"><?= $this->translate('button.add.lowercase'); ?></span>
 				</div>
 			<? endif; ?>

@@ -141,7 +141,7 @@
 		.concert-place, .title-album, .album-year, .guest-post header,
 		.guest-post a:hover, .album-desc .list span, .donate, .title-bigger,
 		.concert-ticets .ticets, .title-error, .adding-new-track label,
-		.js-playlist-add-button{
+		.js-playlist-add-button, .warning{
 			color: #7b2e20;/*brown*/
 		}
 		a:hover, a:active, a p:hover, .guest-post a,
@@ -256,7 +256,7 @@
 		}
 
 		.guest-form input, .concert-form input, .video-form input,
-		.album-form input, .adding-new-track input{
+		.album-form input, .input-song-name{
 			width: 359px;
 			margin-left: 9px;
 		}

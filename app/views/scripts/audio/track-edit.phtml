@@ -7,19 +7,21 @@
 
 	<form enctype="multipart/form-data" name="audiofile-form" method="POST" class="audiofile-form">
 		<div>
-			<input type="text"
+			<label for="track-name"><?= $this->translate('label.song.name'); ?>:</label>
+			<input class="input-song-name" id="track-name"
+				type="text"
 				name="title"
 				value="<?= (isset($this->trackData['title'])) ? $this->escape($this->trackData['title']) : ''; ?>"
 				placeholder="Введите название трека"
 				maxlength="255"><br>
-			<label for="audiofile_src">Новый аудиофайл:</label>
+			<label for="audiofile_src"><?= $this->translate('label.new.audiofile'); ?>:</label>
 			<input name="audiofile_src" id="audiofile_src" type="file"/>
 			<input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
-			<p>максимальный размер 30MB, только mp3</p>
+			<p class="warning"><?= $this->translate('other.track.format.warning'); ?></p>
 		</div>
 
 		<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
-		<input class="submit" type="submit" name="отправить" value="отправить">
+		<input class="submit" type="submit" name="отправить" value="<?= $this->translate('button.submit'); ?>">
 	</form>
 
 </section>
