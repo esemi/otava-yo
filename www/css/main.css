@@ -107,6 +107,18 @@
 			font-weight: bold;
 
 		}
+		.error-fixed{
+			width: 100%;
+			position: fixed;
+			left: 0px;
+			top:45%;
+			font-size: 17px;
+			font-weight: bold;
+			text-align: center;
+			line-height: 32px;
+			z-index: 10;
+
+		}
 		/*----Fonts-----------------*/
 		@font-face{
 			font-family: DSCoptic;
@@ -151,12 +163,14 @@
 		.date, .date-news, .date-concert, .date-concert-old, .guest-button,
 		.news-button, .news-button:visited, .guest-form .submit, .music-title,
 		.jp-no-solution, .guest-button, .jp-no-solution a, .login-status,
-		.news-button:hover,
-		.old-browser-message{
+		.news-button:hover, .old-browser-message, .error-fixed{
 			color: #ebebf2; /*light grey*/
 		}
 
 		/*background*/
+		.error-fixed{
+			background-color: rgba(147,0,0,0.8);
+		}
 		.out-link-youtube, .out-link-vk, .out-link-kroogi, .out-link-myspace,
 		.donate, a.jp-play, a.jp-pause, .js-playlist-editable li{
 			background-color: rgba(235, 235, 242, 0.7); /*light grey*/
@@ -192,7 +206,8 @@
 		.main-page-photo, .date, .menu-block, .menu-links,
 		.footer-block, .out-links, .last-news, .nearrest-concert, .field-bg,
 		.guest-button,.news-button, .guest-form .submit, .donate, a.jp-play,
-		a.jp-pause, .login-status, .lang-ru, .lang-en, .js-playlist-editable li{
+		a.jp-pause, .login-status, .lang-ru, .lang-en,
+		.js-playlist-editable li, .error-fixed{
 			box-shadow: 1px 1px 5px 0 #696046;
 			-webkit-box-shadow: 1px 1px 5px 0 #696046;
 			-moz-box-shadow: 1px 1px 5px 0 #696046;
@@ -847,18 +862,22 @@
 
 
 
-		/*---Video page------------------------------*/
+	/*
+		Video page
+	*/
 			.video-block .video{
 				text-align: center;
 			}
 			.video-block .video-title{
 				margin-bottom: 21px;
 			}
-		/*---END Video page------------------------------*/
+	/*---END Video page------------------------------*/
 
 
 
-		/*---Guest book page------------------------------*/
+	/*
+		Guest book page
+	*/
 			.guest-button{
 				float: right;
 			}
@@ -893,11 +912,13 @@
 			.guest-form td, .concert-form td{
 				vertical-align: top;
 			}
-		/*---END Guest book page------------------------------*/
+	/*---END Guest book page------------------------------*/
 
 
 
-		/*---Contact page------------------------------*/
+	/*
+		Contact page
+	*/
 			.title-contacts{
 				margin-top: 32px;
 				margin-bottom: 21px;
@@ -905,4 +926,4 @@
 			.forign-contact{
 				margin-left: 11px;
 			}
-		/*---END Contact page------------------------------*/
+	/*---END Contact page------------------------------*/

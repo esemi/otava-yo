@@ -12,7 +12,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 <section class="field-bg">
 	<h2 class="title-page-name text-center"><?= $this->translate('title.audio.index'); ?></h2>
 
-	<p class="error js-ajax-error">
+	<p class="error-fixed js-ajax-error">
 		<? if( !empty($this->error) ): ?>
 			<?= $this->escape($this->error); ?>
 		<? endif; ?>
