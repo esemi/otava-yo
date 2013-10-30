@@ -154,7 +154,7 @@ jQuery(document).ready(function(){
 		if( typeof jQuery().sortable !== 'undefined' ){
 
 			//delete track if remove button clicked
-			jQuery('.js-playlist-remove-button').on('click', function(){
+			jQuery('.js-playlist-editable').on('click', '.js-playlist-remove-button', function(){
 
 				if( !confirm("Вы уверены, что хотите удалить данный трек?") ){
 					return false;
@@ -186,7 +186,7 @@ jQuery(document).ready(function(){
 			jQuery(".js-playlist-editable").sortable({
 				placeholder: "ui-state-highlight",
 				update: function( event, ui ) {
-					
+
 					var list = [];
 					ui.item.parents('.js-playlist-editable').find('li').each(function(key, li){
 						list[key] = jQuery(li).attr('track-id');
@@ -229,12 +229,19 @@ jQuery(document).ready(function(){
 					function(data){
 						if( typeof data.status !== 'undefined' &&
 							data.status === 'success' &&
-							typeof data.track_id !== 'undefined' ){
+							typeof data.track_id !== 'undefined'
+						){
+							jQuery('.js-ajax-error').text('');
+
 							var elem = jQuery('.js-playlist-item-template li:first').clone(true);
-							elem.attr('data-id', data.track_id);
-							elem.find('input').val(inputForm.val());
-							ulElem.append(elem);
+							elem.html(function(i, oldHTML) {
+								return oldHTML.replace('REPLACE_ID', data.track_id).replace('REPLACE_TITLE', inputForm.val());
+							});
+							elem.attr('track-id', data.track_id);
+
 							inputForm.val('');
+
+							ulElem.append(elem);
 						}else{
 							var err = 'неизвестная ошибка';
 							if( typeof data.error !== 'undefined' ){

@@ -56,7 +56,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 					<label for="track-name"><?= $this->translate('label.new.track'); ?>:</label>
 					<div class="hide js-playlist-item-template">
 						<?= $this->partial('Partials/audio-item.phtml', array(
-							'audio' => array('audio_link' => null, 'id' => '%id%', 'title' => ''),
+							'audio' => array('audio_link' => null, 'id' => 'REPLACE_ID', 'title' => 'REPLACE_TITLE'),
 							'authFlag' => $authFlag)); ?>
 					</div>
 					<input type="text" id="track-name" value="" placeholder="Введите название трека" class="js-playlist-add-title input-song-name">
