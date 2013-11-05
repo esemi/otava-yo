@@ -151,6 +151,19 @@ jQuery(document).ready(function(){
 
 	//playlist admin interface
 	(function(){
+
+		var ajaxErrorLog = null;
+		function displayAjaxError(message){
+			var errorBlock = jQuery('.js-ajax-error');
+			errorBlock.text(message);
+			errorBlock.fadeIn(100);
+
+			window.clearTimeout(ajaxErrorLog);
+			ajaxErrorLog = window.setTimeout(function(){
+				errorBlock.fadeOut(1000);
+			}, 2100);
+		}
+
 		if( typeof jQuery().sortable !== 'undefined' ){
 
 			//delete track if remove button clicked
@@ -175,7 +188,7 @@ jQuery(document).ready(function(){
 							if( typeof data.error !== 'undefined' ){
 								err = data.error;
 							}
-							jQuery('.js-ajax-error').text(err);
+							displayAjaxError(err);
 						}
 					},
 					'json'
@@ -204,7 +217,7 @@ jQuery(document).ready(function(){
 								if( typeof data.error !== 'undefined' ){
 									err = data.error;
 								}
-								jQuery('.js-ajax-error').text(err);
+								displayAjaxError(err);
 							}
 						},
 						'json'
@@ -231,8 +244,6 @@ jQuery(document).ready(function(){
 							data.status === 'success' &&
 							typeof data.track_id !== 'undefined'
 						){
-							jQuery('.js-ajax-error').text('');
-
 							var elem = jQuery('.js-playlist-item-template li:first').clone(true);
 							elem.html(function(i, oldHTML) {
 								return oldHTML.replace('REPLACE_ID', data.track_id).replace('REPLACE_TITLE', inputForm.val());
@@ -247,7 +258,7 @@ jQuery(document).ready(function(){
 							if( typeof data.error !== 'undefined' ){
 								err = data.error;
 							}
-							jQuery('.js-ajax-error').text(err);
+							displayAjaxError(err);
 						}
 					},
 					'json'
