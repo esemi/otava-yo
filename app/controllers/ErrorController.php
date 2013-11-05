@@ -5,6 +5,7 @@ class ErrorController extends Zend_Controller_Action
 	public function errorAction()
 	{
 		$errors = $this->_getParam('error_handler');
+		$uri = $this->_request->getRequestUri();
 
 		$notFoundTypes = array(
 			Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE,
@@ -12,23 +13,23 @@ class ErrorController extends Zend_Controller_Action
 			Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION
 		);
 
-		if( in_array($errors->type, $notFoundTypes) || $errors->exception instanceof Mylib_Exception_NotFound)		{
+		if( in_array($errors->type, $notFoundTypes) || $errors->exception instanceof Mylib_Exception_NotFound) {
 
 			$this->getResponse()->setHttpResponseCode(404);
 			$this->view->message = $this->view->translate('errors.404');
-			$this->getInvokeArg('bootstrap')->getResource('Log')->notice($errors->exception->getMessage());
+			$this->getInvokeArg('bootstrap')->getResource('Log')->notice($errors->exception->getMessage() . $uri);
 
 		}elseif( $errors->exception instanceof Mylib_Exception_Forbidden ){
 
 			$this->getResponse()->setHttpResponseCode(403);
 			$this->view->message = $this->view->translate('errors.403');
-			$this->getInvokeArg('bootstrap')->getResource('Log')->crit($errors->exception->getMessage());
+			$this->getInvokeArg('bootstrap')->getResource('Log')->crit($errors->exception->getMessage() . $uri);
 
 		}else{
 
 			$this->getResponse()->setHttpResponseCode(500);
 			$this->view->message = $this->view->translate('errors.500');
-			$this->getInvokeArg('bootstrap')->getResource('Log')->crit($errors->exception->getMessage());
+			$this->getInvokeArg('bootstrap')->getResource('Log')->crit($errors->exception->getMessage() . $uri);
 
 		}
 
