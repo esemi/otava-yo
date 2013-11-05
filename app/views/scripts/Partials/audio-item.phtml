@@ -1,6 +1,6 @@
 <li
 	class="<? if( !is_null($this->audio['audio_link']) ) echo 'js-track'; ?>"
-	track-id="<?= $this->escape($this->audio['id']) ?>"
+	track-id="<?= $this->audio['id'] ?>"
 	media-link="<?= $this->escape($this->audio['audio_link']) ?>">
 <? if( !is_null($this->audio['audio_link']) ): ?>
 	<div class="js-audio-item-play play"></div>
@@ -11,7 +11,7 @@
 
 <? if( $this->authFlag ): ?>
 	<span class="delete-track js-playlist-remove-button"></span>
-	<a class="edit-track" href="<?= $this->url(array('idT' => $this->escape($this->audio['id'])), 'staticTrackEdit'); ?>"></a>
+	<a class="edit-track" href="<?= $this->url(array('idT' => $this->audio['id']), 'staticTrackEdit'); ?>"></a>
 <? endif; ?>
 
 </li>
