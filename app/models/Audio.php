@@ -79,7 +79,9 @@ class App_Model_Audio
 	public function getRandTrack()
 	{
 		$tracks = $this->getAllAudio();
-		$tracks = array_filter($tracks, function($x){ return !is_null($x['audio_link']); });
+		$tracks = array_filter($tracks, function($x){
+			return !is_null($x['audio_link']) && $x['album_id'] != 3 && !in_array($x['id'], array(16));
+		});
 		shuffle($tracks);
 
 		$track = array_shift($tracks);
