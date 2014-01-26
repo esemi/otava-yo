@@ -32,7 +32,8 @@ class App_Model_DbTable_News extends Zend_Db_Table_Abstract
 
 	public function stripContent($content, $limit)
 	{
-		$preparedContent = trim(strip_tags($content));
+		$preparedContent = str_replace(array('<br />','<br>', '<br/>'), ' ', $content);
+		$preparedContent = trim(strip_tags($preparedContent));
 
 		if( mb_strlen($preparedContent) > $limit ){
 			$preparedContent = mb_substr($preparedContent, 0, $limit - 3);
