@@ -131,3 +131,6 @@ ALTER TABLE `guestbook` CHANGE `site` `site` VARCHAR( 2055 ) CHARACTER SET utf8 
 
 
 SET FOREIGN_KEY_CHECKS=1;
+
+ALTER TABLE `guestbook` ADD `parent_id` INT UNSIGNED NULL DEFAULT NULL AFTER `id` , ADD INDEX ( `parent_id` );
+ALTER TABLE `guestbook` ADD FOREIGN KEY ( `parent_id` ) REFERENCES `otava`.`guestbook` (`id`) ON DELETE CASCADE ON UPDATE CASCADE ;
