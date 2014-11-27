@@ -6,13 +6,25 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 
 	protected $_name = 'guestbook';
 
-	public function getAll()
+	public function getAllNotes()
 	{
 		$select = $this->select()
 				->from($this, array(
 					'id', 'author', 'user_date' => "DATE_FORMAT(date_publish, '%H:%i %d-%m-%y')",
 					'email', 'city', 'site', 'content', 'iso_date' => "DATE_FORMAT(date_publish, '%Y-%m-%dT%H:%i')"))
+				->where('parent_id IS NULL')
 				->order("date_publish DESC");
+		return $this->fetchAll($select);
+	}
+
+	public function getAllReplyes()
+	{
+		$select = $this->select()
+				->from($this, array(
+					'id', 'author', 'parent_id', 'user_date' => "DATE_FORMAT(date_publish, '%H:%i %d-%m-%y')",
+					'email', 'city', 'site', 'content', 'iso_date' => "DATE_FORMAT(date_publish, '%Y-%m-%dT%H:%i')"))
+				->where('parent_id IS NOT NULL')
+				->order("date_publish ASC");
 		return $this->fetchAll($select);
 	}
 
@@ -42,7 +54,7 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 			'site' => '',
 			'city' => '',
 			'author' => '',
-			'content' => ''
+			'content' => '',
 		);
 
 		if( empty($data['custom_captcha']) || $data['custom_captcha'] !== 'Ё' ){
@@ -110,8 +122,7 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 	 *
 	 * @return int Inserted id
 	 */
-	public function addPost($author, $content, $email='', $site='', $city='', $parentId=null)
-	{
+	public function addPost($author, $content, $email='', $site='', $city='', $parentId = null) {
 		return $this->insert( array(
 			'author' => $author,
 			'parent_id' => $parentId,

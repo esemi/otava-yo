@@ -39,6 +39,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 
 			<? if( $authFlag ): ?>
 				<footer>
+					<a class="reply js-guestbook-reply-button" href="#" post-id="<?=$item->id;?>" title="ответить"><?= $this->translate('button.reply'); ?></a>
 					<a class="edit" title="редактировать" href="<?= $this->url(array('idP' => $item->id ), 'staticGuestbookEdit') ?>"><?= $this->translate('button.edit'); ?></a>
 					<a class="delete" title="удалить" href="<?= $this->url(array('idP' => $item->id ), 'staticGuestbookDelete') ?>"><?= $this->translate('button.delete'); ?></a>
 				</footer>

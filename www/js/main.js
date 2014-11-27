@@ -12,6 +12,13 @@ jQuery(document).ready(function(){
 		jQuery(".js-guestbook-add-button").remove();
 	});
 
+	//guest book reply button
+	jQuery(".js-guestbook-reply-button").click(function(){
+		var postId = jQuery(this).attr('post-id');
+		jQuery('#parent_id').val(postId);
+		jQuery('.js-guestbook-add-button').trigger('click');
+		return false;
+	});
 
 	//jPlayer on audio page
 	(function(){

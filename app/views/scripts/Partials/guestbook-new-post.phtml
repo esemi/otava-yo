@@ -4,7 +4,7 @@ $moderAuthor = Zend_Controller_Front::getInstance()->getParam('bootstrap')->getO
 
 if( !empty($this->postData['author']) ){
 	$authorField = $this->postData['author'];
-}elseif( $authFlag === true ){
+}elseif( $authFlag ){
 	$authorField = $moderAuthor;
 }else{
 	$authorField = '';
@@ -50,6 +50,22 @@ if( !empty($this->postData['author']) ){
 					<input type="text" id="city" name="city" value="<?= (isset($this->postData['city'])) ? $this->escape($this->postData['city']) : ''; ?>" placeholder="<?= $this->translate('label.country'); ?>" maxlength="255"/><br>
 				</td>
 			</tr>
+			<? if ($authFlag) : var_dump($this->postData['parent_id']); die;?>
+				<tr>
+					<td>
+						<label for="parent_id"><?= $this->translate('label.parent_id'); ?>: </label>
+					</td>
+					<td>
+						<input
+							type="text"
+							id="parent_id"
+							name="parent_id"
+							disabled="disabled"
+							value="<?= (isset($this->postData['parent_id'])) ? $this->escape($this->postData['parent_id']) : ''; ?>"
+							placeholder="<?= $this->translate('label.parent_id'); ?>">
+					</td>
+				</tr>
+			<? endif; ?>
 		</tbody>
 	</table>
 	<label><?= $this->translate('label.message'); ?>: </label>
@@ -61,7 +77,7 @@ if( !empty($this->postData['author']) ){
 		</div>
 	<? endif; ?>
 
-	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 	<input type="hidden" name="custom_captcha" value="">
+	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 	<input class="submit" type="submit" name="отправить" value="<?= $this->translate('button.submit'); ?>">
 </form>

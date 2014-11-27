@@ -2,30 +2,23 @@
 
 class GuestbookController extends Zend_Controller_Action
 {
-	public function indexAction()
-	{
+	public function indexAction() {
 		$bookTable = new App_Model_DbTable_Guestbook();
-
 		$moderFlag = $this->_helper->checkAccess();
-
 		$conf = $this->getFrontController()->getParam('bootstrap')->getOption('recaptcha');
 		$this->view->recaptcha = $recaptcha = new Zend_Service_ReCaptcha($conf['pubkey'],$conf['privkey']);
 		$this->view->showForm = false;
 
-		if( $this->_request->isPost() )
-		{
+		if( $this->_request->isPost() ){
 			$postData = $this->_request->getPost();
-
-
-			if( $moderFlag === true ){
+			if ($moderFlag) {
 				$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
+			}
 
-				$parentId = (int) $this->_request->getPost('parent_id', 0);
-				$bookData = $bookTable->findById($parentId);
-				if( is_null($bookData) ){
-					throw new Mylib_Exception_NotFound('Post not found');
-				}
-			}else{
+			$parentId = (int) $this->_request->getPost('parent_id', 0);
+			if ($moderFlag && $parentId > 0 && !$bookTable->findById($parentId)) {
+				throw new Mylib_Exception_NotFound('Reply post not found');
+			} else {
 				$parentId = null;
 			}
 
@@ -53,7 +46,8 @@ class GuestbookController extends Zend_Controller_Action
 			}
 		}
 
-		$this->view->notes = $bookTable->getAll();
+		$this->view->notes = $bookTable->getAllNotes();
+		$this->view->replyes = $bookTable->getAllReplyes();
 	}
 
 	public function deleteAction()
