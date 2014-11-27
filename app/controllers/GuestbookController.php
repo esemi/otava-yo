@@ -15,13 +15,6 @@ class GuestbookController extends Zend_Controller_Action
 				$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
 			}
 
-			$parentId = (int) $this->_request->getPost('parent_id', 0);
-			if ($moderFlag && $parentId > 0 && !$bookTable->findById($parentId)) {
-				throw new Mylib_Exception_NotFound('Reply post not found');
-			} else {
-				$parentId = null;
-			}
-
 			if( $moderFlag === false && !$this->_helper->checkCaptcha($recaptcha) ){
 				$this->view->errorMessage = 'Текст с изображения введён неверно';
 			}else{
@@ -35,7 +28,7 @@ class GuestbookController extends Zend_Controller_Action
 							$validData['email'],
 							$validData['site'],
 							$validData['city'],
-							$parentId
+							$validData['parent_id']
 					);
 				}
 			}

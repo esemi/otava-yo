@@ -45,6 +45,35 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 				</footer>
 			<? endif; ?>
 		</article>
+		<? foreach( $this->replyes as $replyItem ): ?>
+			<? if ($replyItem->parent_id == $item->id) : ?>
+				<article class="guest-post guest-reply">
+					<header>
+						<span class="name title-em"><?= $this->escape($replyItem->author); ?></span>
+						<? if( !empty($replyItem->city) ): ?>
+							<span class="city">(<?= $this->escape($replyItem->city); ?>)</span>
+						<? endif; ?>
+						<? if( !empty($replyItem->email) ): ?>
+							<a title="почта" class="email" href="mailto:<?= $this->escape($replyItem->email); ?>" target="_blank" rel="nofollow">почта</a>
+						<? endif; ?>
+						<? if( !empty($replyItem->site) ): ?>
+							<a title="сайт" class="site" href="<?= $this->escape($replyItem->site); ?>" target="_blank" rel="nofollow">сайт</a>
+						<? endif; ?>
+						<time datetime="<?= $this->escape($replyItem->iso_date); ?>"><?= $this->escape($replyItem->user_date); ?></time>
+					</header>
+					<p>
+						<?= str_replace("\n", '<br>', $this->escape($replyItem->content)); ?>
+					</p>
+
+					<? if( $authFlag ): ?>
+						<footer>
+							<a class="edit" title="редактировать" href="<?= $this->url(array('idP' => $replyItem->id ), 'staticGuestbookEdit') ?>"><?= $this->translate('button.edit'); ?></a>
+							<a class="delete" title="удалить" href="<?= $this->url(array('idP' => $replyItem->id ), 'staticGuestbookDelete') ?>"><?= $this->translate('button.delete'); ?></a>
+						</footer>
+					<? endif; ?>
+				</article>
+			<? endif; ?>
+		<? endforeach; ?>
 		<hr>
 	<? endforeach; ?>
 

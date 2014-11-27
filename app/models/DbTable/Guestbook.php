@@ -55,6 +55,7 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 			'city' => '',
 			'author' => '',
 			'content' => '',
+			'parent_id' => null
 		);
 
 		if( empty($data['custom_captcha']) || $data['custom_captcha'] !== 'Ё' ){
@@ -105,6 +106,14 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 				$errors[] = 'Некорректный адрес домашней странички';
 			}else{
 				$validData['site'] = $url;
+			}
+		}
+
+		if ($authFlag && !empty($data['parent_id'])) {
+			if ($this->findById($data['parent_id'])) {
+				$validData['parent_id'] = $data['parent_id'];
+			}else{
+				$errors[] = 'Некорректный идентификатор сообщения для ответа';
 			}
 		}
 

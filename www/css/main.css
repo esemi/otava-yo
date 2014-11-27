@@ -683,7 +683,7 @@
 				.news-titile-form{
 					width: 359px;
 				}
-				.edit, .delete{
+				.edit, .delete, .reply{
 					margin-top: 9px;
 					margin-right: 32px;
 					display: inline-block;
@@ -880,6 +880,9 @@
 	/*
 		Guest book page
 	*/
+			.guest-reply {
+				margin-left: 50px;
+			}
 			.guest-button{
 				float: right;
 			}
