@@ -881,7 +881,17 @@
 		Guest book page
 	*/
 			.guest-reply {
-				margin-left: 50px;
+				padding-top: 11px;
+				padding-right: 11px;
+				padding-bottom: 13px;
+				padding-left: 11px;
+
+				margin-top: 21px;
+				margin-left: 32px;
+
+				background-color: rgba(255, 255, 255, 0.5);
+				box-shadow: 0 1px 0 #d4d4d4;
+
 			}
 			.guest-button{
 				float: right;
