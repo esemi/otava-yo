@@ -66,7 +66,7 @@ if( !empty($this->postData['author']) ){
 			value="<?= (isset($this->postData['parent_id'])) ? $this->escape($this->postData['parent_id']) : ''; ?>"
 			placeholder="<?= $this->translate('label.parent_id'); ?>">
 	<? endif; ?>
-		
+
 	<input type="hidden" name="custom_captcha" value="">
 	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 	<input class="submit" type="submit" name="отправить" value="<?= $this->translate('button.submit'); ?>">

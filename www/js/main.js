@@ -17,7 +17,6 @@ jQuery(document).ready(function(){
 		var postId = jQuery(this).attr('post-id');
 		jQuery('#parent_id').val(postId);
 		jQuery('.js-guestbook-add-button').trigger('click');
-		return false;
 	});
 
 	//jPlayer on audio page
