@@ -340,6 +340,8 @@
 
 	/*---Header---------------------------------*/
 		.header{
+			position: relative;
+
 			margin: 0px auto;
 			width: 919px;
 			padding-top: 12px;
@@ -438,6 +440,23 @@
 		.logout:hover{
 			background: url('/img/sprite.png') -68px -49px no-repeat;
 		}
+
+		/* Womex logo */
+
+		.womex {
+			position: relative;
+			top:-7px;
+
+			display: inline-block;
+
+			width: 122px;
+			margin-left: 21px;
+		}
+		.womex img {
+			width: 100%;
+		}
+
+
 		/*--menu--*/
 			.menu-block{
 				height: 52px;
