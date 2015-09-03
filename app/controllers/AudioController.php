@@ -149,7 +149,7 @@ class AudioController extends Zend_Controller_Action
 			if (!empty($res)) {
 				$this->view->errorMessage = implode('<br>', $res);
 			} else {
-				$audioModel->addAlbum($validData['title'], $validData['year'], $validData['album_image'], $validData['desc']);
+				$audioModel->addAlbum($validData, $validData['album_image']);
 				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(), 'staticAudio'));
 			}
 		}
@@ -177,7 +177,7 @@ class AudioController extends Zend_Controller_Action
 			if (!empty($res)) {
 				$this->view->errorMessage = implode('<br>', $res);
 			} else {
-				$audioModel->editAlbum($albumData['id'], $validData['title'], $validData['year'], $validData['album_image'], $validData['desc']);
+				$audioModel->editAlbum($albumData['id'], $validData, $validData['album_image']);
 				$this->_helper->redirector->gotoUrlAndExit($this->view->url(array(), 'staticAudio'));
 			}
 		} else {

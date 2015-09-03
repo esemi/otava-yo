@@ -47,6 +47,12 @@ $this->headScript()->appendFile( "/js/ckeditor/adapters/jquery.js");
 	<label for="desc" class="desc">Описание: </label><br>
 	<textarea class="js-editor-album message" name="desc" id="desc" placeholder="Описание"><?= (isset($this->albumData['desc'])) ? $this->albumData['desc'] : ''; ?></textarea><br>
 
+	Order links<br/>
+	ozone <input name='link_ozone' type='url' value="<?= (isset($this->albumData['link_ozone'])) ? $this->escape($this->albumData['link_ozone']) : ''; ?>" maxlength="255"><br/>
+	iTunes <input name='link_itunes' type='url' value="<?= (isset($this->albumData['link_itunes'])) ? $this->escape($this->albumData['link_itunes']) : ''; ?>" maxlength="255"><br/>
+	BandCamp <input name='link_bandcamp' type='url' value="<?= (isset($this->albumData['link_bandcamp'])) ? $this->escape($this->albumData['link_bandcamp']) : ''; ?>" maxlength="255"><br/>
+	Google Play <input name='link_googleplay' type='url' value="<?= (isset($this->albumData['link_googleplay'])) ? $this->escape($this->albumData['link_googleplay']) : ''; ?>" maxlength="255"><br/>
+
 	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 	<input class="submit" type="submit" name="отправить" value="отправить">
 </form>

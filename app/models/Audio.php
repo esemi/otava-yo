@@ -123,6 +123,10 @@ class App_Model_Audio
 			'year' => '',	//required
 			'album_image' => null,	//required if create
 			'desc' => '',
+			'link_ozone' => '',
+			'link_itunes' => '',
+			'link_bandcamp' => '',
+			'link_googleplay' => '',
 		);
 
 		if( empty($data['title']) ){
@@ -144,6 +148,19 @@ class App_Model_Audio
 
 		if( !empty($data['desc']) ){
 			$validData['desc'] = $data['desc'];
+		}
+
+		$validUrl = new Mylib_Validate_Url();
+		$buyLinks = array('link_ozone', 'link_itunes', 'link_bandcamp', 'link_googleplay');
+		foreach ($buyLinks as $linkIndex) {
+			if (!empty($data[$linkIndex])) {
+				$url = 'http://' . str_replace(array('http://', 'https://'), '', $data[$linkIndex]);
+				if (mb_strlen($url) > 255 || !$validUrl->isValid($url) ) {
+					$errors[] = "Не валидная ссылка на покупку ({$linkIndex})";
+				} else {
+					$validData[$linkIndex] = $data[$linkIndex];
+				}
+			}
 		}
 
 		//check img file
@@ -231,9 +248,21 @@ class App_Model_Audio
 		return array($filesrc, $errors);
 	}
 
-	public function addAlbum($title, $year, Imagick $image, $desc='')
-	{
-		$albumId = $this->_albumTable->addAlbum($title, $year, $desc);
+	protected function _preparAlbumData($postData) {
+		return array(
+			'title' => $postData['title'],
+			'year' => $postData['year'],
+			'desc' => $postData['desc'],
+			'link_ozone' => $postData['link_ozone'],
+			'link_itunes' => $postData['link_itunes'],
+			'link_bandcamp' => $postData['link_bandcamp'],
+			'link_googleplay' => $postData['link_googleplay'],
+		);
+	}
+
+	public function addAlbum($postData, Imagick $image) {
+		$data = $this->_preparAlbumData($postData);
+		$albumId = $this->_albumTable->addAlbum($data);
 		$this->_saveAlbumImg($albumId, $image);
 	}
 
@@ -242,9 +271,9 @@ class App_Model_Audio
 		return $this->_audioTable->addTrack($albumId, $title);
 	}
 
-	public function editAlbum($id, $title, $year, $image, $desc='')
-	{
-		$res = $this->_albumTable->editAlbum($id, $title, $year, $desc);
+	public function editAlbum($id, $postData, $image) {
+		$data = $this->_preparAlbumData($postData);
+		$res = $this->_albumTable->editAlbum($id, $data);
 		if( $image instanceof Imagick ){
 			$this->_saveAlbumImg($id, $image);
 		}

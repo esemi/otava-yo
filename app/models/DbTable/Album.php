@@ -8,7 +8,7 @@ class App_Model_DbTable_Album extends Zend_Db_Table_Abstract
 	public function findById($id)
 	{
 		$select = $this->select()
-						->from($this, array( 'id', 'title', 'year', 'desc' ))
+						->from($this)
 						->where('id = ?', $id, Zend_Db::INT_TYPE)
 						->limit(1);
 		return $this->fetchRow($select);
@@ -17,7 +17,7 @@ class App_Model_DbTable_Album extends Zend_Db_Table_Abstract
 	public function getAll()
 	{
 		$select = $this->select()
-				->from($this, array('id', 'title', 'year', 'desc'))
+				->from($this)
 				->order('year DESC');
 		return $this->fetchAll($select)->toArray();
 	}
@@ -25,35 +25,24 @@ class App_Model_DbTable_Album extends Zend_Db_Table_Abstract
 	/**
 	 * Add new album
 	 *
-	 * @param string $title
-	 * @param string $year
-	 * @param string $desc
+	 * @param array $data
 
 	 * @return int Inserted id
 	 */
-	public function addAlbum($title, $year, $desc='')
-	{
-		return $this->insert( array(
-			'title' => $title,
-			'year' => $year,
-			'desc' => $desc ));
+	public function addAlbum($data) {
+		return $this->insert($data);
 	}
 
 	/**
 	 * Edit album
 	 *
 	 * @param int $id
-	 * @param string $title
-	 * @param string $year
-	 * @param string $desc
+	 * @param array $data
 
 	 * @return int Count of updated rows
 	 */
-	public function editAlbum($id, $title, $year, $desc='')
-	{
-		return $this->update(
-			array( 'title' => $title, 'year' => $year, 'desc' => $desc ),
-			array( $this->_db->quoteInto( 'id = ?', $id, Zend_Db::INT_TYPE ) ) );
+	public function editAlbum($id, $data) {
+		return $this->update($data, array($this->_db->quoteInto('id = ?', $id, Zend_Db::INT_TYPE)));
 	}
 
 
