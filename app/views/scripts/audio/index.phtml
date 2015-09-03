@@ -30,16 +30,25 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 			</hgroup>
 			<div>
 				<? if (!empty($album['link_ozone'])): ?>
-					<a href='<?=$album['link_ozone']?>' target='blank'>ozone</a>
+					<a href='<?= $this->escape($album['link_ozone']); ?>' target='blank'>ozone</a>
 				<? endif; ?>
 				<? if (!empty($album['link_itunes'])): ?>
-					<a href='<?=$album['link_itunes']?>' target='blank'>iTunes</a>
+					<a href='<?= $this->escape($album['link_itunes']); ?>' target='blank'>iTunes</a>
 				<? endif; ?>
 				<? if (!empty($album['link_bandcamp'])): ?>
-					<a href='<?=$album['link_bandcamp']?>' target='blank'>bandcamp</a>
+					<a href='<?= $this->escape($album['link_bandcamp']); ?>' target='blank'>bandcamp</a>
 				<? endif; ?>
 				<? if (!empty($album['link_googleplay'])): ?>
-					<a href='<?=$album['link_googleplay']?>' target='blank'>googleplay</a>
+					<a href='<?= $this->escape($album['link_googleplay']); ?>' target='blank'>googleplay</a>
+				<? endif; ?>
+				<? if (!empty($album['link_navi'])): ?>
+					<a href='<?= $this->escape($album['link_navi']); ?>' target='blank'>navi</a>
+				<? endif; ?>
+				<? if (!empty($album['link_amazon'])): ?>
+					<a href='<?= $this->escape($album['link_amazon']); ?>' target='blank'>amazon</a>
+				<? endif; ?>
+				<? if (!empty($album['link_yandex'])): ?>
+					<a href='<?= $this->escape($album['link_yandex']); ?>' target='blank'>link_yandex</a>
 				<? endif; ?>
 			</div>
 			<div class="album-cover">

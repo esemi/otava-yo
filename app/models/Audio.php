@@ -127,6 +127,9 @@ class App_Model_Audio
 			'link_itunes' => '',
 			'link_bandcamp' => '',
 			'link_googleplay' => '',
+			'link_navi' => '',
+			'link_amazon' => '',
+			'link_yandex' => '',
 		);
 
 		if( empty($data['title']) ){
@@ -151,7 +154,7 @@ class App_Model_Audio
 		}
 
 		$validUrl = new Mylib_Validate_Url();
-		$buyLinks = array('link_ozone', 'link_itunes', 'link_bandcamp', 'link_googleplay');
+		$buyLinks = array('link_ozone', 'link_itunes', 'link_bandcamp', 'link_googleplay', 'link_navi', 'link_amazon', 'link_yandex');
 		foreach ($buyLinks as $linkIndex) {
 			if (!empty($data[$linkIndex])) {
 				$url = 'http://' . str_replace(array('http://', 'https://'), '', $data[$linkIndex]);
@@ -257,6 +260,9 @@ class App_Model_Audio
 			'link_itunes' => $postData['link_itunes'],
 			'link_bandcamp' => $postData['link_bandcamp'],
 			'link_googleplay' => $postData['link_googleplay'],
+			'link_navi' => $postData['link_navi'],
+			'link_amazon' => $postData['link_amazon'],
+			'link_yandex' => $postData['link_yandex'],
 		);
 	}
 

@@ -52,6 +52,9 @@ $this->headScript()->appendFile( "/js/ckeditor/adapters/jquery.js");
 	iTunes <input name='link_itunes' type='url' value="<?= (isset($this->albumData['link_itunes'])) ? $this->escape($this->albumData['link_itunes']) : ''; ?>" maxlength="255"><br/>
 	BandCamp <input name='link_bandcamp' type='url' value="<?= (isset($this->albumData['link_bandcamp'])) ? $this->escape($this->albumData['link_bandcamp']) : ''; ?>" maxlength="255"><br/>
 	Google Play <input name='link_googleplay' type='url' value="<?= (isset($this->albumData['link_googleplay'])) ? $this->escape($this->albumData['link_googleplay']) : ''; ?>" maxlength="255"><br/>
+	Navi <input name='link_navi' type='url' value="<?= (isset($this->albumData['link_navi'])) ? $this->escape($this->albumData['link_navi']) : ''; ?>" maxlength="255"><br/>
+	Amazon <input name='link_amazon' type='url' value="<?= (isset($this->albumData['link_amazon'])) ? $this->escape($this->albumData['link_amazon']) : ''; ?>" maxlength="255"><br/>
+	Yandex <input name='link_yandex' type='url' value="<?= (isset($this->albumData['link_yandex'])) ? $this->escape($this->albumData['link_yandex']) : ''; ?>" maxlength="255"><br/>
 
 	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">
 	<input class="submit" type="submit" name="отправить" value="отправить">
