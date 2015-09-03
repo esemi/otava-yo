@@ -28,29 +28,7 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 				<h3 class="title-album"><?= $this->escape($album['title']); ?></h3>
 				<time class="album-year" datetime="<?= $this->escape($album['year']); ?>"><?= $this->escape($album['year']); ?></time>
 			</hgroup>
-			<div>
-				<? if (!empty($album['link_ozone'])): ?>
-					<a href='<?= $this->escape($album['link_ozone']); ?>' target='blank'>ozone</a>
-				<? endif; ?>
-				<? if (!empty($album['link_itunes'])): ?>
-					<a href='<?= $this->escape($album['link_itunes']); ?>' target='blank'>iTunes</a>
-				<? endif; ?>
-				<? if (!empty($album['link_bandcamp'])): ?>
-					<a href='<?= $this->escape($album['link_bandcamp']); ?>' target='blank'>bandcamp</a>
-				<? endif; ?>
-				<? if (!empty($album['link_googleplay'])): ?>
-					<a href='<?= $this->escape($album['link_googleplay']); ?>' target='blank'>googleplay</a>
-				<? endif; ?>
-				<? if (!empty($album['link_navi'])): ?>
-					<a href='<?= $this->escape($album['link_navi']); ?>' target='blank'>navi</a>
-				<? endif; ?>
-				<? if (!empty($album['link_amazon'])): ?>
-					<a href='<?= $this->escape($album['link_amazon']); ?>' target='blank'>amazon</a>
-				<? endif; ?>
-				<? if (!empty($album['link_yandex'])): ?>
-					<a href='<?= $this->escape($album['link_yandex']); ?>' target='blank'>link_yandex</a>
-				<? endif; ?>
-			</div>
+
 			<div class="album-cover">
 				<img alt="обложка альбома «<?= $this->escape($album['title']); ?>»" src="<?= $album['img_link']; ?>">
 			</div>
@@ -97,6 +75,44 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 					<a class="delete" title="удалить" href="<?= $this->url(array('idAl' => $album['id'] ), 'staticAlbumDelete') ?>"><?= $this->translate('button.delete'); ?></a>
 				</footer>
 			<? endif; ?>
+
+			<nav>
+				<? if (!empty($album['link_ozone'])): ?>
+					<a class="album-buy-button" href='<?= $this->escape($album['link_ozone']); ?>' target='_blank'>
+						<img alt="купить на ozone" src="/img/musicSources/button_ozon.jpg">
+					</a>
+				<? endif; ?>
+				<? if (!empty($album['link_itunes'])): ?>
+					<a class="album-buy-button" href='<?= $this->escape($album['link_itunes']); ?>' target='_blank'>
+						<img alt="купить на iTunes" src="/img/musicSources/Download_on_iTunes_Badge_RU_110x40_0730.jpg">
+					</a>
+				<? endif; ?>
+				<? if (!empty($album['link_bandcamp'])): ?>
+					<a class="album-buy-button" href='<?= $this->escape($album['link_bandcamp']); ?>' target='_blank'>
+						<img alt="купить на bandcamp" src="/img/musicSources/BandCamp-Button-110x40.png">
+					</a>
+				<? endif; ?>
+				<? if (!empty($album['link_googleplay'])): ?>
+					<a class="album-buy-button" href='<?= $this->escape($album['link_googleplay']); ?>' target='_blank'>
+						<img alt="купить на googleplay" src="/img/musicSources/google_play_button_110x40.jpg">
+					</a>
+				<? endif; ?>
+				<? if (!empty($album['link_navi'])): ?>
+					<a class="album-buy-button" href='<?= $this->escape($album['link_navi']); ?>' target='_blank'>
+						<img alt="купить на navi" src="/img/musicSources/NaviMusic-110x40-Download.png">
+					</a>
+				<? endif; ?>
+				<? if (!empty($album['link_amazon'])): ?>
+					<a class="album-buy-button" href='<?= $this->escape($album['link_amazon']); ?>' target='_blank'>
+						<img alt="купить на amazon" src="/img/musicSources/Amazon-Button-110x40.png">
+					</a>
+				<? endif; ?>
+				<? if (!empty($album['link_yandex'])): ?>
+					<a class="album-buy-button" href='<?= $this->escape($album['link_yandex']); ?>' target='_blank'>
+						<img alt="послушать и купить на yandex music" src="/img/musicSources/40x160_yandex.music_badge.png">
+					</a>
+				<? endif; ?>
+			</nav>
 		</article>
 		<hr>
 	<? endforeach; ?>

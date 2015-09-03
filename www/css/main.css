@@ -791,6 +791,10 @@
 				margin: 0px 0px 32px 32px;
 			}
 
+			.album-buy-button { margin-right: 1px; }
+
+			.album-buy-button img { max-height: 40px; }
+
 			.album-desc ul{
 				margin: 11px 0px 11px 53px;
 			}
