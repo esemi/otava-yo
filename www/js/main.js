@@ -235,8 +235,8 @@ jQuery(document).ready(function(){
 			//handler for add button
 			jQuery('.js-playlist-add-button').on('click', function(){
 
-				var inputForm = jQuery('.js-playlist-add-title');
-				var ulElem = jQuery(".js-playlist-editable");
+				var inputForm = jQuery(this).prev('.js-playlist-add-title:first');
+				var ulElem = jQuery(this).parent().prev(".js-playlist-editable:first");
 
 				jQuery.post(
 					ulElem.attr('data-add-url'),
