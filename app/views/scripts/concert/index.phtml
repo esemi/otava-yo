@@ -60,54 +60,56 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 		<? endforeach; ?>
 	</section>
 	<? endif; ?>
+	
+	<? if( $authFlag ): ?>
+		<section>
+			<h2 class="old-concert-headding text-center"><?= $this->translate('page.title.concert.oldest'); ?></h2>
+			<?php
+			$currentYear = date('Y');
+			$yearChangedFlag = false;
+			foreach( $this->oldConcerts as $item ):
+				$itemDate = DateTime::createFromFormat('Y-m-d', $item->date);
+				if( $itemDate->format('Y') != $currentYear ){
+					$currentYear = $itemDate->format('Y');
+					$yearChangedFlag = true;
+				}
+			?>
+				<article class="concert-block">
+					<header>
+						<time class="date-concert-old" datetime="<?= $this->prepareConcertDatetime($item->date, $item->time); ?>">
+							<?= $this->prepareConcertDate($itemDate, $yearChangedFlag); ?>
+						</time>
 
-	<section>
-		<h2 class="old-concert-headding text-center"><?= $this->translate('page.title.concert.oldest'); ?></h2>
-		<?php
-		$currentYear = date('Y');
-		$yearChangedFlag = false;
-		foreach( $this->oldConcerts as $item ):
-			$itemDate = DateTime::createFromFormat('Y-m-d', $item->date);
-			if( $itemDate->format('Y') != $currentYear ){
-				$currentYear = $itemDate->format('Y');
-				$yearChangedFlag = true;
-			}
-		?>
-			<article class="concert-block">
-				<header>
-					<time class="date-concert-old" datetime="<?= $this->prepareConcertDatetime($item->date, $item->time); ?>">
-						<?= $this->prepareConcertDate($itemDate, $yearChangedFlag); ?>
-					</time>
+						<hgroup>
+							<h3 class="concert-name">
+								<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?= $this->url(array('id' => $item->id ), 'staticConcertView') ?>">
+									<?= $this->escape($item->title); ?>
+								</a>
+							</h3>
 
-					<hgroup>
-						<h3 class="concert-name">
-							<a class="title" name="<?= sprintf("view%d", $item->id); ?>" href="<?= $this->url(array('id' => $item->id ), 'staticConcertView') ?>">
-								<?= $this->escape($item->title); ?>
-							</a>
-						</h3>
-
-						<? if( !empty($item->place) ): ?>
-							<h4 class="concert-place"><?= $this->escape($item->place); ?></h4>
-						<? endif; ?>
-					</hgroup>
-				</header>
-				<p><?= $this->escape($item->desc); ?></p>
-				<? if( !empty($item->link) ): ?>
-					<p class="concert-link">
-						<a rel="nofollow" target="_blank" href="<?= $item->link ?>" rel="nofollow"><?= $this->escape($item->link); ?></a>
-					</p>
-				<? endif; ?>
-				<? if( !empty($item->cost) ): ?>
-					<p class="concert-ticets"><span class="ticets">Билеты:</span> <?= $this->escape($item->cost); ?></p>
-				<? endif; ?>
-				<? if( $authFlag ): ?>
-					<footer>
-						<a class="edit" title="редактировать" href="<?= $this->url(array('idC' => $item->id ), 'staticConcertEdit') ?>"><?= $this->translate('button.edit'); ?></a>
-						<a class="delete" title="удалить" href="<?= $this->url(array('idC' => $item->id ), 'staticConcertDelete') ?>"><?= $this->translate('button.delete'); ?></a>
-					</footer>
-				<? endif; ?>
-			</article>
-			<hr>
-		<? endforeach; ?>
-	</section>
+							<? if( !empty($item->place) ): ?>
+								<h4 class="concert-place"><?= $this->escape($item->place); ?></h4>
+							<? endif; ?>
+						</hgroup>
+					</header>
+					<p><?= $this->escape($item->desc); ?></p>
+					<? if( !empty($item->link) ): ?>
+						<p class="concert-link">
+							<a rel="nofollow" target="_blank" href="<?= $item->link ?>" rel="nofollow"><?= $this->escape($item->link); ?></a>
+						</p>
+					<? endif; ?>
+					<? if( !empty($item->cost) ): ?>
+						<p class="concert-ticets"><span class="ticets">Билеты:</span> <?= $this->escape($item->cost); ?></p>
+					<? endif; ?>
+					<? if( $authFlag ): ?>
+						<footer>
+							<a class="edit" title="редактировать" href="<?= $this->url(array('idC' => $item->id ), 'staticConcertEdit') ?>"><?= $this->translate('button.edit'); ?></a>
+							<a class="delete" title="удалить" href="<?= $this->url(array('idC' => $item->id ), 'staticConcertDelete') ?>"><?= $this->translate('button.delete'); ?></a>
+						</footer>
+					<? endif; ?>
+				</article>
+				<hr>
+			<? endforeach; ?>
+		</section>
+	<? endif; ?>
 </section>
