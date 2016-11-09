@@ -9,6 +9,7 @@ $version = $this->cacheVersion();
 $this->headScript()->prependFile( "/js/jPlayer/jquery.jplayer.min.js");
 $this->headScript()->prependFile( "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js");
 $this->headScript()->appendFile( "/js/main.js?{$version}");
+$this->headScript()->appendFile( "/js/retarget.js?{$version}");
 
 $this->headLink()->appendStylesheet("/css/main.css?{$version}");
 
@@ -36,7 +37,7 @@ echo $this->doctype();
 		<div class="wrapper">
 			<!--[if lt IE 7]>
 				<section class="old-browser-message">
-					<p>Вы пользетесь устаревшим браузером, который не поддерживает современные веб-стандарты и представляет угрозу безопасности вашего компьютера.</p>
+					<p>Вы пользуетесь устаревшим браузером, который не поддерживает современные веб-стандарты и представляет угрозу безопасности вашего компьютера.</p>
 					<p>Рекомендуем Вам установить новый браузер.</p>
 				</section>
 			<![endif]-->
