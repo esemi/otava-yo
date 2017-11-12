@@ -566,6 +566,10 @@
 					margin-bottom: 9px;
 					text-align: justify;
 				}
+				.last-news-text{
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
 				.last-news-date{
 					float: left;
 					margin: -30px 21px 11px -31px;

@@ -36,6 +36,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$routes['staticBand'] = new Zend_Controller_Router_Route_Static('/band', array( 'controller' => 'index', 'action' => 'band' ));
 		$routes['staticContacts'] = new Zend_Controller_Router_Route_Static('/contacts', array( 'controller' => 'index', 'action' => 'contact' ));
 		$routes['staticDonate'] = new Zend_Controller_Router_Route_Static('/donate', array( 'controller' => 'index', 'action' => 'donate' ));
+		$routes['staticCorporate'] = new Zend_Controller_Router_Route_Static('/corporate', array( 'controller' => 'index', 'action' => 'corporate' ));
 		$routes['login'] = new Zend_Controller_Router_Route_Static('/auth/login', array( 'controller' => 'auth', 'action' => 'login' ));
 		$routes['logout'] = new Zend_Controller_Router_Route_Static('/auth/logout', array( 'controller' => 'auth', 'action' => 'logout' ));
 

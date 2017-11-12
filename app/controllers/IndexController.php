@@ -28,4 +28,8 @@ class IndexController extends Zend_Controller_Action
 	public function donateAction()
 	{
 	}
+
+	public function corporateAction()
+	{
+	}
 }
