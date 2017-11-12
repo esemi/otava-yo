@@ -310,9 +310,12 @@
 			font-weight: bold;
 		}
 		/*----Common position and text position classes-----------------*/
-		.center-margin{
-			margin: 0px auto;
-		}
+		.float_l { float: left; }
+		.float_r { float: right; }
+
+		.inline_blk { display: inline-block; }
+
+		.center-margin { margin: 0px auto; }
 		.text-center{
 			text-align: center;
 		}
