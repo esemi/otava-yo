@@ -4,7 +4,7 @@
 	<a title="концерты" href="<?= $this->url(array('id' => ( !is_null($this->concert) ) ? $this->concert->id : 0 ), 'staticConcertView') ?>">
 		<section class="nearrest-concert">
 			<div class="nearrest-concert-decor"></div>
-			<? if( !is_null($this->concert) ): ?>
+			<?php if( !is_null($this->concert) ): ?>
 				<header>
 					<time class="date nearrest-concert-date" datetime="<?= $this->prepareConcertDatetime($this->concert->date, $this->concert->time); ?>">
 						<?= $this->prepareConcertDate(DateTime::createFromFormat('Y-m-d', $this->concert->date)); ?>
@@ -12,20 +12,20 @@
 					<h2 class="nearrest-concert-title"><?= $this->translate('page.title.index.concert'); ?></h2>
 				</header>
 				<h3 class="nearrest-concert-place">
-					<? if( !empty($this->concert->title) ): ?>
+					<?php if( !empty($this->concert->title) ): ?>
 						<?= $this->escape($this->concert->title); ?>
-					<? else: ?>
+					<?php else: ?>
 						<?= $this->escape($this->concert->place); ?>
-					<? endif; ?>
+					<?php endif; ?>
 				</h3>
-			<? else: ?>
+			<?php else: ?>
 				<header>
 					<time class="date nearrest-concert-date"></time>
 				</header>
 				<h3 class="title-em">
 					<p>Концерты скоро будут</p>
 				</h3>
-			<? endif; ?>
+			<?php endif; ?>
 		</section>
 	</a>
 	<section class="music">
@@ -85,4 +85,3 @@
 			<p class="last-news-text"><?= $this->news->content; ?></p>
 	</section>
 </a>
-

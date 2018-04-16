@@ -1,9 +1,9 @@
 <section class="field-bg">
 	<h2 class="title-page-name text-center"><?= $this->translate('title.audio.track-edit'); ?></h2>
 
-	<? if( !empty($this->errorMessage) ): ?>
+	<?php if( !empty($this->errorMessage) ): ?>
 		<p class="error"><?= $this->errorMessage; ?></p>
-	<? endif; ?>
+	<?php endif; ?>
 
 	<form enctype="multipart/form-data" name="audiofile-form" method="POST" class="audiofile-form">
 		<div>

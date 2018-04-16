@@ -12,9 +12,9 @@ if( !empty($this->postData['author']) ){
 
 ?>
 
-<? if( !empty($this->error) ): ?>
+<?php if( !empty($this->error) ): ?>
 	<p class="error"><?= $this->error ?></p>
-<? endif; ?>
+<?php endif; ?>
 <form class="guest-form" name="post" method="POST">
 	<table>
 		<tbody>
@@ -55,11 +55,11 @@ if( !empty($this->postData['author']) ){
 	<label><?= $this->translate('label.message'); ?>: </label>
 	<textarea name="content" class="message" placeholder="<?= $this->translate('label.message'); ?>*" maxlength="10000"><?= (isset($this->postData['content'])) ? $this->escape($this->postData['content']) : ''; ?></textarea><br>
 
-	<? if ($authFlag) : ?>
+	<?php if ($authFlag) : ?>
 		<input type="hidden" id="parent_id" name="parent_id"
 			value="<?= (isset($this->postData['parent_id'])) ? $this->escape($this->postData['parent_id']) : ''; ?>"
 			placeholder="<?= $this->translate('label.parent_id'); ?>">
-	<? endif; ?>
+	<?php endif; ?>
 
 	<input type="hidden" name="custom_captcha" value="">
 	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">

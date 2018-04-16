@@ -73,9 +73,9 @@ class GuestbookController extends Zend_Controller_Action
 		if( $this->_request->isPost() )
 		{
 			$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
-
+			$moderFlag = $this->_helper->checkAccess();
 			$this->view->postData = $postData = $this->_request->getPost();
-			list($validData, $res) = $bookTable->validate($postData);
+			list($validData, $res) = $bookTable->validate($postData, $moderFlag);
 			if( !empty($res) ){
 				$this->view->errorMessage = implode('<br>', $res);
 			}else{

@@ -48,13 +48,13 @@ echo $this->doctype();
 					<a class="lang-en" title="английский" href="<?php echo $this->url(array('lang' => 'en')) ?>"></a>
 				</div>
 
-				<? if( Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess() ): ?>
+				<?php if( Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess() ): ?>
 						<aside class="login-status">
 							я модератор
 							<a class="logout" title="выйти" href="<?= $this->url(array(), 'logout') ?>">
 							</a>
 						</aside>
-				<? endif; ?>
+				<?php endif; ?>
 				<a class="donate" title="донат" href="<?= $this->url(array(), 'staticDonate') ?>">
 						<?= $this->translate('title.index.donate'); ?>
 				</a>
@@ -68,11 +68,11 @@ echo $this->doctype();
 				<a href="<?php echo $this->url(array(), 'staticIndex') ?>" title="на главную">
 					<img src="/img/otava_logo_main.png" class="logo">
 				</a>
-				<? if (!Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess()) : ?>
+				<?php if (!Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess()) : ?>
 					<a class="womex" target="_blank" href="http://www.womex.com/realwomex/videos/womex_14_showcase_trailer.html">
 						<img  alt="womex logo" src="/img/WOMEX_selection_2014_schwarz.png" >
 					</a>
-				<? endif; ?>
+				<?php endif; ?>
 
 			</header>
 			<div class="menu-block">

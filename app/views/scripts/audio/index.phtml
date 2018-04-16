@@ -13,16 +13,16 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 	<h2 class="title-page-name text-center"><?= $this->translate('title.audio.index'); ?></h2>
 
 	<p class="error-fixed js-ajax-error">
-		<? if( !empty($this->error) ): ?>
+		<?php if( !empty($this->error) ): ?>
 			<?= $this->escape($this->error); ?>
-		<? endif; ?>
+		<?php endif; ?>
 	</p>
 
-	<? if( $authFlag ): ?>
+	<?php if( $authFlag ): ?>
 		<a class="news-button" href="<?= $this->url(array(), 'staticAlbumCreate') ?>"><?= $this->translate('button.album.add'); ?></a>
-	<? endif; ?>
+	<?php endif; ?>
 
-	<? foreach($this->albums as $album): ?>
+	<?php foreach($this->albums as $album): ?>
 		<article>
 			<hgroup>
 				<h3 class="title-album"><?= $this->escape($album['title']); ?></h3>
@@ -32,27 +32,27 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 			<div class="album-cover">
 				<img alt="обложка альбома «<?= $this->escape($album['title']); ?>»" src="<?= $album['img_link']; ?>">
 			</div>
-			<? if( $authFlag ): ?>
+			<?php if( $authFlag ): ?>
 				<ul class="js-playlist-editable"
 					data-album-id="<?= $this->escape($album['id']); ?>"
 					data-remove-url="<?= $this->url(array(), 'audioRemoveTrack'); ?>"
 					data-sort-url="<?= $this->url(array(), 'audioSortPlaylist'); ?>"
 					data-add-url="<?= $this->url(array(), 'audioAddTrack'); ?>">
-			<? else: ?>
+			<?php else: ?>
 				<ul class="audio-list">
-			<? endif; ?>
-			<? foreach($this->audio as $audio): ?>
-				<?
+			<?php endif; ?>
+			<?php foreach($this->audio as $audio): ?>
+				<?php
 					if( $album['id'] == $audio['album_id'] ){
 						echo $this->partial('Partials/audio-item.phtml', array(
 							'audio' => $audio,
 							'authFlag' => $authFlag));
 					}
 				?>
-			<? endforeach; ?>
+			<?php endforeach; ?>
 			</ul>
 
-			<? if( $authFlag ): ?>
+			<?php if( $authFlag ): ?>
 				<div class="adding-new-track">
 					<label for="track-name"><?= $this->translate('label.new.track'); ?>:</label>
 					<div class="hide js-playlist-item-template">
@@ -63,59 +63,59 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 					<input type="text" id="track-name" value="" placeholder="Введите название трека" class="js-playlist-add-title input-song-name">
 					<span class="js-playlist-add-button" data-mode="add"><?= $this->translate('button.add.lowercase'); ?></span>
 				</div>
-			<? endif; ?>
+			<?php endif; ?>
 
-			<? if( !empty($album['desc']) ): ?>
+			<?php if( !empty($album['desc']) ): ?>
 				<div class="album-desc"><?= $album['desc']; ?></div>
-			<? endif; ?>
+			<?php endif; ?>
 
-			<? if( $authFlag ): ?>
+			<?php if( $authFlag ): ?>
 				<footer>
 					<a class="edit" title="редактировать" href="<?= $this->url(array('idAl' => $album['id'] ), 'staticAlbumEdit') ?>"><?= $this->translate('button.edit'); ?></a>
 					<a class="delete" title="удалить" href="<?= $this->url(array('idAl' => $album['id'] ), 'staticAlbumDelete') ?>"><?= $this->translate('button.delete'); ?></a>
 				</footer>
-			<? endif; ?>
+			<?php endif; ?>
 
 			<nav>
-				<? if (!empty($album['link_ozone'])): ?>
+				<?php if (!empty($album['link_ozone'])): ?>
 					<a class="album-buy-button" href='<?= $this->escape($album['link_ozone']); ?>' target='_blank'>
 						<img alt="купить на ozone" src="/img/musicSources/button_ozon.jpg">
 					</a>
-				<? endif; ?>
-				<? if (!empty($album['link_itunes'])): ?>
+				<?php endif; ?>
+				<?php if (!empty($album['link_itunes'])): ?>
 					<a class="album-buy-button" href='<?= $this->escape($album['link_itunes']); ?>' target='_blank'>
 						<img alt="купить на iTunes" src="/img/musicSources/Download_on_iTunes_Badge_RU_110x40_0730.jpg">
 					</a>
-				<? endif; ?>
-				<? if (!empty($album['link_bandcamp'])): ?>
+				<?php endif; ?>
+				<?php if (!empty($album['link_bandcamp'])): ?>
 					<a class="album-buy-button" href='<?= $this->escape($album['link_bandcamp']); ?>' target='_blank'>
 						<img alt="купить на bandcamp" src="/img/musicSources/BandCamp-Button-110x40.png">
 					</a>
-				<? endif; ?>
-				<? if (!empty($album['link_googleplay'])): ?>
+				<?php endif; ?>
+				<?php if (!empty($album['link_googleplay'])): ?>
 					<a class="album-buy-button" href='<?= $this->escape($album['link_googleplay']); ?>' target='_blank'>
 						<img alt="купить на googleplay" src="/img/musicSources/google_play_button_110x40.jpg">
 					</a>
-				<? endif; ?>
-				<? if (!empty($album['link_navi'])): ?>
+				<?php endif; ?>
+				<?php if (!empty($album['link_navi'])): ?>
 					<a class="album-buy-button" href='<?= $this->escape($album['link_navi']); ?>' target='_blank'>
 						<img alt="купить на navi" src="/img/musicSources/NaviMusic-110x40-Download.png">
 					</a>
-				<? endif; ?>
-				<? if (!empty($album['link_amazon'])): ?>
+				<?php endif; ?>
+				<?php if (!empty($album['link_amazon'])): ?>
 					<a class="album-buy-button" href='<?= $this->escape($album['link_amazon']); ?>' target='_blank'>
 						<img alt="купить на amazon" src="/img/musicSources/Amazon-Button-110x40.png">
 					</a>
-				<? endif; ?>
-				<? if (!empty($album['link_yandex'])): ?>
+				<?php endif; ?>
+				<?php if (!empty($album['link_yandex'])): ?>
 					<a class="album-buy-button" href='<?= $this->escape($album['link_yandex']); ?>' target='_blank'>
 						<img alt="послушать и купить на yandex music" src="/img/musicSources/40x160_yandex.music_badge.png">
 					</a>
-				<? endif; ?>
+				<?php endif; ?>
 			</nav>
 		</article>
 		<hr>
-	<? endforeach; ?>
+	<?php endforeach; ?>
 
 
 	<div class="player">

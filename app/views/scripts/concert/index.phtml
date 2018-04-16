@@ -6,14 +6,14 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 
 <section class="field-bg">
 
-	<? if( $authFlag ): ?>
+	<?php if( $authFlag ): ?>
 		<a class="news-button" title="добавить концерт" href="<?= $this->url(array(), 'staticConcertCreate') ?>"><?= $this->translate('button.add'); ?></a>
-	<? endif; ?>
+	<?php endif; ?>
 
-	<? if( $this->concerts->count() > 0 ): ?>
+	<?php if( $this->concerts->count() > 0 ): ?>
 	<section>
 		<h2 class="title-page-name text-center"><?= $this->translate('page.title.concert.nearest'); ?></h2>
-		<?
+		<?php
 		foreach( $this->concerts as $item ):
 			$itemDate = DateTime::createFromFormat('Y-m-d', $item->date);
 		?>
@@ -30,38 +30,38 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 							</a>
 						</h3>
 
-						<? if( !empty($item->place) ): ?>
+						<?php if( !empty($item->place) ): ?>
 							<h4 class="concert-place"><?= $this->escape($item->place); ?></h4>
-						<? endif; ?>
+						<?php endif; ?>
 					</hgroup>
 				</header>
 
 				<p>
 					<?= $this->escape($item->desc); ?>
 				</p>
-				<? if( !empty($item->link) ): ?>
+				<?php if( !empty($item->link) ): ?>
 					<p class="concert-link">
 						<a rel="nofollow" target="_blank" href="<?= $item->link ?>" rel="nofollow"><?= $this->escape($item->link); ?></a>
 					</p>
-				<? endif; ?>
+				<?php endif; ?>
 
-				<? if( !empty($item->cost) ): ?>
+				<?php if( !empty($item->cost) ): ?>
 					<p class="concert-ticets"><span class="ticets">Билеты:</span> <?= $this->escape($item->cost); ?></p>
-				<? endif; ?>
+				<?php endif; ?>
 
-				<? if( $authFlag ): ?>
+				<?php if( $authFlag ): ?>
 					<footer>
 						<a class="edit" title="редактировать" href="<?= $this->url(array('idC' => $item->id ), 'staticConcertEdit') ?>"><?= $this->translate('button.edit'); ?></a>
 						<a class="delete" title="удалить" href="<?= $this->url(array('idC' => $item->id ), 'staticConcertDelete') ?>"><?= $this->translate('button.delete'); ?></a>
 					</footer>
-				<? endif; ?>
+				<?php endif; ?>
 			</article>
 			<hr>
-		<? endforeach; ?>
+		<?php endforeach; ?>
 	</section>
-	<? endif; ?>
+	<?php endif; ?>
 	
-	<? if( $authFlag ): ?>
+	<?php if( $authFlag ): ?>
 		<section>
 			<h2 class="old-concert-headding text-center"><?= $this->translate('page.title.concert.oldest'); ?></h2>
 			<?php
@@ -87,29 +87,29 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 								</a>
 							</h3>
 
-							<? if( !empty($item->place) ): ?>
+							<?php if( !empty($item->place) ): ?>
 								<h4 class="concert-place"><?= $this->escape($item->place); ?></h4>
-							<? endif; ?>
+							<?php endif; ?>
 						</hgroup>
 					</header>
 					<p><?= $this->escape($item->desc); ?></p>
-					<? if( !empty($item->link) ): ?>
+					<?php if( !empty($item->link) ): ?>
 						<p class="concert-link">
 							<a rel="nofollow" target="_blank" href="<?= $item->link ?>" rel="nofollow"><?= $this->escape($item->link); ?></a>
 						</p>
-					<? endif; ?>
-					<? if( !empty($item->cost) ): ?>
+					<?php endif; ?>
+					<?php if( !empty($item->cost) ): ?>
 						<p class="concert-ticets"><span class="ticets">Билеты:</span> <?= $this->escape($item->cost); ?></p>
-					<? endif; ?>
-					<? if( $authFlag ): ?>
+					<?php endif; ?>
+					<?php if( $authFlag ): ?>
 						<footer>
 							<a class="edit" title="редактировать" href="<?= $this->url(array('idC' => $item->id ), 'staticConcertEdit') ?>"><?= $this->translate('button.edit'); ?></a>
 							<a class="delete" title="удалить" href="<?= $this->url(array('idC' => $item->id ), 'staticConcertDelete') ?>"><?= $this->translate('button.delete'); ?></a>
 						</footer>
-					<? endif; ?>
+					<?php endif; ?>
 				</article>
 				<hr>
-			<? endforeach; ?>
+			<?php endforeach; ?>
 		</section>
-	<? endif; ?>
+	<?php endif; ?>
 </section>

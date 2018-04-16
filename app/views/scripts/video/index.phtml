@@ -7,11 +7,11 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 <section class="field-bg">
 	<h2 class="title-page-name text-center"><?= $this->translate('title.video.index'); ?></h2>
 
-	<? if( $authFlag ): ?>
+	<?php if( $authFlag ): ?>
 		<a title="добавить видео" class="news-button" href="<?= $this->url(array(), 'staticVideoCreate') ?>"><?= $this->translate('button.add'); ?></a>
-	<? endif; ?>
+	<?php endif; ?>
 
-	<? foreach( $this->video as $item ): ?>
+	<?php foreach( $this->video as $item ): ?>
 		<article class="video-block">
 			<header>
 				<h3 class="title-em video-title">
@@ -22,12 +22,12 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 				<?= $item->player_code; ?>
 			</div>
 			<footer>
-				<? if( $authFlag ): ?>
+				<?php if( $authFlag ): ?>
 					<a class="edit" title="редактировать" href="<?= $this->url(array('idV' => $item->id ), 'staticVideoEdit') ?>"><?= $this->translate('button.edit'); ?></a>
 					<a class="delete" title="удалить" href="<?= $this->url(array('idV' => $item->id ), 'staticVideoDelete') ?>"><?= $this->translate('button.delete'); ?></a>
-				<? endif; ?>
+				<?php endif; ?>
 			</footer>
 		</article>
 	<hr>
-	<? endforeach; ?>
+	<?php endforeach; ?>
 </section>

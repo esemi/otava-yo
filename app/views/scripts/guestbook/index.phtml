@@ -15,63 +15,63 @@ $authFlag = Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')-
 	<div class="bg-fix-ie7"></div>
 	<hr>
 
-	<? foreach( $this->notes as $item ): ?>
+	<?php foreach( $this->notes as $item ): ?>
 		<article class="guest-post">
 			<header>
 				<span class="name title-em"><?= $this->escape($item->author); ?></span>
-				<? if( !empty($item->city) ): ?>
+				<?php if( !empty($item->city) ): ?>
 					<span class="city">(<?= $this->escape($item->city); ?>)</span>
-				<? endif; ?>
-				<? if( !empty($item->email) ): ?>
+				<?php endif; ?>
+				<?php if( !empty($item->email) ): ?>
 					<a title="почта" class="email" href="mailto:<?= $this->escape($item->email); ?>" target="_blank" rel="nofollow">почта</a>
-				<? endif; ?>
-				<? if( !empty($item->site) ): ?>
+				<?php endif; ?>
+				<?php if( !empty($item->site) ): ?>
 					<a title="сайт" class="site" href="<?= $this->escape($item->site); ?>" target="_blank" rel="nofollow">сайт</a>
-				<? endif; ?>
+				<?php endif; ?>
 				<time datetime="<?= $this->escape($item->iso_date); ?>"><?= $this->escape($item->user_date); ?></time>
 			</header>
 			<p>
 				<?= str_replace("\n", '<br>', $this->escape($item->content)); ?>
 			</p>
 
-			<? if( $authFlag ): ?>
+			<?php if( $authFlag ): ?>
 				<footer>
 					<a class="reply js-guestbook-reply-button" href="#" post-id="<?=$item->id;?>" title="ответить"><?= $this->translate('button.reply'); ?></a>
 					<a class="edit" title="редактировать" href="<?= $this->url(array('idP' => $item->id ), 'staticGuestbookEdit') ?>"><?= $this->translate('button.edit'); ?></a>
 					<a class="delete" title="удалить" href="<?= $this->url(array('idP' => $item->id ), 'staticGuestbookDelete') ?>"><?= $this->translate('button.delete'); ?></a>
 				</footer>
-			<? endif; ?>
+			<?php endif; ?>
 		</article>
-		<? foreach( $this->replyes as $replyItem ): ?>
-			<? if ($replyItem->parent_id == $item->id) : ?>
+		<?php foreach( $this->replyes as $replyItem ): ?>
+			<?php if ($replyItem->parent_id == $item->id) : ?>
 				<article class="guest-post guest-reply">
 					<header>
 						<span class="name title-em"><?= $this->escape($replyItem->author); ?></span>
-						<? if( !empty($replyItem->city) ): ?>
+						<?php if( !empty($replyItem->city) ): ?>
 							<span class="city">(<?= $this->escape($replyItem->city); ?>)</span>
-						<? endif; ?>
-						<? if( !empty($replyItem->email) ): ?>
+						<?php endif; ?>
+						<?php if( !empty($replyItem->email) ): ?>
 							<a title="почта" class="email" href="mailto:<?= $this->escape($replyItem->email); ?>" target="_blank" rel="nofollow">почта</a>
-						<? endif; ?>
-						<? if( !empty($replyItem->site) ): ?>
+						<?php endif; ?>
+						<?php if( !empty($replyItem->site) ): ?>
 							<a title="сайт" class="site" href="<?= $this->escape($replyItem->site); ?>" target="_blank" rel="nofollow">сайт</a>
-						<? endif; ?>
+						<?php endif; ?>
 						<time datetime="<?= $this->escape($replyItem->iso_date); ?>"><?= $this->escape($replyItem->user_date); ?></time>
 					</header>
 					<p>
 						<?= str_replace("\n", '<br>', $this->escape($replyItem->content)); ?>
 					</p>
 
-					<? if( $authFlag ): ?>
+					<?php if( $authFlag ): ?>
 						<footer>
 							<a class="edit" title="редактировать" href="<?= $this->url(array('idP' => $replyItem->id ), 'staticGuestbookEdit') ?>"><?= $this->translate('button.edit'); ?></a>
 							<a class="delete" title="удалить" href="<?= $this->url(array('idP' => $replyItem->id ), 'staticGuestbookDelete') ?>"><?= $this->translate('button.delete'); ?></a>
 						</footer>
-					<? endif; ?>
+					<?php endif; ?>
 				</article>
-			<? endif; ?>
-		<? endforeach; ?>
+			<?php endif; ?>
+		<?php endforeach; ?>
 		<hr>
-	<? endforeach; ?>
+	<?php endforeach; ?>
 
 </section>

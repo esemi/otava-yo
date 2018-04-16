@@ -1,6 +1,6 @@
-<? if( !empty($this->error) ): ?>
+<?php if( !empty($this->error) ): ?>
 	<p class="error"><?= $this->error; ?></p>
-<? endif; ?>
+<?php endif; ?>
 
 <form name="post" method="POST" class="video-form">
 	<input type="hidden" name="csrf" value="<?= $this->csrfToken(); ?>">

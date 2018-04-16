@@ -1,4 +1,4 @@
-<?
+<?php
 $version = $this->cacheVersion();
 
 $this->headLink()->appendStylesheet("/css/jquery-ui-1.10.3.custom.min.css?{$version}");
@@ -9,9 +9,9 @@ $this->headScript()->appendFile( "/js/ckeditor/adapters/jquery.js");
 
 ?>
 
-<? if( !empty($this->error) ): ?>
+<?php if( !empty($this->error) ): ?>
 	<p class="error"><?= $this->error; ?></p>
-<? endif; ?>
+<?php endif; ?>
 
 <form enctype="multipart/form-data" name="album-form" method="POST" class="album-form">
 	<table>

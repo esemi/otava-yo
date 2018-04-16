@@ -8,9 +8,9 @@ $this->headScript()->appendFile( "/js/datepickr.js?{$version}");
 ?>
 
 
-<? if( !empty($this->error) ): ?>
+<?php if( !empty($this->error) ): ?>
 	<p class="error"><?= $this->error; ?></p>
-<? endif; ?>
+<?php endif; ?>
 
 <form name="concert-form" method="POST" class="concert-form">
 	<table>
