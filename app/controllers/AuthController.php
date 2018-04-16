@@ -9,19 +9,10 @@ class AuthController extends Zend_Controller_Action
 
 	public function loginAction()
 	{
-		$conf = $this->getFrontController()->getParam('bootstrap')->getOption('recaptcha');
-		$this->view->recaptcha = $recaptcha = new Zend_Service_ReCaptcha($conf['pubkey'],$conf['privkey']);
-
 		if( $this->_request->isPost() )
 		{
 			$this->view->login = $login = $this->_request->getPost('login', '');
 			$pass = $this->_request->getPost('pass', '');
-
-			if( !$this->_helper->checkCaptcha($recaptcha) ){
-				$this->view->errorMessage = 'Текст с изображения введён неверно';
-				return;
-			}
-
 			if( !$this->_login($login, $pass) ){
 				$this->view->errorMessage = 'Неверная пара логин/пароль';
 				return;

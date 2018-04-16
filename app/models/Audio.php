@@ -83,6 +83,9 @@ class App_Model_Audio
 			return !is_null($x['audio_link']) && $x['album_id'] != 3 && !in_array($x['id'], array(16));
 		});
 		shuffle($tracks);
+		if (empty($tracks)) {
+			return null;
+		}
 
 		$track = array_shift($tracks);
 		$track['album'] = $this->_albumTable->findById($track['album_id']);

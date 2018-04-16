@@ -5,8 +5,6 @@ class GuestbookController extends Zend_Controller_Action
 	public function indexAction() {
 		$bookTable = new App_Model_DbTable_Guestbook();
 		$moderFlag = $this->_helper->checkAccess();
-		$conf = $this->getFrontController()->getParam('bootstrap')->getOption('recaptcha');
-		$this->view->recaptcha = $recaptcha = new Zend_Service_ReCaptcha($conf['pubkey'],$conf['privkey']);
 		$this->view->showForm = false;
 
 		if( $this->_request->isPost() ){
@@ -15,22 +13,18 @@ class GuestbookController extends Zend_Controller_Action
 				$this->_helper->csrfTokenCheck($this->_request->getPost('csrf'));
 			}
 
-			if( $moderFlag === false && !$this->_helper->checkCaptcha($recaptcha) ){
-				$this->view->errorMessage = 'Текст с изображения введён неверно';
+			list($validData, $res) = $bookTable->validate($postData, $moderFlag);
+			if( !empty($res) ){
+				$this->view->errorMessage = implode('<br>', $res);
 			}else{
-				list($validData, $res) = $bookTable->validate($postData, $moderFlag);
-				if( !empty($res) ){
-					$this->view->errorMessage = implode('<br>', $res);
-				}else{
-					$bookTable->addPost(
-							$validData['author'],
-							$validData['content'],
-							$validData['email'],
-							$validData['site'],
-							$validData['city'],
-							$validData['parent_id']
-					);
-				}
+				$bookTable->addPost(
+						$validData['author'],
+						$validData['content'],
+						$validData['email'],
+						$validData['site'],
+						$validData['city'],
+						$validData['parent_id']
+				);
 			}
 
 			if( !empty($this->view->errorMessage) ){

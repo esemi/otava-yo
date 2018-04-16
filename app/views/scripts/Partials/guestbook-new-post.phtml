@@ -55,12 +55,6 @@ if( !empty($this->postData['author']) ){
 	<label><?= $this->translate('label.message'); ?>: </label>
 	<textarea name="content" class="message" placeholder="<?= $this->translate('label.message'); ?>*" maxlength="10000"><?= (isset($this->postData['content'])) ? $this->escape($this->postData['content']) : ''; ?></textarea><br>
 
-	<? if( !is_null($this->recaptcha) && $authFlag === false ): ?>
-		<div class="guest-recaptcha">
-			<?= $this->recaptcha->getHTML(); ?>
-		</div>
-	<? endif; ?>
-
 	<? if ($authFlag) : ?>
 		<input type="hidden" id="parent_id" name="parent_id"
 			value="<?= (isset($this->postData['parent_id'])) ? $this->escape($this->postData['parent_id']) : ''; ?>"
