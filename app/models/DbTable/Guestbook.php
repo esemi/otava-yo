@@ -117,6 +117,16 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 			}
 		}
 
+		// custom ban
+		$bannedPhrases = ['cialis', 'viagra', 'smithe497@gmail.com'];
+		foreach ($validData as $key => $value) {
+			foreach ($bannedPhrases as $phrase) {
+				if (strpos($value, $phrase) !== false) {
+					$errors[] = 'Banned';
+				}
+			}
+		}
+
 		return array($validData, $errors);
 	}
 
