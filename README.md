@@ -1,6 +1,3 @@
 otava-yo
 ========
-
-http://otava-yo.spb.ru
-
-Source code for new site
+[![Build Status](https://travis-ci.org/esemi/otava-yo.svg?branch=master)](https://travis-ci.org/esemi/otava-yo)
