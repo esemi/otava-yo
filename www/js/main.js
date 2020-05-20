@@ -1,277 +1,311 @@
 /**
  * Main js file
  */
-jQuery(document).ready(function(){
+jQuery(document).ready(function () {
 
-	//guestbook custom captcha
-	jQuery('input[name="custom_captcha"]').val('Ё');
+    //guestbook custom captcha
+    jQuery('input[name="custom_captcha"]').val('Ё');
 
-	//guest book add form slider
-	jQuery(".js-guestbook-add-button").click(function(){
-		jQuery(".js-guestbook-add-form").removeClass('hide');
-		jQuery(".js-guestbook-add-button").remove();
-	});
+    //guest book add form slider
+    jQuery(".js-guestbook-add-button").click(function () {
+        jQuery(".js-guestbook-add-form").removeClass('hide');
+        jQuery(".js-guestbook-add-button").remove();
+    });
 
-	//guest book reply button
-	jQuery(".js-guestbook-reply-button").click(function(){
-		var postId = jQuery(this).attr('post-id');
-		jQuery('#parent_id').val(postId);
-		jQuery('.js-guestbook-add-button').trigger('click');
-	});
+    //guest book reply button
+    jQuery(".js-guestbook-reply-button").click(function () {
+        var postId = jQuery(this).attr('post-id');
+        jQuery('#parent_id').val(postId);
+        jQuery('.js-guestbook-add-button').trigger('click');
+    });
 
-	//jPlayer on audio page
-	(function(){
+    //jPlayer on audio page
+    (function () {
 
-		var currentTrackId;
+        var currentTrackId;
 
-		function stopAllTracks(){
-			jQuery('.js-audio-item-stop').hide();
-			jQuery('.js-audio-item-play').show();
-		}
+        function stopAllTracks() {
+            jQuery('.js-audio-item-stop').hide();
+            jQuery('.js-audio-item-play').show();
+        }
 
-		function playTrack(li){
-			li.find('.js-audio-item-stop').show();
-			li.find('.js-audio-item-play').hide();
-		}
+        function playTrack(li) {
+            li.find('.js-audio-item-stop').show();
+            li.find('.js-audio-item-play').hide();
+        }
 
-		//jPlayer init
-		jQuery("#jquery_jplayer_audio").jPlayer({
+        //jPlayer init
+        jQuery("#jquery_jplayer_audio").jPlayer({
 
-			//ready play tracks
-			ready: function(){
-				var player = jQuery(this);
+            //ready play tracks
+            ready: function () {
+                var player = jQuery(this);
 
-				//play buttons
-				jQuery('.js-audio-item-play').click(function(){
-					var li = jQuery(this).parents('.js-track:first');
-					currentTrackId = li.attr('track-id');
+                //play buttons
+                jQuery('.js-audio-item-play').click(function () {
+                    var li = jQuery(this).parents('.js-track:first');
+                    currentTrackId = li.attr('track-id');
 
-					stopAllTracks();
-					playTrack(li);
+                    stopAllTracks();
+                    playTrack(li);
 
-					player.jPlayer("setMedia", { mp3: li.attr('media-link') });
-					player.jPlayer("play");
-				});
+                    player.jPlayer("setMedia", {mp3: li.attr('media-link')});
+                    player.jPlayer("play");
+                });
 
-				//stop buttons
-				jQuery('.js-audio-item-stop').click(function(){
-					stopAllTracks();
-					player.jPlayer("clearMedia");
-				});
-			},
+                //stop buttons
+                jQuery('.js-audio-item-stop').click(function () {
+                    stopAllTracks();
+                    player.jPlayer("clearMedia");
+                });
+            },
 
-			//if ended - play next audio
-			ended: function(){
-				stopAllTracks();
+            //if ended - play next audio
+            ended: function () {
+                stopAllTracks();
 
-				var nextTrack = jQuery('.js-track[track-id=' + currentTrackId + ']').nextAll('.js-track:first');
-				if( nextTrack.length > 0 ){
-					nextTrack.find('.js-audio-item-play').trigger('click');
-				}
-			},
+                var nextTrack = jQuery('.js-track[track-id=' + currentTrackId + ']').nextAll('.js-track:first');
+                if (nextTrack.length > 0) {
+                    nextTrack.find('.js-audio-item-play').trigger('click');
+                }
+            },
 
-			volume: 1.0,
-			swfPath: "/js/jPlayer/",
-			supplied: "mp3"
-		});
-	})();
-
-
-	//jPlayer on index page
-	(function(){
-
-		function hideTitle(){
-			jQuery('.js-audio-song-name').hide();
-		};
-
-		jQuery("#jquery_jplayer_index").jPlayer({
-
-			ready: function(e){
-				jQuery(this).jPlayer("setMedia", {
-					mp3: jQuery("#jquery_jplayer_index").attr('track-src')
-				});
-			},
-
-			play: function(e){
-				jQuery('.js-audio-song-name').show();
-			},
-
-			pause: function(e){
-				hideTitle();
-			},
-
-			ended: function(e){
-				hideTitle();
-
-				var player = jQuery(this);
-				jQuery.getJSON(
-					jQuery("#jquery_jplayer_index").attr('get-next-url'),
-					function(data){
-						if( typeof data.track !== 'undefined' ){
-							jQuery('.js-audio-song-name').text(data.track['title']);
-							player.jPlayer("setMedia", { mp3: data.track['audio_link'] });
-							player.jPlayer("play");
-						}
-					}
-				);
-			},
-
-			volume: 1.0,
-			swfPath: "/js/jPlayer/",
-			supplied: "mp3"
-		});
-	})();
+            volume: 1.0,
+            swfPath: "/js/jPlayer/",
+            supplied: "mp3"
+        });
+    })();
 
 
-	//check avaliable ckeeditor
-	if( typeof jQuery().ckeditor !== 'undefined' ){
+    //jPlayer on index page
+    (function () {
 
-		//cke-editor on news moderation page
-		jQuery('.js-editor-news').ckeditor();
+        function hideTitle() {
+            jQuery('.js-audio-song-name').hide();
+        };
 
-		//cke-editor on album moderation page
-		jQuery('.js-editor-album').ckeditor();
-	}
+        jQuery("#jquery_jplayer_index").jPlayer({
+
+            ready: function (e) {
+                jQuery(this).jPlayer("setMedia", {
+                    mp3: jQuery("#jquery_jplayer_index").attr('track-src')
+                });
+            },
+
+            play: function (e) {
+                jQuery('.js-audio-song-name').show();
+            },
+
+            pause: function (e) {
+                hideTitle();
+            },
+
+            ended: function (e) {
+                hideTitle();
+
+                var player = jQuery(this);
+                jQuery.getJSON(
+                    jQuery("#jquery_jplayer_index").attr('get-next-url'),
+                    function (data) {
+                        if (typeof data.track !== 'undefined') {
+                            jQuery('.js-audio-song-name').text(data.track['title']);
+                            player.jPlayer("setMedia", {mp3: data.track['audio_link']});
+                            player.jPlayer("play");
+                        }
+                    }
+                );
+            },
+
+            volume: 1.0,
+            swfPath: "/js/jPlayer/",
+            supplied: "mp3"
+        });
+    })();
 
 
-	//check avaliable datepickr
-	//@TODO replace to jquery UI datepicker
-	if( typeof datepickr !== 'undefined' ){
+    //check avaliable ckeeditor
+    if (typeof jQuery().ckeditor !== 'undefined') {
 
-		//datepickr on concert admin interface
-		if( jQuery('#datepick').length > 0 ){
+        //cke-editor on news moderation page
+        jQuery('.js-editor-news').ckeditor();
 
-			var opt = {
-				fullCurrentMonth: true,
-				dateFormat: 'd.m.y',
-				weekdays: ['Вск', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-				months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
-			};
-
-			//@TODO select current month and year by default
-
-			new datepickr('datepick', opt);
-		}
-	}
+        //cke-editor on album moderation page
+        jQuery('.js-editor-album').ckeditor();
+    }
 
 
-	//playlist admin interface
-	(function(){
+    //check avaliable datepickr
+    //@TODO replace to jquery UI datepicker
+    if (typeof datepickr !== 'undefined') {
 
-		var ajaxErrorLog = null;
-		function displayAjaxError(message){
-			var errorBlock = jQuery('.js-ajax-error');
-			errorBlock.text(message);
-			errorBlock.fadeIn(100);
+        //datepickr on concert admin interface
+        if (jQuery('#datepick').length > 0) {
 
-			window.clearTimeout(ajaxErrorLog);
-			ajaxErrorLog = window.setTimeout(function(){
-				errorBlock.fadeOut(1000);
-			}, 2100);
-		}
+            var opt = {
+                fullCurrentMonth: true,
+                dateFormat: 'd.m.y',
+                weekdays: ['Вск', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+            };
 
-		if( typeof jQuery().sortable !== 'undefined' ){
+            //@TODO select current month and year by default
 
-			//delete track if remove button clicked
-			jQuery('.js-playlist-editable').on('click', '.js-playlist-remove-button', function(){
+            new datepickr('datepick', opt);
+        }
+    }
 
-				if( !confirm("Вы уверены, что хотите удалить данный трек?") ){
-					return false;
-				}
 
-				var elem = jQuery(this).parents('li:first');
-				jQuery.post(
-					jQuery(".js-playlist-editable").attr('data-remove-url'),
-					{
-						idTrack: elem.attr('track-id'),
-						csrfToken: jQuery('input[name=csrf]').val()
-					},
-					function(data){
-						if( typeof data.status !== 'undefined' && data.status === 'success' ){
-							elem.remove();
-						}else{
-							var err = 'неизвестная ошибка';
-							if( typeof data.error !== 'undefined' ){
-								err = data.error;
-							}
-							displayAjaxError(err);
-						}
-					},
-					'json'
-				);
-			});
+    //playlist admin interface
+    (function () {
 
-			//sort playlist and save order
-			jQuery(".js-playlist-editable").sortable({
-				placeholder: "ui-state-highlight",
-				update: function( event, ui ) {
+        var ajaxErrorLog = null;
 
-					var list = [];
-					ui.item.parents('.js-playlist-editable').find('li').each(function(key, li){
-						list[key] = jQuery(li).attr('track-id');
-					});
+        function displayAjaxError(message) {
+            var errorBlock = jQuery('.js-ajax-error');
+            errorBlock.text(message);
+            errorBlock.fadeIn(100);
 
-					jQuery.post(
-						jQuery(".js-playlist-editable").attr('data-sort-url'),
-						{
-							list: list,
-							csrfToken: jQuery('input[name=csrf]').val()
-						},
-						function(data){
-							if( typeof data.status === 'undefined' || data.status !== 'success' ){
-								var err = 'неизвестная ошибка';
-								if( typeof data.error !== 'undefined' ){
-									err = data.error;
-								}
-								displayAjaxError(err);
-							}
-						},
-						'json'
-					);
-				}
-			});
-			jQuery(".js-playlist-editable").disableSelection();
+            window.clearTimeout(ajaxErrorLog);
+            ajaxErrorLog = window.setTimeout(function () {
+                errorBlock.fadeOut(1000);
+            }, 2100);
+        }
 
-			//handler for add button
-			jQuery('.js-playlist-add-button').on('click', function(){
+        if (typeof jQuery().sortable !== 'undefined') {
 
-				var inputForm = jQuery(this).prev('.js-playlist-add-title:first');
-				var ulElem = jQuery(this).parent().prev(".js-playlist-editable:first");
+            //delete track if remove button clicked
+            jQuery('.js-playlist-editable').on('click', '.js-playlist-remove-button', function () {
 
-				jQuery.post(
-					ulElem.attr('data-add-url'),
-					{
-						albumId: ulElem.attr('data-album-id'),
-						title: inputForm.val(),
-						csrfToken: jQuery('input[name=csrf]').val()
-					},
-					function(data){
-						if( typeof data.status !== 'undefined' &&
-							data.status === 'success' &&
-							typeof data.track_id !== 'undefined'
-						){
-							var elem = jQuery('.js-playlist-item-template li:first').clone(true);
-							elem.html(function(i, oldHTML) {
-								return oldHTML.replace('REPLACE_ID', data.track_id).replace('REPLACE_TITLE', inputForm.val());
-							});
-							elem.attr('track-id', data.track_id);
+                if (!confirm("Вы уверены, что хотите удалить данный трек?")) {
+                    return false;
+                }
 
-							inputForm.val('');
+                var elem = jQuery(this).parents('li:first');
+                jQuery.post(
+                    jQuery(".js-playlist-editable").attr('data-remove-url'),
+                    {
+                        idTrack: elem.attr('track-id'),
+                        csrfToken: jQuery('input[name=csrf]').val()
+                    },
+                    function (data) {
+                        if (typeof data.status !== 'undefined' && data.status === 'success') {
+                            elem.remove();
+                        } else {
+                            var err = 'неизвестная ошибка';
+                            if (typeof data.error !== 'undefined') {
+                                err = data.error;
+                            }
+                            displayAjaxError(err);
+                        }
+                    },
+                    'json'
+                );
+            });
 
-							ulElem.append(elem);
-						}else{
-							var err = 'неизвестная ошибка';
-							if( typeof data.error !== 'undefined' ){
-								err = data.error;
-							}
-							displayAjaxError(err);
-						}
-					},
-					'json'
-				);
-			});
+            //sort playlist and save order
+            jQuery(".js-playlist-editable").sortable({
+                placeholder: "ui-state-highlight",
+                update: function (event, ui) {
 
-		}
-	})();
+                    var list = [];
+                    ui.item.parents('.js-playlist-editable').find('li').each(function (key, li) {
+                        list[key] = jQuery(li).attr('track-id');
+                    });
+
+                    jQuery.post(
+                        jQuery(".js-playlist-editable").attr('data-sort-url'),
+                        {
+                            list: list,
+                            csrfToken: jQuery('input[name=csrf]').val()
+                        },
+                        function (data) {
+                            if (typeof data.status === 'undefined' || data.status !== 'success') {
+                                var err = 'неизвестная ошибка';
+                                if (typeof data.error !== 'undefined') {
+                                    err = data.error;
+                                }
+                                displayAjaxError(err);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+            jQuery(".js-playlist-editable").disableSelection();
+
+            //handler for add button
+            jQuery('.js-playlist-add-button').on('click', function () {
+
+                var inputForm = jQuery(this).prev('.js-playlist-add-title:first');
+                var ulElem = jQuery(this).parent().prev(".js-playlist-editable:first");
+
+                jQuery.post(
+                    ulElem.attr('data-add-url'),
+                    {
+                        albumId: ulElem.attr('data-album-id'),
+                        title: inputForm.val(),
+                        csrfToken: jQuery('input[name=csrf]').val()
+                    },
+                    function (data) {
+                        if (typeof data.status !== 'undefined' &&
+                            data.status === 'success' &&
+                            typeof data.track_id !== 'undefined'
+                        ) {
+                            var elem = jQuery('.js-playlist-item-template li:first').clone(true);
+                            elem.html(function (i, oldHTML) {
+                                return oldHTML.replace('REPLACE_ID', data.track_id).replace('REPLACE_TITLE', inputForm.val());
+                            });
+                            elem.attr('track-id', data.track_id);
+
+                            inputForm.val('');
+
+                            ulElem.append(elem);
+                        } else {
+                            var err = 'неизвестная ошибка';
+                            if (typeof data.error !== 'undefined') {
+                                err = data.error;
+                            }
+                            displayAjaxError(err);
+                        }
+                    },
+                    'json'
+                );
+            });
+
+        }
+    })();
+
+    //survey for concert on demand link
+    function createSurvey(a, b, c) {
+        var d = window;
+        var e = document;
+        var f = e.getElementById;
+        var g = e.createElement;
+        var h = e.getElementsByTagName;
+        var i = '//surviocdn.com/s1/static/widgets/';
+
+        if (function (m, n, o) {
+            return m._survEmbed = m._survEmbed || [], 'function' == typeof m._survEmbed ? m._survEmbed(n, o, a) : m._survEmbed.push({
+                p: n,
+                c: o,
+                i: a
+            }), !1
+        }(d, b, c), !f.call(e, 'survio-share-sc')) {
+            var j = g.call(e, 'script');
+            j.id = 'survio-share-sc', j.type = 'text/javascript', j.src = i + 'share.js';
+            var k = h.call(e, 'script')[0];
+            k.parentNode.insertBefore(j, k)
+        }
+        if (!f.call(e, 'survio-share-css')) {
+            var l = g.call(e, 'link');
+            l.rel = 'stylesheet', l.type = 'text/css', l.id = 'survio-share-css', l.href = i + 'survio-2.css?t=' + b, h.call(e, 'head')[0].appendChild(l)
+        }
+    }
+    jQuery(".js-survey-button").on('click', function () {
+        console.log('click survey');
+        createSurvey('L1U7E8W7Z4Q0H7O1V', 'popup', {"url": "https://www.survio.com/survey/p/L1U7E8W7Z4Q0H7O1V", "timeout": 0})
+        jQuery(".js-survey-button").remove();
+        return false;
+    });
 
 });

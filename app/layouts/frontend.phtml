@@ -69,9 +69,7 @@ echo $this->doctype();
 					<img src="/img/otava_logo_main.png" class="logo">
 				</a>
 				<?php if (!Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess()) : ?>
-					<a class="womex" target="_blank" href="http://www.womex.com/realwomex/videos/womex_14_showcase_trailer.html">
-						<img  alt="womex logo" src="/img/WOMEX_selection_2014_schwarz.png" >
-					</a>
+					<span class="js-survey-button">survey</span>
 				<?php endif; ?>
 
 			</header>
