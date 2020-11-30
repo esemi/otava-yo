@@ -6,7 +6,6 @@ import os
 from fabric.api import env, run, put, cd
 from fabric.contrib.files import exists
 
-env.user = 'otava'
 
 REMOTE_PATH = os.path.join('/home', env.user)
 FOLDERS = ('www', 'app', 'cache', 'logs', 'sessions')
