@@ -444,22 +444,6 @@
 			background: url('/img/sprite.png') -68px -49px no-repeat;
 		}
 
-		/* Womex logo */
-
-		.womex {
-			position: relative;
-			top:-7px;
-
-			display: inline-block;
-
-			width: 122px;
-			margin-left: 37px;
-		}
-		.womex img {
-			width: 100%;
-		}
-
-
 		/*--menu--*/
 			.menu-block{
 				height: 52px;
@@ -773,6 +757,10 @@
 				text-align: center;
 			}
 			.band-photo figcaption { margin-bottom: 21px; }
+
+			.band-photo figure img {
+				height: 120px;
+			}
 	/*---END Band page------------------------------*/
 
 
