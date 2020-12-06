@@ -275,37 +275,4 @@ jQuery(document).ready(function () {
         }
     })();
 
-    //survey for concert on demand link
-    function createSurvey(a, b, c) {
-        var d = window;
-        var e = document;
-        var f = e.getElementById;
-        var g = e.createElement;
-        var h = e.getElementsByTagName;
-        var i = '//surviocdn.com/s1/static/widgets/';
-
-        if (function (m, n, o) {
-            return m._survEmbed = m._survEmbed || [], 'function' == typeof m._survEmbed ? m._survEmbed(n, o, a) : m._survEmbed.push({
-                p: n,
-                c: o,
-                i: a
-            }), !1
-        }(d, b, c), !f.call(e, 'survio-share-sc')) {
-            var j = g.call(e, 'script');
-            j.id = 'survio-share-sc', j.type = 'text/javascript', j.src = i + 'share.js';
-            var k = h.call(e, 'script')[0];
-            k.parentNode.insertBefore(j, k)
-        }
-        if (!f.call(e, 'survio-share-css')) {
-            var l = g.call(e, 'link');
-            l.rel = 'stylesheet', l.type = 'text/css', l.id = 'survio-share-css', l.href = i + 'survio-2.css?t=' + b, h.call(e, 'head')[0].appendChild(l)
-        }
-    }
-    jQuery(".js-survey-button").on('click', function () {
-        console.log('click survey');
-        createSurvey('L1U7E8W7Z4Q0H7O1V', 'popup', {"url": "https://www.survio.com/survey/p/L1U7E8W7Z4Q0H7O1V", "timeout": 0})
-        jQuery(".js-survey-button").remove();
-        return false;
-    });
-
 });

@@ -68,9 +68,6 @@ echo $this->doctype();
 				<a href="<?php echo $this->url(array(), 'staticIndex') ?>" title="на главную">
 					<img src="/img/otava_logo_main.png" class="logo">
 				</a>
-				<?php if (!Zend_Controller_Action_HelperBroker::getStaticHelper('CheckAccess')->moderAccess()) : ?>
-					<span class="js-survey-button donate" style="margin-right: 10px"><?= $this->translate('title.index.survey'); ?></span>
-				<?php endif; ?>
 
 			</header>
 			<div class="menu-block">
