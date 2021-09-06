@@ -1,3 +1,3 @@
-otava-yo
-========
-[![Build Status](https://travis-ci.org/esemi/otava-yo.svg?branch=master)](https://travis-ci.org/esemi/otava-yo)
+Source code of [otava-yo.spb.ru](https://otava-yo.spb.ru/ru/)
+---
+[![Deploy](https://github.com/esemi/otava-yo/actions/workflows/deployment.yml/badge.svg?branch=master)](https://github.com/esemi/otava-yo/actions/workflows/deployment.yml)
