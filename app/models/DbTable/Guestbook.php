@@ -78,15 +78,12 @@ class App_Model_DbTable_Guestbook extends Zend_Db_Table_Abstract
 		}
 
 		$validMail = new Zend_Validate_EmailAddress( array( 'mx' => true, 'deep' => true ) );
-		if( !empty($data['email']) )
-		{
-			if( mb_strlen($data['email']) > 150 || !$validMail->isValid($data['email']) )
-			{
-				$errors[] = 'Некорректный адрес электронной почты';
-			}else{
-				$validData['email'] = $data['email'];
-			}
-		}
+        if( empty($data['email']) || mb_strlen($data['email']) > 150 || !$validMail->isValid($data['email']) )
+        {
+            $errors[] = 'Некорректный адрес электронной почты';
+        }else{
+            $validData['email'] = $data['email'];
+        }
 
 		if( !empty($data['city']) )
 		{

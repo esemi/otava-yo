@@ -31,7 +31,7 @@ if( !empty($this->postData['author']) ){
 					<label for="email"><?= $this->translate('label.email'); ?>: </label>
 				</td>
 				<td>
-					<input type="email" id="email" name="email" value="<?= (isset($this->postData['email'])) ? $this->escape($this->postData['email']) : ''; ?>" placeholder="<?= $this->translate('label.email'); ?>" maxlength="150"/><br>
+					<input type="email" id="email" name="email" required value="<?= (isset($this->postData['email'])) ? $this->escape($this->postData['email']) : ''; ?>" placeholder="<?= $this->translate('label.email'); ?>*" maxlength="150"/><br>
 				</td>
 			</tr>
 			<tr>
